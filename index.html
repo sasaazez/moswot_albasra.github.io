@@ -3,30 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>محرر أخبار دارك</title>
+    <title>موسوعة البصرة الإخبارية</title>
     <style>
         body { font-family: 'Arial', sans-serif; display: flex; flex-direction: column; align-items: center; padding: 20px; background: #f0f2f5; }
         #canvas { width: 350px; height: 450px; background: white; border: 2px solid #ccc; position: relative; display: flex; flex-direction: column; justify-content: space-between; padding: 15px; box-sizing: border-box; }
         .header { display: flex; justify-content: space-between; align-items: center; }
-        .logo { width: 50px; height: 50px; background: #003366; border-radius: 50%; color: white; display: flex; align-items: center; justify-content: center; font-weight: bold; }
-        .date { font-size: 14px; color: #555; }
-        .footer { background: #0055aa; color: white; padding: 15px; border-radius: 10px; text-align: center; font-size: 16px; }
-        textarea { width: 100%; height: 100px; margin: 10px 0; }
+        .logo { width: 50px; height: 50px; background: #003366; border-radius: 50%; color: white; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: bold; text-align: center; }
+        .date { font-size: 14px; color: #555; direction: ltr; }
+        .footer { background: #0055aa; color: white; padding: 15px; border-radius: 10px; text-align: center; font-size: 16px; margin-top: auto; }
+        textarea { width: 320px; height: 100px; margin-top: 20px; }
     </style>
 </head>
 <body>
-    <h3>صانع قوالب إذاعة دارك</h3>
+    <h3>محرر قوالب موسوعة البصرة</h3>
     <div id="canvas">
         <div class="header">
-            <div class="logo">دارك</div>
+            <div class="logo">موسوعة<br>البصرة</div>
             <div class="date" id="displayDate"></div>
         </div>
-        <div class="content" id="newsText">اكتب عنوان الخبر هنا...</div>
-        <div class="footer">إذاعة دارك - البصرة</div>
+        <div class="content" id="newsText" style="text-align: center; padding: 20px;">اكتب عنوان الخبر هنا...</div>
+        <div class="footer">موسوعة البصرة الإخبارية</div>
     </div>
     <textarea oninput="document.getElementById('newsText').innerText = this.value" placeholder="اكتب الخبر هنا"></textarea>
     <script>
-        document.getElementById('displayDate').innerText = new Date().toLocaleDateString('ar-EG');
+        const now = new Date();
+        document.getElementById('displayDate').innerText = now.getDate() + '-' + (now.getMonth() + 1) + '-' + now.getFullYear();
     </script>
 </body>
 </html>
