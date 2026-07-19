@@ -7,27 +7,36 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body { font-family: sans-serif; background-color: #0f172a; color: #ffffff; display: flex; flex-direction: column; align-items: center; padding: 20px; }
-        .preview-container { width: 350px; height: 480px; background-color: #f8fafc; border-radius: 4px; position: relative; overflow: hidden; display: flex; flex-direction: column; }
-        .image-area { width: 100%; height: 75%; background-color: #ddd; background-size: cover; background-position: center; position: relative; }
-        .top-overlay { position: absolute; top: 10px; left: 10px; z-index: 3; }
-        .logo-img { width: 50px; height: 50px; border-radius: 50%; border: 2px solid white; }
-        .bottom-content-area { width: 100%; height: 25%; background: linear-gradient(135deg, #1e40af, #0369a1); padding: 10px; color: white; text-align: center; }
-        textarea { width: 100%; margin-top: 10px; }
+        body { font-family: 'Segoe UI', sans-serif; background-color: #0f172a; color: #ffffff; display: flex; flex-direction: column; align-items: center; padding: 20px; margin: 0; }
+        .preview-container { width: 420px; height: 580px; background-color: #f8fafc; border-radius: 4px; position: relative; box-shadow: 0 12px 35px rgba(0,0,0,0.6); overflow: hidden; display: flex; flex-direction: column; }
+        .image-area { width: 100%; height: 78%; background-color: #f8fafc; background-size: cover; background-position: center; position: relative; }
+        .top-overlay { position: absolute; top: 0; left: 0; right: 0; padding: 12px 15px; z-index: 3; display: flex; justify-content: space-between; align-items: center; }
+        .logo-img { width: 48px; height: 48px; border-radius: 50%; border: 1.5px solid #ffffff; background-color: white; object-fit: cover; }
+        .date-text { font-size: 14px; font-weight: bold; color: #38bdf8; text-shadow: 1px 1px 4px rgba(0,0,0,0.9); }
+        .bottom-content-area { width: 100%; height: 22%; background: linear-gradient(135deg, #1e40af 0%, #0369a1 100%); display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 10px; color: white; text-align: center; }
+        .control-panel { width: 420px; background-color: #1e293b; border-radius: 16px; padding: 20px; margin-top: 20px; }
+        input, textarea, select { width: 100%; margin-top: 10px; padding: 10px; background: #0f172a; color: white; border: 1px solid #334155; border-radius: 8px; }
     </style>
 </head>
 <body>
     <div class="preview-container" id="capture-area">
         <div class="image-area" id="bg-image-layer">
             <div class="top-overlay">
-                <img src="logo.jpg" alt="Logo" class="logo-img" onerror="this.style.display='none'">
+                <!-- تم تعديل السطر ليتأكد من المسار -->
+                <img src="logo.jpg" class="logo-img" onerror="this.style.display='none'">
+                <div class="date-text" id="display-date"></div>
             </div>
         </div>
         <div class="bottom-content-area">
-            <p id="display-title">موسوعة البصرة الإخبارية</p>
+            <p id="display-title" style="margin:0; font-weight:bold;">موسوعة البصرة الإخبارية</p>
         </div>
     </div>
-    <input type="file" onchange="const r=new FileReader(); r.onload=e=>document.getElementById('bg-image-layer').style.backgroundImage='url('+e.target.result+')'; r.readAsDataURL(this.files[0])">
-    <textarea oninput="document.getElementById('display-title').innerText=this.value"></textarea>
+    <div class="control-panel">
+        <input type="file" accept="image/*" onchange="const r=new FileReader(); r.onload=e=>document.getElementById('bg-image-layer').style.backgroundImage='url('+e.target.result+')'; r.readAsDataURL(this.files[0])">
+        <textarea oninput="document.getElementById('display-title').innerText=this.value" placeholder="اكتب عنوان الخبر..."></textarea>
+    </div>
+    <script>
+        document.getElementById('display-date').innerText = new Date().toLocaleDateString('ar-EG');
+    </script>
 </body>
 </html>
