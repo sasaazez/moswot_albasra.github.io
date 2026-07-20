@@ -3,14 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مصمم قوالب موسوعة البصرة الاخبارية الاحترافي</title>
+    <title>مصمم قوالب موسوعة البصرة</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- استيراد خطوط عربية إضافية -->
-    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@400;700&family=Changa:wght@400;700&family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Cairo', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #0f172a;
             color: #ffffff;
             display: flex;
@@ -23,11 +21,9 @@
         h2 {
             margin-bottom: 20px;
             color: #38bdf8;
-            font-size: 20px;
-            text-align: center;
         }
 
-        /* حاوية المعاينة الإخبارية المطابقة للأبعاد الإخبارية القياسية */
+        /* حاوية المعاينة الإخبارية القياسية */
         .preview-container {
             width: 420px;
             height: 580px;
@@ -44,16 +40,16 @@
         /* منطقة عرض الصورة */
         .image-area {
             width: 100%;
-            height: 86%; 
+            height: 75%; 
             background-color: #f8fafc; 
             background-repeat: no-repeat;
-            background-size: cover; 
+            background-size: cover;
             background-position: center;
             position: relative;
             box-sizing: border-box;
         }
 
-        /* هيدر علوي شفاف يطفو فوق الصورة مباشرة */
+        /* هيدر علوي شفاف */
         .top-overlay {
             position: absolute;
             top: 0;
@@ -62,88 +58,89 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 16px 14px;
+            padding: 12px 15px;
             z-index: 3;
-            background: linear-gradient(rgba(0,0,0,0.4), transparent);
+            background: linear-gradient(rgba(0,0,0,0.35), transparent);
         }
 
-        /* حاوية الشعار الحرة (تسمح بالتحكم بمكانه بدقة) */
-        .logo-container {
-            position: absolute;
-            top: 16px;
-            right: 14px; /* الوضع الافتراضي: أعلى اليمين */
-            z-index: 4;
-            transition: all 0.3s ease;
+        .brand-section {
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
-        /* تصميم الشعار */
         .logo-img {
-            width: 38px;
-            height: 38px;
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
             border-radius: 50%;
-            object-fit: cover;
-            border: 1.5px solid #ffffff;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.4);
-            background-color: #ffffff;
-            display: block;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 2px;
+            display: none;
         }
 
-        /* التاريخ يطفو بوضوح فوق الصورة في اليسار مع إطار بلون شريط العنوان ولون أبيض */
-        .date-text {
-            font-size: 11px;
-            font-weight: bold;
+        .radio-badge {
+            background-color: #ff0000;
             color: #ffffff;
-            background-color: #1e40af;
-            padding: 4px 9px;
-            border-radius: 4px;
-            border: 1.5px solid #38bdf8;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.5);
-            margin-right: auto;
+            padding: 4px 10px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 13px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
         }
 
-        /* منطقة الخبر السفلي */
+        .date-text {
+            font-size: 13px;
+            font-weight: bold;
+            color: #ff0000;
+            text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
+            background: rgba(255, 255, 255, 0.85);
+            padding: 3px 8px;
+            border-radius: 4px;
+        }
+
+        /* منطقة الخبر السفلية: شفافة مع إطار أحمر رفيع */
         .bottom-content-area {
             width: 100%;
-            height: 14%; 
-            background: linear-gradient(135deg, #1e40af 0%, #0369a1 100%);
-            border-top: 2.5px solid #38bdf8; 
+            height: 25%; 
+            background: rgba(15, 23, 42, 0.45); /* خلفية شفافة داكنة لضمان وضوح النص */
+            border: 1px solid #ff0000; /* إطار أحمر رفيع محيط بالشريط */
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            padding: 6px 12px 5px 12px;
+            padding: 8px 12px 6px 12px;
             box-sizing: border-box;
             z-index: 2;
         }
 
-        /* حاوية النص بداخل شريط العنوان */
         .text-container {
             display: flex;
             align-items: center;
             justify-content: center;
             flex-grow: 1;
             text-align: center;
-            padding: 0 4px;
+            padding: 0 5px;
         }
 
         .title-text {
-            font-size: 13px; 
+            font-size: 14px; 
             font-weight: bold;
             color: #ffffff;
             margin: 0;
-            line-height: 1.3;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-            font-family: 'Cairo', sans-serif;
+            line-height: 1.4;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.9);
         }
 
         /* شريط الحسابات السفلي */
         .social-footer {
             border-top: 1px solid rgba(255, 255, 255, 0.2);
-            padding-top: 3px;
+            padding-top: 4px;
             display: flex;
             justify-content: center;
             align-items: center;
             gap: 10px;
-            font-size: 10px;
+            font-size: 11px;
             color: #ffffff;
             font-weight: 500;
         }
@@ -151,12 +148,14 @@
         .social-item {
             display: flex;
             align-items: center;
-            gap: 3px;
         }
         
-        .fa-facebook { color: #1877F2; font-size: 11px; background: #fff; border-radius: 50%; padding: 1px; }
-        .fa-whatsapp { color: #25d366; font-size: 11px; }
-        .fa-telegram { color: #24a1de; font-size: 11px; }
+        .fa-whatsapp { color: #25d366; font-size: 13px; }
+        .fa-telegram { color: #0088cc; font-size: 13px; }
+        .fa-youtube { color: #ff0000; font-size: 13px; }
+        .fa-facebook { color: #1877f2; font-size: 13px; }
+        .fa-tiktok { color: #000000; font-size: 13px; }
+        .fa-instagram { color: #e1306c; font-size: 13px; }
 
         /* لوحة التحكم السفلى */
         .control-panel {
@@ -169,15 +168,15 @@
         }
 
         .section-title {
-            font-size: 13px;
+            font-size: 14px;
             color: #94a3b8;
-            margin-bottom: 6px;
-            margin-top: 12px;
+            margin-bottom: 8px;
+            margin-top: 15px;
         }
 
         .section-title:first-child { margin-top: 0; }
 
-        .input-custom, .select-custom {
+        .input-custom {
             width: 100%;
             background-color: #0f172a;
             border: 1px solid #334155;
@@ -194,75 +193,85 @@
             align-items: center;
             gap: 10px;
             background-color: #0f172a;
-            padding: 8px 10px;
+            padding: 10px;
             border-radius: 8px;
             border: 1px solid #334155;
         }
 
         .slider-container input { flex: 1; cursor: pointer; }
-        .slider-val { font-size: 12px; color: #94a3b8; min-width: 40px; text-align: center; }
+        .slider-val { font-size: 13px; color: #94a3b8; min-width: 45px; text-align: center; }
 
         textarea {
             width: 100%;
-            height: 65px;
+            height: 70px;
+            background-color: #0f172a;
+            border: 1px solid #334155;
+            border-radius: 8px;
+            color: white;
+            padding: 12px;
+            box-sizing: border-box;
+            resize: none;
+            font-family: inherit;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .select-custom {
+            width: 100%;
             background-color: #0f172a;
             border: 1px solid #334155;
             border-radius: 8px;
             color: white;
             padding: 10px;
             box-sizing: border-box;
-            resize: none;
             font-family: inherit;
             font-size: 13px;
-            margin-bottom: 10px;
         }
 
         .btn-download {
             background-color: #38bdf8; 
             color: #0f172a;
             width: 100%;
-            font-size: 14px;
+            font-size: 15px;
             padding: 12px;
             border: none;
             border-radius: 8px;
             font-weight: bold;
             cursor: pointer;
             transition: 0.2s;
-            margin-top: 10px;
+            margin-top: 5px;
         }
         .btn-download:active { transform: scale(0.98); }
     </style>
 </head>
 <body>
 
-    <h2>محرر قوالب موسوعة البصرة الاخبارية</h2>
+    <h2>محرر قوالب موسوعة البصرة</h2>
 
     <!-- شاشة المعاينة الحية -->
     <div class="preview-container" id="capture-area">
         
-        <!-- منطقة عرض الصورة الممتدة -->
+        <!-- منطقة عرض الصورة -->
         <div class="image-area" id="bg-image-layer">
-            
-            <!-- الشعار بحركة حرة داخل الصورة -->
-            <div class="logo-container" id="logo-box">
-                <img src="Logo.jpg" alt="شعار موسوعة البصرة" class="logo-img" onerror="this.style.display='none';">
-            </div>
-
             <div class="top-overlay">
-                <!-- التاريخ في اليسار فوق الصورة -->
+                <div class="brand-section">
+                    <img id="display-logo" class="logo-img" alt="شعار الإذاعة">
+                    <div class="radio-badge">
+                        إذاعة دارك
+                        <span style="display: block; font-size: 9px; font-weight: normal;">94.3 FM</span>
+                    </div>
+                </div>
                 <div class="date-text" id="display-date"></div>
             </div>
         </div>
         
-        <!-- منطقة النص السفلية المصغرة -->
-        <div class="bottom-content-area">
+        <!-- منطقة الخبر السفلية (شفافة ومحاطة بإطار أحمر رفيع) -->
+        <div class="bottom-content-area" id="bottom-bar-area">
             <div class="text-container">
-                <p class="title-text" id="display-title">أدخل عنوان الخبر الإخباري هنا ليظهر متناسقاً داخل شريط التدرج الأزرق...</p>
+                <p class="title-text" id="display-title">أدخل عنوان الخبر الإخباري هنا ليظهر متناسقاً داخل الشريط الشفاف...</p>
             </div>
             
-            <!-- شريط الحسابات والموقع -->
             <div class="social-footer">
-                <div class="social-item"><i class="fab fa-facebook"></i></div>
                 <div class="social-item"><i class="fab fa-whatsapp"></i></div>
                 <div class="social-item"><i class="fab fa-telegram"></i></div>
                 <span>moswot_albasra</span>
@@ -273,28 +282,16 @@
     <!-- لوحة التحكم السفلى -->
     <div class="control-panel">
         
+        <div class="section-title">إدراج أو تغيير شعار الإذاعة (Logo)</div>
+        <input type="file" id="logo-loader" class="input-custom" accept="image/*" onchange="loadLogo(event)">
+
         <div class="section-title">إدراج صورة الخبر أو الكتاب الرسمي</div>
         <input type="file" id="image-loader" class="input-custom" accept="image/*" onchange="loadImage(event)">
-
-        <div class="section-title">موقع الشعار على التصميم</div>
-        <select id="logo-position-select" class="select-custom" onchange="changeLogoPosition()">
-            <option value="top-right">أعلى اليمين (الافتراضي)</option>
-            <option value="center">منتصف الصفحة (في الوسط تماماً)</option>
-            <option value="top-left">أعلى اليسار (بجانب التاريخ)</option>
-        </select>
 
         <div class="section-title">طريقة احتواء الصورة داخل الإطار</div>
         <select id="image-fit-select" class="select-custom" onchange="changeImageFit()">
             <option value="cover">ملء الإطار بالكامل (يمنع الفراغ الأبيض الجانبي)</option>
             <option value="contain">إظهار الصورة كاملة بشكل طولي</option>
-        </select>
-
-        <div class="section-title">اختيار نوع خط العناوين</div>
-        <select id="font-family-select" class="select-custom" onchange="changeFontFamily()">
-            <option value="'Cairo', sans-serif">خط كايرو (Cairo)</option>
-            <option value="'Tajawal', sans-serif">خط تجوال (Tajawal)</option>
-            <option value="'Amiri', serif">خط أميري (Amiri - رسمي كلاسيكي)</option>
-            <option value="'Changa', sans-serif">خط شانغا (Changa - عريض قوي)</option>
         </select>
 
         <div class="section-title">تحجيم زوم الصورة الخلفية</div>
@@ -303,10 +300,17 @@
             <span id="image-size-val" class="slider-val">100%</span>
         </div>
 
+        <!-- تحكم جديد في حجم (ارتفاع) شريط العنوان السفلي -->
+        <div class="section-title">ارتفاع شريط العنوان السفلي</div>
+        <div class="slider-container">
+            <input type="range" id="bar-height-slider" min="15" max="45" value="25" oninput="changeBarHeight()">
+            <span id="bar-height-val" class="slider-val">25%</span>
+        </div>
+
         <div class="section-title">حجم خط الخبر السفلي</div>
         <div class="slider-container">
-            <input type="range" id="font-size-slider" min="11" max="18" value="13" oninput="changeFontSize()">
-            <span id="font-size-val" class="slider-val">13px</span>
+            <input type="range" id="font-size-slider" min="12" max="22" value="14" oninput="changeFontSize()">
+            <span id="font-size-val" class="slider-val">14px</span>
         </div>
 
         <div class="section-title">محتوى العنوان</div>
@@ -326,6 +330,16 @@
         
         window.onload = setTodayDate;
 
+        function loadLogo(event) {
+            const reader = new FileReader();
+            reader.onload = function() {
+                const logoImg = document.getElementById('display-logo');
+                logoImg.src = reader.result;
+                logoImg.style.display = 'block';
+            }
+            reader.readAsDataURL(event.target.files[0]);
+        }
+
         function loadImage(event) {
             const reader = new FileReader();
             reader.onload = function() {
@@ -333,28 +347,6 @@
                 imageLayer.style.backgroundImage = `url(${reader.result})`;
             }
             reader.readAsDataURL(event.target.files[0]);
-        }
-
-        function changeLogoPosition() {
-            const pos = document.getElementById('logo-position-select').value;
-            const logoBox = document.getElementById('logo-box');
-            
-            if (pos === 'top-right') {
-                logoBox.style.top = '16px';
-                logoBox.style.right = '14px';
-                logoBox.style.left = 'auto';
-                logoBox.style.transform = 'none';
-            } else if (pos === 'center') {
-                logoBox.style.top = '50%';
-                logoBox.style.right = '50%';
-                logoBox.style.left = 'auto';
-                logoBox.style.transform = 'translate(50%, -50%)';
-            } else if (pos === 'top-left') {
-                logoBox.style.top = '16px';
-                logoBox.style.left = '14px';
-                logoBox.style.right = 'auto';
-                logoBox.style.transform = 'none';
-            }
         }
 
         function changeImageFit() {
@@ -373,17 +365,23 @@
             sizeLabel.innerText = sliderValue + '%';
         }
 
-        function changeFontFamily() {
-            const fontValue = document.getElementById('font-family-select').value;
-            const displayTitle = document.getElementById('display-title');
-            displayTitle.style.fontFamily = fontValue;
+        /* دالة التحكم بارتفاع الشريط السفلي والصورة العلوية تلقائياً */
+        function changeBarHeight() {
+            const barHeight = document.getElementById('bar-height-slider').value;
+            const bottomBar = document.getElementById('bottom-bar-area');
+            const imageArea = document.getElementById('bg-image-layer');
+            const heightLabel = document.getElementById('bar-height-val');
+
+            bottomBar.style.height = barHeight + '%';
+            imageArea.style.height = (100 - barHeight) + '%';
+            heightLabel.innerText = barHeight + '%';
         }
 
         function updateTitle() {
             const titleInput = document.getElementById('input-title').value;
             const displayTitle = document.getElementById('display-title');
             if(titleInput.trim() === "") {
-                displayTitle.innerText = "أدخل عنوان الخبر الإخباري هنا ليظهر متناسقاً داخل شريط التدرج الأزرق...";
+                displayTitle.innerText = "أدخل عنوان الخبر الإخباري هنا ليظهر متناسقاً داخل الشريط الشفاف...";
             } else {
                 displayTitle.innerText = titleInput;
             }
