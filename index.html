@@ -63,7 +63,7 @@
             background: linear-gradient(rgba(0,0,0,0.35), transparent);
         }
 
-        /* صندوق الشعار الحر (القابل للتحريك والتعديل) */
+        /* صندوق الشعار الحر */
         .brand-section {
             position: absolute;
             top: 12px;
@@ -81,11 +81,14 @@
             user-select: none;
         }
 
+        /* تحسين مظهر الشعار وإزالة الفراغات البيضاء المحيطة عبر القص الدائري */
         .logo-img {
-            width: 35px;
-            height: 35px;
-            object-fit: contain;
+            width: 36px;
+            height: 36px;
+            object-fit: cover;
+            border-radius: 50%;
             display: block;
+            border: 1px solid rgba(255, 255, 255, 0.3);
         }
 
         .radio-badge {
@@ -356,8 +359,8 @@
     </div>
 
     <script>
-        let logoTop = 12; // القيمة الابتدائية من الأعلى بالبكسل
-        let logoRight = 15; // القيمة الابتدائية من اليمين بالبكسل
+        let logoTop = 12;
+        let logoRight = 15;
 
         function setTodayDate() {
             const today = new Date();
@@ -371,11 +374,11 @@
 
         function moveLogo(direction) {
             const logoEl = document.getElementById('draggable-logo');
-            const step = 15; // مقدار الحركة بالبكسل في كل ضغطة
+            const step = 15;
             
             if (direction === 'up') logoTop -= step;
             if (direction === 'down') logoTop += step;
-            if (direction === 'right') logoRight -= step; // في الاتجاه المعاكس لـ right
+            if (direction === 'right') logoRight -= step;
             if (direction === 'left') logoRight += step;
 
             logoEl.style.top = logoTop + 'px';
@@ -418,7 +421,7 @@
         }
 
         function changeBarHeight() {
-            const barHeight = document.getElementById('bar-height-slider'].value;
+            const barHeight = document.getElementById('bar-height-slider').value;
             const bottomBar = document.getElementById('bottom-bar-area');
             const imageArea = document.getElementById('bg-image-layer');
             const heightLabel = document.getElementById('bar-height-val');
