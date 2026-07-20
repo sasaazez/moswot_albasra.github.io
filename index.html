@@ -49,7 +49,7 @@
             box-sizing: border-box;
         }
 
-        /* هيدر علوي لعرض التاريخ فقط */
+        /* هيدر علوي لعرض التاريخ */
         .top-overlay {
             position: absolute;
             top: 0;
@@ -63,41 +63,6 @@
             background: linear-gradient(rgba(0,0,0,0.35), transparent);
         }
 
-        /* صندوق الشعار الحر */
-        .brand-section {
-            position: absolute;
-            top: 12px;
-            right: 15px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(30, 41, 59, 0.6);
-            padding: 4px 10px;
-            border-radius: 6px;
-            backdrop-filter: blur(4px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            z-index: 4;
-            cursor: move;
-            user-select: none;
-        }
-
-        /* تحسين مظهر الشعار وإزالة الفراغات البيضاء المحيطة عبر القص الدائري */
-        .logo-img {
-            width: 36px;
-            height: 36px;
-            object-fit: cover;
-            border-radius: 50%;
-            display: block;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-        }
-
-        .radio-badge {
-            color: #ffffff;
-            font-weight: bold;
-            font-size: 14px;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.9);
-        }
-
         .date-text {
             font-size: 13px;
             font-weight: bold;
@@ -108,6 +73,30 @@
             border-radius: 6px;
             backdrop-filter: blur(4px);
             border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        /* صندوق الشعار الحر (دائري نقي بدون خلفية مستطيلة) */
+        .brand-section {
+            position: absolute;
+            top: 12px;
+            right: 15px;
+            display: flex;
+            align-items: center;
+            z-index: 4;
+            cursor: move;
+            user-select: none;
+        }
+
+        /* جعل الشعار دائرياً تماماً مع إطار خفيف وظل خفيف ليبرز بجمالية */
+        .logo-img {
+            width: 55px;
+            height: 55px;
+            object-fit: cover;
+            border-radius: 50%;
+            display: block;
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            background-color: #ffffff;
         }
 
         /* منطقة الخبر السفلية: شفافة مع إطار أحمر رفيع */
@@ -285,12 +274,9 @@
                 <div class="date-text" id="display-date"></div>
             </div>
 
-            <!-- صندوق الشعار القابل للتحريك -->
+            <!-- صندوق الشعار الحر (شعار دائري فقط) -->
             <div class="brand-section" id="draggable-logo">
                 <img id="display-logo" class="logo-img" src="Logo.jpg" alt="logo">
-                <div class="radio-badge">
-                    موسوعة البصرة
-                </div>
             </div>
         </div>
         
