@@ -90,13 +90,12 @@
         .logo-img {
             width: 45px;
             height: 45px;
-            object-fit: contain;
-            border-radius: 50%;
+            object-fit: cover; /* لملء الدائرة تماماً وقص الأطراف الزائدة */
+            border-radius: 50%; /* لقص الصورة بشكل دائري حقيقي */
             display: block;
             background-color: transparent;
-            filter: drop-shadow(0 3px 6px rgba(0,0,0,0.6));
+            box-shadow: 0 3px 6px rgba(0,0,0,0.6);
         }
-
         /* منطقة الخبر السفلية: شفافة مع إطار أحمر رفيع */
         .bottom-content-area {
             width: 100%;
