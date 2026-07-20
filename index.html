@@ -62,7 +62,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 16px 14px; /* إنزال الشعار والتاريخ قليلاً للأسفل */
+            padding: 16px 14px;
             z-index: 3;
             background: linear-gradient(rgba(0,0,0,0.4), transparent);
         }
@@ -70,7 +70,7 @@
         /* حاوية الشعار الحرة (تسمح بالتحكم بمكانه بدقة) */
         .logo-container {
             position: absolute;
-            top: 16px; /* إنزال الشعار قليلاً للأسفل */
+            top: 16px;
             right: 14px; /* الوضع الافتراضي: أعلى اليمين */
             z-index: 4;
             transition: all 0.3s ease;
@@ -98,7 +98,7 @@
             border-radius: 4px;
             border: 1.5px solid #38bdf8;
             box-shadow: 0 2px 5px rgba(0,0,0,0.5);
-            margin-right: auto; /* يجعله يتثبت في اليسار عندما يتحرك الشعار */
+            margin-right: auto;
         }
 
         /* منطقة الخبر السفلي */
@@ -142,7 +142,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
             font-size: 10px;
             color: #ffffff;
             font-weight: 500;
@@ -151,8 +151,10 @@
         .social-item {
             display: flex;
             align-items: center;
+            gap: 3px;
         }
         
+        .fa-facebook { color: #1877F2; font-size: 11px; background: #fff; border-radius: 50%; padding: 1px; }
         .fa-whatsapp { color: #25d366; font-size: 11px; }
         .fa-telegram { color: #24a1de; font-size: 11px; }
 
@@ -260,6 +262,7 @@
             
             <!-- شريط الحسابات والموقع -->
             <div class="social-footer">
+                <div class="social-item"><i class="fab fa-facebook"></i></div>
                 <div class="social-item"><i class="fab fa-whatsapp"></i></div>
                 <div class="social-item"><i class="fab fa-telegram"></i></div>
                 <span>moswot_albasra</span>
