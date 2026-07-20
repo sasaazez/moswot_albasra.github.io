@@ -75,7 +75,7 @@
             border: 1px solid rgba(255, 255, 255, 0.15);
         }
 
-        /* موقع الشعار الثابت في الزاوية العلوية اليمنى */
+        /* موقع الشعار الدائري النظيف في الزاوية العلوية اليمنى بدون حدود حادة */
         .brand-section {
             position: absolute;
             top: 12px;
@@ -86,24 +86,23 @@
             user-select: none;
         }
 
-        /* تنسيق اللوكو الدائري فقط */
         .logo-img {
-            width: 55px;
-            height: 55px;
-            object-fit: cover;
+            width: 58px;
+            height: 58px;
+            object-fit: contain; /* تعديل لضمان عدم قص أطراف اللوكو الدائري */
             border-radius: 50%;
             display: block;
-            border: 2px solid rgba(255, 255, 255, 0.9);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.6);
-            background-color: #ffffff;
+            background-color: transparent; /* إزالة الخلفية البيضاء المتيبسة ليصبح ناعماً */
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.6)); /* ظل ناعم حول الشعار بدل الحدود القاسية */
         }
 
-        /* منطقة الخبر السفلية: شفافة مع إطار أحمر رفيع */
+        /* منطقة الخبر السفلية: خلفية شفافة تماماً مع إطار أحمر رفيع وأنيق */
         .bottom-content-area {
             width: 100%;
             height: 25%; 
-            background: rgba(15, 23, 42, 0.45); 
-            border: 1px solid #ff0000; 
+            background: rgba(15, 23, 42, 0.45); /* شفافة وداكنة قليلاً لقراءة أضوح */
+            border: 1px solid rgba(239, 68, 68, 0.8); /* إطار أحمر رفيع ونقي */
+            backdrop-filter: blur(2px);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -132,7 +131,7 @@
 
         /* شريط الحسابات السفلي */
         .social-footer {
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
             padding-top: 4px;
             display: flex;
             justify-content: center;
@@ -253,13 +252,13 @@
                 <div class="date-text" id="display-date"></div>
             </div>
 
-            <!-- الشعار الدائري الثابت في الزاوية -->
+            <!-- الشعار الدائري بشكل طبيعي ونظيف -->
             <div class="brand-section">
                 <img id="display-logo" class="logo-img" src="Logo.jpg" alt="logo">
             </div>
         </div>
         
-        <!-- منطقة الخبر السفلية (شفافة ومحاطة بإطار أحمر رفيع) -->
+        <!-- منطقة الخبر السفلية (شفافة مع إطار أحمر رفيع) -->
         <div class="bottom-content-area" id="bottom-bar-area">
             <div class="text-container">
                 <p class="title-text" id="display-title">أدخل عنوان الخبر الإخباري هنا ليظهر متناسقاً داخل الشريط الشفاف...</p>
