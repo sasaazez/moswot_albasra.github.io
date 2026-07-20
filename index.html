@@ -31,15 +31,30 @@
         }
 
         /* منطقة عرض الصورة - تم إلغاء الفراغات لتملأ المساحة بالكامل وبشكل متناسق */
+        ./* منطقة عرض الصورة - تم زيادتها لتعويض تقليص الشريط السفلي */
         .image-area {
             width: 100%;
-            height: 78%; 
+            height: 85%; /* كانت 78% */
             background-color: #f8fafc; 
             background-repeat: no-repeat;
-            background-size: cover; /* تجعل الصورة تملأ المساحة بالكامل لمنع الفراغ الأبيض الجانبي */
+            background-size: cover; 
             background-position: center;
             position: relative;
             box-sizing: border-box;
+        }
+
+        /* منطقة الخبر السفلية - تم تصغيرها هنا */
+        .bottom-content-area {
+            width: 100%;
+            height: 15%; /* كانت 22% */
+            background: linear-gradient(135deg, #1e40af 0%, #0369a1 100%);
+            border-top: 3px solid #38bdf8; 
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 5px 15px 5px 15px; /* قللت البادينج قليلاً ليتناسب مع الحجم الجديد */
+            box-sizing: border-box;
+            z-index: 2;
         }
 
         /* هيدر علوي شفاف يطفو فوق الصورة مباشرة */
