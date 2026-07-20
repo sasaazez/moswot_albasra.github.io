@@ -75,7 +75,7 @@
             border: 1px solid rgba(255, 255, 255, 0.15);
         }
 
-        /* موقع الشعار الدائري النظيف في الزاوية العلوية اليمنى بدون حدود حادة */
+        /* موقع الشعار الدائري الثابت في الزاوية */
         .brand-section {
             position: absolute;
             top: 12px;
@@ -86,22 +86,23 @@
             user-select: none;
         }
 
+        /* استخدام صيغة PNG الجديدة للشعار الدائري النظيف */
         .logo-img {
             width: 58px;
             height: 58px;
-            object-fit: contain; /* تعديل لضمان عدم قص أطراف اللوكو الدائري */
+            object-fit: contain;
             border-radius: 50%;
             display: block;
-            background-color: transparent; /* إزالة الخلفية البيضاء المتيبسة ليصبح ناعماً */
-            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.6)); /* ظل ناعم حول الشعار بدل الحدود القاسية */
+            background-color: transparent;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.6));
         }
 
-        /* منطقة الخبر السفلية: خلفية شفافة تماماً مع إطار أحمر رفيع وأنيق */
+        /* منطقة الخبر السفلية: شفافة مع إطار أحمر رفيع */
         .bottom-content-area {
             width: 100%;
             height: 25%; 
-            background: rgba(15, 23, 42, 0.45); /* شفافة وداكنة قليلاً لقراءة أضوح */
-            border: 1px solid rgba(239, 68, 68, 0.8); /* إطار أحمر رفيع ونقي */
+            background: rgba(15, 23, 42, 0.45); 
+            border: 1px solid rgba(239, 68, 68, 0.8); 
             backdrop-filter: blur(2px);
             display: flex;
             flex-direction: column;
@@ -129,17 +130,22 @@
             text-shadow: 1px 1px 3px rgba(0,0,0,0.9);
         }
 
-        /* شريط الحسابات السفلي */
+        /* شريط الحسابات السفلي: إطار فاصل مع أيقونات مجتمعة يساراً ومعرف يميناً */
         .social-footer {
-            border-top: 1px solid rgba(255, 255, 255, 0.15);
-            padding-top: 4px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding-top: 5px;
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
-            gap: 10px;
             font-size: 11px;
             color: #ffffff;
             font-weight: 500;
+        }
+
+        .social-icons-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         .social-item {
@@ -252,9 +258,9 @@
                 <div class="date-text" id="display-date"></div>
             </div>
 
-            <!-- الشعار الدائري بشكل طبيعي ونظيف -->
+            <!-- الشعار الدائري بصيغة Logo.png -->
             <div class="brand-section">
-                <img id="display-logo" class="logo-img" src="Logo.jpg" alt="logo">
+                <img id="display-logo" class="logo-img" src="Logo.png" alt="logo">
             </div>
         </div>
         
@@ -265,11 +271,13 @@
             </div>
             
             <div class="social-footer">
-                <div class="social-item"><i class="fab fa-facebook"></i></div>
-                <div class="social-item"><i class="fab fa-tiktok"></i></div>
-                <div class="social-item"><i class="fab fa-whatsapp"></i></div>
-                <div class="social-item"><i class="fab fa-telegram"></i></div>
                 <span>moswot_albasra</span>
+                <div class="social-icons-group">
+                    <div class="social-item"><i class="fab fa-facebook"></i></div>
+                    <div class="social-item"><i class="fab fa-tiktok"></i></div>
+                    <div class="social-item"><i class="fab fa-whatsapp"></i></div>
+                    <div class="social-item"><i class="fab fa-telegram"></i></div>
+                </div>
             </div>
         </div>
     </div>
