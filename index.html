@@ -41,7 +41,7 @@
             box-sizing: border-box;
         }
 
-        /* منطقة عرض الصورة - تم زيادة مساحتها لتصبح 86% */
+        /* منطقة عرض الصورة */
         .image-area {
             width: 100%;
             height: 86%; 
@@ -67,7 +67,16 @@
             background: linear-gradient(rgba(0,0,0,0.4), transparent);
         }
 
-        /* تصغير الشعار ووضعه بشكل ناعم أعلى اليمين */
+        /* حاوية الشعار الحرة (تسمح بالتحكم بمكانه بدقة) */
+        .logo-container {
+            position: absolute;
+            top: 10px;
+            right: 12px; /* الوضع الافتراضي: أعلى اليمين */
+            z-index: 4;
+            transition: all 0.3s ease;
+        }
+
+        /* تصميم الشعار */
         .logo-img {
             width: 38px;
             height: 38px;
@@ -76,6 +85,7 @@
             border: 1.5px solid #ffffff;
             box-shadow: 0 2px 5px rgba(0,0,0,0.4);
             background-color: #ffffff;
+            display: block;
         }
 
         /* التاريخ يطفو بوضوح فوق الصورة في اليسار */
@@ -84,9 +94,10 @@
             font-weight: bold;
             color: #38bdf8;
             text-shadow: 1px 1px 4px rgba(0,0,0,0.9), -1px -1px 4px rgba(0,0,0,0.9);
+            margin-right: auto; /* يجعله يتثبت في اليسار عندما يتحرك الشعار */
         }
 
-        /* منطقة الخبر السفلي - تم تقليص حجمها لتصبح 14% */
+        /* منطقة الخبر السفلي */
         .bottom-content-area {
             width: 100%;
             height: 14%; 
@@ -117,7 +128,6 @@
             margin: 0;
             line-height: 1.3;
             text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-            /* الخط الافتراضي للنص داخل القالب */
             font-family: 'Cairo', sans-serif;
         }
 
@@ -226,9 +236,13 @@
         
         <!-- منطقة عرض الصورة الممتدة -->
         <div class="image-area" id="bg-image-layer">
-            <div class="top-overlay">
-                <!-- الشعار مصغر وناعم في اليمين فوق الصورة -->
+            
+            <!-- الشعار بحركة حرة داخل الصورة -->
+            <div class="logo-container" id="logo-box">
                 <img src="Logo.jpg" alt="شعار موسوعة البصرة" class="logo-img" onerror="this.style.display='none';">
+            </div>
+
+            <div class="top-overlay">
                 <!-- التاريخ في اليسار فوق الصورة -->
                 <div class="date-text" id="display-date"></div>
             </div>
@@ -254,6 +268,13 @@
         
         <div class="section-title">إدراج صورة الخبر أو الكتاب الرسمي</div>
         <input type="file" id="image-loader" class="input-custom" accept="image/*" onchange="loadImage(event)">
+
+        <div class="section-title">موقع الشعار على التصميم</div>
+        <select id="logo-position-select" class="select-custom" onchange="changeLogoPosition()">
+            <option value="top-right">أعلى اليمين (الافتراضي)</option>
+            <option value="center">منتصف الصفحة (في الوسط تماماً)</option>
+            <option value="top-left">أعلى اليسار (بجانب التاريخ)</option>
+        </select>
 
         <div class="section-title">طريقة احتواء الصورة داخل الإطار</div>
         <select id="image-fit-select" class="select-custom" onchange="changeImageFit()">
@@ -305,6 +326,29 @@
                 imageLayer.style.backgroundImage = `url(${reader.result})`;
             }
             reader.readAsDataURL(event.target.files[0]);
+        }
+
+        function changeLogoPosition() {
+            const pos = document.getElementById('logo-position-select').value;
+            const logoBox = document.getElementById('logo-box');
+            
+            // إعادة ضبط الخصائص بناءً على الاختيار
+            if (pos === 'top-right') {
+                logoBox.style.top = '10px';
+                logoBox.style.right = '12px';
+                logoBox.style.left = 'auto';
+                logoBox.style.transform = 'none';
+            } else if (pos === 'center') {
+                logoBox.style.top = '50%';
+                logoBox.style.right = '50%';
+                logoBox.style.left = 'auto';
+                logoBox.style.transform = 'translate(50%, -50%)';
+            } else if (pos === 'top-left') {
+                logoBox.style.top = '10px';
+                logoBox.style.left = '12px';
+                logoBox.style.right = 'auto';
+                logoBox.style.transform = 'none';
+            }
         }
 
         function changeImageFit() {
