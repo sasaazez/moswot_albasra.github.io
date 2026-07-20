@@ -62,7 +62,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 10px 12px;
+            padding: 16px 14px; /* إنزال الشعار والتاريخ قليلاً للأسفل */
             z-index: 3;
             background: linear-gradient(rgba(0,0,0,0.4), transparent);
         }
@@ -70,8 +70,8 @@
         /* حاوية الشعار الحرة (تسمح بالتحكم بمكانه بدقة) */
         .logo-container {
             position: absolute;
-            top: 10px;
-            right: 12px; /* الوضع الافتراضي: أعلى اليمين */
+            top: 16px; /* إنزال الشعار قليلاً للأسفل */
+            right: 14px; /* الوضع الافتراضي: أعلى اليمين */
             z-index: 4;
             transition: all 0.3s ease;
         }
@@ -88,12 +88,16 @@
             display: block;
         }
 
-        /* التاريخ يطفو بوضوح فوق الصورة في اليسار */
+        /* التاريخ يطفو بوضوح فوق الصورة في اليسار مع إطار بلون شريط العنوان ولون أبيض */
         .date-text {
-            font-size: 13px;
+            font-size: 11px;
             font-weight: bold;
-            color: #38bdf8;
-            text-shadow: 1px 1px 4px rgba(0,0,0,0.9), -1px -1px 4px rgba(0,0,0,0.9);
+            color: #ffffff;
+            background-color: #1e40af;
+            padding: 4px 9px;
+            border-radius: 4px;
+            border: 1.5px solid #38bdf8;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.5);
             margin-right: auto; /* يجعله يتثبت في اليسار عندما يتحرك الشعار */
         }
 
@@ -238,7 +242,7 @@
         <div class="image-area" id="bg-image-layer">
             
             <!-- الشعار بحركة حرة داخل الصورة -->
-            <div class="Logo-container" id="Logo-box">
+            <div class="logo-container" id="logo-box">
                 <img src="Logo.jpg" alt="شعار موسوعة البصرة" class="logo-img" onerror="this.style.display='none';">
             </div>
 
@@ -332,10 +336,9 @@
             const pos = document.getElementById('logo-position-select').value;
             const logoBox = document.getElementById('logo-box');
             
-            // إعادة ضبط الخصائص بناءً على الاختيار
             if (pos === 'top-right') {
-                logoBox.style.top = '10px';
-                logoBox.style.right = '12px';
+                logoBox.style.top = '16px';
+                logoBox.style.right = '14px';
                 logoBox.style.left = 'auto';
                 logoBox.style.transform = 'none';
             } else if (pos === 'center') {
@@ -344,8 +347,8 @@
                 logoBox.style.left = 'auto';
                 logoBox.style.transform = 'translate(50%, -50%)';
             } else if (pos === 'top-left') {
-                logoBox.style.top = '10px';
-                logoBox.style.left = '12px';
+                logoBox.style.top = '16px';
+                logoBox.style.left = '14px';
                 logoBox.style.right = 'auto';
                 logoBox.style.transform = 'none';
             }
