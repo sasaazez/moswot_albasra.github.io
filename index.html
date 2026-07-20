@@ -8,15 +8,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         body {
-            .logo-img {
-    width: 40px;
-    height: 40px;
-    object-fit: contain;
-    border-radius: 0; /* إلغاء التدوير وجعله طبيعياً */
-    background: transparent; /* إزالة الخلفية البيضاء إذا كان الشعار مفرغاً */
-    padding: 0;
-    display: none;
-}
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #0f172a;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            margin: 0;
         }
 
         h2 {
@@ -74,21 +73,18 @@
             width: 40px;
             height: 40px;
             object-fit: contain;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.9);
-            padding: 2px;
             display: none;
         }
 
         .radio-badge {
-            background-color: #ff0000;
             color: #ffffff;
-            padding: 4px 10px;
-            border-radius: 5px;
             font-weight: bold;
-            font-size: 13px;
+            font-size: 15px;
             text-align: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.9);
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
 
         .date-text {
@@ -105,8 +101,8 @@
         .bottom-content-area {
             width: 100%;
             height: 25%; 
-            background: rgba(15, 23, 42, 0.45); /* خلفية شفافة داكنة لضمان وضوح النص */
-            border: 1px solid #ff0000; /* إطار أحمر رفيع محيط بالشريط */
+            background: rgba(15, 23, 42, 0.45); 
+            border: 1px solid #ff0000; 
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -153,10 +149,6 @@
         
         .fa-whatsapp { color: #25d366; font-size: 13px; }
         .fa-telegram { color: #0088cc; font-size: 13px; }
-        .fa-youtube { color: #ff0000; font-size: 13px; }
-        .fa-facebook { color: #1877f2; font-size: 13px; }
-        .fa-tiktok { color: #000000; font-size: 13px; }
-        .fa-instagram { color: #e1306c; font-size: 13px; }
 
         /* لوحة التحكم السفلى */
         .control-panel {
@@ -256,10 +248,9 @@
         <div class="image-area" id="bg-image-layer">
             <div class="top-overlay">
                 <div class="brand-section">
-                    <img id="display-Logo" class="Logo-img" alt="موسوعة البصرة">
+                    <img id="display-logo" class="logo-img" alt="شعار موسوعة البصرة">
                     <div class="radio-badge">
-                        إذاعة دارك
-                        <span style="display: block; font-size: 9px; font-weight: normal;">94.3 FM</span>
+                        موسوعة البصرة
                     </div>
                 </div>
                 <div class="date-text" id="display-date"></div>
@@ -283,8 +274,8 @@
     <!-- لوحة التحكم السفلى -->
     <div class="control-panel">
         
-        <div class="section-title">إدراج أو تغيير شعار موسوعة البصرة (Logo)</div>
-        <input type="file" id="Logo-loader" class="input-custom" accept="image/*" onchange="loadLogo(event)">
+        <div class="section-title">إدراج أو تغيير شعار الموسوعة (Logo)</div>
+        <input type="file" id="logo-loader" class="input-custom" accept="image/*" onchange="loadLogo(event)">
 
         <div class="section-title">إدراج صورة الخبر أو الكتاب الرسمي</div>
         <input type="file" id="image-loader" class="input-custom" accept="image/*" onchange="loadImage(event)">
@@ -301,7 +292,6 @@
             <span id="image-size-val" class="slider-val">100%</span>
         </div>
 
-        <!-- تحكم جديد في حجم (ارتفاع) شريط العنوان السفلي -->
         <div class="section-title">ارتفاع شريط العنوان السفلي</div>
         <div class="slider-container">
             <input type="range" id="bar-height-slider" min="15" max="45" value="25" oninput="changeBarHeight()">
@@ -366,7 +356,6 @@
             sizeLabel.innerText = sliderValue + '%';
         }
 
-        /* دالة التحكم بارتفاع الشريط السفلي والصورة العلوية تلقائياً */
         function changeBarHeight() {
             const barHeight = document.getElementById('bar-height-slider').value;
             const bottomBar = document.getElementById('bottom-bar-area');
