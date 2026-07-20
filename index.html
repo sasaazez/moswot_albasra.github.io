@@ -75,7 +75,7 @@
             border: 1px solid rgba(255, 255, 255, 0.15);
         }
 
-        /* صندوق الشعار الحر (دائري نقي بدون خلفية مستطيلة) */
+        /* موقع الشعار الثابت في الزاوية العلوية اليمنى */
         .brand-section {
             position: absolute;
             top: 12px;
@@ -83,19 +83,18 @@
             display: flex;
             align-items: center;
             z-index: 4;
-            cursor: move;
             user-select: none;
         }
 
-        /* جعل الشعار دائرياً تماماً مع إطار خفيف وظل خفيف ليبرز بجمالية */
+        /* تنسيق اللوكو الدائري فقط */
         .logo-img {
             width: 55px;
             height: 55px;
             object-fit: cover;
             border-radius: 50%;
             display: block;
-            border: 2px solid rgba(255, 255, 255, 0.8);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            border: 2px solid rgba(255, 255, 255, 0.9);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.6);
             background-color: #ffffff;
         }
 
@@ -138,7 +137,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
             font-size: 11px;
             color: #ffffff;
             font-weight: 500;
@@ -150,6 +149,7 @@
         }
         
         .fa-facebook { color: #1877f2; font-size: 13px; }
+        .fa-tiktok { color: #ffffff; font-size: 13px; }
         .fa-whatsapp { color: #25d366; font-size: 13px; }
         .fa-telegram { color: #0088cc; font-size: 13px; }
 
@@ -238,27 +238,6 @@
             margin-top: 5px;
         }
         .btn-download:active { transform: scale(0.98); }
-
-        .controls-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 5px;
-            background-color: #0f172a;
-            padding: 10px;
-            border-radius: 8px;
-            border: 1px solid #334155;
-            text-align: center;
-        }
-        .controls-grid button {
-            background: #334155;
-            color: white;
-            border: none;
-            padding: 8px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 12px;
-        }
-        .controls-grid button:hover { background: #38bdf8; color: #0f172a; }
     </style>
 </head>
 <body>
@@ -274,8 +253,8 @@
                 <div class="date-text" id="display-date"></div>
             </div>
 
-            <!-- صندوق الشعار الحر (شعار دائري فقط) -->
-            <div class="brand-section" id="draggable-logo">
+            <!-- الشعار الدائري الثابت في الزاوية -->
+            <div class="brand-section">
                 <img id="display-logo" class="logo-img" src="Logo.jpg" alt="logo">
             </div>
         </div>
@@ -288,6 +267,7 @@
             
             <div class="social-footer">
                 <div class="social-item"><i class="fab fa-facebook"></i></div>
+                <div class="social-item"><i class="fab fa-tiktok"></i></div>
                 <div class="social-item"><i class="fab fa-whatsapp"></i></div>
                 <div class="social-item"><i class="fab fa-telegram"></i></div>
                 <span>moswot_albasra</span>
@@ -297,19 +277,6 @@
 
     <!-- لوحة التحكم السفلى -->
     <div class="control-panel">
-        
-        <div class="section-title">التحكم بمكان الشعار (تحريك الاتجاهات)</div>
-        <div class="controls-grid">
-            <div></div>
-            <button onclick="moveLogo('up')">▲ للأعلى</button>
-            <div></div>
-            <button onclick="moveLogo('left')">◀ لليسار</button>
-            <button onclick="centerLogo()">🎯 بالمنتصف</button>
-            <button onclick="moveLogo('right')">▶ لليمين</button>
-            <div></div>
-            <button onclick="moveLogo('down')">▼ للأسفل</button>
-            <div></div>
-        </div>
 
         <div class="section-title">إدراج صورة الخبر أو الكتاب الرسمي</div>
         <input type="file" id="image-loader" class="input-custom" accept="image/*" onchange="loadImage(event)">
@@ -345,9 +312,6 @@
     </div>
 
     <script>
-        let logoTop = 12;
-        let logoRight = 15;
-
         function setTodayDate() {
             const today = new Date();
             const day = today.getDate();
@@ -357,29 +321,6 @@
         }
         
         window.onload = setTodayDate;
-
-        function moveLogo(direction) {
-            const logoEl = document.getElementById('draggable-logo');
-            const step = 15;
-            
-            if (direction === 'up') logoTop -= step;
-            if (direction === 'down') logoTop += step;
-            if (direction === 'right') logoRight -= step;
-            if (direction === 'left') logoRight += step;
-
-            logoEl.style.top = logoTop + 'px';
-            logoEl.style.right = logoRight + 'px';
-            logoEl.style.left = 'auto';
-            logoEl.style.transform = 'none';
-        }
-
-        function centerLogo() {
-            const logoEl = document.getElementById('draggable-logo');
-            logoEl.style.top = '40%';
-            logoEl.style.right = 'auto';
-            logoEl.style.left = '50%';
-            logoEl.style.transform = 'translate(-50%, -50%)';
-        }
 
         function loadImage(event) {
             const reader = new FileReader();
