@@ -67,34 +67,37 @@
             display: flex;
             align-items: center;
             gap: 8px;
+            background: rgba(30, 41, 59, 0.6);
+            padding: 4px 10px;
+            border-radius: 6px;
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
         }
 
         .logo-img {
-            width: 40px;
-            height: 40px;
+            width: 35px;
+            height: 35px;
             object-fit: contain;
-            display: none;
+            display: block;
         }
 
         .radio-badge {
             color: #ffffff;
             font-weight: bold;
-            font-size: 15px;
-            text-align: center;
+            font-size: 14px;
             text-shadow: 1px 1px 3px rgba(0,0,0,0.9);
-            display: flex;
-            align-items: center;
-            gap: 6px;
         }
 
         .date-text {
             font-size: 13px;
             font-weight: bold;
-            color: #ff0000;
-            text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
-            background: rgba(255, 255, 255, 0.85);
-            padding: 3px 8px;
-            border-radius: 4px;
+            color: #ffffff;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+            background: rgba(30, 41, 59, 0.6);
+            padding: 5px 10px;
+            border-radius: 6px;
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
         }
 
         /* منطقة الخبر السفلية: شفافة مع إطار أحمر رفيع */
@@ -136,7 +139,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
             font-size: 11px;
             color: #ffffff;
             font-weight: 500;
@@ -147,6 +150,7 @@
             align-items: center;
         }
         
+        .fa-facebook { color: #1877f2; font-size: 13px; }
         .fa-whatsapp { color: #25d366; font-size: 13px; }
         .fa-telegram { color: #0088cc; font-size: 13px; }
 
@@ -248,7 +252,11 @@
         <div class="image-area" id="bg-image-layer">
             <div class="top-overlay">
                 <div class="brand-section">
-<img id="display-logo" class="logo-img" src="Logo.jpg" alt="شعار" style="display: block; width: 45px; height: 45px; object-fit: contain;">                </div>
+                    <img id="display-logo" class="logo-img" src="Logo.jpg" alt="logo">
+                    <div class="radio-badge">
+                        موسوعة البصرة
+                    </div>
+                </div>
                 <div class="date-text" id="display-date"></div>
             </div>
         </div>
@@ -260,6 +268,7 @@
             </div>
             
             <div class="social-footer">
+                <div class="social-item"><i class="fab fa-facebook"></i></div>
                 <div class="social-item"><i class="fab fa-whatsapp"></i></div>
                 <div class="social-item"><i class="fab fa-telegram"></i></div>
                 <span>moswot_albasra</span>
@@ -270,9 +279,6 @@
     <!-- لوحة التحكم السفلى -->
     <div class="control-panel">
         
-        <div class="section-title">إدراج أو تغيير شعار الموسوعة (Logo)</div>
-        <input type="file" id="logo-loader" class="input-custom" accept="image/*" onchange="loadLogo(event)">
-
         <div class="section-title">إدراج صورة الخبر أو الكتاب الرسمي</div>
         <input type="file" id="image-loader" class="input-custom" accept="image/*" onchange="loadImage(event)">
 
@@ -316,16 +322,6 @@
         }
         
         window.onload = setTodayDate;
-
-        function loadLogo(event) {
-            const reader = new FileReader();
-            reader.onload = function() {
-                const logoImg = document.getElementById('display-logo');
-                logoImg.src = reader.result;
-                logoImg.style.display = 'block';
-            }
-            reader.readAsDataURL(event.target.files[0]);
-        }
 
         function loadImage(event) {
             const reader = new FileReader();
