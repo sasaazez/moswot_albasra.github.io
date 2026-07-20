@@ -49,21 +49,25 @@
             box-sizing: border-box;
         }
 
-        /* هيدر علوي شفاف */
+        /* هيدر علوي لعرض التاريخ فقط */
         .top-overlay {
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-end;
             align-items: center;
             padding: 12px 15px;
             z-index: 3;
             background: linear-gradient(rgba(0,0,0,0.35), transparent);
         }
 
+        /* صندوق الشعار الحر (القابل للتحريك والتعديل) */
         .brand-section {
+            position: absolute;
+            top: 12px;
+            right: 15px;
             display: flex;
             align-items: center;
             gap: 8px;
@@ -72,6 +76,9 @@
             border-radius: 6px;
             backdrop-filter: blur(4px);
             border: 1px solid rgba(255, 255, 255, 0.15);
+            z-index: 4;
+            cursor: move;
+            user-select: none;
         }
 
         .logo-img {
@@ -239,6 +246,27 @@
             margin-top: 5px;
         }
         .btn-download:active { transform: scale(0.98); }
+
+        .controls-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 5px;
+            background-color: #0f172a;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #334155;
+            text-align: center;
+        }
+        .controls-grid button {
+            background: #334155;
+            color: white;
+            border: none;
+            padding: 8px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls-grid button:hover { background: #38bdf8; color: #0f172a; }
     </style>
 </head>
 <body>
@@ -251,13 +279,15 @@
         <!-- منطقة عرض الصورة -->
         <div class="image-area" id="bg-image-layer">
             <div class="top-overlay">
-                <div class="brand-section">
-                    <img id="display-logo" class="logo-img" src="Logo.jpg" alt="logo">
-                    <div class="radio-badge">
-                        موسوعة البصرة
-                    </div>
-                </div>
                 <div class="date-text" id="display-date"></div>
+            </div>
+
+            <!-- صندوق الشعار القابل للتحريك -->
+            <div class="brand-section" id="draggable-logo">
+                <img id="display-logo" class="logo-img" src="Logo.jpg" alt="logo">
+                <div class="radio-badge">
+                    موسوعة البصرة
+                </div>
             </div>
         </div>
         
@@ -279,6 +309,19 @@
     <!-- لوحة التحكم السفلى -->
     <div class="control-panel">
         
+        <div class="section-title">التحكم بمكان الشعار (تحريك الاتجاهات)</div>
+        <div class="controls-grid">
+            <div></div>
+            <button onclick="moveLogo('up')">▲ للأعلى</button>
+            <div></div>
+            <button onclick="moveLogo('left')">◀ لليسار</button>
+            <button onclick="centerLogo()">🎯 بالمنتصف</button>
+            <button onclick="moveLogo('right')">▶ لليمين</button>
+            <div></div>
+            <button onclick="moveLogo('down')">▼ للأسفل</button>
+            <div></div>
+        </div>
+
         <div class="section-title">إدراج صورة الخبر أو الكتاب الرسمي</div>
         <input type="file" id="image-loader" class="input-custom" accept="image/*" onchange="loadImage(event)">
 
@@ -313,6 +356,9 @@
     </div>
 
     <script>
+        let logoTop = 12; // القيمة الابتدائية من الأعلى بالبكسل
+        let logoRight = 15; // القيمة الابتدائية من اليمين بالبكسل
+
         function setTodayDate() {
             const today = new Date();
             const day = today.getDate();
@@ -322,6 +368,29 @@
         }
         
         window.onload = setTodayDate;
+
+        function moveLogo(direction) {
+            const logoEl = document.getElementById('draggable-logo');
+            const step = 15; // مقدار الحركة بالبكسل في كل ضغطة
+            
+            if (direction === 'up') logoTop -= step;
+            if (direction === 'down') logoTop += step;
+            if (direction === 'right') logoRight -= step; // في الاتجاه المعاكس لـ right
+            if (direction === 'left') logoRight += step;
+
+            logoEl.style.top = logoTop + 'px';
+            logoEl.style.right = logoRight + 'px';
+            logoEl.style.left = 'auto';
+            logoEl.style.transform = 'none';
+        }
+
+        function centerLogo() {
+            const logoEl = document.getElementById('draggable-logo');
+            logoEl.style.top = '40%';
+            logoEl.style.right = 'auto';
+            logoEl.style.left = '50%';
+            logoEl.style.transform = 'translate(-50%, -50%)';
+        }
 
         function loadImage(event) {
             const reader = new FileReader();
@@ -349,7 +418,7 @@
         }
 
         function changeBarHeight() {
-            const barHeight = document.getElementById('bar-height-slider').value;
+            const barHeight = document.getElementById('bar-height-slider'].value;
             const bottomBar = document.getElementById('bottom-bar-area');
             const imageArea = document.getElementById('bg-image-layer');
             const heightLabel = document.getElementById('bar-height-val');
