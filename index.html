@@ -6,7 +6,7 @@
     <title>مصمم قوالب موسوعة البصرة</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- استيراد خطوط عربية واضحة وعريضة -->
+    <!-- استيراد خطوط عربية عريضة وواضحة -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;900&family=Tajawal:wght@700;900&display=swap" rel="stylesheet">
     <style>
         body {
@@ -42,32 +42,22 @@
         /* إطار عرض الصورة أو الكتاب الرسمي */
         .image-area {
             position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            background-color: #1e293b; 
+            width: 86%;
+            height: 52%;
+            top: 14%;
+            left: 7%;
+            right: 7%;
+            background-color: #ffffff; 
             background-repeat: no-repeat;
             background-position: center;
-            background-size: cover;
+            background-size: contain;
+            border-radius: 6px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.5);
             z-index: 1;
             transition: all 0.3s ease;
         }
 
-        /* طبقة تعتيم خفيفة فوق الخلفية لتبرير النصوص */
-        .preview-container::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(15, 23, 42, 0.35);
-            z-index: 2;
-            pointer-events: none;
-        }
-
-        /* لوكو موسوعة البصرة في الأعلى */
+        /* لوكو موسوعة البصرة في الأعلى (دائري وواضح) */
         .top-overlay {
             position: absolute;
             top: 15px;
@@ -105,33 +95,34 @@
             letter-spacing: 0.5px;
         }
 
-        /* شريط العنوان الرئيسي بخط واضح جداً */
+        /* شريط العنوان الرئيسي بخط واضح جداً وعريض */
         .title-box-container {
             position: absolute;
             bottom: 45px;
-            left: 0;
-            right: 0;
-            padding: 16px 20px;
+            left: 12px;
+            right: 12px;
+            padding: 14px;
             z-index: 5;
             display: flex;
             flex-direction: column;
             align-items: flex-end;
             text-align: right;
-            background: rgba(15, 23, 42, 0.82);
+            border-radius: 10px;
+            background: rgba(15, 23, 42, 0.94);
+            border: 1px solid rgba(255, 255, 255, 0.15);
             border-top: 2px solid rgba(239, 68, 68, 0.9);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(4px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.8);
         }
 
         .title-text {
-            font-family: 'Tajawal', sans-serif; /* خط تداول العريض والواضح */
-            font-size: 18px; 
-            font-weight: 900; /* سماكة عالية جداً للوضوح */
+            font-family: 'Tajawal', sans-serif; 
+            font-size: 16px; 
+            font-weight: 900; /* سماكة عالية للوضوح */
             color: #ffffff;
             margin: 0;
-            line-height: 1.5;
+            line-height: 1.4;
             width: 100%;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.9); /* ظل إضافي لقوة القراءة */
+            text-shadow: 0 2px 4px rgba(0,0,0,0.9);
         }
 
         /* شريط الحسابات السفلي */
@@ -140,7 +131,7 @@
             bottom: 0;
             left: 0;
             right: 0;
-            height: 40px;
+            height: 38px;
             padding: 0 15px;
             display: flex;
             justify-content: space-between;
@@ -256,7 +247,7 @@
     <!-- شاشة المعاينة الحية -->
     <div class="preview-container" id="capture-area">
         
-        <!-- خلفية الخبر -->
+        <!-- إطار الصورة أو الكتاب الرسمي -->
         <div class="image-area" id="bg-image-layer"></div>
 
         <!-- شعار موسوعة البصرة -->
@@ -293,8 +284,8 @@
 
         <div class="section-title">حجم خط العنوان</div>
         <div class="slider-container">
-            <input type="range" id="font-size-slider" min="14" max="26" value="18" oninput="changeFontSize()">
-            <span id="font-size-val" class="slider-val">18px</span>
+            <input type="range" id="font-size-slider" min="14" max="26" value="16" oninput="changeFontSize()">
+            <span id="font-size-val" class="slider-val">16px</span>
         </div>
 
         <div class="section-title">إعدادات الخلفية والشعار</div>
