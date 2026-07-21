@@ -89,7 +89,7 @@
             letter-spacing: 0.5px;
         }
 
-        /* شريط العنوان بخلفية شفافة وإطار أحمر رفيع جداً (0.5px) */
+        /* شريط العنوان بخلفية شفافة وإطار أحمر دقيق رفيع جداً */
         .title-box-container {
             position: absolute;
             top: 79%;
@@ -129,7 +129,7 @@
             text-shadow: 2px 2px 8px rgba(0,0,0,0.95), 0 0 10px rgba(0,0,0,0.8);
         }
 
-        /* شريط الحسابات السفلي الشفاف */
+        /* شريط الحسابات السفلي المحاط بإطار أبيض رفيع مع أيقونات بارزة وكلمة حمراء */
         .social-footer {
             position: absolute;
             bottom: 0;
@@ -143,12 +143,12 @@
             font-size: 12px;
             font-weight: bold;
             z-index: 5;
-            background: rgba(0, 0, 0, 0.25);
-            border-top: 1px solid rgba(255, 255, 255, 0.35);
+            background: rgba(0, 0, 0, 0.35);
+            border: 0.5px solid rgba(255, 255, 255, 0.7); /* إطار أبيض رفيع حول الشريط السفلي */
         }
 
         .brand-handle {
-            color: #ffffff;
+            color: #ef4444; /* تحويل كلمة موسوعة البصرة إلى اللون الأحمر */
             text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9);
             letter-spacing: 0.5px;
             order: 2;
@@ -157,26 +157,15 @@
         .social-icons-group {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 12px; /* مسافة واضحة بين الأيقونات بدون دوائر */
             order: 1;
         }
 
-        /* دوائر بأيقونات حمراء وإطار أبيض رفيع جداً (0.5px) */
-        .social-item {
-            width: 22px;
-            height: 22px;
-            background-color: rgba(255, 255, 255, 0.95);
-            border: 0.5px solid rgba(255, 255, 255, 0.9);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.4);
-        }
-        
+        /* الأيقونات بدون دوائر، بلون أحمر وواضح جداً مع تأثير ظل خفيف */
         .social-item i {
-            color: #dc2626 !important; /* لون أحمر للأيقونات */
-            font-size: 11px;
+            color: #ef4444 !important;
+            font-size: 14px;
+            filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.8));
         }
 
         /* لوحة التحكم السفلى */
@@ -302,13 +291,13 @@
             <div class="date-box" id="display-date"></div>
         </div>
         
-        <!-- شريط العنوان المحصور بين خطين أحمرين رفيعين جداً -->
+        <!-- شريط العنوان الرئيسي -->
         <div class="title-box-container" id="title-box-pos">
             <div class="urgent-badge" id="display-urgent">عاجل</div>
             <p class="title-text" id="display-title">أدخل عنوان الخبر الإخباري هنا ليظهر مباشرة داخل الشريط...</p>
         </div>
 
-        <!-- شريط الحسابات السفلي الشفاف مع أيقونات حمراء داخل إطار أبيض رفيع -->
+        <!-- شريط الحسابات السفلي المحاط بإطار أبيض رفيع وأيقونات حمراء وكلمة حمراء -->
         <div class="social-footer">
             <span class="brand-handle">mawsuatalbasra</span>
             <div class="social-icons-group">
