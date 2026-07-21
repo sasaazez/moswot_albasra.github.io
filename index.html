@@ -37,29 +37,26 @@
             box-sizing: border-box;
         }
 
-        /* منطقة عرض الصورة بالكامل */
+        /* منطقة عرض الصورة */
         .image-area {
             width: 100%;
-            height: 100%; 
-            background-color: #111; 
+            height: 75%; 
+            background-color: #f8fafc; 
             background-repeat: no-repeat;
             background-size: cover;
             background-position: center;
             position: relative;
             box-sizing: border-box;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
         }
 
-        /* هيدر علوي لعرض التاريخ */
+        /* الهيدر العلوي الموحد لضبط محاذاة التاريخ والشعار على خط واحد */
         .top-overlay {
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             display: flex;
-            justify-content: flex-end;
+            justify-content: space-between;
             align-items: center;
             padding: 12px 15px;
             z-index: 3;
@@ -69,16 +66,13 @@
         .date-box {
             font-size: 14px;
             font-weight: bold;
-            color: #ffffff;
-            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.95), 0 0 10px rgba(0, 0, 0, 0.7);
+            color: #38bdf8;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9);
             letter-spacing: 0.5px;
         }
 
-        /* موقع الشعار العلوي */
+        /* موقع الشعار: كبير وبارز وعلى نفس مستوى التاريخ تماماً بدون إطار */
         .brand-section {
-            position: absolute;
-            top: 10px;
-            right: 15px;
             display: flex;
             align-items: center;
             z-index: 4;
@@ -86,29 +80,27 @@
         }
 
         .logo-img {
-            width: 72px;
-            height: 72px;
+            width: 82px;
+            height: 82px;
             object-fit: contain;
             display: block;
             background: transparent;
             filter: drop-shadow(0 2px 5px rgba(0,0,0,0.8));
         }
 
-        /* صندوق النص الشفاف مع خطوط حمراء علوية وسفلية مطابقة للطلب */
+        /* منطقة الخبر السفلية */
         .bottom-content-area {
             width: 100%;
-            min-height: 38%; 
-            background: rgba(0, 0, 0, 0.22); 
-            border-top: 2px solid #dc2626; 
-            border-bottom: 2px solid #dc2626;
-            backdrop-filter: blur(2px);
+            height: 25%; 
+            background: rgba(11, 17, 32, 0.30); 
+            border-top: 1.5px solid #ef4444; 
+            backdrop-filter: blur(8px);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            padding: 14px 16px 10px 16px;
+            padding: 8px 12px 6px 12px;
             box-sizing: border-box;
             z-index: 2;
-            margin-bottom: 35px;
         }
 
         .text-container {
@@ -118,10 +110,11 @@
             justify-content: center;
             flex-grow: 1;
             text-align: center;
-            gap: 6px;
+            padding: 0 5px;
+            gap: 4px;
         }
 
-        /* شارة عاجل */
+        /* شارة عاجل الحمراء */
         .urgent-badge {
             background-color: #dc2626;
             color: #ffffff;
@@ -134,34 +127,30 @@
             letter-spacing: 0.5px;
         }
 
-        /* نمط الخط الأبيض الممشوق والواضح */
         .title-text {
-            font-family: 'Segoe UI', Tahoma, Geneva, sans-serif;
-            font-size: 18px; 
-            font-weight: 600;
+            font-size: 17px; 
+            font-weight: bold;
             color: #ffffff;
             margin: 0;
-            line-height: 1.5;
-            text-shadow: 2px 2px 5px rgba(0,0,0,0.9), 0 0 8px rgba(0,0,0,0.7);
+            line-height: 1.4;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.95);
         }
 
-        /* شريط الحسابات والسوشيال ميديا السفلي الداخلي */
+        /* شريط الحسابات السفلي مع اسم الموقع بدون إطار */
         .social-footer {
-            margin-top: 10px;
-            padding-top: 6px;
-            border-top: 1px solid rgba(255, 255, 255, 0.25);
+            border-top: 1.5px solid #ef4444;
+            padding-top: 5px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 13px;
-            font-weight: 500;
+            font-size: 12px;
+            font-weight: bold;
         }
 
         .brand-handle {
-            color: #ffffff;
-            font-family: inherit;
-            letter-spacing: 0.3px;
-            text-shadow: 1px 1px 4px rgba(0,0,0,0.8);
+            color: #38bdf8;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9);
+            letter-spacing: 0.5px;
         }
 
         .social-icons-group {
@@ -175,10 +164,10 @@
             align-items: center;
         }
         
-        .fa-facebook { color: #ffffff; font-size: 13px; }
-        .fa-instagram { color: #ffffff; font-size: 13px; }
-        .fa-tiktok { color: #ffffff; font-size: 13px; }
-        .fa-telegram { color: #ffffff; font-size: 13px; }
+        .fa-facebook { color: #1877f2; font-size: 14px; }
+        .fa-tiktok { color: #ffffff; font-size: 14px; }
+        .fa-whatsapp { color: #25d366; font-size: 14px; }
+        .fa-telegram { color: #0088cc; font-size: 14px; }
 
         /* لوحة التحكم السفلى */
         .control-panel {
@@ -289,39 +278,43 @@
 
     <h2>محرر قوالب موسوعة البصرة</h2>
 
+    <!-- شاشة المعاينة الحية -->
     <div class="preview-container" id="capture-area">
         
+        <!-- منطقة عرض الصورة -->
         <div class="image-area" id="bg-image-layer">
+            <!-- الهيدر العلوي يضم التاريخ والشعار على خط واحد -->
             <div class="top-overlay">
                 <div class="date-box" id="display-date"></div>
-            </div>
-
-            <div class="brand-section">
-                <img id="display-logo" class="logo-img" src="Logo.png" alt="logo">
-            </div>
-
-            <div class="bottom-content-area" id="bottom-bar-area">
-                <div class="text-container">
-                    <div class="urgent-badge" id="display-urgent">عاجل</div>
-                    <p class="title-text" id="display-title">أدخل عنوان الخبر الإخباري هنا ليظهر متناسقاً داخل الشريط...</p>
+                <div class="brand-section">
+                    <img id="display-logo" class="logo-img" src="Logo.png" alt="logo">
                 </div>
-                
-                <div class="social-footer">
-                    <div class="social-icons-group">
-                        <div class="social-item"><i class="fab fa-facebook"></i></div>
-                        <div class="social-item"><i class="fab fa-instagram"></i></div>
-                        <div class="social-item"><i class="fab fa-tiktok"></i></div>
-                        <div class="social-item"><i class="fab fa-telegram"></i></div>
-                    </div>
-                    <span class="brand-handle">mawsuatalbasra</span>
+            </div>
+        </div>
+        
+        <!-- منطقة الخبر السفلية -->
+        <div class="bottom-content-area" id="bottom-bar-area">
+            <div class="text-container">
+                <div class="urgent-badge" id="display-urgent">عاجل</div>
+                <p class="title-text" id="display-title">أدخل عنوان الخبر الإخباري هنا ليظهر متناسقاً داخل الشريط...</p>
+            </div>
+            
+            <div class="social-footer">
+                <span class="brand-handle">mawsuatalbasra</span>
+                <div class="social-icons-group">
+                    <div class="social-item"><i class="fab fa-facebook"></i></div>
+                    <div class="social-item"><i class="fab fa-tiktok"></i></div>
+                    <div class="social-item"><i class="fab fa-whatsapp"></i></div>
+                    <div class="social-item"><i class="fab fa-telegram"></i></div>
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- لوحة التحكم السفلى -->
     <div class="control-panel">
 
-        <div class="section-title">إدراج صورة الخبر أو الخلفية</div>
+        <div class="section-title">إدراج صورة الخبر أو الكتاب الرسمي</div>
         <input type="file" id="image-loader" class="input-custom" accept="image/*" onchange="loadImage(event)">
 
         <div class="section-title">نوع الخبر</div>
@@ -332,8 +325,8 @@
 
         <div class="section-title">طريقة احتواء الصورة داخل الإطار</div>
         <select id="image-fit-select" class="select-custom" onchange="changeImageFit()">
-            <option value="cover">ملء الإطار بالكامل</option>
-            <option value="contain">إظهار الصورة كاملة</option>
+            <option value="cover">ملء الإطار بالكامل (يمنع الفراغ الأبيض الجانبي)</option>
+            <option value="contain">إظهار الصورة كاملة بشكل طولي</option>
         </select>
 
         <div class="section-title">تحجيم زوم الصورة الخلفية</div>
@@ -342,14 +335,20 @@
             <span id="image-size-val" class="slider-val">100%</span>
         </div>
 
-        <div class="section-title">حجم خط النص</div>
+        <div class="section-title">ارتفاع شريط العنوان السفلي</div>
         <div class="slider-container">
-            <input type="range" id="font-size-slider" min="14" max="26" value="18" oninput="changeFontSize()">
-            <span id="font-size-val" class="slider-val">18px</span>
+            <input type="range" id="bar-height-slider" min="15" max="45" value="25" oninput="changeBarHeight()">
+            <span id="bar-height-val" class="slider-val">25%</span>
         </div>
 
-        <div class="section-title">محتوى النص / الخبر</div>
-        <textarea id="input-title" placeholder="اكتب نص الخبر هنا..." oninput="updateTitle()"></textarea>
+        <div class="section-title">حجم خط الخبر السفلي</div>
+        <div class="slider-container">
+            <input type="range" id="font-size-slider" min="14" max="26" value="17" oninput="changeFontSize()">
+            <span id="font-size-val" class="slider-val">17px</span>
+        </div>
+
+        <div class="section-title">محتوى العنوان</div>
+        <textarea id="input-title" placeholder="اكتب نص العنوان هنا..." oninput="updateTitle()"></textarea>
 
         <button class="btn-download" onclick="downloadImage()">تصدير التصميم كصورة للنشر</button>
     </div>
@@ -396,6 +395,17 @@
             sizeLabel.innerText = sliderValue + '%';
         }
 
+        function changeBarHeight() {
+            const barHeight = document.getElementById('bar-height-slider').value;
+            const bottomBar = document.getElementById('bottom-bar-area');
+            const imageArea = document.getElementById('bg-image-layer');
+            const heightLabel = document.getElementById('bar-height-val');
+
+            bottomBar.style.height = barHeight + '%';
+            imageArea.style.height = (100 - barHeight) + '%';
+            heightLabel.innerText = barHeight + '%';
+        }
+
         function updateTitle() {
             const titleInput = document.getElementById('input-title').value;
             const displayTitle = document.getElementById('display-title');
@@ -406,11 +416,10 @@
             }
         }
 
-        function changeFontSize() {
-            const fontSize = document.getElementById('font-size-slider').value;
-            document.getElementById('display-title').style.fontSize = fontSize + 'px';
-            document.getElementById('font-size-val').innerText = fontSize + 'px';
-        }
+        document.getElementById('font-size-slider').addEventListener('input', function() {
+            document.getElementById('display-title').style.fontSize = this.value + 'px';
+            document.getElementById('font-size-val').innerText = this.value + 'px';
+        });
 
         function downloadImage() {
             const captureArea = document.getElementById('capture-area');
@@ -423,7 +432,7 @@
             html2canvas(captureArea, options).then(canvas => {
                 const image = canvas.toDataURL("image/png");
                 const link = document.createElement('a');
-                link.download = `basra_news_${Date.now()}.png`;
+                link.download = `basra_news_post_${Date.now()}.png`;
                 link.href = image;
                 link.click();
             });
