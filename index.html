@@ -37,7 +37,7 @@
             box-sizing: border-box;
         }
 
-        /* منطقة عرض الصورة */
+        /* منطقة عرض الصورة أو الكتاب الرسمي */
         .image-area {
             width: 100%;
             height: 70%; 
@@ -49,7 +49,7 @@
             box-sizing: border-box;
         }
 
-        /* الهيدر العلوي: الشعار يمين والتاريخ يسار وبنفس المستوى الأفقي تماماً */
+        /* الهيدر العلوي: الشعار يمين والتاريخ يسار */
         .top-overlay {
             position: absolute;
             top: 0;
@@ -63,7 +63,6 @@
             background: linear-gradient(rgba(0,0,0,0.4), transparent);
         }
 
-        /* الشعار في اليمين وبحجم أكبر متناسق */
         .brand-section {
             display: flex;
             align-items: center;
@@ -80,7 +79,6 @@
             filter: drop-shadow(0 2px 5px rgba(0,0,0,0.8));
         }
 
-        /* التاريخ في اليسار باللون الأبيض وبنفس مستوى الشعار */
         .date-box {
             font-size: 14px;
             font-weight: bold;
@@ -89,11 +87,12 @@
             letter-spacing: 0.5px;
         }
 
-        /* منطقة الخبر السفلية بخلفية متدرجة تضمن قراءة النصوص الطويلة */
+        /* منطقة الخبر السفلية: شريط العنوان الشفاف الذي حددتيه */
         .bottom-content-area {
             width: 100%;
             height: 30%; 
-            background: linear-gradient(to bottom, rgba(15, 23, 42, 0.75), rgba(11, 17, 32, 0.90)); 
+            background: rgba(11, 17, 32, 0.45); /* شفافية ناعمة تظهر خلفها محتويات الصورة أو الكتاب */
+            backdrop-filter: blur(2px);
             border-top: 1.5px solid #ef4444; 
             display: flex;
             flex-direction: column;
@@ -115,7 +114,6 @@
             overflow: hidden;
         }
 
-        /* شارة عاجل الحمراء */
         .urgent-badge {
             background-color: #dc2626;
             color: #ffffff;
@@ -134,16 +132,16 @@
             color: #ffffff;
             margin: 0;
             line-height: 1.35;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.9);
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.95);
             display: -webkit-box;
             -webkit-line-clamp: 4;
             -webkit-box-orient: vertical;
             overflow: hidden;
         }
 
-        /* شريط الحسابات السفلي مع اسم الموقع باللون الأبيض بدون إطار */
+        /* شريط الحسابات السفلي */
         .social-footer {
-            border-top: 1px solid rgba(239, 68, 68, 0.5);
+            border-top: 1px solid rgba(239, 68, 68, 0.4);
             padding-top: 4px;
             display: flex;
             justify-content: space-between;
@@ -286,9 +284,8 @@
     <!-- شاشة المعاينة الحية -->
     <div class="preview-container" id="capture-area">
         
-        <!-- منطقة عرض الصورة -->
+        <!-- منطقة عرض الصورة أو المستند -->
         <div class="image-area" id="bg-image-layer">
-            <!-- الهيدر العلوي يضمن تواجد الشعار يميناً والتاريخ يساراً على خط واحد دقيق -->
             <div class="top-overlay">
                 <div class="brand-section">
                     <img id="display-logo" class="logo-img" src="Logo.png" alt="logo">
@@ -297,7 +294,7 @@
             </div>
         </div>
         
-        <!-- منطقة الخبر السفلية -->
+        <!-- منطقة الخبر السفلية الشفافة (الشريط المطلوب) -->
         <div class="bottom-content-area" id="bottom-bar-area">
             <div class="text-container">
                 <div class="urgent-badge" id="display-urgent">عاجل</div>
