@@ -6,9 +6,11 @@
     <title>مصمم قوالب موسوعة البصرة</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- استيراد خطوط عربية واضحة وعريضة -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;900&family=Tajawal:wght@700;900&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Tajawal', 'Cairo', sans-serif;
             background-color: #0f172a;
             color: #ffffff;
             display: flex;
@@ -27,7 +29,7 @@
         .preview-container {
             width: 420px;
             height: 580px;
-            background-color: #000000;
+            background-color: #0f172a;
             border-radius: 4px;
             position: relative;
             box-shadow: 0 12px 35px rgba(0,0,0,0.6);
@@ -37,105 +39,108 @@
             box-sizing: border-box;
         }
 
-        /* صورة الخلفية الكاملة */
+        /* إطار عرض الصورة أو الكتاب الرسمي */
         .image-area {
+            position: absolute;
             width: 100%;
-            height: 100%; 
-            background-color: #000000; 
+            height: 100%;
+            top: 0;
+            left: 0;
+            background-color: #1e293b; 
             background-repeat: no-repeat;
-            background-size: cover;
             background-position: center;
+            background-size: cover;
+            z-index: 1;
+            transition: all 0.3s ease;
+        }
+
+        /* طبقة تعتيم خفيفة فوق الخلفية لتبرير النصوص */
+        .preview-container::after {
+            content: '';
             position: absolute;
             top: 0;
             left: 0;
-            z-index: 1;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.35);
+            z-index: 2;
+            pointer-events: none;
         }
 
-        /* الهيدر العلوي */
+        /* لوكو موسوعة البصرة في الأعلى */
         .top-overlay {
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 15px;
-            z-index: 4;
-            background: linear-gradient(rgba(0,0,0,0.5), transparent);
-        }
-
-        .brand-section {
-            display: flex;
-            align-items: center;
+            top: 15px;
+            right: 15px;
             z-index: 5;
-            user-select: none;
+            width: 75px;
+            height: 75px;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            overflow: hidden;
         }
 
-        .logo-img {
-            width: 95px;
-            height: 95px;
-            object-fit: contain;
-            display: block;
-            background: transparent;
-            filter: drop-shadow(0 2px 5px rgba(0,0,0,0.8));
+        .top-overlay img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
-        .date-box {
-            font-size: 14px;
-            font-weight: bold;
+        /* التاريخ في الأعلى اليسار */
+        .date-top-left {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 5;
             color: #ffffff;
-            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9);
+            font-family: 'Cairo', sans-serif;
+            font-size: 16px;
+            font-weight: 900;
+            text-shadow: 0 2px 6px rgba(0,0,0,0.8);
             letter-spacing: 0.5px;
         }
 
-        /* شريط العنوان بخلفية شفافة وإطار أحمر رفيع جداً */
+        /* شريط العنوان الرئيسي بخط واضح جداً */
         .title-box-container {
             position: absolute;
-            top: 79%;
+            bottom: 45px;
             left: 0;
             right: 0;
-            transform: translateY(-50%);
-            padding: 12px 20px;
-            z-index: 3;
+            padding: 16px 20px;
+            z-index: 5;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            text-align: center;
-            border-top: 0.5px solid #ef4444;
-            border-bottom: 0.5px solid #ef4444;
-            background: rgba(0, 0, 0, 0.2);
-        }
-
-        .urgent-badge {
-            background-color: #dc2626;
-            color: #ffffff;
-            font-size: 11px;
-            font-weight: bold;
-            padding: 2px 10px;
-            border-radius: 4px;
-            display: none; 
-            margin-bottom: 4px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.5);
-            letter-spacing: 0.5px;
+            align-items: flex-end;
+            text-align: right;
+            background: rgba(15, 23, 42, 0.82);
+            border-top: 2px solid rgba(239, 68, 68, 0.9);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(4px);
         }
 
         .title-text {
+            font-family: 'Tajawal', sans-serif; /* خط تداول العريض والواضح */
             font-size: 18px; 
-            font-weight: bold;
+            font-weight: 900; /* سماكة عالية جداً للوضوح */
             color: #ffffff;
             margin: 0;
-            line-height: 1.4;
-            text-shadow: 2px 2px 8px rgba(0,0,0,0.95), 0 0 10px rgba(0,0,0,0.8);
+            line-height: 1.5;
+            width: 100%;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.9); /* ظل إضافي لقوة القراءة */
         }
 
-        /* شريط الحسابات السفلي المحاط بإطار أبيض رفيع وكل محتوياته باللون الأبيض */
+        /* شريط الحسابات السفلي */
         .social-footer {
             position: absolute;
             bottom: 0;
             left: 0;
             right: 0;
-            height: 38px;
+            height: 40px;
             padding: 0 15px;
             display: flex;
             justify-content: space-between;
@@ -143,29 +148,26 @@
             font-size: 12px;
             font-weight: bold;
             z-index: 5;
-            background: rgba(0, 0, 0, 0.35);
-            border: 0.5px solid rgba(255, 255, 255, 0.7);
+            background: rgba(0, 0, 0, 0.92);
+            border-top: 0.5px solid rgba(255, 255, 255, 0.2);
         }
 
         .brand-handle {
-            color: #ffffff; /* إعادة اسم موسوعة البصرة إلى اللون الأبيض */
-            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9);
+            color: #ffffff;
             letter-spacing: 0.5px;
-            order: 2;
+            font-family: 'Cairo', sans-serif;
+            font-size: 13px;
         }
 
         .social-icons-group {
             display: flex;
             align-items: center;
             gap: 12px;
-            order: 1;
         }
 
-        /* الأيقونات باللون الأبيض الناصع وبدون دوائر */
         .social-item i {
             color: #ffffff !important;
-            font-size: 14px;
-            filter: drop-shadow(1px 1px 3px rgba(0,0,0,0.9));
+            font-size: 13px;
         }
 
         /* لوحة التحكم السفلى */
@@ -179,7 +181,7 @@
         }
 
         .section-title {
-            font-size: 14px;
+            font-size: 13px;
             color: #94a3b8;
             margin-bottom: 8px;
             margin-top: 15px;
@@ -187,34 +189,37 @@
 
         .section-title:first-child { margin-top: 0; }
 
-        .input-custom {
+        textarea {
             width: 100%;
+            height: 80px;
             background-color: #0f172a;
             border: 1px solid #334155;
             border-radius: 8px;
             color: white;
-            padding: 10px;
+            padding: 12px;
             box-sizing: border-box;
+            resize: none;
             font-family: inherit;
-            font-size: 13px;
-        }
-
-        .checkbox-container {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            background-color: #0f172a;
-            padding: 10px;
-            border-radius: 8px;
-            border: 1px solid #334155;
-            cursor: pointer;
+            font-size: 14px;
             margin-bottom: 5px;
         }
 
-        .checkbox-container input {
-            width: 16px;
-            height: 16px;
+        .btn-row {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+
+        .type-btn {
+            background-color: #0f172a;
+            border: 1px solid #334155;
+            color: #ffffff;
+            padding: 8px 12px;
+            font-size: 12px;
+            border-radius: 6px;
             cursor: pointer;
+            text-align: center;
+            font-weight: bold;
         }
 
         .slider-container {
@@ -230,47 +235,18 @@
         .slider-container input { flex: 1; cursor: pointer; }
         .slider-val { font-size: 13px; color: #94a3b8; min-width: 45px; text-align: center; }
 
-        textarea {
-            width: 100%;
-            height: 70px;
-            background-color: #0f172a;
-            border: 1px solid #334155;
-            border-radius: 8px;
-            color: white;
-            padding: 12px;
-            box-sizing: border-box;
-            resize: none;
-            font-family: inherit;
-            font-size: 14px;
-            margin-bottom: 15px;
-        }
-
-        .select-custom {
-            width: 100%;
-            background-color: #0f172a;
-            border: 1px solid #334155;
-            border-radius: 8px;
-            color: white;
-            padding: 10px;
-            box-sizing: border-box;
-            font-family: inherit;
-            font-size: 13px;
-        }
-
         .btn-download {
-            background-color: #38bdf8; 
-            color: #0f172a;
+            background-color: #22c55e; 
+            color: #ffffff;
             width: 100%;
-            font-size: 15px;
+            font-size: 14px;
             padding: 12px;
             border: none;
             border-radius: 8px;
             font-weight: bold;
             cursor: pointer;
-            transition: 0.2s;
-            margin-top: 5px;
+            margin-top: 10px;
         }
-        .btn-download:active { transform: scale(0.98); }
     </style>
 </head>
 <body>
@@ -280,88 +256,60 @@
     <!-- شاشة المعاينة الحية -->
     <div class="preview-container" id="capture-area">
         
-        <!-- صورة الخلفية الكاملة -->
+        <!-- خلفية الخبر -->
         <div class="image-area" id="bg-image-layer"></div>
 
-        <!-- الهيدر العلوي -->
+        <!-- شعار موسوعة البصرة -->
         <div class="top-overlay">
-            <div class="brand-section">
-                <img id="display-logo" class="logo-img" src="Logo.png" alt="logo">
-            </div>
-            <div class="date-box" id="display-date"></div>
-        </div>
-        
-        <!-- شريط العنوان الرئيسي -->
-        <div class="title-box-container" id="title-box-pos">
-            <div class="urgent-badge" id="display-urgent">عاجل</div>
-            <p class="title-text" id="display-title">أدخل عنوان الخبر الإخباري هنا ليظهر مباشرة داخل الشريط...</p>
+            <img src="" id="logo-display-img" alt="Logo" style="display:none;">
+            <span id="logo-placeholder-text" style="font-size: 10px; color: #000; font-weight: bold;">الشعار</span>
         </div>
 
-        <!-- شريط الحسابات السفلي بإطار أبيض وأيقونات بيضاء وكلمة بيضاء -->
+        <!-- التاريخ -->
+        <div class="date-top-left" id="display-date">21-7-2026</div>
+        
+        <!-- شريط العنوان بخط عريض وواضح -->
+        <div class="title-box-container">
+            <p class="title-text" id="display-title">وافق مجلس الوزراء على أن تنقل بلدية البصرة ملكية الوحدات السكنية في (مجمع الرحاب السكني) إلى المستفيدين، وفي حال وجود بدل بيع يجب دفعه من قبل المستثمر.</p>
+        </div>
+
+        <!-- شريط الحسابات السفلي -->
         <div class="social-footer">
-            <span class="brand-handle">mawsuatalbasra</span>
             <div class="social-icons-group">
                 <div class="social-item"><i class="fab fa-facebook-f"></i></div>
                 <div class="social-item"><i class="fab fa-instagram"></i></div>
                 <div class="social-item"><i class="fab fa-tiktok"></i></div>
                 <div class="social-item"><i class="fab fa-telegram-plane"></i></div>
             </div>
+            <span class="brand-handle">mawsuatalbasra</span>
         </div>
     </div>
 
     <!-- لوحة التحكم السفلى -->
     <div class="control-panel">
 
-        <div class="section-title">إدراج صورة الخبر أو الكتاب الرسمي</div>
-        <input type="file" id="image-loader" class="input-custom" accept="image/*" onchange="loadImage(event)">
-
-        <div class="section-title">نوع الخبر</div>
-        <label class="checkbox-container">
-            <input type="checkbox" id="urgent-toggle" onchange="toggleUrgent()">
-            <span>إظهار شارة (عاجل) الحمراء</span>
-        </label>
-
-        <div class="section-title">طريقة احتواء الصورة داخل الإطار</div>
-        <select id="image-fit-select" class="select-custom" onchange="changeImageFit()">
-            <option value="cover">ملء الإطار بالكامل (يمنع الفراغ الأبيض الجانبي)</option>
-            <option value="contain">إظهار الصورة كاملة بشكل طولي</option>
-        </select>
-
-        <div class="section-title">تحجيم زوم الصورة الخلفية</div>
-        <div class="slider-container">
-            <input type="range" id="image-size-slider" min="50" max="200" value="100" oninput="changeImageSize()">
-            <span id="image-size-val" class="slider-val">100%</span>
-        </div>
-
-        <div class="section-title">موقع شريط العنوان (الارتفاع)</div>
-        <div class="slider-container">
-            <input type="range" id="box-pos-slider" min="30" max="90" value="79" oninput="changeBoxPosition()">
-            <span id="box-pos-val" class="slider-val">79%</span>
-        </div>
+        <div class="section-title">محتوى الخبر</div>
+        <textarea id="input-title" placeholder="اكتب نص الخبر هنا..." oninput="updateTitle()">وافق مجلس الوزراء على أن تنقل بلدية البصرة ملكية الوحدات السكنية في (مجمع الرحاب السكني) إلى المستفيدين، وفي حال وجود بدل بيع يجب دفعه من قبل المستثمر.</textarea>
 
         <div class="section-title">حجم خط العنوان</div>
         <div class="slider-container">
-            <input type="range" id="font-size-slider" min="12" max="26" value="18" oninput="changeFontSize()">
+            <input type="range" id="font-size-slider" min="14" max="26" value="18" oninput="changeFontSize()">
             <span id="font-size-val" class="slider-val">18px</span>
         </div>
 
-        <div class="section-title">محتوى العنوان</div>
-        <textarea id="input-title" placeholder="اكتب نص العنوان هنا..." oninput="updateTitle()"></textarea>
+        <div class="section-title">إعدادات الخلفية والشعار</div>
+        <div class="btn-row">
+            <input type="file" id="image-loader" accept="image/*" style="display:none;" onchange="loadImage(event)">
+            <button class="type-btn" style="flex:1;" onclick="document.getElementById('image-loader').click()">اختر صورة الخبر</button>
+            
+            <input type="file" id="logo-loader" accept="image/*" style="display:none;" onchange="loadLogo(event)">
+            <button class="type-btn" style="flex:1;" onclick="document.getElementById('logo-loader').click()">اختر الشعار</button>
+        </div>
 
-        <button class="btn-download" onclick="downloadImage()">تصدير التصميم كصورة للنشر</button>
+        <button class="btn-download" onclick="downloadImage()"><i class="fa-solid fa-download"></i> حفظ التصميم النهائي</button>
     </div>
 
     <script>
-        function setTodayDate() {
-            const today = new Date();
-            const day = today.getDate();
-            const month = today.getMonth() + 1;
-            const year = today.getFullYear();
-            document.getElementById('display-date').innerText = `${day}-${month}-${year}`;
-        }
-        
-        window.onload = setTodayDate;
-
         function loadImage(event) {
             const reader = new FileReader();
             reader.onload = function() {
@@ -371,68 +319,39 @@
             reader.readAsDataURL(event.target.files[0]);
         }
 
-        function toggleUrgent() {
-            const isChecked = document.getElementById('urgent-toggle').checked;
-            const urgentBadge = document.getElementById('display-urgent');
-            urgentBadge.style.display = isChecked ? 'inline-block' : 'none';
-        }
-
-        function changeImageFit() {
-            const fitValue = document.getElementById('image-fit-select').value;
-            const imageLayer = document.getElementById('bg-image-layer');
-            imageLayer.style.backgroundSize = fitValue;
-            document.getElementById('image-size-slider').value = 100;
-            document.getElementById('image-size-val').innerText = '100%';
-        }
-
-        function changeImageSize() {
-            const sliderValue = document.getElementById('image-size-slider').value;
-            const imageLayer = document.getElementById('bg-image-layer');
-            const sizeLabel = document.getElementById('image-size-val');
-            imageLayer.style.backgroundSize = sliderValue + '%';
-            sizeLabel.innerText = sliderValue + '%';
-        }
-
-        function changeBoxPosition() {
-            const posValue = document.getElementById('box-pos-slider').value;
-            const titleBox = document.getElementById('title-box-pos');
-            const posLabel = document.getElementById('box-pos-val');
-            titleBox.style.top = posValue + '%';
-            posLabel.innerText = posValue + '%';
+        function loadLogo(event) {
+            const reader = new FileReader();
+            reader.onload = function() {
+                const logoImg = document.getElementById('logo-display-img');
+                const placeholder = document.getElementById('logo-placeholder-text');
+                logoImg.src = reader.result;
+                logoImg.style.display = 'block';
+                placeholder.style.display = 'none';
+            }
+            reader.readAsDataURL(event.target.files[0]);
         }
 
         function updateTitle() {
             const titleInput = document.getElementById('input-title').value;
             const displayTitle = document.getElementById('display-title');
-            if(titleInput.trim() === "") {
-                displayTitle.innerText = "أدخل عنوان الخبر الإخباري هنا ليظهر مباشرة داخل الشريط...";
-            } else {
-                displayTitle.innerText = titleInput;
-            }
+            displayTitle.innerText = titleInput.trim() === "" ? "اكتب تفاصيل الخبر هنا..." : titleInput;
         }
 
-        document.getElementById('font-size-slider').addEventListener('input', function() {
-            document.getElementById('display-title').style.fontSize = this.value + 'px';
-            document.getElementById('font-size-val').innerText = this.value + 'px';
-        });
+        function changeFontSize() {
+            const val = document.getElementById('font-size-slider').value;
+            document.getElementById('display-title').style.fontSize = val + 'px';
+            document.getElementById('font-size-val').innerText = val + 'px';
+        }
 
         function downloadImage() {
             const captureArea = document.getElementById('capture-area');
-            const options = {
-                scale: 2, 
-                useCORS: true, 
-                backgroundColor: null
-            };
-
-            html2canvas(captureArea, options).then(canvas => {
-                const image = canvas.toDataURL("image/png");
+            html2canvas(captureArea, { scale: 2, useCORS: true, backgroundColor: null }).then(canvas => {
                 const link = document.createElement('a');
-                link.download = `basra_news_post_${Date.now()}.png`;
-                link.href = image;
+                link.download = `mawsuat_albasra_${Date.now()}.png`;
+                link.href = canvas.toDataURL("image/png");
                 link.click();
             });
         }
     </script>
-
 </body>
 </html>
