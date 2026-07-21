@@ -6,10 +6,11 @@
     <title>مصمم قوالب موسوعة البصرة</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- استيراد خطوط عربية عريضة وواضحة -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;900&family=Tajawal:wght@700;900&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Cairo', sans-serif;
+            font-family: 'Tajawal', 'Cairo', sans-serif;
             background-color: #0f172a;
             color: #ffffff;
             display: flex;
@@ -24,7 +25,7 @@
             color: #38bdf8;
         }
 
-        /* حاوية المعاينة الأساسية (قالب الانستغرام/المنشور) */
+        /* حاوية المعاينة الأساسية */
         .preview-container {
             width: 420px;
             height: 580px;
@@ -56,7 +57,7 @@
             transition: all 0.3s ease;
         }
 
-        /* لوكو موسوعة البصرة في الأعلى */
+        /* لوكو موسوعة البصرة في الأعلى (دائري وواضح) */
         .top-overlay {
             position: absolute;
             top: 15px;
@@ -87,13 +88,14 @@
             left: 20px;
             z-index: 5;
             color: #ffffff;
+            font-family: 'Cairo', sans-serif;
             font-size: 16px;
-            font-weight: bold;
+            font-weight: 900;
             text-shadow: 0 2px 6px rgba(0,0,0,0.8);
             letter-spacing: 0.5px;
         }
 
-        /* شريط العنوان الرئيسي */
+        /* شريط العنوان الرئيسي بخط واضح جداً وعريض */
         .title-box-container {
             position: absolute;
             bottom: 45px;
@@ -113,9 +115,9 @@
         }
 
         .title-text {
-            font-family: 'Cairo', sans-serif;
-            font-size: 15px;
-            font-weight: bold;
+            font-family: 'Tajawal', sans-serif; 
+            font-size: 16px; 
+            font-weight: 900; /* سماكة عالية للوضوح */
             color: #ffffff;
             margin: 0;
             line-height: 1.4;
@@ -144,6 +146,7 @@
         .brand-handle {
             color: #ffffff;
             letter-spacing: 0.5px;
+            font-family: 'Cairo', sans-serif;
             font-size: 13px;
         }
 
@@ -256,7 +259,7 @@
         <!-- التاريخ -->
         <div class="date-top-left" id="display-date">21-7-2026</div>
         
-        <!-- شريط العنوان -->
+        <!-- شريط العنوان بخط عريض وواضح -->
         <div class="title-box-container">
             <p class="title-text" id="display-title">وافق مجلس الوزراء على أن تنقل بلدية البصرة ملكية الوحدات السكنية في (مجمع الرحاب السكني) إلى المستفيدين، وفي حال وجود بدل بيع يجب دفعه من قبل المستثمر.</p>
         </div>
@@ -281,8 +284,8 @@
 
         <div class="section-title">حجم خط العنوان</div>
         <div class="slider-container">
-            <input type="range" id="font-size-slider" min="12" max="24" value="15" oninput="changeFontSize()">
-            <span id="font-size-val" class="slider-val">15px</span>
+            <input type="range" id="font-size-slider" min="14" max="26" value="16" oninput="changeFontSize()">
+            <span id="font-size-val" class="slider-val">16px</span>
         </div>
 
         <div class="section-title">إعدادات الخلفية والشعار</div>
