@@ -89,7 +89,7 @@
             letter-spacing: 0.5px;
         }
 
-        /* شريط العنوان بخلفية شفافة جداً وإطار أحمر رفيع */
+        /* شريط العنوان بخلفية شفافة وإطار أحمر رفيع جداً (0.5px) */
         .title-box-container {
             position: absolute;
             top: 79%;
@@ -102,9 +102,9 @@
             flex-direction: column;
             align-items: center;
             text-align: center;
-            border-top: 1px solid #ef4444;
-            border-bottom: 1px solid #ef4444;
-            background: rgba(0, 0, 0, 0.2); /* خلفية مخففة أكثر */
+            border-top: 0.5px solid #ef4444;
+            border-bottom: 0.5px solid #ef4444;
+            background: rgba(0, 0, 0, 0.2);
         }
 
         .urgent-badge {
@@ -161,20 +161,21 @@
             order: 1;
         }
 
-        /* تحويل أيقونات التواصل إلى اللون الأبيض داخل إطار/خلفية دائرية بيضاء ناعمة */
+        /* دوائر بأيقونات حمراء وإطار أبيض رفيع جداً (0.5px) */
         .social-item {
             width: 22px;
             height: 22px;
-            background-color: rgba(255, 255, 255, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.6);
+            background-color: rgba(255, 255, 255, 0.95);
+            border: 0.5px solid rgba(255, 255, 255, 0.9);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.4);
         }
         
         .social-item i {
-            color: #ffffff !important;
+            color: #dc2626 !important; /* لون أحمر للأيقونات */
             font-size: 11px;
         }
 
@@ -301,13 +302,13 @@
             <div class="date-box" id="display-date"></div>
         </div>
         
-        <!-- شريط العنوان المحصور بين خطين أحمرين رفيعين بخلفية مخففة -->
+        <!-- شريط العنوان المحصور بين خطين أحمرين رفيعين جداً -->
         <div class="title-box-container" id="title-box-pos">
             <div class="urgent-badge" id="display-urgent">عاجل</div>
             <p class="title-text" id="display-title">أدخل عنوان الخبر الإخباري هنا ليظهر مباشرة داخل الشريط...</p>
         </div>
 
-        <!-- شريط الحسابات السفلي الشفاف مع أيقونات بيضاء محاطة -->
+        <!-- شريط الحسابات السفلي الشفاف مع أيقونات حمراء داخل إطار أبيض رفيع -->
         <div class="social-footer">
             <span class="brand-handle">mawsuatalbasra</span>
             <div class="social-icons-group">
@@ -446,4 +447,3 @@
 
 </body>
 </html>
-
