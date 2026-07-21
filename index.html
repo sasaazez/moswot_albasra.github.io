@@ -23,7 +23,7 @@
             color: #38bdf8;
         }
 
-        /* حاوية المعاينة (بدون إطار خارجي أحمر نهائياً) */
+        /* حاوية المعاينة الأساسية */
         .preview-container {
             width: 420px;
             height: 580px;
@@ -89,29 +89,22 @@
             letter-spacing: 0.5px;
         }
 
-        /* الخط الأحمر العلوي للعنوان الرئيسي فقط */
-        .red-divider-line {
+        /* حاوية منطقة النص المحصورة بين خطين مطابقة للنموذج تماماً */
+        .title-box-container {
             position: absolute;
-            top: 55%; 
+            top: 52%;
             left: 0;
             right: 0;
-            height: 2px;
-            background-color: #ef4444;
-            z-index: 3;
-        }
-
-        /* النص السفلي الطافي فوق الصورة */
-        .text-overlay-area {
-            position: absolute;
-            bottom: 55px;
-            left: 15px;
-            right: 15px;
+            transform: translateY(-50%);
+            padding: 15px 20px;
             z-index: 3;
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
-            gap: 6px;
+            border-top: 1px solid rgba(255, 255, 255, 0.7);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.7);
+            background: rgba(0, 0, 0, 0.35);
         }
 
         .urgent-badge {
@@ -122,6 +115,7 @@
             padding: 2px 10px;
             border-radius: 4px;
             display: none; 
+            margin-bottom: 6px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.5);
             letter-spacing: 0.5px;
         }
@@ -135,7 +129,7 @@
             text-shadow: 2px 2px 8px rgba(0,0,0,0.95), 0 0 10px rgba(0,0,0,0.8);
         }
 
-        /* شريط الحسابات السفلي بنسبة الشفافية الدقيقة والخط الأبيض فوقه */
+        /* شريط الحسابات السفلي الشفاف والخط الأبيض فوقه */
         .social-footer {
             position: absolute;
             bottom: 0;
@@ -165,11 +159,6 @@
             align-items: center;
             gap: 12px;
             order: 1;
-        }
-
-        .social-item {
-            display: flex;
-            align-items: center;
         }
         
         .fa-facebook { color: #1877f2; font-size: 14px; }
@@ -300,16 +289,13 @@
             <div class="date-box" id="display-date"></div>
         </div>
         
-        <!-- الخط الأحمر الفاصل العلوي للعنوان الرئيسي -->
-        <div class="red-divider-line" id="line-position"></div>
-
-        <!-- النص السفلي الطافي فوق الصورة -->
-        <div class="text-overlay-area">
+        <!-- شريط العنوان المحصور بين خطين أفقيين -->
+        <div class="title-box-container" id="title-box-pos">
             <div class="urgent-badge" id="display-urgent">عاجل</div>
-            <p class="title-text" id="display-title">أدخل عنوان الخبر الإخباري هنا ليظهر مباشرة على الصورة...</p>
+            <p class="title-text" id="display-title">أدخل عنوان الخبر الإخباري هنا ليظهر مباشرة داخل الشريط...</p>
         </div>
 
-        <!-- شريط الحسابات السفلي الشفاف مع الخط الأبيض فوقه -->
+        <!-- شريط الحسابات السفلي الشفاف -->
         <div class="social-footer">
             <span class="brand-handle">mawsuatalbasra</span>
             <div class="social-icons-group">
@@ -345,13 +331,13 @@
             <span id="image-size-val" class="slider-val">100%</span>
         </div>
 
-        <div class="section-title">موقع الخط الأحمر الفاصل العلوي</div>
+        <div class="section-title">موقع شريط العنوان (الارتفاع)</div>
         <div class="slider-container">
-            <input type="range" id="line-pos-slider" min="20" max="80" value="55" oninput="changeLinePosition()">
-            <span id="line-pos-val" class="slider-val">55%</span>
+            <input type="range" id="box-pos-slider" min="30" max="75" value="52" oninput="changeBoxPosition()">
+            <span id="box-pos-val" class="slider-val">52%</span>
         </div>
 
-        <div class="section-title">حجم خط الخبر السفلي</div>
+        <div class="section-title">حجم خط العنوان</div>
         <div class="slider-container">
             <input type="range" id="font-size-slider" min="12" max="26" value="18" oninput="changeFontSize()">
             <span id="font-size-val" class="slider-val">18px</span>
@@ -405,11 +391,11 @@
             sizeLabel.innerText = sliderValue + '%';
         }
 
-        function changeLinePosition() {
-            const posValue = document.getElementById('line-pos-slider').value;
-            const redLine = document.getElementById('line-position');
-            const posLabel = document.getElementById('line-pos-val');
-            redLine.style.top = posValue + '%';
+        function changeBoxPosition() {
+            const posValue = document.getElementById('box-pos-slider').value;
+            const titleBox = document.getElementById('title-box-pos');
+            const posLabel = document.getElementById('box-pos-val');
+            titleBox.style.top = posValue + '%';
             posLabel.innerText = posValue + '%';
         }
 
@@ -417,7 +403,7 @@
             const titleInput = document.getElementById('input-title').value;
             const displayTitle = document.getElementById('display-title');
             if(titleInput.trim() === "") {
-                displayTitle.innerText = "أدخل عنوان الخبر الإخباري هنا ليظهر مباشرة على الصورة...";
+                displayTitle.innerText = "أدخل عنوان الخبر الإخباري هنا ليظهر مباشرة داخل الشريط...";
             } else {
                 displayTitle.innerText = titleInput;
             }
