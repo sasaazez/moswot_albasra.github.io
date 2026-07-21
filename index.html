@@ -89,7 +89,7 @@
             letter-spacing: 0.5px;
         }
 
-        /* شريط العنوان بخلفية شفافة وإطار أحمر دقيق رفيع جداً */
+        /* شريط العنوان بخلفية شفافة وإطار أحمر رفيع جداً */
         .title-box-container {
             position: absolute;
             top: 79%;
@@ -129,7 +129,7 @@
             text-shadow: 2px 2px 8px rgba(0,0,0,0.95), 0 0 10px rgba(0,0,0,0.8);
         }
 
-        /* شريط الحسابات السفلي المحاط بإطار أبيض رفيع مع أيقونات بارزة وكلمة حمراء */
+        /* شريط الحسابات السفلي المحاط بإطار أبيض رفيع وكل محتوياته باللون الأبيض */
         .social-footer {
             position: absolute;
             bottom: 0;
@@ -144,11 +144,11 @@
             font-weight: bold;
             z-index: 5;
             background: rgba(0, 0, 0, 0.35);
-            border: 0.5px solid rgba(255, 255, 255, 0.7); /* إطار أبيض رفيع حول الشريط السفلي */
+            border: 0.5px solid rgba(255, 255, 255, 0.7);
         }
 
         .brand-handle {
-            color: #ef4444; /* تحويل كلمة موسوعة البصرة إلى اللون الأحمر */
+            color: #ffffff; /* إعادة اسم موسوعة البصرة إلى اللون الأبيض */
             text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9);
             letter-spacing: 0.5px;
             order: 2;
@@ -157,15 +157,15 @@
         .social-icons-group {
             display: flex;
             align-items: center;
-            gap: 12px; /* مسافة واضحة بين الأيقونات بدون دوائر */
+            gap: 12px;
             order: 1;
         }
 
-        /* الأيقونات بدون دوائر، بلون أحمر وواضح جداً مع تأثير ظل خفيف */
+        /* الأيقونات باللون الأبيض الناصع وبدون دوائر */
         .social-item i {
-            color: #ef4444 !important;
+            color: #ffffff !important;
             font-size: 14px;
-            filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.8));
+            filter: drop-shadow(1px 1px 3px rgba(0,0,0,0.9));
         }
 
         /* لوحة التحكم السفلى */
@@ -297,7 +297,7 @@
             <p class="title-text" id="display-title">أدخل عنوان الخبر الإخباري هنا ليظهر مباشرة داخل الشريط...</p>
         </div>
 
-        <!-- شريط الحسابات السفلي المحاط بإطار أبيض رفيع وأيقونات حمراء وكلمة حمراء -->
+        <!-- شريط الحسابات السفلي بإطار أبيض وأيقونات بيضاء وكلمة بيضاء -->
         <div class="social-footer">
             <span class="brand-handle">mawsuatalbasra</span>
             <div class="social-icons-group">
