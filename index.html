@@ -23,7 +23,7 @@
             color: #38bdf8;
         }
 
-        /* حاوية المعاينة الإخبارية القياسية */
+        /* حاوية المعاينة الإخبارية مع الإطار الخارجي الأحمر المحدد */
         .preview-container {
             width: 420px;
             height: 580px;
@@ -35,9 +35,10 @@
             display: flex;
             flex-direction: column;
             box-sizing: border-box;
+            border: 2px solid #ef4444; /* الإطار الخارجي بنفس لون الخطوط الحمراء */
         }
 
-        /* الصورة تمتد على كامل مساحة الكارد بدون أي صناديق لونية */
+        /* الصورة الخلفية الكاملة */
         .image-area {
             width: 100%;
             height: 100%; 
@@ -51,7 +52,7 @@
             z-index: 1;
         }
 
-        /* الهيدر العلوي: الشعار يمين والتاريخ يسار */
+        /* الهيدر العلوي */
         .top-overlay {
             position: absolute;
             top: 0;
@@ -89,10 +90,10 @@
             letter-spacing: 0.5px;
         }
 
-        /* الخط الأحمر الفاصل تماماً مثل الصورة المطلوبة */
+        /* الخط الأحمر العلوي الفاصل */
         .red-divider-line {
             position: absolute;
-            top: 55%; /* يمكنك التحكم بمكان الخط الأحمر من هنا */
+            top: 55%; 
             left: 0;
             right: 0;
             height: 2px;
@@ -100,10 +101,21 @@
             z-index: 3;
         }
 
-        /* منطقة النص السفلي تطفو مباشرة على الصورة بدون أي صندوق خلفي */
+        /* الخط الأحمر السفلي الإضافي (الجديد تحت الشريط) */
+        .red-divider-line-bottom {
+            position: absolute;
+            bottom: 38px; 
+            left: 0;
+            right: 0;
+            height: 2px;
+            background-color: #ef4444;
+            z-index: 4;
+        }
+
+        /* النص السفلي الطافي فوق الصورة */
         .text-overlay-area {
             position: absolute;
-            bottom: 25px;
+            bottom: 50px;
             left: 15px;
             right: 15px;
             z-index: 3;
@@ -135,20 +147,21 @@
             text-shadow: 2px 2px 8px rgba(0,0,0,0.95), 0 0 10px rgba(0,0,0,0.8);
         }
 
-        /* شريط الحسابات السفلي الشفاف تماماً على حافة الصورة */
+        /* شريط الحسابات السفلي */
         .social-footer {
             position: absolute;
             bottom: 0;
             left: 0;
             right: 0;
-            padding: 8px 15px;
+            height: 38px;
+            padding: 0 15px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             font-size: 12px;
             font-weight: bold;
-            z-index: 4;
-            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            z-index: 5;
+            background-color: rgba(0, 0, 0, 0.4);
         }
 
         .brand-handle {
@@ -282,10 +295,10 @@
 
     <h2>محرر قوالب موسوعة البصرة</h2>
 
-    <!-- شاشة المعاينة الحية -->
+    <!-- شاشة المعاينة الحية مع الإطار الخارجي الأحمر -->
     <div class="preview-container" id="capture-area">
         
-        <!-- صورة الخلفيةاملة -->
+        <!-- صورة الخلفية الكاملة -->
         <div class="image-area" id="bg-image-layer"></div>
 
         <!-- الهيدر العلوي -->
@@ -296,10 +309,13 @@
             <div class="date-box" id="display-date"></div>
         </div>
         
-        <!-- الخط الأحمر الفاصل (مطابق للصورة تماماً) -->
+        <!-- الخط الأحمر الفاصل العلوي -->
         <div class="red-divider-line" id="line-position"></div>
 
-        <!-- النص السفلي الطافي مباشرة فوق الصورة بدون صندوق -->
+        <!-- الخط الأحمر السفلي الفاصل -->
+        <div class="red-divider-line-bottom"></div>
+
+        <!-- النص السفلي الطافي مباشرة فوق الصورة -->
         <div class="text-overlay-area">
             <div class="urgent-badge" id="display-urgent">عاجل</div>
             <p class="title-text" id="display-title">أدخل عنوان الخبر الإخباري هنا ليظهر مباشرة على الصورة...</p>
@@ -341,7 +357,7 @@
             <span id="image-size-val" class="slider-val">100%</span>
         </div>
 
-        <div class="section-title">موقع الخط الأحمر الفاصل</div>
+        <div class="section-title">موقع الخط الأحمر الفاصل العلوي</div>
         <div class="slider-container">
             <input type="range" id="line-pos-slider" min="20" max="80" value="55" oninput="changeLinePosition()">
             <span id="line-pos-val" class="slider-val">55%</span>
