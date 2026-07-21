@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مصمم قوالب الإذاعة</title>
+    <title>مصمم قوالب موسوعة البصرة</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -94,13 +94,13 @@
             filter: drop-shadow(0 2px 5px rgba(0,0,0,0.8));
         }
 
-        /* صندوق النص الشفاف المطابق للنموذج (يتوسط الصورة من الأسفل) */
+        /* صندوق النص الشفاف مع خطوط حمراء علوية وسفلية مطابقة للطلب */
         .bottom-content-area {
             width: 100%;
             min-height: 38%; 
             background: rgba(0, 0, 0, 0.22); 
-            border-top: 1.2px solid rgba(255, 255, 255, 0.65); 
-            border-bottom: 1.2px solid rgba(255, 255, 255, 0.65);
+            border-top: 2px solid #dc2626; 
+            border-bottom: 2px solid #dc2626;
             backdrop-filter: blur(2px);
             display: flex;
             flex-direction: column;
@@ -134,7 +134,7 @@
             letter-spacing: 0.5px;
         }
 
-        /* نمط الخط الأبيض الممشوق والواضح المطابق للصورة المطلوبة */
+        /* نمط الخط الأبيض الممشوق والواضح */
         .title-text {
             font-family: 'Segoe UI', Tahoma, Geneva, sans-serif;
             font-size: 18px; 
@@ -287,27 +287,23 @@
 </head>
 <body>
 
-    <h2>محرر قوالب الإذاعة</h2>
+    <h2>محرر قوالب موسوعة البصرة</h2>
 
-    <!-- شاشة المعاينة الحية -->
     <div class="preview-container" id="capture-area">
         
-        <!-- منطقة عرض الصورة الخلفية -->
         <div class="image-area" id="bg-image-layer">
             <div class="top-overlay">
                 <div class="date-box" id="display-date"></div>
             </div>
 
-            <!-- الشعار العلوي -->
             <div class="brand-section">
                 <img id="display-logo" class="logo-img" src="Logo.png" alt="logo">
             </div>
 
-            <!-- صندوق النص الشفاف (مطابق للنموذج) -->
             <div class="bottom-content-area" id="bottom-bar-area">
                 <div class="text-container">
                     <div class="urgent-badge" id="display-urgent">عاجل</div>
-                    <p class="title-text" id="display-title">التميمي تؤكد احترامها لأبناء تشرين وتعلن اتخاذ إجراءات قانونية بحق مروّجي الأخبار الكاذبة</p>
+                    <p class="title-text" id="display-title">أدخل عنوان الخبر الإخباري هنا ليظهر متناسقاً داخل الشريط...</p>
                 </div>
                 
                 <div class="social-footer">
@@ -317,13 +313,12 @@
                         <div class="social-item"><i class="fab fa-tiktok"></i></div>
                         <div class="social-item"><i class="fab fa-telegram"></i></div>
                     </div>
-                    <span class="brand-handle">al rasheed fm basra</span>
+                    <span class="brand-handle">mawsuatalbasra</span>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- لوحة التحكم السفلى -->
     <div class="control-panel">
 
         <div class="section-title">إدراج صورة الخبر أو الخلفية</div>
@@ -354,7 +349,7 @@
         </div>
 
         <div class="section-title">محتوى النص / الخبر</div>
-        <textarea id="input-title" placeholder="اكتب نص الخبر هنا..." oninput="updateTitle()">التميمي تؤكد احترامها لأبناء تشرين وتعلن اتخاذ إجراءات قانونية بحق مروّجي الأخبار الكاذبة</textarea>
+        <textarea id="input-title" placeholder="اكتب نص الخبر هنا..." oninput="updateTitle()"></textarea>
 
         <button class="btn-download" onclick="downloadImage()">تصدير التصميم كصورة للنشر</button>
     </div>
@@ -405,7 +400,7 @@
             const titleInput = document.getElementById('input-title').value;
             const displayTitle = document.getElementById('display-title');
             if(titleInput.trim() === "") {
-                displayTitle.innerText = "اكتب نص الخبر هنا...";
+                displayTitle.innerText = "أدخل عنوان الخبر الإخباري هنا ليظهر متناسقاً داخل الشريط...";
             } else {
                 displayTitle.innerText = titleInput;
             }
@@ -428,7 +423,7 @@
             html2canvas(captureArea, options).then(canvas => {
                 const image = canvas.toDataURL("image/png");
                 const link = document.createElement('a');
-                link.download = `radio_post_${Date.now()}.png`;
+                link.download = `basra_news_${Date.now()}.png`;
                 link.href = image;
                 link.click();
             });
