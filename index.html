@@ -27,7 +27,7 @@
         .preview-container {
             width: 420px;
             height: 580px;
-            background-color: #f8fafc;
+            background-color: #000000;
             border-radius: 4px;
             position: relative;
             box-shadow: 0 12px 35px rgba(0,0,0,0.6);
@@ -37,16 +37,18 @@
             box-sizing: border-box;
         }
 
-        /* منطقة عرض الصورة أو الكتاب الرسمي */
+        /* الصورة تمتد على كامل مساحة الكارد بدون أي صناديق لونية */
         .image-area {
             width: 100%;
-            height: 70%; 
-            background-color: #f8fafc; 
+            height: 100%; 
+            background-color: #000000; 
             background-repeat: no-repeat;
             background-size: cover;
             background-position: center;
-            position: relative;
-            box-sizing: border-box;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
         }
 
         /* الهيدر العلوي: الشعار يمين والتاريخ يسار */
@@ -59,14 +61,14 @@
             justify-content: space-between;
             align-items: center;
             padding: 10px 15px;
-            z-index: 3;
-            background: linear-gradient(rgba(0,0,0,0.4), transparent);
+            z-index: 4;
+            background: linear-gradient(rgba(0,0,0,0.5), transparent);
         }
 
         .brand-section {
             display: flex;
             align-items: center;
-            z-index: 4;
+            z-index: 5;
             user-select: none;
         }
 
@@ -87,30 +89,29 @@
             letter-spacing: 0.5px;
         }
 
-        /* منطقة الخبر السفلية: شفافة لأقصى حد ممكن (شفافية شبه كاملة) */
-        .bottom-content-area {
-            width: 100%;
-            height: 30%; 
-            background: rgba(11, 17, 32, 0.05); /* شفافة جداً لتكشف عن محتوى الصورة بالكامل */
-            border-top: 1.5px solid #ef4444; 
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            padding: 8px 12px 6px 12px;
-            box-sizing: border-box;
-            z-index: 2;
+        /* الخط الأحمر الفاصل تماماً مثل الصورة المطلوبة */
+        .red-divider-line {
+            position: absolute;
+            top: 55%; /* يمكنك التحكم بمكان الخط الأحمر من هنا */
+            left: 0;
+            right: 0;
+            height: 2px;
+            background-color: #ef4444;
+            z-index: 3;
         }
 
-        .text-container {
+        /* منطقة النص السفلي تطفو مباشرة على الصورة بدون أي صندوق خلفي */
+        .text-overlay-area {
+            position: absolute;
+            bottom: 25px;
+            left: 15px;
+            right: 15px;
+            z-index: 3;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            flex-grow: 1;
             text-align: center;
-            padding: 0 5px;
-            gap: 4px;
-            overflow: hidden;
+            gap: 6px;
         }
 
         .urgent-badge {
@@ -121,32 +122,33 @@
             padding: 2px 10px;
             border-radius: 4px;
             display: none; 
-            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.5);
             letter-spacing: 0.5px;
         }
 
         .title-text {
-            font-size: 15px; 
+            font-size: 18px; 
             font-weight: bold;
             color: #ffffff;
             margin: 0;
-            line-height: 1.35;
-            text-shadow: 2px 2px 6px rgba(0,0,0,0.95); /* ظل قوي للحروف لتبقى مقروءة بوضوح تمام رغم شفافية الخلفية */
-            display: -webkit-box;
-            -webkit-line-clamp: 4;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
+            line-height: 1.4;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.95), 0 0 10px rgba(0,0,0,0.8);
         }
 
-        /* شريط الحسابات السفلي */
+        /* شريط الحسابات السفلي الشفاف تماماً على حافة الصورة */
         .social-footer {
-            border-top: 1px solid rgba(239, 68, 68, 0.4);
-            padding-top: 4px;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 8px 15px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             font-size: 12px;
             font-weight: bold;
+            z-index: 4;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
         }
 
         .brand-handle {
@@ -283,31 +285,34 @@
     <!-- شاشة المعاينة الحية -->
     <div class="preview-container" id="capture-area">
         
-        <!-- منطقة عرض الصورة أو المستند -->
-        <div class="image-area" id="bg-image-layer">
-            <div class="top-overlay">
-                <div class="brand-section">
-                    <img id="display-logo" class="logo-img" src="Logo.png" alt="logo">
-                </div>
-                <div class="date-box" id="display-date"></div>
+        <!-- صورة الخلفيةاملة -->
+        <div class="image-area" id="bg-image-layer"></div>
+
+        <!-- الهيدر العلوي -->
+        <div class="top-overlay">
+            <div class="brand-section">
+                <img id="display-logo" class="logo-img" src="Logo.png" alt="logo">
             </div>
+            <div class="date-box" id="display-date"></div>
         </div>
         
-        <!-- منطقة الخبر السفلية الشفافة جداً -->
-        <div class="bottom-content-area" id="bottom-bar-area">
-            <div class="text-container">
-                <div class="urgent-badge" id="display-urgent">عاجل</div>
-                <p class="title-text" id="display-title">أدخل عنوان الخبر الإخباري هنا ليظهر متناسقاً داخل الشريط...</p>
-            </div>
-            
-            <div class="social-footer">
-                <span class="brand-handle">mawsuatalbasra</span>
-                <div class="social-icons-group">
-                    <div class="social-item"><i class="fab fa-facebook"></i></div>
-                    <div class="social-item"><i class="fab fa-tiktok"></i></div>
-                    <div class="social-item"><i class="fab fa-whatsapp"></i></div>
-                    <div class="social-item"><i class="fab fa-telegram"></i></div>
-                </div>
+        <!-- الخط الأحمر الفاصل (مطابق للصورة تماماً) -->
+        <div class="red-divider-line" id="line-position"></div>
+
+        <!-- النص السفلي الطافي مباشرة فوق الصورة بدون صندوق -->
+        <div class="text-overlay-area">
+            <div class="urgent-badge" id="display-urgent">عاجل</div>
+            <p class="title-text" id="display-title">أدخل عنوان الخبر الإخباري هنا ليظهر مباشرة على الصورة...</p>
+        </div>
+
+        <!-- شريط الحسابات السفلي -->
+        <div class="social-footer">
+            <span class="brand-handle">mawsuatalbasra</span>
+            <div class="social-icons-group">
+                <div class="social-item"><i class="fab fa-facebook"></i></div>
+                <div class="social-item"><i class="fab fa-tiktok"></i></div>
+                <div class="social-item"><i class="fab fa-whatsapp"></i></div>
+                <div class="social-item"><i class="fab fa-telegram"></i></div>
             </div>
         </div>
     </div>
@@ -336,16 +341,16 @@
             <span id="image-size-val" class="slider-val">100%</span>
         </div>
 
-        <div class="section-title">ارتفاع شريط العنوان السفلي</div>
+        <div class="section-title">موقع الخط الأحمر الفاصل</div>
         <div class="slider-container">
-            <input type="range" id="bar-height-slider" min="20" max="50" value="30" oninput="changeBarHeight()">
-            <span id="bar-height-val" class="slider-val">30%</span>
+            <input type="range" id="line-pos-slider" min="20" max="80" value="55" oninput="changeLinePosition()">
+            <span id="line-pos-val" class="slider-val">55%</span>
         </div>
 
         <div class="section-title">حجم خط الخبر السفلي</div>
         <div class="slider-container">
-            <input type="range" id="font-size-slider" min="12" max="24" value="15" oninput="changeFontSize()">
-            <span id="font-size-val" class="slider-val">15px</span>
+            <input type="range" id="font-size-slider" min="12" max="26" value="18" oninput="changeFontSize()">
+            <span id="font-size-val" class="slider-val">18px</span>
         </div>
 
         <div class="section-title">محتوى العنوان</div>
@@ -396,22 +401,19 @@
             sizeLabel.innerText = sliderValue + '%';
         }
 
-        function changeBarHeight() {
-            const barHeight = document.getElementById('bar-height-slider').value;
-            const bottomBar = document.getElementById('bottom-bar-area');
-            const imageArea = document.getElementById('bg-image-layer');
-            const heightLabel = document.getElementById('bar-height-val');
-
-            bottomBar.style.height = barHeight + '%';
-            imageArea.style.height = (100 - barHeight) + '%';
-            heightLabel.innerText = barHeight + '%';
+        function changeLinePosition() {
+            const posValue = document.getElementById('line-pos-slider').value;
+            const redLine = document.getElementById('line-position');
+            const posLabel = document.getElementById('line-pos-val');
+            redLine.style.top = posValue + '%';
+            posLabel.innerText = posValue + '%';
         }
 
         function updateTitle() {
             const titleInput = document.getElementById('input-title').value;
             const displayTitle = document.getElementById('display-title');
             if(titleInput.trim() === "") {
-                displayTitle.innerText = "أدخل عنوان الخبر الإخباري هنا ليظهر متناسقاً داخل الشريط...";
+                displayTitle.innerText = "أدخل عنوان الخبر الإخباري هنا ليظهر مباشرة على الصورة...";
             } else {
                 displayTitle.innerText = titleInput;
             }
