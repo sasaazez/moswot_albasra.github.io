@@ -89,11 +89,11 @@
             letter-spacing: 0.5px;
         }
 
-        /* منطقة الخبر السفلية بشفافية خفيفة مطابقة للصورة المطلوبة */
+        /* منطقة الخبر السفلية بشفافية كاملة (بدون أي خلفية ملونة) */
         .bottom-content-area {
             width: 100%;
             height: 25%; 
-            background: rgba(11, 17, 32, 0.35); 
+            background: transparent; 
             border-top: 1.5px solid #ef4444; 
             display: flex;
             flex-direction: column;
@@ -292,7 +292,7 @@
             </div>
         </div>
         
-        <!-- منطقة الخبر السفلية بشفافية مطابقة للمطلوب -->
+        <!-- منطقة الخبر السفلية بخفافية/شفافية تامة -->
         <div class="bottom-content-area" id="bottom-bar-area">
             <div class="text-container">
                 <div class="urgent-badge" id="display-urgent">عاجل</div>
