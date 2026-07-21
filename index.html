@@ -49,7 +49,7 @@
             box-sizing: border-box;
         }
 
-        /* هيدر علوي لعرض التاريخ */
+        /* هيدر علوي لعرض التاريخ بدون إطار */
         .top-overlay {
             position: absolute;
             top: 0;
@@ -63,21 +63,15 @@
             background: linear-gradient(rgba(0,0,0,0.35), transparent);
         }
 
-        /* ستايل التاريخ الأنيق بخلفية زجاجية وإطار أزرق متناسق */
         .date-box {
-            font-size: 13px;
+            font-size: 14px;
             font-weight: bold;
             color: #38bdf8;
-            background: rgba(15, 23, 42, 0.75);
-            padding: 6px 12px;
-            border-radius: 8px;
-            backdrop-filter: blur(6px);
-            border: 1px solid rgba(56, 189, 248, 0.3);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9);
             letter-spacing: 0.5px;
         }
 
-        /* موقع الشعار: كبير، بارز، وبإطار نيلي/أزرق أنيق */
+        /* موقع الشعار: كبير وواضح وبدون أي إطار */
         .brand-section {
             position: absolute;
             top: 10px;
@@ -86,12 +80,6 @@
             align-items: center;
             z-index: 4;
             user-select: none;
-            background: rgba(15, 23, 42, 0.7);
-            padding: 5px;
-            border-radius: 50%;
-            border: 2px solid #38bdf8;
-            box-shadow: 0 4px 15px rgba(56, 189, 248, 0.45);
-            backdrop-filter: blur(6px);
         }
 
         .logo-img {
@@ -100,7 +88,7 @@
             object-fit: contain;
             display: block;
             background: transparent;
-            border-radius: 50%;
+            filter: drop-shadow(0 2px 5px rgba(0,0,0,0.8));
         }
 
         /* منطقة الخبر السفلية */
@@ -151,7 +139,7 @@
             text-shadow: 2px 2px 5px rgba(0,0,0,0.95);
         }
 
-        /* شريط الحسابات السفلي مع اسم الموقع متناسق ونظيف */
+        /* شريط الحسابات السفلي مع اسم الموقع بدون إطار */
         .social-footer {
             border-top: 1.5px solid #ef4444;
             padding-top: 5px;
@@ -164,11 +152,7 @@
 
         .brand-handle {
             color: #38bdf8;
-            background: rgba(15, 23, 42, 0.75);
-            padding: 3px 8px;
-            border-radius: 6px;
-            border: 1px solid rgba(56, 189, 248, 0.3);
-            backdrop-filter: blur(4px);
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9);
             letter-spacing: 0.5px;
         }
 
@@ -306,7 +290,7 @@
                 <div class="date-box" id="display-date"></div>
             </div>
 
-            <!-- الشعار بحجم أكبر وإطار نيلي بارز -->
+            <!-- الشعار بدون إطار -->
             <div class="brand-section">
                 <img id="display-logo" class="logo-img" src="Logo.png" alt="logo">
             </div>
@@ -436,15 +420,6 @@
             }
         }
 
-        function changeFontSize() {
-            const sliderValue = document.getElementById('font-size-slider5').value || document.getElementById('font-size-slider').value;
-            const displayTitle = document.getElementById('display-title');
-            const sizeLabel = document.getElementById('font-size-val');
-            displayTitle.style.fontSize = sliderValue + 'px';
-            sizeLabel.innerText = sliderValue + 'px';
-        }
-        
-        // ربط السلايدر بالشكل الصحيح
         document.getElementById('font-size-slider').addEventListener('input', function() {
             document.getElementById('display-title').style.fontSize = this.value + 'px';
             document.getElementById('font-size-val').innerText = this.value + 'px';
