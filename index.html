@@ -49,7 +49,7 @@
             box-sizing: border-box;
         }
 
-        /* هيدر علوي لعرض التاريخ بدون إطار */
+        /* هيدر علوي لعرض التاريخ */
         .top-overlay {
             position: absolute;
             top: 0;
@@ -63,11 +63,14 @@
             background: linear-gradient(rgba(0,0,0,0.35), transparent);
         }
 
+        /* التاريخ بلون أحمر متدرج وأنيق بدون إطار */
         .date-box {
             font-size: 14px;
             font-weight: bold;
-            color: #38bdf8;
-            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9);
+            background: linear-gradient(135deg, #ff4d4d, #cc0000);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
             letter-spacing: 0.5px;
         }
 
@@ -139,7 +142,7 @@
             text-shadow: 2px 2px 5px rgba(0,0,0,0.95);
         }
 
-        /* شريط الحسابات السفلي مع اسم الموقع بدون إطار */
+        /* شريط الحسابات السفلي مع اسم الموقع بلون أحمر متدرج بدون إطار */
         .social-footer {
             border-top: 1.5px solid #ef4444;
             padding-top: 5px;
@@ -151,8 +154,10 @@
         }
 
         .brand-handle {
-            color: #38bdf8;
-            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9);
+            background: linear-gradient(135deg, #ff4d4d, #cc0000);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
             letter-spacing: 0.5px;
         }
 
