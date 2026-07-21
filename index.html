@@ -63,45 +63,46 @@
             background: linear-gradient(rgba(0,0,0,0.35), transparent);
         }
 
-        /* ستايل التاريخ الموحد والأنيق (نفس ستايل الهوية) */
+        /* التاريخ: أحمر بدون خلفية مع ظل قوي للوضوح */
         .date-box {
-            font-size: 13px;
+            font-size: 15px;
             font-weight: bold;
-            color: #38bdf8;
-            background: rgba(15, 23, 42, 0.75);
-            padding: 6px 12px;
-            border-radius: 8px;
-            backdrop-filter: blur(6px);
-            border: 1px solid rgba(56, 189, 248, 0.3);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            color: #ef4444;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.95);
             letter-spacing: 0.5px;
         }
 
-        /* موقع الشعار */
+        /* موقع والشعار: بحجم أكبر مع إطار نيلي/أزرق أنيق ودائري لكي يبرز */
         .brand-section {
             position: absolute;
-            top: 12px;
+            top: 10px;
             right: 15px;
             display: flex;
             align-items: center;
             z-index: 4;
             user-select: none;
+            background: rgba(15, 23, 42, 0.65);
+            padding: 4px;
+            border-radius: 50%;
+            border: 2px solid #38bdf8;
+            box-shadow: 0 4px 12px rgba(56, 189, 248, 0.4);
+            backdrop-filter: blur(4px);
         }
 
         .logo-img {
-            width: 62px;
-            height: 62px;
+            width: 68px;
+            height: 68px;
             object-fit: contain;
             display: block;
             background: transparent;
-            filter: drop-shadow(0 3px 6px rgba(0,0,0,0.6));
+            border-radius: 50%;
         }
 
-        /* منطقة الخبر السفلية بشفافية أعلى وإطار أحمر علوي */
+        /* منطقة الخبر السفلية */
         .bottom-content-area {
             width: 100%;
             height: 25%; 
-            background: rgba(11, 17, 32, 0.30); 
+            background: rgba(11, 17, 32, 0.35); 
             border-top: 1.5px solid #ef4444; 
             backdrop-filter: blur(8px);
             display: flex;
@@ -137,7 +138,7 @@
         }
 
         .title-text {
-            font-size: 17px; /* تكبير الخط الافتراضي ليصبح واضحاً وقوياً */
+            font-size: 17px; 
             font-weight: bold;
             color: #ffffff;
             margin: 0;
@@ -145,24 +146,20 @@
             text-shadow: 2px 2px 5px rgba(0,0,0,0.95);
         }
 
-        /* شريط الحسابات السفلي مع اسم الموقع بلون موحد وبارز */
+        /* شريط الحسابات السفلي مع اسم الموقع أحمر بدون خلفية */
         .social-footer {
             border-top: 1.5px solid #ef4444;
             padding-top: 5px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 12px;
+            font-size: 13px;
             font-weight: bold;
         }
 
         .brand-handle {
-            color: #38bdf8;
-            background: rgba(15, 23, 42, 0.75);
-            padding: 3px 8px;
-            border-radius: 6px;
-            border: 1px solid rgba(56, 189, 248, 0.3);
-            backdrop-filter: blur(4px);
+            color: #ef4444;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9);
             letter-spacing: 0.5px;
         }
 
@@ -300,7 +297,7 @@
                 <div class="date-box" id="display-date"></div>
             </div>
 
-            <!-- الشعار -->
+            <!-- الشعار بإطار نيلي وأزرق بارز -->
             <div class="brand-section">
                 <img id="display-logo" class="logo-img" src="Logo.png" alt="logo">
             </div>
