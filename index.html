@@ -49,7 +49,7 @@
             box-sizing: border-box;
         }
 
-        /* الهيدر العلوي: الشعار يمين والتاريخ يسار على سطر واحد وبمستوى دقيق */
+        /* الهيدر العلوي: الشعار يمين والتاريخ يسار وبنفس المستوى الأفقي تماماً */
         .top-overlay {
             position: absolute;
             top: 0;
@@ -61,9 +61,9 @@
             padding: 10px 15px;
             z-index: 3;
             background: linear-gradient(rgba(0,0,0,0.4), transparent);
-            direction: ltr; /* لضمان ثبات مواقع اليمين واليسار بدقة برمجية */
         }
 
+        /* الشعار في اليمين وبدون إطار وبحجم أكبر ومتناسق مع التاريخ */
         .brand-section {
             display: flex;
             align-items: center;
@@ -72,21 +72,21 @@
         }
 
         .logo-img {
-            width: 75px;
-            height: 75px;
+            width: 82px;
+            height: 82px;
             object-fit: contain;
             display: block;
             background: transparent;
             filter: drop-shadow(0 2px 5px rgba(0,0,0,0.8));
         }
 
+        /* التاريخ في اليسار وبنفس مستوى الشعار تماماً */
         .date-box {
             font-size: 14px;
             font-weight: bold;
             color: #38bdf8;
             text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9);
             letter-spacing: 0.5px;
-            direction: rtl;
         }
 
         /* منطقة الخبر السفلية */
@@ -284,7 +284,7 @@
         
         <!-- منطقة عرض الصورة -->
         <div class="image-area" id="bg-image-layer">
-            <!-- الهيدر العلوي يضمن وجود الشعار يميناً والتاريخ يساراً على خط واحد تماماً -->
+            <!-- الهيدر العلوي يضمن تواجد الشعار يميناً والتاريخ يساراً على خط واحد دقيق -->
             <div class="top-overlay">
                 <div class="brand-section">
                     <img id="display-logo" class="logo-img" src="Logo.png" alt="logo">
