@@ -53,7 +53,7 @@
             z-index: 1;
         }
 
-        /* الهيدر العلوي مع مسافة إضافية مريحة بصرياً من الحواف (8 بكسل) */
+        /* الهيدر العلوي مع مسافة آمنة مريحة من الحواف (8 بكسل) */
         .top-overlay {
             position: absolute;
             top: 8px;
@@ -64,7 +64,7 @@
             align-items: center;
             padding: 8px 12px;
             z-index: 4;
-            background: linear-gradient(rgba(0,0,0,0.4), transparent);
+            background: linear-gradient(rgba(0,0,0,0.3), transparent);
         }
 
         .brand-section {
@@ -87,63 +87,62 @@
             filter: drop-shadow(0 2px 4px rgba(0,0,0,0.6));
         }
 
-        /* صندوق التاريخ بلون كحلي أغمق متناسق تماماً مع الهوية وبمستطيل شفاف */
+        /* صندوق التاريخ (تم تصغيره بنسبة 10-15% وتقليل الظل الأسود أسفله ليتناسب بدقة مع الشعار) */
         .date-box {
-            font-size: 13px;
+            font-size: 11.5px;
             font-weight: 900;
             color: #ffffff;
-            background-color: rgba(15, 23, 42, 0.65); /* كحلي داكن شفاف منسجم مع الهوية */
-            padding: 5px 11px;
+            background-color: rgba(15, 23, 42, 0.7); /* كحلي داكن متناسق مع الهوية */
+            padding: 4px 9px;
             border-radius: 4px;
             backdrop-filter: blur(2px);
             letter-spacing: 0.5px;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2); /* تقليل الظل الأسود */
         }
 
-        /* شريط العنوان الرئيسي بتدرج احترافي متلاشي (تم تخفيف الخلفية الشفافة حوالي 5-10% لتظهر الوثائق بوضوح) */
+        /* شريط العنوان الرئيسي: يغطي فقط المنطقة خلف العنوان (آخر 20-25% من الارتفاع) وبتدرج نظيف */
         .title-box-container {
             position: absolute;
-            top: 57%;
+            bottom: 38px; /* يرتفع فوق الشريط السفلي مباشرة مع ترك مساحة تنفس مريحة */
             left: 0;
             right: 0;
-            height: 23%;
-            padding: 8px 15px;
+            min-height: 120px;
+            padding: 15px 16px 12px 16px; /* مسافة داخلية سفلية (Padding) بحوالي 12-15 بكسل ليتنفس التصميم */
             z-index: 3;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-end;
             text-align: center;
-            /* تدرج بخلفية أخف بنسبة واضحة لإبراز المستندات الرسمية بوضوح تام */
-            background: linear-gradient(to bottom, 
-                rgba(15, 23, 42, 0) 0%, 
-                rgba(15, 23, 42, 0.35) 35%, 
-                rgba(15, 23, 42, 0.35) 65%, 
+            /* تدرج يبدأ من أسفل الصورة فقط، يغطي آخر 20-25%، من أسود بشفافية 65% إلى شفاف تمامًا */
+            background: linear-gradient(to top, 
+                rgba(15, 23, 42, 0.70) 0%, 
+                rgba(15, 23, 42, 0.55) 50%, 
                 rgba(15, 23, 42, 0) 100%
             );
             backdrop-filter: blur(1px);
             box-sizing: border-box;
         }
 
-        /* الوسم التصنيفي بحجم أكبر، بارز، وبتثقيل (Bold) قوي وعرض ثابت لجميع التصنيفات لتوحيد الشكل */
+        /* الوسم التصنيفي بحجم بارز، عرض ثابت، ويبعد عن العنوان بمقدار 5 بكسل بالضبط */
         .news-category-badge {
             font-family: 'Cairo', sans-serif;
-            font-size: 12px;
+            font-size: 11.5px;
             font-weight: 900;
-            margin-bottom: 4px;
+            margin-bottom: 5px; /* مسافة دقيقة ومرتبة عن العنوان */
             letter-spacing: 1.2px;
-            text-shadow: 1px 1px 4px rgba(0,0,0,0.9);
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
             display: inline-block;
-            padding: 3px 0; /* ارتفاع ثابت */
-            width: 85px;    /* عرض ثابت لجميع التصنيفات لمنع تغير الحجم بين خبر وآخر */
+            padding: 3px 0;
+            width: 85px;    /* عرض ثابت لجميع التصنيفات لتوحيد الشكل */
             text-align: center;
             border-radius: 4px;
             color: #ffffff;
             background-color: #D32F2F; /* الافتراضي: عاجل */
-            box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
         }
 
-        /* خصائص العنوان: خط Cairo ExtraBold (يدعم حتى 3 أسطر بوضوح تام) */
+        /* خصائص العنوان: خط Cairo ExtraBold مع تخفيف الظل/الـ Stroke الأبيض ليصبح النص أنعم وأكثر احترافية */
         .title-text {
             font-family: 'Cairo', sans-serif;
             font-size: 15px; 
@@ -151,11 +150,13 @@
             color: #ffffff;
             margin: 0;
             line-height: 1.35;
-            text-shadow: 2px 2px 8px rgba(0,0,0,1), 0 0 12px rgba(0,0,0,0.9);
+            /* تخفيف الـ Stroke الأبيض والظل ليكون النص أنعم وأكثر فخامة على الشاشات الكبيرة */
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.9), 0 0 6px rgba(0,0,0,0.5);
             overflow: hidden;
             display: -webkit-box;
-            -webkit-line-clamp: 3; /* دعم حتى 3 أسطر بناءً على المعيار الاحترافي الجديد */
+            -webkit-line-clamp: 3; /* دعم حتى 3 أسطر */
             -webkit-box-orient: vertical;
+            width: 100%;
         }
 
         /* شريط الحسابات السفلي النحيف والأنيق */
@@ -177,34 +178,38 @@
             box-sizing: border-box;
         }
 
+        /* تكبير عبارة موسوعة البصرة قليلًا لأنها اسم العلامة التجارية */
         .brand-handle {
             color: #ffffff; 
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9);
             letter-spacing: 0.5px;
             order: 2;
-            font-size: 11px;
+            font-size: 12px; /* تكبير اسم العلامة التجارية */
+            font-weight: 900;
         }
 
         .brand-handle .sep {
             color: #94a3b8; 
-            margin: 0 4px;
+            margin: 0 5px;
             font-weight: normal;
         }
 
         .brand-handle span.sub-title {
-            color: #D4AF37; 
+            color: #D4AF37;
+            font-size: 11px;
         }
 
         .social-icons-group {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
             order: 1;
         }
 
+        /* تصغير الأيقونات 10% لتصبح أكثر أناقة ونعومة */
         .social-item i {
             color: #ffffff !important;
-            font-size: 14px;
+            font-size: 12.5px; /* تم التصغير بنسبة 10% */
             filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.9));
         }
 
@@ -311,12 +316,12 @@
             <div class="brand-section">
                 <img id="display-logo" class="logo-img" src="Logo.png" alt="logo">
             </div>
-            <!-- صندوق التاريخ بمستطيل كحلي أغمق متناسق تماماً ومسافة مريحة من اليسار والأعلى -->
+            <!-- صندوق التاريخ بحجم مصغر وظل مخفف ليتناسق مع الشعار -->
             <div class="date-box" id="display-date"></div>
         </div>
         
-        <!-- شريط العنوان الرئيسي بتدرج خفيف ومخفف الشفافية لإظهار الوثائق بوضوح -->
-        <div class="title-box-container" id="title-box-pos">
+        <!-- شريط العنوان الرئيسي: يغطي آخر 20-25% من الأسفل فقط مع مسافة تنفس دقيقة للعنوان -->
+        <div class="title-box-container">
             <div class="news-category-badge" id="display-category">عاجل</div>
             <p class="title-text" id="display-title">ضع أهم كلمة في البداية.. عنوان خبري احترافي لا يتجاوز 20–25 كلمة ليظهر بوضوح تام...</p>
         </div>
@@ -362,12 +367,6 @@
         <div class="slider-container">
             <input type="range" id="image-size-slider" min="30" max="200" value="100" oninput="changeImageSize()">
             <span id="image-size-val" class="slider-val">100%</span>
-        </div>
-
-        <div class="section-title">موقع شريط العنوان (الارتفاع)</div>
-        <div class="slider-container">
-            <input type="range" id="box-pos-slider" min="40" max="80" value="57" oninput="changeBoxPosition()">
-            <span id="box-pos-val" class="slider-val">57%</span>
         </div>
 
         <div class="section-title">حجم خط العنوان</div>
@@ -429,14 +428,6 @@
             sizeLabel.innerText = sliderValue + '%';
         }
 
-        function changeBoxPosition() {
-            const posValue = document.getElementById('box-pos-slider').value;
-            const titleBox = document.getElementById('title-box-pos');
-            const posLabel = document.getElementById('box-pos-val');
-            titleBox.style.top = posValue + '%';
-            posLabel.innerText = posValue + '%';
-        }
-
         function updateTitle() {
             const titleInput = document.getElementById('input-title').value;
             const displayTitle = document.getElementById('display-title');
@@ -448,7 +439,7 @@
         }
 
         function changeFontSize() {
-            const fontSizeVal = document.getElementById('font-size-slider').value;
+            const fontSizeVal = document.getElementById('font-size-slider5').value || document.getElementById('font-size-slider').value;
             document.getElementById('display-title').style.fontSize = fontSizeVal + 'px';
             document.getElementById('font-size-val').innerText = fontSizeVal + 'px';
         }
