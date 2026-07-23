@@ -39,7 +39,7 @@
             box-sizing: border-box;
         }
 
-        /* خط فاصل رفيع جداً (1px) بلون الكحلي فوق الشريط السفلي مباشرة لربط وتماسك عناصر التصميم */
+        /* خط فاصل رفيع جداً (1px) فوق الشريط السفلي مباشرة لربط وتماسك التصميم */
         .bottom-divider-line {
             position: absolute;
             bottom: 38px;
@@ -98,12 +98,12 @@
             filter: drop-shadow(0 2px 4px rgba(0,0,0,0.6));
         }
 
-        /* صندوق التاريخ (بشفافية 90-95% ليندمج مع الصورة، ولونه مطابق للتصنيف) */
+        /* صندوق التاريخ (شفافية 92% لتدامج خفيف مع الصورة، ولونه مطابق للتصنيف) */
         .date-box {
             font-size: 11.5px;
             font-weight: 900;
             color: #ffffff;
-            background-color: rgba(211, 47, 47, 0.92); /* شفافة 92% لتندمج مع الصورة */
+            background-color: rgba(211, 47, 47, 0.92);
             padding: 4px 9px;
             border-radius: 4px;
             backdrop-filter: blur(2px);
@@ -111,7 +111,7 @@
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
         }
 
-        /* شريط العنوان الرئيسي (تدرج بنهاية متدرجة أكثر نعومة Feather أكبر وتوزيع مساحات مثالي) */
+        /* شريط العنوان الرئيسي (تدرج بنهاية متدرجة ونعومة Feather أكبر) */
         .title-box-container {
             position: absolute;
             bottom: 39px;
@@ -125,7 +125,6 @@
             align-items: center;
             justify-content: flex-end;
             text-align: center;
-            /* تدرج بنهاية علوية أكثر نعومة (Feather أكبر) لاحترافية بصرية أعلى */
             background: linear-gradient(to top, 
                 rgba(15, 23, 42, 0.72) 0%, 
                 rgba(15, 23, 42, 0.58) 35%, 
@@ -136,12 +135,12 @@
             box-sizing: border-box;
         }
 
-        /* بطاقة التصنيف (تم رفعها للأعلى بمقدار 8-10 بكسل لفصلها بشكل أجمل عن العنوان) */
+        /* بطاقة التصنيف (تم رفعها للأعلى بمقدار 8-10 بكسل لتحقيق فصل أجمل عن العنوان) */
         .news-category-badge {
             font-family: 'Cairo', sans-serif;
             font-size: 11.5px;
             font-weight: 900;
-            margin-bottom: 9px; /* مسافة أوسع قليلاً لتوفير فصل أجمل عن العنوان */
+            margin-bottom: 9px;
             letter-spacing: 1.2px;
             text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
             display: inline-block;
@@ -154,14 +153,14 @@
             box-shadow: 0 2px 5px rgba(0,0,0,0.3);
         }
 
-        /* خصائص العنوان (باستخدام تباعد أسطر Line Height من 1.15 إلى 1.2 لسهولة القراءة) */
+        /* خصائص العنوان (ضبط تباعد الأسطر Line Height بين 1.15 و 1.2) */
         .title-text {
             font-family: 'Cairo', sans-serif;
             font-size: 15px; 
             font-weight: 900; 
             color: #ffffff;
             margin: 0;
-            line-height: 1.18; /* تباعد أسطر مثالي ومريح للقراءة */
+            line-height: 1.18;
             text-shadow: 1px 1px 4px rgba(0,0,0,0.9), 0 0 6px rgba(0,0,0,0.5);
             overflow: hidden;
             display: -webkit-box;
@@ -203,10 +202,10 @@
             font-weight: normal;
         }
 
-        /* تصغير الخط الذهبي "منصة إخبارية مستقلة" بدرجة واحدة فقط حتى لا ينافس اسم الوكالة */
+        /* تصغير الخط الذهبي "منصة إخبارية مستقلة" بدرجة واحدة فقط لعدم منافسة اسم الوكالة */
         .brand-handle span.sub-title {
             color: #D4AF37;
-            font-size: 10px; /* تم التصغير بدرجة واحدة لعدم التنافس مع اسم الوكالة */
+            font-size: 10px;
             font-weight: 700;
         }
 
@@ -321,7 +320,7 @@
         <!-- صورة الخلفية الكاملة -->
         <div class="image-area" id="bg-image-layer"></div>
 
-        <!-- الخط الفاصل الرفيع جداً (1px) لربط وتماسك عناصر القالب -->
+        <!-- الخط الفاصل الرفيع (1px) لتحقيق التماسك البصري -->
         <div class="bottom-divider-line"></div>
 
         <!-- الهيدر العلوي -->
@@ -329,7 +328,7 @@
             <div class="brand-section">
                 <img id="display-logo" class="logo-img" src="Logo.png" alt="logo">
             </div>
-            <!-- صندوق التاريخ بشفافية مندمجة (92%) ولون مطابق للتصنيف -->
+            <!-- صندوق التاريخ بلون التصنيف وشفافية 92% -->
             <div class="date-box" id="display-date"></div>
         </div>
         
@@ -357,16 +356,17 @@
         <div class="section-title">إدراج صورة الخبر أو الكتاب الرسمي</div>
         <input type="file" id="image-loader" class="input-custom" accept="image/*" onchange="loadImage(event)">
 
-        <div class="section-title">تصنيف نوع الخبر (حسب الألوان المعتمدة)</div>
+        <div class="section-title">تصنيف نوع الخبر (حسب الجدول المعتمد)</div>
         <select id="category-select" class="select-custom" onchange="changeCategory()">
             <option value="عاجل" data-color="#D32F2F">🔴 عاجل</option>
-            <option value="أمني" data-color="#1E3A8A">🔵 أمني</option>
-            <option value="سياسة" data-color="#D4A017">🟡 سياسة</option>
+            <option value="محلي" data-color="#F57C00">🟠 محلي</option>
+            <option value="سياسة" data-color="#D4AF37">🟡 سياسة</option>
             <option value="اقتصاد" data-color="#2E7D32">🟢 اقتصاد</option>
-            <option value="رياضة" data-color="#F57C00">🟠 رياضة</option>
-            <option value="ثقافة" data-color="#7B1FA2">🟣 ثقافة</option>
-            <option value="طقس" data-color="#039BE5">🟦 طقس</option>
-            <option value="منوع" data-color="#8D6E63">🟤 منوع</option>
+            <option value="طقس" data-color="#29B6F6">🔵 طقس</option>
+            <option value="منوع" data-color="#8E24AA">🟣 منوع</option>
+            <option value="أمني" data-color="#1E3A8A">🔷 أمني</option>
+            <option value="رياضة" data-color="#263238">⚫ رياضة</option>
+            <option value="ثقافة" data-color="#6D4C41">🟤 ثقافة</option>
         </select>
 
         <div class="section-title">طريقة احتواء الصورة داخل الإطار</div>
@@ -419,14 +419,13 @@
             const selectedOption = selectElement.options[selectElement.selectedIndex];
             const colorVal = selectedOption.getAttribute('data-color');
             
-            // تحديث الوسم التصنيفي
+            // تحديث بطاقة التصنيف
             const badge = document.getElementById('display-category');
             badge.innerText = catVal;
             badge.style.backgroundColor = colorVal;
 
-            // تحديث بطاقة التاريخ بلون التصنيف مع الحفاظ على الشفافية المندمجة (92%)
+            // تحديث بطاقة التاريخ لتطابق لون التصنيف مع تطبيق شفافية 92%
             const dateBox = document.getElementById('display-date');
-            // تحويل اللون السداسي إلى RGB لتطبيق الشفافية البرمجية بدقة
             let hex = colorVal.replace('#','');
             let r = parseInt(hex.substring(0,2), 16);
             let g = parseInt(hex.substring(2,4), 16);
