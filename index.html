@@ -39,14 +39,14 @@
             box-sizing: border-box;
         }
 
-        /* صورة الخلفية */
+        /* صورة الخلفية - تم جعلها تغطي المساحة بالكامل لمنع الفراغات السوداء */
         .image-area {
             width: 100%;
-            height: 65%; 
+            height: 82%; 
             background-color: #000000; 
             background-repeat: no-repeat;
-            background-size: contain; 
-            background-position: center;
+            background-size: cover; 
+            background-position: center top;
             position: absolute;
             top: 0;
             left: 0;
@@ -112,7 +112,7 @@
             text-align: center;
             border-top: 0.5px solid rgba(255,255,255,0.05);
             border-bottom: 0.5px solid rgba(255,255,255,0.05);
-            background: rgba(15, 23, 42, 0.08); /* شفافة جداً لتندمج بسلاسة مع الكتاب الرسمي */
+            background: rgba(15, 23, 42, 0.08);
             backdrop-filter: blur(1px);
             box-sizing: border-box;
         }
@@ -342,8 +342,8 @@
 
         <div class="section-title">طريقة احتواء الصورة داخل الإطار</div>
         <select id="image-fit-select" class="select-custom" onchange="changeImageFit()">
-            <option value="contain">إظهار الصورة أو الكتاب كاملة (Contain - تلقائي)</option>
-            <option value="cover">ملء الإطار بالكامل بدون فراغات (Cover)</option>
+            <option value="cover">ملء الإطار بالكامل بدون فراغات (Cover - افتراضي)</option>
+            <option value="contain">إظهار الصورة أو الكتاب كاملة (Contain)</option>
         </select>
 
         <div class="section-title">تحجيم زوم الصورة الخلفية</div>
