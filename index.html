@@ -64,7 +64,7 @@
             align-items: center;
             padding: 10px 15px;
             z-index: 4;
-            background: linear-gradient(rgba(0,0,0,0.6), transparent);
+            background: linear-gradient(rgba(0,0,0,0.4), transparent);
         }
 
         .brand-section {
@@ -74,14 +74,17 @@
             user-select: none;
         }
 
-        /* الشعار بحجم مناسب */
+        /* الشعار بدون أي إطار أو خلفية وبشكل نظيف تماماً */
         .logo-img {
             width: 80px;
             height: 80px;
             object-fit: contain;
             display: block;
-            background: rgba(0, 0, 0, 0.65);
-backdrop-filter: blur(4px);
+            background: transparent !important;
+            border: none !important;
+            box-shadow: none !important;
+            outline: none !important;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.6));
         }
 
         /* التاريخ باللون الذهبي الموحد مع الهوية */
@@ -93,7 +96,7 @@ backdrop-filter: blur(4px);
             letter-spacing: 0.5px;
         }
 
-        /* شريط العنوان الرئيسي - شفاف جداً (درجة شفافة ذكية مع تكتشر خفيف للوضوح) */
+        /* شريط العنوان الرئيسي - شفاف جداً وقليل الظهور فوق المستند */
         .title-box-container {
             position: absolute;
             top: 65%;
@@ -107,10 +110,10 @@ backdrop-filter: blur(4px);
             align-items: center;
             justify-content: center;
             text-align: center;
-            border-top: 0.5px solid rgba(255,255,255,0.1);
-            border-bottom: 0.5px solid rgba(255,255,255,0.1);
-            background: rgba(15, 23, 42, 0.15); /* تم زيادة الشفافية بشكل كبير جداً بناءً على طلبك */
-            backdrop-filter: blur(1.5px);
+            border-top: 0.5px solid rgba(255,255,255,0.05);
+            border-bottom: 0.5px solid rgba(255,255,255,0.05);
+            background: rgba(15, 23, 42, 0.08); /* شفافة جداً لتندمج بسلاسة مع الكتاب الرسمي */
+            backdrop-filter: blur(1px);
             box-sizing: border-box;
         }
 
@@ -300,7 +303,7 @@ backdrop-filter: blur(4px);
             <div class="date-box" id="display-date"></div>
         </div>
         
-        <!-- شريط العنوان الرئيسي بشفافية عالية جداً -->
+        <!-- شريط العنوان الرئيسي بشفافية عالية جداً وقليل الظهور -->
         <div class="title-box-container" id="title-box-pos">
             <div class="news-category-badge" id="display-category">عاجل</div>
             <p class="title-text" id="display-title">أدخل عنوان الخبر الإخباري هنا ليظهر مباشرة داخل الشريط...</p>
