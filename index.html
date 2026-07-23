@@ -42,10 +42,10 @@
         /* صورة الخلفية */
         .image-area {
             width: 100%;
-            height: 60%; 
+            height: 65%; 
             background-color: #000000; 
             background-repeat: no-repeat;
-            background-size: cover;
+            background-size: contain; 
             background-position: center;
             position: absolute;
             top: 0;
@@ -93,48 +93,55 @@
             letter-spacing: 0.5px;
         }
 
-        /* شريط العنوان الرئيسي بشفافية عالية جداً */
+        /* شريط العنوان الرئيسي - شفاف جداً (درجة شفافة ذكية مع تكتشر خفيف للوضوح) */
         .title-box-container {
             position: absolute;
-            top: 60%;
+            top: 65%;
             left: 0;
             right: 0;
-            padding: 10px 20px;
+            height: 17%;
+            padding: 6px 15px;
             z-index: 3;
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center;
             text-align: center;
-            border-top: 0.5px solid rgba(255,255,255,0.15);
-            border-bottom: 0.5px solid rgba(255,255,255,0.15);
-            background: rgba(15, 23, 42, 0.25); 
-            backdrop-filter: blur(2px);
+            border-top: 0.5px solid rgba(255,255,255,0.1);
+            border-bottom: 0.5px solid rgba(255,255,255,0.1);
+            background: rgba(15, 23, 42, 0.15); /* تم زيادة الشفافية بشكل كبير جداً بناءً على طلبك */
+            backdrop-filter: blur(1.5px);
+            box-sizing: border-box;
         }
 
         /* الوسم التصنيفي الملون حسب الجدول المعتمد */
         .news-category-badge {
             font-family: 'Cairo', sans-serif;
-            font-size: 11px;
+            font-size: 10px;
             font-weight: 900;
             margin-bottom: 2px;
             letter-spacing: 1px;
             text-shadow: 1px 1px 3px rgba(0,0,0,0.9);
             display: inline-block;
-            padding: 1px 8px;
+            padding: 1px 6px;
             border-radius: 3px;
             color: #ffffff;
             background-color: #D32F2F; /* الافتراضي: عاجل */
         }
 
-        /* خصائص العنوان: خط Cairo ExtraBold، تباعد أسطر 1.4 */
+        /* خصائص العنوان: خط Cairo ExtraBold */
         .title-text {
             font-family: 'Cairo', sans-serif;
-            font-size: 18px; 
+            font-size: 16px; 
             font-weight: 900; 
             color: #ffffff;
             margin: 0;
-            line-height: 1.4;
-            text-shadow: 2px 2px 10px rgba(0,0,0,1), 0 0 15px rgba(0,0,0,0.9);
+            line-height: 1.35;
+            text-shadow: 2px 2px 8px rgba(0,0,0,1), 0 0 12px rgba(0,0,0,0.9);
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
         }
 
         /* شريط الحسابات السفلي */
@@ -143,7 +150,7 @@
             bottom: 0;
             left: 0;
             right: 0;
-            height: 38px;
+            height: 18%; 
             padding: 0 15px;
             display: flex;
             justify-content: space-between;
@@ -153,10 +160,11 @@
             z-index: 5;
             background: rgba(15, 23, 42, 0.98);
             border-top: 0.5px solid rgba(255, 255, 255, 0.2);
+            box-sizing: border-box;
         }
 
         .brand-handle {
-            color: #ffffff; /* موسوعة البصرة باللون الأبيض */
+            color: #ffffff; 
             text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9);
             letter-spacing: 0.5px;
             order: 2;
@@ -164,16 +172,15 @@
         }
 
         .brand-handle .sep {
-            color: #94a3b8; /* فاصل عمودي رمادي أنيق */
+            color: #94a3b8; 
             margin: 0 5px;
             font-weight: normal;
         }
 
         .brand-handle span.sub-title {
-            color: #D4AF37; /* منصة إخبارية مستقلة باللون الذهبي المعتمد */
+            color: #D4AF37; 
         }
 
-        /* أيقونات التواصل مكبرة وبمسافات متساوية */
         .social-icons-group {
             display: flex;
             align-items: center;
@@ -332,26 +339,26 @@
 
         <div class="section-title">طريقة احتواء الصورة داخل الإطار</div>
         <select id="image-fit-select" class="select-custom" onchange="changeImageFit()">
-            <option value="cover">ملء الإطار بالكامل (يمنع الفراغ الأبيض الجانبي)</option>
-            <option value="contain">إظهار الصورة كاملة بشكل طولي</option>
+            <option value="contain">إظهار الصورة أو الكتاب كاملة (Contain - تلقائي)</option>
+            <option value="cover">ملء الإطار بالكامل بدون فراغات (Cover)</option>
         </select>
 
         <div class="section-title">تحجيم زوم الصورة الخلفية</div>
         <div class="slider-container">
-            <input type="range" id="image-size-slider" min="50" max="200" value="100" oninput="changeImageSize()">
+            <input type="range" id="image-size-slider" min="30" max="200" value="100" oninput="changeImageSize()">
             <span id="image-size-val" class="slider-val">100%</span>
         </div>
 
         <div class="section-title">موقع شريط العنوان (الارتفاع)</div>
         <div class="slider-container">
-            <input type="range" id="box-pos-slider" min="30" max="90" value="60" oninput="changeBoxPosition()">
-            <span id="box-pos-val" class="slider-val">60%</span>
+            <input type="range" id="box-pos-slider" min="40" max="80" value="65" oninput="changeBoxPosition()">
+            <span id="box-pos-val" class="slider-val">65%</span>
         </div>
 
         <div class="section-title">حجم خط العنوان</div>
         <div class="slider-container">
-            <input type="range" id="font-size-slider" min="12" max="26" value="18" oninput="changeFontSize()">
-            <span id="font-size-val" class="slider-val">18px</span>
+            <input type="range" id="font-size-slider" min="12" max="24" value="16" oninput="changeFontSize()">
+            <span id="font-size-val" class="slider-val">16px</span>
         </div>
 
         <div class="section-title">محتوى العنوان</div>
@@ -425,10 +432,11 @@
             }
         }
 
-        document.getElementById('font-size-slider').addEventListener('input', function() {
-            document.getElementById('display-title').style.fontSize = this.value + 'px';
-            document.getElementById('font-size-val').innerText = this.value + 'px';
-        });
+        function changeFontSize() {
+            const fontSizeVal = document.getElementById('font-size-slider').value;
+            document.getElementById('display-title').style.fontSize = fontSizeVal + 'px';
+            document.getElementById('font-size-val').innerText = fontSizeVal + 'px';
+        }
 
         function downloadImage() {
             const captureArea = document.getElementById('capture-area');
