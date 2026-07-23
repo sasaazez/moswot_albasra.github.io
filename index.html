@@ -53,18 +53,18 @@
             z-index: 1;
         }
 
-        /* الهيدر العلوي */
+        /* الهيدر العلوي مع مسافة إضافية مريحة بصرياً من الحواف (8 بكسل) */
         .top-overlay {
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
+            top: 8px;
+            left: 8px;
+            right: 8px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 10px 15px;
+            padding: 8px 12px;
             z-index: 4;
-            background: linear-gradient(rgba(0,0,0,0.5), transparent);
+            background: linear-gradient(rgba(0,0,0,0.4), transparent);
         }
 
         .brand-section {
@@ -87,20 +87,20 @@
             filter: drop-shadow(0 2px 4px rgba(0,0,0,0.6));
         }
 
-        /* صندوق التاريخ بمستطيل صغير بخلفية كحلية شفافة وتاريخ أبيض لضمان الوضوح التام */
+        /* صندوق التاريخ بلون كحلي أغمق متناسق تماماً مع الهوية وبمستطيل شفاف */
         .date-box {
             font-size: 13px;
             font-weight: 900;
             color: #ffffff;
-            background-color: rgba(30, 58, 138, 0.45); /* خلفية كحلية شفافة (حوالي 40%) */
-            padding: 4px 10px;
+            background-color: rgba(15, 23, 42, 0.65); /* كحلي داكن شفاف منسجم مع الهوية */
+            padding: 5px 11px;
             border-radius: 4px;
             backdrop-filter: blur(2px);
             letter-spacing: 0.5px;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
         }
 
-        /* شريط العنوان الرئيسي بتدرج احترافي متلاشي (Gradient) وشفافية منضبطة */
+        /* شريط العنوان الرئيسي بتدرج احترافي متلاشي (تم تخفيف الخلفية الشفافة حوالي 5-10% لتظهر الوثائق بوضوح) */
         .title-box-container {
             position: absolute;
             top: 57%;
@@ -114,18 +114,18 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            /* تدرج احترافي: داكن بتركيز 40% عند المنتصف ويلاشي للأطراف */
+            /* تدرج بخلفية أخف بنسبة واضحة لإبراز المستندات الرسمية بوضوح تام */
             background: linear-gradient(to bottom, 
                 rgba(15, 23, 42, 0) 0%, 
-                rgba(15, 23, 42, 0.42) 35%, 
-                rgba(15, 23, 42, 0.42) 65%, 
+                rgba(15, 23, 42, 0.35) 35%, 
+                rgba(15, 23, 42, 0.35) 65%, 
                 rgba(15, 23, 42, 0) 100%
             );
-            backdrop-filter: blur(1.5px);
+            backdrop-filter: blur(1px);
             box-sizing: border-box;
         }
 
-        /* الوسم التصنيفي بحجم أكبر، بارز، وبتثقيل (Bold) قوي يلفت النظر أولاً */
+        /* الوسم التصنيفي بحجم أكبر، بارز، وبتثقيل (Bold) قوي وعرض ثابت لجميع التصنيفات لتوحيد الشكل */
         .news-category-badge {
             font-family: 'Cairo', sans-serif;
             font-size: 12px;
@@ -134,7 +134,9 @@
             letter-spacing: 1.2px;
             text-shadow: 1px 1px 4px rgba(0,0,0,0.9);
             display: inline-block;
-            padding: 2px 9px;
+            padding: 3px 0; /* ارتفاع ثابت */
+            width: 85px;    /* عرض ثابت لجميع التصنيفات لمنع تغير الحجم بين خبر وآخر */
+            text-align: center;
             border-radius: 4px;
             color: #ffffff;
             background-color: #D32F2F; /* الافتراضي: عاجل */
@@ -304,16 +306,16 @@
         <!-- صورة الخلفية الكاملة -->
         <div class="image-area" id="bg-image-layer"></div>
 
-        <!-- الهيدر العلوي -->
+        <!-- الهيدر العلوي مع مسافة آمنة مريحة من الحواف -->
         <div class="top-overlay">
             <div class="brand-section">
                 <img id="display-logo" class="logo-img" src="Logo.png" alt="logo">
             </div>
-            <!-- صندوق التاريخ بمستطيل كحلي شفاف وتاريخ أبيض -->
+            <!-- صندوق التاريخ بمستطيل كحلي أغمق متناسق تماماً ومسافة مريحة من اليسار والأعلى -->
             <div class="date-box" id="display-date"></div>
         </div>
         
-        <!-- شريط العنوان الرئيسي بتدرج احترافي متلاشي -->
+        <!-- شريط العنوان الرئيسي بتدرج خفيف ومخفف الشفافية لإظهار الوثائق بوضوح -->
         <div class="title-box-container" id="title-box-pos">
             <div class="news-category-badge" id="display-category">عاجل</div>
             <p class="title-text" id="display-title">ضع أهم كلمة في البداية.. عنوان خبري احترافي لا يتجاوز 20–25 كلمة ليظهر بوضوح تام...</p>
@@ -415,7 +417,7 @@
             const fitValue = document.getElementById('image-fit-select').value;
             const imageLayer = document.getElementById('bg-image-layer');
             imageLayer.style.backgroundSize = fitValue;
-            document.getElementById('image-size-slider').value, 100;
+            document.getElementById('image-size-slider').value = 100;
             document.getElementById('image-size-val').innerText = '100%';
         }
 
