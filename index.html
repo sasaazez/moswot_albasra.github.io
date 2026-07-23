@@ -39,6 +39,17 @@
             box-sizing: border-box;
         }
 
+        /* خط فاصل رفيع جداً (1px) بلون الكحلي فوق الشريط السفلي مباشرة لربط وتماسك عناصر التصميم */
+        .bottom-divider-line {
+            position: absolute;
+            bottom: 38px;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background-color: rgba(15, 23, 42, 0.25);
+            z-index: 6;
+        }
+
         /* صورة الخلفية تغطي كامل المساحة بدقة لمنع أي فراغات */
         .image-area {
             width: 100%;
@@ -53,7 +64,7 @@
             z-index: 1;
         }
 
-        /* الهيدر العلوي مع مسافة آمنة مريحة من الحواف (بدون أي تدرج علوي مزعج) */
+        /* الهيدر العلوي */
         .top-overlay {
             position: absolute;
             top: 8px;
@@ -87,12 +98,12 @@
             filter: drop-shadow(0 2px 4px rgba(0,0,0,0.6));
         }
 
-        /* صندوق التاريخ بحجم مصغر وظل مخفف ليتناسق مع الشعار */
+        /* صندوق التاريخ (بشفافية 90-95% ليندمج مع الصورة، ولونه مطابق للتصنيف) */
         .date-box {
             font-size: 11.5px;
             font-weight: 900;
             color: #ffffff;
-            background-color: rgba(15, 23, 42, 0.7); /* كحلي داكن متناسق مع الهوية */
+            background-color: rgba(211, 47, 47, 0.92); /* شفافة 92% لتندمج مع الصورة */
             padding: 4px 9px;
             border-radius: 4px;
             backdrop-filter: blur(2px);
@@ -100,41 +111,42 @@
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
         }
 
-        /* شريط العنوان الرئيسي: تم جعل التدرج خاصاً بمستطيل وخلفية العنوان فقط وليس كامل الصورة */
+        /* شريط العنوان الرئيسي (تدرج بنهاية متدرجة أكثر نعومة Feather أكبر وتوزيع مساحات مثالي) */
         .title-box-container {
             position: absolute;
-            bottom: 38px; /* يرتفع فوق الشريط السفلي مباشرة مع ترك مساحة تنفس مريحة */
+            bottom: 39px;
             left: 0;
             right: 0;
-            min-height: 120px;
-            padding: 15px 16px 12px 16px; /* مسافة داخلية سفلية ليتنفس التصميم */
+            min-height: 125px;
+            padding: 15px 16px 14px 16px;
             z-index: 3;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: flex-end;
             text-align: center;
-            /* تدرج خاص بمستطيل وعرض العنوان فقط (من أسود بشفافية 65% إلى شفاف تماماً) */
+            /* تدرج بنهاية علوية أكثر نعومة (Feather أكبر) لاحترافية بصرية أعلى */
             background: linear-gradient(to top, 
-                rgba(15, 23, 42, 0.70) 0%, 
-                rgba(15, 23, 42, 0.55) 50%, 
+                rgba(15, 23, 42, 0.72) 0%, 
+                rgba(15, 23, 42, 0.58) 35%, 
+                rgba(15, 23, 42, 0.30) 70%, 
                 rgba(15, 23, 42, 0) 100%
             );
             backdrop-filter: blur(1px);
             box-sizing: border-box;
         }
 
-        /* الوسم التصنيفي بحجم بارز، عرض ثابت، ويبعد عن العنوان بمقدار 5 بكسل بالضبط */
+        /* بطاقة التصنيف (تم رفعها للأعلى بمقدار 8-10 بكسل لفصلها بشكل أجمل عن العنوان) */
         .news-category-badge {
             font-family: 'Cairo', sans-serif;
             font-size: 11.5px;
             font-weight: 900;
-            margin-bottom: 5px; /* مسافة دقيقة ومرتبة عن العنوان */
+            margin-bottom: 9px; /* مسافة أوسع قليلاً لتوفير فصل أجمل عن العنوان */
             letter-spacing: 1.2px;
             text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
             display: inline-block;
             padding: 3px 0;
-            width: 85px;    /* عرض ثابت لجميع التصنيفات لتوحيد الشكل */
+            width: 85px;
             text-align: center;
             border-radius: 4px;
             color: #ffffff;
@@ -142,18 +154,18 @@
             box-shadow: 0 2px 5px rgba(0,0,0,0.3);
         }
 
-        /* خصائص العنوان: خط Cairo ExtraBold مع تخفيف الظل/الـ Stroke الأبيض ليصبح النص أنعم وأكثر احترافية */
+        /* خصائص العنوان (باستخدام تباعد أسطر Line Height من 1.15 إلى 1.2 لسهولة القراءة) */
         .title-text {
             font-family: 'Cairo', sans-serif;
             font-size: 15px; 
             font-weight: 900; 
             color: #ffffff;
             margin: 0;
-            line-height: 1.35;
+            line-height: 1.18; /* تباعد أسطر مثالي ومريح للقراءة */
             text-shadow: 1px 1px 4px rgba(0,0,0,0.9), 0 0 6px rgba(0,0,0,0.5);
             overflow: hidden;
             display: -webkit-box;
-            -webkit-line-clamp: 3; /* دعم حتى 3 أسطر */
+            -webkit-line-clamp: 3;
             -webkit-box-orient: vertical;
             width: 100%;
         }
@@ -173,11 +185,9 @@
             font-weight: bold;
             z-index: 5;
             background: rgba(15, 23, 42, 0.95);
-            border-top: 0.5px solid rgba(255, 255, 255, 0.2);
             box-sizing: border-box;
         }
 
-        /* تكبير عبارة موسوعة البصرة قليلًا لأنها اسم العلامة التجارية */
         .brand-handle {
             color: #ffffff; 
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9);
@@ -193,9 +203,11 @@
             font-weight: normal;
         }
 
+        /* تصغير الخط الذهبي "منصة إخبارية مستقلة" بدرجة واحدة فقط حتى لا ينافس اسم الوكالة */
         .brand-handle span.sub-title {
             color: #D4AF37;
-            font-size: 11px;
+            font-size: 10px; /* تم التصغير بدرجة واحدة لعدم التنافس مع اسم الوكالة */
+            font-weight: 700;
         }
 
         .social-icons-group {
@@ -205,7 +217,6 @@
             order: 1;
         }
 
-        /* تصغير الأيقونات 10% لتصبح أكثر أناقة ونعومة */
         .social-item i {
             color: #ffffff !important;
             font-size: 12.5px;
@@ -310,16 +321,19 @@
         <!-- صورة الخلفية الكاملة -->
         <div class="image-area" id="bg-image-layer"></div>
 
-        <!-- الهيدر العلوي (نظيف بدون أي تدرج خلف التاريخ أو الشعار) -->
+        <!-- الخط الفاصل الرفيع جداً (1px) لربط وتماسك عناصر القالب -->
+        <div class="bottom-divider-line"></div>
+
+        <!-- الهيدر العلوي -->
         <div class="top-overlay">
             <div class="brand-section">
                 <img id="display-logo" class="logo-img" src="Logo.png" alt="logo">
             </div>
-            <!-- صندوق التاريخ بحجم مصغر وظل مخفف ليتناسق مع الشعار -->
+            <!-- صندوق التاريخ بشفافية مندمجة (92%) ولون مطابق للتصنيف -->
             <div class="date-box" id="display-date"></div>
         </div>
         
-        <!-- شريط العنوان الرئيسي (التدرج محصور هنا فقط خلف العنوان والوسم التصنيفي) -->
+        <!-- شريط العنوان الرئيسي -->
         <div class="title-box-container">
             <div class="news-category-badge" id="display-category">عاجل</div>
             <p class="title-text" id="display-title">ضع أهم كلمة في البداية.. عنوان خبري احترافي لا يتجاوز 20–25 كلمة ليظهر بوضوح تام...</p>
@@ -343,17 +357,16 @@
         <div class="section-title">إدراج صورة الخبر أو الكتاب الرسمي</div>
         <input type="file" id="image-loader" class="input-custom" accept="image/*" onchange="loadImage(event)">
 
-        <div class="section-title">تصنيف نوع الخبر (حسب الجدول المعتمد)</div>
+        <div class="section-title">تصنيف نوع الخبر (حسب الألوان المعتمدة)</div>
         <select id="category-select" class="select-custom" onchange="changeCategory()">
             <option value="عاجل" data-color="#D32F2F">🔴 عاجل</option>
-            <option value="محلي" data-color="#F57C00">🟠 محلي</option>
-            <option value="سياسة" data-color="#D4AF37">🟡 سياسة</option>
+            <option value="أمني" data-color="#1E3A8A">🔵 أمني</option>
+            <option value="سياسة" data-color="#D4A017">🟡 سياسة</option>
             <option value="اقتصاد" data-color="#2E7D32">🟢 اقتصاد</option>
-            <option value="طقس" data-color="#29B6F6">🔵 طقس</option>
-            <option value="منوع" data-color="#8E24AA">🟣 منوع</option>
-            <option value="أمني" data-color="#1E3A8A">🔷 أمني</option>
-            <option value="رياضة" data-color="#263238">⚫ رياضة</option>
-            <option value="ثقافة" data-color="#6D4C41">🟤 ثقافة</option>
+            <option value="رياضة" data-color="#F57C00">🟠 رياضة</option>
+            <option value="ثقافة" data-color="#7B1FA2">🟣 ثقافة</option>
+            <option value="طقس" data-color="#039BE5">🟦 طقس</option>
+            <option value="منوع" data-color="#8D6E63">🟤 منوع</option>
         </select>
 
         <div class="section-title">طريقة احتواء الصورة داخل الإطار</div>
@@ -406,9 +419,19 @@
             const selectedOption = selectElement.options[selectElement.selectedIndex];
             const colorVal = selectedOption.getAttribute('data-color');
             
+            // تحديث الوسم التصنيفي
             const badge = document.getElementById('display-category');
             badge.innerText = catVal;
             badge.style.backgroundColor = colorVal;
+
+            // تحديث بطاقة التاريخ بلون التصنيف مع الحفاظ على الشفافية المندمجة (92%)
+            const dateBox = document.getElementById('display-date');
+            // تحويل اللون السداسي إلى RGB لتطبيق الشفافية البرمجية بدقة
+            let hex = colorVal.replace('#','');
+            let r = parseInt(hex.substring(0,2), 16);
+            let g = parseInt(hex.substring(2,4), 16);
+            let b = parseInt(hex.substring(4,6), 16);
+            dateBox.style.backgroundColor = `rgba(${r}, ${g}, ${b}, 0.92)`;
         }
 
         function changeImageFit() {
