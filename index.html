@@ -87,13 +87,17 @@
             filter: drop-shadow(0 2px 4px rgba(0,0,0,0.6));
         }
 
-        /* التاريخ باللون الكحلي المتناسق مع الشعار */
+        /* صندوق التاريخ بمستطيل صغير بخلفية كحلية شفافة وتاريخ أبيض لضمان الوضوح التام */
         .date-box {
-            font-size: 13.5px;
+            font-size: 13px;
             font-weight: 900;
-            color: #1e3a8a;
-            text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.8), 0 0 6px rgba(255, 255, 255, 0.6);
+            color: #ffffff;
+            background-color: rgba(30, 58, 138, 0.45); /* خلفية كحلية شفافة (حوالي 40%) */
+            padding: 4px 10px;
+            border-radius: 4px;
+            backdrop-filter: blur(2px);
             letter-spacing: 0.5px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
         }
 
         /* شريط العنوان الرئيسي بتدرج احترافي متلاشي (Gradient) وشفافية منضبطة */
@@ -305,6 +309,7 @@
             <div class="brand-section">
                 <img id="display-logo" class="logo-img" src="Logo.png" alt="logo">
             </div>
+            <!-- صندوق التاريخ بمستطيل كحلي شفاف وتاريخ أبيض -->
             <div class="date-box" id="display-date"></div>
         </div>
         
@@ -410,7 +415,7 @@
             const fitValue = document.getElementById('image-fit-select').value;
             const imageLayer = document.getElementById('bg-image-layer');
             imageLayer.style.backgroundSize = fitValue;
-            document.getElementById('image-size-slider').value = 100;
+            document.getElementById('image-size-slider').value, 100;
             document.getElementById('image-size-val').innerText = '100%';
         }
 
