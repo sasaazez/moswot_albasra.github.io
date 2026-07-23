@@ -88,7 +88,7 @@
         .date-box {
             font-size: 13px;
             font-weight: bold;
-            color: #f59e0b;
+            color: #D4AF37;
             text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9);
             letter-spacing: 0.5px;
         }
@@ -107,11 +107,11 @@
             text-align: center;
             border-top: 0.5px solid rgba(255,255,255,0.15);
             border-bottom: 0.5px solid rgba(255,255,255,0.15);
-            background: rgba(15, 23, 42, 0.25); /* خلفية شفافة جداً تظهر الصورة بوضوح مع الحفاظ على مقروءية النص */
-            backdrop-filter: blur(2px); /* تمعيل تأثير التغويش الخفيف لزيادة جمالية الشفافية */
+            background: rgba(15, 23, 42, 0.25); 
+            backdrop-filter: blur(2px);
         }
 
-        /* الوسم التصنيفي الملون حسب نوع الخبر */
+        /* الوسم التصنيفي الملون حسب الجدول المعتمد */
         .news-category-badge {
             font-family: 'Cairo', sans-serif;
             font-size: 11px;
@@ -123,7 +123,7 @@
             padding: 1px 8px;
             border-radius: 3px;
             color: #ffffff;
-            background-color: #dc2626; /* افتراضي (عاجل - أحمر) */
+            background-color: #D32F2F; /* الافتراضي: عاجل */
         }
 
         /* خصائص العنوان: خط Cairo ExtraBold، تباعد أسطر 1.4 */
@@ -156,15 +156,21 @@
         }
 
         .brand-handle {
-            color: #ffffff; 
+            color: #ffffff; /* موسوعة البصرة باللون الأبيض */
             text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9);
             letter-spacing: 0.5px;
             order: 2;
             font-size: 11.5px;
         }
 
-        .brand-handle span {
-            color: #f59e0b; /* ذهبي للكلمات المهمة */
+        .brand-handle .sep {
+            color: #94a3b8; /* فاصل عمودي رمادي أنيق */
+            margin: 0 5px;
+            font-weight: normal;
+        }
+
+        .brand-handle span.sub-title {
+            color: #D4AF37; /* منصة إخبارية مستقلة باللون الذهبي المعتمد */
         }
 
         /* أيقونات التواصل مكبرة وبمسافات متساوية */
@@ -295,7 +301,7 @@
 
         <!-- شريط الحسابات السفلي -->
         <div class="social-footer">
-            <span class="brand-handle">موسوعة البصرة <span>/ وكالة اخبار مستقلة</span></span>
+            <span class="brand-handle">موسوعة البصرة <span class="sep">│</span> <span class="sub-title">منصة إخبارية مستقلة</span></span>
             <div class="social-icons-group">
                 <div class="social-item"><i class="fab fa-facebook-f"></i></div>
                 <div class="social-item"><i class="fab fa-instagram"></i></div>
@@ -311,15 +317,17 @@
         <div class="section-title">إدراج صورة الخبر أو الكتاب الرسمي</div>
         <input type="file" id="image-loader" class="input-custom" accept="image/*" onchange="loadImage(event)">
 
-        <div class="section-title">تصنيف نوع الخبر (مع الألوان الثابتة)</div>
+        <div class="section-title">تصنيف نوع الخبر (حسب الجدول المعتمد)</div>
         <select id="category-select" class="select-custom" onchange="changeCategory()">
-            <option value="عاجل" data-color="#dc2626">عاجل (أحمر)</option>
-            <option value="سياسي" data-color="#2563eb">سياسي (أزرق)</option>
-            <option value="محلي" data-color="#16a34a">محلي (أخضر)</option>
-            <option value="اقتصادي" data-color="#ea580c">اقتصادي (برتقالي)</option>
-            <option value="رياضة" data-color="#9333ea">رياضة (بنفسجي)</option>
-            <option value="أمني" data-color="#334155">أمني (أسود/رمادي)</option>
-            <option value="الطقس" data-color="#0284c7">الطقس (سماوي)</option>
+            <option value="عاجل" data-color="#D32F2F">🔴 عاجل</option>
+            <option value="محلي" data-color="#F57C00">🟠 محلي</option>
+            <option value="سياسة" data-color="#D4AF37">🟡 سياسة</option>
+            <option value="اقتصاد" data-color="#2E7D32">🟢 اقتصاد</option>
+            <option value="طقس" data-color="#29B6F6">🔵 طقس</option>
+            <option value="منوع" data-color="#8E24AA">🟣 منوع</option>
+            <option value="أمني" data-color="#1E3A8A">🔷 أمني</option>
+            <option value="رياضة" data-color="#263238">⚫ رياضة</option>
+            <option value="ثقافة" data-color="#6D4C41">🟤 ثقافة</option>
         </select>
 
         <div class="section-title">طريقة احتواء الصورة داخل الإطار</div>
