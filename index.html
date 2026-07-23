@@ -39,7 +39,7 @@
             box-sizing: border-box;
         }
 
-        /* (التعديل 5): خط رفيع جداً (1px) فوق الشريط السفلي مباشرة لربط وتماسك التصميم */
+        /* خط رفيع جداً فوق الشريط السفلي مباشرة لربط وتماسك التصميم */
         .bottom-divider-line {
             position: absolute;
             bottom: 38px;
@@ -64,16 +64,16 @@
             z-index: 1;
         }
 
-        /* الهيدر العلوي */
+        /* الهيدر العلوي (ملاحظة 1: إنزال الشعار والهيدر بمسافة 5-8 بكسل إضافية لتنفس البصر) */
         .top-overlay {
             position: absolute;
-            top: 8px;
-            left: 8px;
-            right: 8px;
+            top: 14px;
+            left: 12px;
+            right: 12px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 8px 12px;
+            padding: 6px 8px;
             z-index: 4;
             background: transparent;
         }
@@ -98,7 +98,7 @@
             filter: drop-shadow(0 2px 4px rgba(0,0,0,0.6));
         }
 
-        /* (التعديل 4): صندوق التاريخ مع شفافية 92% ليدمج مع الصورة قليلاً */
+        /* (ملاحظة 3): صندوق التاريخ مع ظل خفيف ونصف قطر ظل مصغر ليبدو أكثر حداثة ونعومة */
         .date-box {
             font-size: 11.5px;
             font-weight: 900;
@@ -108,10 +108,10 @@
             border-radius: 4px;
             backdrop-filter: blur(2px);
             letter-spacing: 0.5px;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
         }
 
-        /* (التعديل 3): شريط العنوان الرئيسي مع تعنيم ونعومة تدرج (Feather أكبر) */
+        /* (ملاحظة 2): تدرج سفلي مخفف العتامة بنسبة 10-15% لإظهار التواقيع والأختام بوضوح كامل */
         .title-box-container {
             position: absolute;
             bottom: 39px; 
@@ -126,16 +126,16 @@
             justify-content: flex-end;
             text-align: center;
             background: linear-gradient(to top, 
-                rgba(15, 23, 42, 0.72) 0%, 
-                rgba(15, 23, 42, 0.58) 35%, 
-                rgba(15, 23, 42, 0.30) 70%, 
+                rgba(15, 23, 42, 0.60) 0%, 
+                rgba(15, 23, 42, 0.45) 35%, 
+                rgba(15, 23, 42, 0.20) 70%, 
                 rgba(15, 23, 42, 0) 100%
             );
             backdrop-filter: blur(1px);
             box-sizing: border-box;
         }
 
-        /* (التعديل 1): بطاقة "عاجل" مرفوعة للأعلى لتخلق فصلاً أجمل عن العنوان */
+        /* بطاقة "عاجل" */
         .news-category-badge {
             font-family: 'Cairo', sans-serif;
             font-size: 11.5px;
@@ -153,7 +153,7 @@
             box-shadow: 0 2px 5px rgba(0,0,0,0.3);
         }
 
-        /* (التعديل 2): خصائص العنوان مع ضبط تباعد الأسطر (Line Height) بين 1.15 و 1.2 */
+        /* خصائص العنوان مع ضبط تباعد الأسطر */
         .title-text {
             font-family: 'Cairo', sans-serif;
             font-size: 15px; 
@@ -202,7 +202,6 @@
             font-weight: normal;
         }
 
-        /* (التعديل 5 الجزء الثاني): تصغير الخط الذهبي "منصة إخبارية مستقلة" بدرجة واحدة فقط لعدم منافسة اسم الوكالة */
         .brand-handle span.sub-title {
             color: #D4AF37;
             font-size: 10px;
@@ -320,19 +319,19 @@
         <!-- صورة الخلفية الكاملة -->
         <div class="image-area" id="bg-image-layer"></div>
 
-        <!-- الخط الفاصل الرفيع (1px) لتحقيق التماسك البصري -->
+        <!-- الخط الفاصل الرفيع لتحقيق التماسك البصري -->
         <div class="bottom-divider-line"></div>
 
-        <!-- الهيدر العلوي -->
+        <!-- الهيدر العلوي (مع تعديل المسافة العلوية للشعار والتاريخ) -->
         <div class="top-overlay">
             <div class="brand-section">
                 <img id="display-logo" class="logo-img" src="Logo.png" alt="logo">
             </div>
-            <!-- صندوق التاريخ بشفافية مدمجة 92% -->
+            <!-- صندوق التاريخ (مع ظل مخفف وأكثر حداثة) -->
             <div class="date-box" id="display-date"></div>
         </div>
         
-        <!-- شريط العنوان الرئيسي -->
+        <!-- شريط العنوان الرئيسي (مع تدرج مخفف لإظهار الأختام والتواقيع) -->
         <div class="title-box-container">
             <div class="news-category-badge" id="display-category">عاجل</div>
             <p class="title-text" id="display-title">ضع أهم كلمة في البداية.. عنوان خبري احترافي لا يتجاوز 20–25 كلمة ليظهر بوضوح تام...</p>
@@ -451,7 +450,7 @@
         }
 
         function changeFontSize() {
-            const fontSizeVal = document.getElementById('font-size-slider-slider')?.value || document.getElementById('font-size-slider').value;
+            const fontSizeVal = document.getElementById('font-size-slider').value;
             document.getElementById('display-title').style.fontSize = fontSizeVal + 'px';
             document.getElementById('font-size-val').innerText = fontSizeVal + 'px';
         }
