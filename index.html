@@ -53,7 +53,7 @@
             z-index: 1;
         }
 
-        /* الهيدر العلوي مع مسافة آمنة مريحة من الحواف (8 بكسل) */
+        /* الهيدر العلوي مع مسافة آمنة مريحة من الحواف (بدون أي تدرج علوي مزعج) */
         .top-overlay {
             position: absolute;
             top: 8px;
@@ -64,7 +64,7 @@
             align-items: center;
             padding: 8px 12px;
             z-index: 4;
-            background: linear-gradient(rgba(0,0,0,0.3), transparent);
+            background: transparent;
         }
 
         .brand-section {
@@ -87,7 +87,7 @@
             filter: drop-shadow(0 2px 4px rgba(0,0,0,0.6));
         }
 
-        /* صندوق التاريخ (تم تصغيره بنسبة 10-15% وتقليل الظل الأسود أسفله ليتناسب بدقة مع الشعار) */
+        /* صندوق التاريخ بحجم مصغر وظل مخفف ليتناسق مع الشعار */
         .date-box {
             font-size: 11.5px;
             font-weight: 900;
@@ -97,24 +97,24 @@
             border-radius: 4px;
             backdrop-filter: blur(2px);
             letter-spacing: 0.5px;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2); /* تقليل الظل الأسود */
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
         }
 
-        /* شريط العنوان الرئيسي: يغطي فقط المنطقة خلف العنوان (آخر 20-25% من الارتفاع) وبتدرج نظيف */
+        /* شريط العنوان الرئيسي: تم جعل التدرج خاصاً بمستطيل وخلفية العنوان فقط وليس كامل الصورة */
         .title-box-container {
             position: absolute;
             bottom: 38px; /* يرتفع فوق الشريط السفلي مباشرة مع ترك مساحة تنفس مريحة */
             left: 0;
             right: 0;
             min-height: 120px;
-            padding: 15px 16px 12px 16px; /* مسافة داخلية سفلية (Padding) بحوالي 12-15 بكسل ليتنفس التصميم */
+            padding: 15px 16px 12px 16px; /* مسافة داخلية سفلية ليتنفس التصميم */
             z-index: 3;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: flex-end;
             text-align: center;
-            /* تدرج يبدأ من أسفل الصورة فقط، يغطي آخر 20-25%، من أسود بشفافية 65% إلى شفاف تمامًا */
+            /* تدرج خاص بمستطيل وعرض العنوان فقط (من أسود بشفافية 65% إلى شفاف تماماً) */
             background: linear-gradient(to top, 
                 rgba(15, 23, 42, 0.70) 0%, 
                 rgba(15, 23, 42, 0.55) 50%, 
@@ -150,7 +150,6 @@
             color: #ffffff;
             margin: 0;
             line-height: 1.35;
-            /* تخفيف الـ Stroke الأبيض والظل ليكون النص أنعم وأكثر فخامة على الشاشات الكبيرة */
             text-shadow: 1px 1px 4px rgba(0,0,0,0.9), 0 0 6px rgba(0,0,0,0.5);
             overflow: hidden;
             display: -webkit-box;
@@ -184,7 +183,7 @@
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9);
             letter-spacing: 0.5px;
             order: 2;
-            font-size: 12px; /* تكبير اسم العلامة التجارية */
+            font-size: 12px;
             font-weight: 900;
         }
 
@@ -209,7 +208,7 @@
         /* تصغير الأيقونات 10% لتصبح أكثر أناقة ونعومة */
         .social-item i {
             color: #ffffff !important;
-            font-size: 12.5px; /* تم التصغير بنسبة 10% */
+            font-size: 12.5px;
             filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.9));
         }
 
@@ -311,7 +310,7 @@
         <!-- صورة الخلفية الكاملة -->
         <div class="image-area" id="bg-image-layer"></div>
 
-        <!-- الهيدر العلوي مع مسافة آمنة مريحة من الحواف -->
+        <!-- الهيدر العلوي (نظيف بدون أي تدرج خلف التاريخ أو الشعار) -->
         <div class="top-overlay">
             <div class="brand-section">
                 <img id="display-logo" class="logo-img" src="Logo.png" alt="logo">
@@ -320,7 +319,7 @@
             <div class="date-box" id="display-date"></div>
         </div>
         
-        <!-- شريط العنوان الرئيسي: يغطي آخر 20-25% من الأسفل فقط مع مسافة تنفس دقيقة للعنوان -->
+        <!-- شريط العنوان الرئيسي (التدرج محصور هنا فقط خلف العنوان والوسم التصنيفي) -->
         <div class="title-box-container">
             <div class="news-category-badge" id="display-category">عاجل</div>
             <p class="title-text" id="display-title">ضع أهم كلمة في البداية.. عنوان خبري احترافي لا يتجاوز 20–25 كلمة ليظهر بوضوح تام...</p>
@@ -439,7 +438,7 @@
         }
 
         function changeFontSize() {
-            const fontSizeVal = document.getElementById('font-size-slider5').value || document.getElementById('font-size-slider').value;
+            const fontSizeVal = document.getElementById('font-size-slider').value;
             document.getElementById('display-title').style.fontSize = fontSizeVal + 'px';
             document.getElementById('font-size-val').innerText = fontSizeVal + 'px';
         }
