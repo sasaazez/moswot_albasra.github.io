@@ -39,10 +39,10 @@
             box-sizing: border-box;
         }
 
-        /* صورة الخلفية (تشغل المساحة العليا بمرونة) */
+        /* صورة الخلفية (مساحة أكبر تم رفعهالأعلى) */
         .image-area {
             width: 100%;
-            height: 70%; 
+            height: 60%; 
             background-color: #000000; 
             background-repeat: no-repeat;
             background-size: cover;
@@ -74,7 +74,7 @@
             user-select: none;
         }
 
-        /* الشعار بحجم أصغر بنحو 15% */
+        /* الشعار بحجم مناسب */
         .logo-img {
             width: 80px;
             height: 80px;
@@ -93,10 +93,10 @@
             letter-spacing: 0.5px;
         }
 
-        /* شريط العنوان الرئيسي الملاصق لنهاية الصورة */
+        /* شريط العنوان الرئيسي المرفوع للأعلى (~60 بكسل) */
         .title-box-container {
             position: absolute;
-            top: 70%;
+            top: 60%;
             left: 0;
             right: 0;
             padding: 10px 20px;
@@ -105,14 +105,13 @@
             flex-direction: column;
             align-items: center;
             text-align: center;
-            border-top: 0.5px solid #ef4444;
-            border-bottom: 0.5px solid #ef4444;
-            background: rgba(0, 0, 0, 0.75);
+            border-top: 0.5px solid rgba(255,255,255,0.2);
+            border-bottom: 0.5px solid rgba(255,255,255,0.2);
+            background: rgba(15, 23, 42, 0.92); /* خلفية كحلي داكن فاخرة */
         }
 
-        /* الوسم الذهبي لنوع الخبر */
+        /* الوسم التصنيفي الملون حسب نوع الخبر */
         .news-category-badge {
-            color: #f59e0b;
             font-family: 'Cairo', sans-serif;
             font-size: 11px;
             font-weight: 900;
@@ -120,6 +119,10 @@
             letter-spacing: 1px;
             text-shadow: 1px 1px 3px rgba(0,0,0,0.9);
             display: inline-block;
+            padding: 1px 8px;
+            border-radius: 3px;
+            color: #ffffff;
+            background-color: #dc2626; /* افتراضي (عاجل - أحمر) */
         }
 
         /* خصائص العنوان: خط Cairo ExtraBold، تباعد أسطر 1.4 */
@@ -147,8 +150,8 @@
             font-size: 12px;
             font-weight: bold;
             z-index: 5;
-            background: rgba(0, 0, 0, 0.85);
-            border: 0.5px solid rgba(255, 255, 255, 0.7);
+            background: rgba(15, 23, 42, 0.98);
+            border-top: 0.5px solid rgba(255, 255, 255, 0.2);
         }
 
         .brand-handle {
@@ -160,20 +163,20 @@
         }
 
         .brand-handle span {
-            color: #f59e0b;
+            color: #f59e0b; /* ذهبي للكلمات المهمة */
         }
 
+        /* أيقونات التواصل مكبرة وبمسافات متساوية */
         .social-icons-group {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 16px;
             order: 1;
         }
 
-        /* أيقونات التواصل باللون الأبيض الناصع بالكامل */
         .social-item i {
             color: #ffffff !important;
-            font-size: 14px;
+            font-size: 16px; /* تكبير الأيقونات لتكون واضحة على الهاتف */
             filter: drop-shadow(1px 1px 3px rgba(0,0,0,0.9));
         }
 
@@ -283,7 +286,7 @@
             <div class="date-box" id="display-date"></div>
         </div>
         
-        <!-- شريط العنوان الرئيسي الملاصق للصورة -->
+        <!-- شريط العنوان الرئيسي المرفوع للأعلى -->
         <div class="title-box-container" id="title-box-pos">
             <div class="news-category-badge" id="display-category">عاجل</div>
             <p class="title-text" id="display-title">أدخل عنوان الخبر الإخباري هنا ليظهر مباشرة داخل الشريط...</p>
@@ -307,16 +310,16 @@
         <div class="section-title">إدراج صورة الخبر أو الكتاب الرسمي</div>
         <input type="file" id="image-loader" class="input-custom" accept="image/*" onchange="loadImage(event)">
 
-        <div class="section-title">تصنيف نوع الخبر</div>
+        <div class="section-title">تصنيف نوع الخبر (مع الألوان الثابتة)</div>
         <select id="category-select" class="select-custom" onchange="changeCategory()">
-            <option value="عاجل">عاجل</option>
-            <option value="سياسي">سياسي</option>
-            <option value="أمني">أمني</option>
-            <option value="محلي">محلي</option>
-            <option value="اقتصادي">اقتصادي</option>
-            <option value="رياضة">رياضة</option>
-            <option value="الطقس">الطقس</option>
-    <option value="منوع">منوع</option>        </select>
+            <option value="عاجل" data-color="#dc2626">عاجل (أحمر)</option>
+            <option value="سياسي" data-color="#2563eb">سياسي (أزرق)</option>
+            <option value="محلي" data-color="#16a34a">محلي (أخضر)</option>
+            <option value="اقتصادي" data-color="#ea580c">اقتصادي (برتقالي)</option>
+            <option value="رياضة" data-color="#9333ea">رياضة (بنفسجي)</option>
+            <option value="أمني" data-color="#334155">أمني (أسود/رمادي)</option>
+            <option value="الطقس" data-color="#0284c7">الطقس (سماوي)</option>
+        </select>
 
         <div class="section-title">طريقة احتواء الصورة داخل الإطار</div>
         <select id="image-fit-select" class="select-custom" onchange="changeImageFit()">
@@ -332,8 +335,8 @@
 
         <div class="section-title">موقع شريط العنوان (الارتفاع)</div>
         <div class="slider-container">
-            <input type="range" id="box-pos-slider" min="30" max="90" value="70" oninput="changeBoxPosition()">
-            <span id="box-pos-val" class="slider-val">70%</span>
+            <input type="range" id="box-pos-slider" min="30" max="90" value="60" oninput="changeBoxPosition()">
+            <span id="box-pos-val" class="slider-val">60%</span>
         </div>
 
         <div class="section-title">حجم خط العنوان</div>
@@ -369,8 +372,14 @@
         }
 
         function changeCategory() {
-            const catVal = document.getElementById('category-select').value;
-            document.getElementById('display-category').innerText = catVal;
+            const selectElement = document.getElementById('category-select');
+            const catVal = selectElement.value;
+            const selectedOption = selectElement.options[selectElement.selectedIndex];
+            const colorVal = selectedOption.getAttribute('data-color');
+            
+            const badge = document.getElementById('display-category');
+            badge.innerText = catVal;
+            badge.style.backgroundColor = colorVal;
         }
 
         function changeImageFit() {
