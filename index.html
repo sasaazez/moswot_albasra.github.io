@@ -39,7 +39,7 @@
             box-sizing: border-box;
         }
 
-        /* صورة الخلفية تغطي كامل المساحة بدقة لمنع أي فراغات سوداء */
+        /* صورة الخلفية تغطي كامل المساحة بدقة لمنع أي فراغات */
         .image-area {
             width: 100%;
             height: 100%; 
@@ -96,24 +96,28 @@
             letter-spacing: 0.5px;
         }
 
-        /* شريط العنوان الرئيسي - شفاف جداً وقليل الظهور فوق المستند */
+        /* شريط العنوان الرئيسي بتدرج احترافي متلاشي (Gradient) وشفافية منضبطة */
         .title-box-container {
             position: absolute;
             top: 60%;
             left: 0;
             right: 0;
             height: 20%;
-            padding: 6px 15px;
+            padding: 8px 15px;
             z-index: 3;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
-            border-top: 0.5px solid rgba(255,255,255,0.1);
-            border-bottom: 0.5px solid rgba(255,255,255,0.1);
-            background: rgba(15, 23, 42, 0.25); /* شفافية خفيفة تدمج الشريط مع المستند */
-            backdrop-filter: blur(2px);
+            /* تدرج احترافي: داكن بتركيز 40% عند المنتصف ويلاشي للأطراف */
+            background: linear-gradient(to bottom, 
+                rgba(15, 23, 42, 0) 0%, 
+                rgba(15, 23, 42, 0.42) 35%, 
+                rgba(15, 23, 42, 0.42) 65%, 
+                rgba(15, 23, 42, 0) 100%
+            );
+            backdrop-filter: blur(1.5px);
             box-sizing: border-box;
         }
 
@@ -147,13 +151,13 @@
             -webkit-box-orient: vertical;
         }
 
-        /* شريط الحسابات السفلي - تم تصغيره وجعله نحيفاً وأنيقاً */
+        /* شريط الحسابات السفلي النحيف والأنيق */
         .social-footer {
             position: absolute;
             bottom: 0;
             left: 0;
             right: 0;
-            height: 38px; /* تم تصليحه ليكون نحيفاً وصغيراً */
+            height: 38px;
             padding: 0 12px;
             display: flex;
             justify-content: space-between;
@@ -193,7 +197,7 @@
 
         .social-item i {
             color: #ffffff !important;
-            font-size: 14px; /* حجم أيقونات صغير ومناسب للشريط النحيف */
+            font-size: 14px;
             filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.9));
         }
 
@@ -303,7 +307,7 @@
             <div class="date-box" id="display-date"></div>
         </div>
         
-        <!-- شريط العنوان الرئيسي بشفافية خفيفة ومرنة -->
+        <!-- شريط العنوان الرئيسي بتدرج احترافي متلاشي -->
         <div class="title-box-container" id="title-box-pos">
             <div class="news-category-badge" id="display-category">عاجل</div>
             <p class="title-text" id="display-title">أدخل عنوان الخبر الإخباري هنا ليظهر مباشرة داخل الشريط...</p>
@@ -406,7 +410,7 @@
             const imageLayer = document.getElementById('bg-image-layer');
             imageLayer.style.backgroundSize = fitValue;
             document.getElementById('image-size-slider').value = 100;
-            document.getElementById('image-size-val').innerText = '100% z';
+            document.getElementById('image-size-val').innerText = '100%';
         }
 
         function changeImageSize() {
