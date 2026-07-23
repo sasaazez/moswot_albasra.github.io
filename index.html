@@ -87,11 +87,11 @@
             filter: drop-shadow(0 2px 4px rgba(0,0,0,0.6));
         }
 
-        /* التاريخ باللون الذهبي الموحد مع الهوية */
+        /* التاريخ باللون الكحلي الفاتح بناءً على طلبك */
         .date-box {
-            font-size: 13px;
-            font-weight: bold;
-            color: #D4AF37;
+            font-size: 13.5px;
+            font-weight: 900;
+            color: #38bdf8;
             text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9);
             letter-spacing: 0.5px;
         }
@@ -99,10 +99,10 @@
         /* شريط العنوان الرئيسي بتدرج احترافي متلاشي (Gradient) وشفافية منضبطة */
         .title-box-container {
             position: absolute;
-            top: 60%;
+            top: 57%;
             left: 0;
             right: 0;
-            height: 20%;
+            height: 23%;
             padding: 8px 15px;
             z-index: 3;
             display: flex;
@@ -121,25 +121,26 @@
             box-sizing: border-box;
         }
 
-        /* الوسم التصنيفي الملون حسب الجدول المعتمد */
+        /* الوسم التصنيفي بحجم أكبر، بارز، وبتثقيل (Bold) قوي يلفت النظر أولاً */
         .news-category-badge {
             font-family: 'Cairo', sans-serif;
-            font-size: 10px;
+            font-size: 12px;
             font-weight: 900;
-            margin-bottom: 3px;
-            letter-spacing: 1px;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.9);
+            margin-bottom: 4px;
+            letter-spacing: 1.2px;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.9);
             display: inline-block;
-            padding: 1px 6px;
-            border-radius: 3px;
+            padding: 2px 9px;
+            border-radius: 4px;
             color: #ffffff;
             background-color: #D32F2F; /* الافتراضي: عاجل */
+            box-shadow: 0 2px 6px rgba(0,0,0,0.4);
         }
 
-        /* خصائص العنوان: خط Cairo ExtraBold */
+        /* خصائص العنوان: خط Cairo ExtraBold (يدعم حتى 3 أسطر بوضوح تام) */
         .title-text {
             font-family: 'Cairo', sans-serif;
-            font-size: 16px; 
+            font-size: 15px; 
             font-weight: 900; 
             color: #ffffff;
             margin: 0;
@@ -147,7 +148,7 @@
             text-shadow: 2px 2px 8px rgba(0,0,0,1), 0 0 12px rgba(0,0,0,0.9);
             overflow: hidden;
             display: -webkit-box;
-            -webkit-line-clamp: 2;
+            -webkit-line-clamp: 3; /* دعم حتى 3 أسطر بناءً على المعيار الاحترافي الجديد */
             -webkit-box-orient: vertical;
         }
 
@@ -247,7 +248,7 @@
 
         textarea {
             width: 100%;
-            height: 70px;
+            height: 75px;
             background-color: #0f172a;
             border: 1px solid #334155;
             border-radius: 8px;
@@ -310,7 +311,7 @@
         <!-- شريط العنوان الرئيسي بتدرج احترافي متلاشي -->
         <div class="title-box-container" id="title-box-pos">
             <div class="news-category-badge" id="display-category">عاجل</div>
-            <p class="title-text" id="display-title">أدخل عنوان الخبر الإخباري هنا ليظهر مباشرة داخل الشريط...</p>
+            <p class="title-text" id="display-title">ضع أهم كلمة في البداية.. عنوان خبري احترافي لا يتجاوز 20–25 كلمة ليظهر بوضوح تام...</p>
         </div>
 
         <!-- شريط الحسابات السفلي النحيف والأنيق -->
@@ -358,18 +359,18 @@
 
         <div class="section-title">موقع شريط العنوان (الارتفاع)</div>
         <div class="slider-container">
-            <input type="range" id="box-pos-slider" min="40" max="80" value="60" oninput="changeBoxPosition()">
-            <span id="box-pos-val" class="slider-val">60%</span>
+            <input type="range" id="box-pos-slider" min="40" max="80" value="57" oninput="changeBoxPosition()">
+            <span id="box-pos-val" class="slider-val">57%</span>
         </div>
 
         <div class="section-title">حجم خط العنوان</div>
         <div class="slider-container">
-            <input type="range" id="font-size-slider" min="12" max="24" value="16" oninput="changeFontSize()">
-            <span id="font-size-val" class="slider-val">16px</span>
+            <input type="range" id="font-size-slider" min="12" max="24" value="15" oninput="changeFontSize()">
+            <span id="font-size-val" class="slider-val">15px</span>
         </div>
 
-        <div class="section-title">محتوى العنوان</div>
-        <textarea id="input-title" placeholder="اكتب نص العنوان هنا..." oninput="updateTitle()"></textarea>
+        <div class="section-title">محتوى العنوان (بحد أقصى 3 أسطر)</div>
+        <textarea id="input-title" placeholder="اكتب نص العنوان هنا (ابدأ بأهم كلمة)..." oninput="updateTitle()"></textarea>
 
         <button class="btn-download" onclick="downloadImage()">تصدير التصميم كصورة للنشر</button>
     </div>
@@ -433,7 +434,7 @@
             const titleInput = document.getElementById('input-title').value;
             const displayTitle = document.getElementById('display-title');
             if(titleInput.trim() === "") {
-                displayTitle.innerText = "أدخل عنوان الخبر الإخباري هنا ليظهر مباشرة داخل الشريط...";
+                displayTitle.innerText = "ضع أهم كلمة في البداية.. عنوان خبري احترافي لا يتجاوز 20–25 كلمة ليظهر بوضوح تام...";
             } else {
                 displayTitle.innerText = titleInput;
             }
