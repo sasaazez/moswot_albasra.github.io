@@ -39,7 +39,7 @@
             box-sizing: border-box;
         }
 
-        /* صورة الخلفية (مساحة أكبر تم رفعهالأعلى) */
+        /* صورة الخلفية */
         .image-area {
             width: 100%;
             height: 60%; 
@@ -93,7 +93,7 @@
             letter-spacing: 0.5px;
         }
 
-        /* شريط العنوان الرئيسي المرفوع للأعلى (~60 بكسل) */
+        /* شريط العنوان الرئيسي بشفافية عالية جداً */
         .title-box-container {
             position: absolute;
             top: 60%;
@@ -105,9 +105,10 @@
             flex-direction: column;
             align-items: center;
             text-align: center;
-            border-top: 0.5px solid rgba(255,255,255,0.2);
-            border-bottom: 0.5px solid rgba(255,255,255,0.2);
-            background: rgba(15, 23, 42, 0.92); /* خلفية كحلي داكن فاخرة */
+            border-top: 0.5px solid rgba(255,255,255,0.15);
+            border-bottom: 0.5px solid rgba(255,255,255,0.15);
+            background: rgba(15, 23, 42, 0.25); /* خلفية شفافة جداً تظهر الصورة بوضوح مع الحفاظ على مقروءية النص */
+            backdrop-filter: blur(2px); /* تمعيل تأثير التغويش الخفيف لزيادة جمالية الشفافية */
         }
 
         /* الوسم التصنيفي الملون حسب نوع الخبر */
@@ -176,7 +177,7 @@
 
         .social-item i {
             color: #ffffff !important;
-            font-size: 16px; /* تكبير الأيقونات لتكون واضحة على الهاتف */
+            font-size: 16px;
             filter: drop-shadow(1px 1px 3px rgba(0,0,0,0.9));
         }
 
@@ -286,7 +287,7 @@
             <div class="date-box" id="display-date"></div>
         </div>
         
-        <!-- شريط العنوان الرئيسي المرفوع للأعلى -->
+        <!-- شريط العنوان الرئيسي بشفافية عالية جداً -->
         <div class="title-box-container" id="title-box-pos">
             <div class="news-category-badge" id="display-category">عاجل</div>
             <p class="title-text" id="display-title">أدخل عنوان الخبر الإخباري هنا ليظهر مباشرة داخل الشريط...</p>
