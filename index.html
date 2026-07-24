@@ -64,7 +64,7 @@
             z-index: 1;
         }
 
-        /* الهيدر العلوي (ملاحظة 1: إنزال الشعار والهيدر بمسافة 5-8 بكسل إضافية لتنفس البصر) */
+        /* الهيدر العلوي */
         .top-overlay {
             position: absolute;
             top: 14px;
@@ -98,7 +98,7 @@
             filter: drop-shadow(0 2px 4px rgba(0,0,0,0.6));
         }
 
-        /* (ملاحظة 3): صندوق التاريخ مع ظل خفيف ونصف قطر ظل مصغر ليبدو أكثر حداثة ونعومة */
+        /* صندوق التاريخ مع ظل خفيف ونصف قطر ظل مصغر ليبدو أكثر حداثة ونعومة */
         .date-box {
             font-size: 11.5px;
             font-weight: 900;
@@ -111,7 +111,7 @@
             box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
         }
 
-        /* (ملاحظة 2): تدرج سفلي مخفف العتامة بنسبة 10-15% لإظهار التواقيع والأختام بوضوح كامل */
+        /* تدرج سفلي مخفف العتامة بنسبة 10-15% لإظهار التواقيع والأختام بوضوح كامل */
         .title-box-container {
             position: absolute;
             bottom: 39px; 
@@ -153,14 +153,14 @@
             box-shadow: 0 2px 5px rgba(0,0,0,0.3);
         }
 
-        /* خصائص العنوان مع ضبط تباعد الأسطر */
+        /* خصائص العنوان مع زيادة تباعد الأسطر لمنع التداخل */
         .title-text {
             font-family: 'Cairo', sans-serif;
             font-size: 15px; 
             font-weight: 900; 
             color: #ffffff;
             margin: 0;
-            line-height: 1.18; 
+            line-height: 1.35; /* تم زيادة التباعد هنا ليكون مريحاً وأكثر وضوحاً */
             text-shadow: 1px 1px 4px rgba(0,0,0,0.9), 0 0 6px rgba(0,0,0,0.5);
             overflow: hidden;
             display: -webkit-box;
@@ -322,16 +322,16 @@
         <!-- الخط الفاصل الرفيع لتحقيق التماسك البصري -->
         <div class="bottom-divider-line"></div>
 
-        <!-- الهيدر العلوي (مع تعديل المسافة العلوية للشعار والتاريخ) -->
+        <!-- الهيدر العلوي -->
         <div class="top-overlay">
             <div class="brand-section">
                 <img id="display-logo" class="logo-img" src="Logo.png" alt="logo">
             </div>
-            <!-- صندوق التاريخ (مع ظل مخفف وأكثر حداثة) -->
+            <!-- صندوق التاريخ -->
             <div class="date-box" id="display-date"></div>
         </div>
         
-        <!-- شريط العنوان الرئيسي (مع تدرج مخفف لإظهار الأختام والتواقيع) -->
+        <!-- شريط العنوان الرئيسي -->
         <div class="title-box-container">
             <div class="news-category-badge" id="display-category">عاجل</div>
             <p class="title-text" id="display-title">ضع أهم كلمة في البداية.. عنوان خبري احترافي لا يتجاوز 20–25 كلمة ليظهر بوضوح تام...</p>
