@@ -6,7 +6,6 @@
     <title>مصمم قوالب موسوعة البصرة</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- استيراد خطوط الهوية الثابتة (Cairo ExtraBold للعناوين و Tajawal للمتن) -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@900&family=Tajawal:wght@500;700&display=swap" rel="stylesheet">
     <style>
         body {
@@ -25,11 +24,11 @@
             color: #38bdf8;
         }
 
-        /* حاوية المعاينة الأساسية بأبعاد تناسب النشر المريح */
         .preview-container {
             width: 420px;
             height: 600px;
-            background-color: #ffffff;
+            /* خلفية داكنة متناسقة لملء أي فراغات جانبية للصورة الأفقية */
+            background-color: #0b0f19;
             border-radius: 4px;
             position: relative;
             box-shadow: 0 12px 35px rgba(0,0,0,0.6);
@@ -39,7 +38,6 @@
             box-sizing: border-box;
         }
 
-        /* خط رفيع جداً فوق الشريط السفلي مباشرة لربط وتماسك التصميم */
         .bottom-divider-line {
             position: absolute;
             bottom: 38px;
@@ -50,21 +48,20 @@
             z-index: 6;
         }
 
-        /* صورة الخلفية تغطي كامل المساحة بدقة لمنع أي فراغات */
+        /* تعديل خاص لعرض الصورة بالكامل لضمان ظهور جميع الأشخاص */
         .image-area {
             width: 100%;
             height: 100%; 
-            background-color: #ffffff; 
+            background-color: #0b0f19; 
             background-repeat: no-repeat;
-            background-size: cover; 
-            background-position: center top;
+            background-size: contain; /* إظهار الصورة كاملة بدون قص الأطراف والشخصيات */
+            background-position: center center;
             position: absolute;
             top: 0;
             left: 0;
             z-index: 1;
         }
 
-        /* الهيدر العلوي (ملاحظة 1: إنزال الشعار والهيدر بمسافة 5-8 بكسل إضافية لتنفس البصر) */
         .top-overlay {
             position: absolute;
             top: 14px;
@@ -85,7 +82,6 @@
             user-select: none;
         }
 
-        /* الشعار بدون أي إطار أو خلفية وبشكل نظيف تماماً */
         .logo-img {
             width: 75px;
             height: 75px;
@@ -98,7 +94,6 @@
             filter: drop-shadow(0 2px 4px rgba(0,0,0,0.6));
         }
 
-        /* (ملاحظة 3): صندوق التاريخ مع ظل خفيف ونصف قطر ظل مصغر ليبدو أكثر حداثة ونعومة */
         .date-box {
             font-size: 11.5px;
             font-weight: 900;
@@ -111,7 +106,6 @@
             box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
         }
 
-        /* (ملاحظة 2): تدرج سفلي مخفف العتامة بنسبة 10-15% لإظهار التواقيع والأختام بوضوح كامل */
         .title-box-container {
             position: absolute;
             bottom: 39px; 
@@ -126,16 +120,15 @@
             justify-content: flex-end;
             text-align: center;
             background: linear-gradient(to top, 
-                rgba(15, 23, 42, 0.60) 0%, 
-                rgba(15, 23, 42, 0.45) 35%, 
-                rgba(15, 23, 42, 0.20) 70%, 
+                rgba(15, 23, 42, 0.85) 0%, 
+                rgba(15, 23, 42, 0.65) 40%, 
+                rgba(15, 23, 42, 0.20) 75%, 
                 rgba(15, 23, 42, 0) 100%
             );
             backdrop-filter: blur(1px);
             box-sizing: border-box;
         }
 
-        /* بطاقة "عاجل" */
         .news-category-badge {
             font-family: 'Cairo', sans-serif;
             font-size: 11.5px;
@@ -149,11 +142,10 @@
             text-align: center;
             border-radius: 4px;
             color: #ffffff;
-            background-color: #D32F2F; /* الافتراضي: عاجل */
+            background-color: #D32F2F;
             box-shadow: 0 2px 5px rgba(0,0,0,0.3);
         }
 
-        /* خصائص العنوان مع ضبط تباعد الأسطر */
         .title-text {
             font-family: 'Cairo', sans-serif;
             font-size: 15px; 
@@ -169,7 +161,6 @@
             width: 100%;
         }
 
-        /* شريط الحسابات السفلي النحيف والأنيق */
         .social-footer {
             position: absolute;
             bottom: 0;
@@ -221,7 +212,6 @@
             filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.9));
         }
 
-        /* لوحة التحكم السفلى */
         .control-panel {
             width: 420px;
             background-color: #1e293b;
@@ -313,31 +303,22 @@
 
     <h2>محرر قوالب موسوعة البصرة</h2>
 
-    <!-- شاشة المعاينة الحية -->
     <div class="preview-container" id="capture-area">
-        
-        <!-- صورة الخلفية الكاملة -->
         <div class="image-area" id="bg-image-layer"></div>
-
-        <!-- الخط الفاصل الرفيع لتحقيق التماسك البصري -->
         <div class="bottom-divider-line"></div>
 
-        <!-- الهيدر العلوي (مع تعديل المسافة العلوية للشعار والتاريخ) -->
         <div class="top-overlay">
             <div class="brand-section">
                 <img id="display-logo" class="logo-img" src="Logo.png" alt="logo">
             </div>
-            <!-- صندوق التاريخ (مع ظل مخفف وأكثر حداثة) -->
             <div class="date-box" id="display-date"></div>
         </div>
         
-        <!-- شريط العنوان الرئيسي (مع تدرج مخفف لإظهار الأختام والتواقيع) -->
         <div class="title-box-container">
             <div class="news-category-badge" id="display-category">عاجل</div>
             <p class="title-text" id="display-title">ضع أهم كلمة في البداية.. عنوان خبري احترافي لا يتجاوز 20–25 كلمة ليظهر بوضوح تام...</p>
         </div>
 
-        <!-- شريط الحسابات السفلي النحيف والأنيق -->
         <div class="social-footer">
             <span class="brand-handle">موسوعة البصرة <span class="sep">│</span> <span class="sub-title">منصة إخبارية مستقلة</span></span>
             <div class="social-icons-group">
@@ -349,13 +330,11 @@
         </div>
     </div>
 
-    <!-- لوحة التحكم السفلى -->
     <div class="control-panel">
-
         <div class="section-title">إدراج صورة الخبر أو الكتاب الرسمي</div>
         <input type="file" id="image-loader" class="input-custom" accept="image/*" onchange="loadImage(event)">
 
-        <div class="section-title">تصنيف نوع الخبر (حسب الجدول المعتمد)</div>
+        <div class="section-title">تصنيف نوع الخبر</div>
         <select id="category-select" class="select-custom" onchange="changeCategory()">
             <option value="عاجل" data-color="#D32F2F">🔴 عاجل</option>
             <option value="محلي" data-color="#F57C00">🟠 محلي</option>
@@ -368,15 +347,9 @@
             <option value="ثقافة" data-color="#6D4C41">🟤 ثقافة</option>
         </select>
 
-        <div class="section-title">طريقة احتواء الصورة داخل الإطار</div>
-        <select id="image-fit-select" class="select-custom" onchange="changeImageFit()">
-            <option value="cover">ملء الإطار بالكامل بدون فراغات (Cover - افتراضي)</option>
-            <option value="contain">إظهار الصورة أو الكتاب كاملة (Contain)</option>
-        </select>
-
         <div class="section-title">تحجيم زوم الصورة الخلفية</div>
         <div class="slider-container">
-            <input type="range" id="image-size-slider" min="30" max="200" value="100" oninput="changeImageSize()">
+            <input type="range" id="image-size-slider" min="50" max="250" value="100" oninput="changeImageSize()">
             <span id="image-size-val" class="slider-val">100%</span>
         </div>
 
@@ -387,7 +360,7 @@
         </div>
 
         <div class="section-title">محتوى العنوان (بحد أقصى 3 أسطر)</div>
-        <textarea id="input-title" placeholder="اكتب نص العنوان هنا (ابدأ بأهم كلمة)..." oninput="updateTitle()"></textarea>
+        <textarea id="input-title" placeholder="اكتب نص العنوان هنا..." oninput="updateTitle()"></textarea>
 
         <button class="btn-download" onclick="downloadImage()">تصدير التصميم كصورة للنشر</button>
     </div>
@@ -421,14 +394,6 @@
             const badge = document.getElementById('display-category');
             badge.innerText = catVal;
             badge.style.backgroundColor = colorVal;
-        }
-
-        function changeImageFit() {
-            const fitValue = document.getElementById('image-fit-select').value;
-            const imageLayer = document.getElementById('bg-image-layer');
-            imageLayer.style.backgroundSize = fitValue;
-            document.getElementById('image-size-slider').value = 100;
-            document.getElementById('image-size-val').innerText = '100%';
         }
 
         function changeImageSize() {
