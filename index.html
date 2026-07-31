@@ -90,8 +90,8 @@
             border: none !important;
             box-shadow: none !important;
             outline: none !important;
-            /* استخدمنا تصفية السطوع والشفافية لضمان بياض الخطوط بدون خلفية */
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.8));
+            /* خاصية دمج الألوان لإخفاء الخلفية البيضاء تماماً وجعلها شفافة فوق أي خلفية */
+            mix-blend-mode: multiply;
         }
 
         .date-box {
