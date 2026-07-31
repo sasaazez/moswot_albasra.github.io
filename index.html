@@ -73,38 +73,29 @@
             background: transparent;
         }
 
-        .brand-section {
-            display: flex;
-            align-items: center;
-            z-index: 5;
-            user-select: none;
-        }
-
-        /* الحجم الجديد للشعار مع إخفاء المربع الأبيض نهائياً عبر خاصية الـ multiply */
-    /* الشعار بدون إطار أبيض أو ظل */
-.brand-section {
+      .brand-section {
             display: flex;
             align-items: center;
             justify-content: center;
             z-index: 5;
             user-select: none;
-            /* تحديد حجم الدائرة ليكون صغيراً ومناسباً */
-            width: 75px; 
-            height: 75px;
-            border-radius: 50%;
-            overflow: hidden; /* هذه الخاصية هي التي ستقص أي بياض يخرج عن الدائرة */
-            background-color: #ffffff;
-            box-shadow: 0 3px 8px rgba(0,0,0,0.4);
+            background: transparent !important;
+            box-shadow: none !important;
         }
 
         .logo-img {
-            width: 100%;
-            height: 100%;
+            width: 110px;
+            height: 110px;
             object-fit: contain;
-            /* عمل زوم للشعار بنسبة 2.5 لملء الدائرة وقص الفراغ الأبيض (يمكنك زيادة الرقم إلى 3 إذا احتجتِ) */
-            transform: scale(2.5); 
             display: block;
-        }        .date-box {
+            background: transparent !important;
+            border: none !important;
+            box-shadow: none !important;
+            outline: none !important;
+            /* خاصية الدمج الصحيحة التي تحذف اللون الأبيض كلياً وتترك الشعار فقط */
+            mix-blend-mode: multiply;
+            filter: contrast(200%);
+        }
             font-size: 11.5px;
             font-weight: 900;
             color: #ffffff;
