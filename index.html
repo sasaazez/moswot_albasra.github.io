@@ -81,7 +81,7 @@
         }
 
         /* الحجم الجديد للشعار مع إخفاء المربع الأبيض نهائياً عبر خاصية الـ multiply */
-       .logo-img {
+        .logo-img {
             width: 110px;
             height: 110px;
             object-fit: contain;
@@ -90,9 +90,7 @@
             border: none !important;
             box-shadow: none !important;
             outline: none !important;
-            /* عزل وإخفاء اللون الأبيض برمجياً وجعل شعارك ناصعاً وشفافاً */
-            filter: contrast(120%) invert(1);
-            mix-blend-mode: screen;
+            mix-blend-mode: multiply;
         }
 
         .date-box {
