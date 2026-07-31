@@ -81,15 +81,16 @@
         }
 
         /* الحجم الجديد للشعار مع إخفاء المربع الأبيض نهائياً عبر خاصية الـ multiply */
-        .logo-img {
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
+    /* الشعار بدون إطار أبيض أو ظل */
+.logo-img {
+    width: 90px;
+    height: 90px;
+    object-fit: contain;
     display: block;
-    background: transparent;
-    border-radius: 50%;
-    padding: 0;
-    box-shadow: none;
+    background: transparent;   /* إزالة الخلفية البيضاء */
+    border-radius: 50%;        /* الحفاظ على الشكل الدائري فقط */
+    padding: 0;                /* إزالة المسافة الداخلية */
+    box-shadow: none;          /* إزالة الظل */
 }
 
         .date-box {
