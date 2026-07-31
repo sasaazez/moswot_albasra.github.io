@@ -85,18 +85,35 @@
             user-select: none;
         }
 
-        /* إصلاح جذري للشعار لإزالة أي خلفية أو إطار أبيض نهائياً */
-        .logo-img {
-            width: 80px;
-            height: 80px;
-            object-fit: contain;
-            display: block;
-            background: transparent !important;
-            border: none !important;
-            box-shadow: none !important;
-            outline: none !important;
-            mix-blend-mode: darken; /* حل مشكلة المربع الأبيض وإظهار الخطوط فقط */
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+        /* تصميم الشعار البديل النظيف بدون إطار أبيض وبشكل احترافي متناسق */
+        .custom-logo-badge {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: rgba(15, 23, 42, 0.88);
+            border: 2px solid rgba(212, 175, 55, 0.6);
+            padding: 6px 12px;
+            border-radius: 8px;
+            backdrop-filter: blur(4px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        }
+
+        .custom-logo-badge .logo-title {
+            font-family: 'Cairo', sans-serif;
+            font-size: 13px;
+            font-weight: 900;
+            color: #ffffff;
+            letter-spacing: 0.5px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+        }
+
+        .custom-logo-badge .logo-sub {
+            font-family: 'Cairo', sans-serif;
+            font-size: 10px;
+            font-weight: 700;
+            color: #38bdf8;
+            letter-spacing: 1px;
         }
 
         /* صندوق التاريخ مع ظل خفيف ونصف قطر ظل مصغر ليبدو أكثر حداثة ونعومة */
@@ -112,7 +129,7 @@
             box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
         }
 
-        /* تدرج سفلي بشفافية عالية تقريباً 90% خلفية شفافة و10% عتامة خفيفة */
+        /* تدرج سفلي بشفافية عالية خلفية شفافة وعتامة خفيفة */
         .title-box-container {
             position: absolute;
             bottom: 39px; 
@@ -331,7 +348,11 @@
         <!-- الهيدر العلوي -->
         <div class="top-overlay">
             <div class="brand-section">
-                <img id="display-logo" class="logo-img" src="Logo.png" alt="logo">
+                <!-- استبدال الصورة بصميم نصي فاخر بدون إطار أبيض نهائياً -->
+                <div class="custom-logo-badge">
+                    <span class="logo-title">موسوعة البصرة</span>
+                    <span class="logo-sub">BASRA</span>
+                </div>
             </div>
             <!-- صندوق التاريخ -->
             <div class="date-box" id="display-date"></div>
