@@ -80,17 +80,23 @@
             user-select: none;
         }
 
-        /* الحجم الجديد للشعار مع إخفاء المربع الأبيض نهائياً عبر خاصية الـ multiply */
-        .logo-img {
-            width: 110px;
-            height: 110px;
-            object-fit: contain;
-            display: block;
-            background: transparent !important;
-            border: none !important;
-            box-shadow: none !important;
-            outline: none !important;
-            mix-blend-mode: multiply;
+        .logo-box {
+            font-family: 'Cairo', sans-serif;
+            font-size: 13px;
+            font-weight: 900;
+            color: #0f172a;
+            background: #ffffff;
+            padding: 8px 12px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            text-align: center;
+            line-height: 1.25;
+            border: 1px solid rgba(15,23,42,0.1);
+        }
+
+        .logo-box span {
+            color: #1e3a8a;
+            font-size: 15px;
         }
 
         .date-box {
@@ -105,7 +111,6 @@
             box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
         }
 
-        /* شريط العنوان الأساسي بخلفية شفافة وثابتة ومريحة للقراءة */
         .title-box-container {
             position: absolute;
             bottom: 39px; 
@@ -309,12 +314,7 @@
         
         <div class="top-overlay">
             <div class="brand-section">
-                <div class="brand-section">
-                <!-- شعار نصي احترافي بديل يغنيك عن صورة الخلفية البيضاء نهائياً -->
-                <div style="font-family: 'Cairo', sans-serif; font-size: 15px; font-weight: 900; color: #0f172a; background: #ffffff; padding: 8px 14px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); text-align: center; line-height: 1.2;">
-                    موسوعة <br><span style="color: #1e3a8a; font-size: 17px;">البصرة</span>
-                </div>
-            </div>
+                <div class="logo-box">موسوعة<br><span>البصرة</span></div>
             </div>
             <div class="date-box" id="display-date"></div>
         </div>
@@ -381,34 +381,15 @@
             document.getElementById('display-date').innerText = `${day}-${month}-${year}`;
         }
         
-       window.onload = function() {
-            setTodayDate();
-            
-            // معالجة شعار المنصة برمجياً وإزالة المربع الأبيض نهائياً عند التحميل
-            const logoImg = document.getElementById('display-logo');
-            const img = new Image();
-            img.crossOrigin = "anonymous";
-            img.onload = function() {
-                const canvas = document.createElement('canvas');
-                canvas.width = img.width;
-                canvas.height = img.height;
-                const ctx = canvas.getContext('2d');
-                ctx.drawImage(img, 0, 0);
-                
-                const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-                const data = imgData.data;
-                
-                // حذف أي بكسل أبيض أو قريب من الأبيض وجعله شفافاً تماماً
-                for (let i = 0; i < data.length; i += 4) {
-                    if (data[i] > 230 && data[i+1] > 230 && data[i+2] > 230) {
-                        data[i+3] = 0; // جعل الشفافية صفر
-                    }
-                }
-                ctx.putImageData(imgData, 0, 0);
-                logoImg.src = canvas.toDataURL();
-            };
-            img.src = logoImg.src;
-        };
+        window.onload = setTodayDate;
+
+        function loadImage(event) {
+            const reader = new FileReader();
+            reader.onload = function() {
+                const imageLayer = document.getElementById('bg-image-layer');
+                imageLayer.style.backgroundImage = `url(${reader.result})`;
+            }
+            reader.readAsDataURL(event.target.files[0]);
         }
 
         function toggleBadgeVisibility() {
