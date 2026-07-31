@@ -6,7 +6,6 @@
     <title>مصمم قوالب موسوعة البصرة</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- استيراد خطوط الهوية الثابتة (Cairo ExtraBold للعناوين و Tajawal للمتن) -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@900&family=Tajawal:wght@500;700&display=swap" rel="stylesheet">
     <style>
         body {
@@ -25,7 +24,6 @@
             color: #38bdf8;
         }
 
-        /* حاوية المعاينة الأساسية بأبعاد تناسب النشر المريح */
         .preview-container {
             width: 420px;
             height: 600px;
@@ -39,7 +37,6 @@
             box-sizing: border-box;
         }
 
-        /* خط رفيع جداً فوق الشريط السفلي مباشرة لربط وتماسك التصميم */
         .bottom-divider-line {
             position: absolute;
             bottom: 38px;
@@ -50,7 +47,6 @@
             z-index: 6;
         }
 
-        /* صورة الخلفية تغطي كامل المساحة بدقة لمنع أي فراغات */
         .image-area {
             width: 100%;
             height: 100%; 
@@ -64,7 +60,6 @@
             z-index: 1;
         }
 
-        /* الهيدر العلوي */
         .top-overlay {
             position: absolute;
             top: 14px;
@@ -85,7 +80,7 @@
             user-select: none;
         }
 
-        /* إصلاح جذري للشعار لإزالة أي خلفية أو إطار أبيض نهائياً */
+        /* تعديل الشعار ليصبح أبيض ناصعاً وخالياً من أي ظلال أو مربعات رمادية */
         .logo-img {
             width: 80px;
             height: 80px;
@@ -95,11 +90,9 @@
             border: none !important;
             box-shadow: none !important;
             outline: none !important;
-            mix-blend-mode: darken; /* حل مشكلة المربع الأبيض وإظهار الخطوط فقط */
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+            filter: brightness(0) invert(1) drop-shadow(0 1px 2px rgba(0,0,0,0.8));
         }
 
-        /* صندوق التاريخ مع ظل خفيف ونصف قطر ظل مصغر ليبدو أكثر حداثة ونعومة */
         .date-box {
             font-size: 11.5px;
             font-weight: 900;
@@ -112,7 +105,6 @@
             box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
         }
 
-        /* تدرج سفلي بشفافية عالية تقريباً 90% خلفية شفافة و10% عتامة خفيفة */
         .title-box-container {
             position: absolute;
             bottom: 39px; 
@@ -136,7 +128,6 @@
             box-sizing: border-box;
         }
 
-        /* بطاقة "عاجل" (أكبر وأكثر بروزاً) */
         .news-category-badge {
             font-family: 'Cairo', sans-serif;
             font-size: 13px;
@@ -154,7 +145,6 @@
             box-shadow: 0 2px 6px rgba(0,0,0,0.4);
         }
 
-        /* خصائص العنوان مع زيادة تباعد الأسطر لمنع التداخل */
         .title-text {
             font-family: 'Cairo', sans-serif;
             font-size: 15px; 
@@ -170,7 +160,6 @@
             width: 100%;
         }
 
-        /* شريط الحسابات السفلي النحيف والأنيق */
         .social-footer {
             position: absolute;
             bottom: 0;
@@ -222,7 +211,6 @@
             filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.9));
         }
 
-        /* لوحة التحكم السفلى */
         .control-panel {
             width: 420px;
             background-color: #1e293b;
@@ -319,31 +307,22 @@
 
     <h2>محرر قوالب موسوعة البصرة</h2>
 
-    <!-- شاشة المعاينة الحية -->
     <div class="preview-container" id="capture-area">
-        
-        <!-- صورة الخلفية الكاملة -->
         <div class="image-area" id="bg-image-layer"></div>
-
-        <!-- الخط الفاصل الرفيع لتحقيق التماسك البصري -->
         <div class="bottom-divider-line"></div>
-
-        <!-- الهيدر العلوي -->
+        
         <div class="top-overlay">
             <div class="brand-section">
                 <img id="display-logo" class="logo-img" src="Logo.png" alt="logo">
             </div>
-            <!-- صندوق التاريخ -->
             <div class="date-box" id="display-date"></div>
         </div>
         
-        <!-- شريط العنوان الرئيسي -->
         <div class="title-box-container">
             <div class="news-category-badge" id="display-category">عاجل</div>
             <p class="title-text" id="display-title">ضع أهم كلمة في البداية.. عنوان خبري احترافي لا يتجاوز 20–25 كلمة ليظهر بوضوح تام...</p>
         </div>
 
-        <!-- شريط الحسابات السفلي النحيف والأنيق -->
         <div class="social-footer">
             <span class="brand-handle">موسوعة البصرة <span class="sep">│</span> <span class="sub-title">منصة إخبارية مستقلة</span></span>
             <div class="social-icons-group">
@@ -355,9 +334,7 @@
         </div>
     </div>
 
-    <!-- لوحة التحكم السفلى -->
     <div class="control-panel">
-
         <div class="section-title">إدراج صورة الخبر أو الكتاب الرسمي</div>
         <input type="file" id="image-loader" class="input-custom" accept="image/*" onchange="loadImage(event)">
 
@@ -439,7 +416,7 @@
         }
 
         function changeImageSize() {
-            const sliderValue = document.getElementById('image-size-slider').value;
+            const sliderValue = document.getElementById('image-size-slider-slider').value || document.getElementById('image-size-slider').value;
             const imageLayer = document.getElementById('bg-image-layer');
             const sizeLabel = document.getElementById('image-size-val');
             imageLayer.style.backgroundSize = sliderValue + '%';
