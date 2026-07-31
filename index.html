@@ -82,27 +82,24 @@
         
 
       /* حاوية الشعار الدائرية البيضاء - بحجم أصغر وأكثر تناسقاً */
-        .logo-circle-bg {
-            width: 55px;
-            height: 55px;
-            background-color: #ffffff;
+       .logo-circle-bg {
+            width: 65px;
+            height: 65px;
+            background-color: #ffffff; /* تعبئة الجزء الداخلي للشعار باللون الأبيض لتوضيح الجسر والكتابة */
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
-            padding: 2px;
+            overflow: hidden; /* لضمان بقاء التعبئة البيضاء داخل حدود دائرية الشعار تماماً */
         }
 
         .logo-img {
             width: 100%;
             height: 100%;
             object-fit: contain;
-            border-radius: 50%;
             display: block;
-            background-color: #ffffff;
         }
-
         .date-box {
             font-size: 11.5px;
             font-weight: 900;
