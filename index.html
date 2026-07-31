@@ -80,8 +80,8 @@
             user-select: none;
         }
 
-        /* تعديل الشعار ليصبح أبيض ناصعاً وخالياً من أي ظلال أو مربعات رمادية */
-      .logo-img {
+        /* الحجم الجديد للشعار مع إخفاء المربع الأبيض نهائياً عبر خاصية الـ multiply */
+        .logo-img {
             width: 110px;
             height: 110px;
             object-fit: contain;
@@ -90,7 +90,6 @@
             border: none !important;
             box-shadow: none !important;
             outline: none !important;
-            /* إعادة تفعيل الدمج لإخفاء المربع الأبيض نهائياً مع الحجم الجديد */
             mix-blend-mode: multiply;
         }
 
@@ -106,6 +105,7 @@
             box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
         }
 
+        /* شريط العنوان الأساسي بخلفية شفافة وثابتة ومريحة للقراءة */
         .title-box-container {
             position: absolute;
             bottom: 39px; 
@@ -119,7 +119,6 @@
             align-items: center;
             justify-content: flex-end;
             text-align: center;
-            /* خلفية داكنة شفافة وثابتة وليست تدرجاً كاملاً، لضمان وضوح النص وقراءة العنوان براحة */
             background: rgba(15, 23, 42, 0.45);
             backdrop-filter: blur(3px);
             box-sizing: border-box;
@@ -413,7 +412,7 @@
         }
 
         function changeImageSize() {
-            const sliderValue = document.getElementById('image-size-slider-slider').value || document.getElementById('image-size-slider').value;
+            const sliderValue = document.getElementById('image-size-slider').value;
             const imageLayer = document.getElementById('bg-image-layer');
             const sizeLabel = document.getElementById('image-size-val');
             imageLayer.style.backgroundSize = sliderValue + '%';
