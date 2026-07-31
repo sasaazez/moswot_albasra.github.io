@@ -90,9 +90,9 @@
             border: none !important;
             box-shadow: none !important;
             outline: none !important;
-            /* استخدام خاصية التصفية لإخفاء الخلفية البيضاء تماماً بناءً على درجة اللون */
-            filter: contrast(120%) brightness(1.05);
-            /* إذا كان ملف الشعار لديكِ بصيغة PNG بخلفية شفافة أصلية، فهذا الكود سيعرضه بنقاء تام */
+            /* عزل وإخفاء اللون الأبيض برمجياً وجعل شعارك ناصعاً وشفافاً */
+            filter: contrast(150%) invert(1);
+            mix-blend-mode: screen;
         }
 
         .date-box {
