@@ -85,19 +85,19 @@
             user-select: none;
         }
 
-        /* الشعار بدون أي إطار أو خلفية وبشكل نظيف تماماً */
+        /* إصلاح جذري للشعار لإزالة أي خلفية أو إطار أبيض نهائياً */
         .logo-img {
-    width: 75px;
-    height: 75px;
-    object-fit: contain;
-    display: block;
-    background: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
-    outline: none !important;
-    mix-blend-mode: multiply; /* هذا السطر سيزيل اللون الأبيض تماماً وينقي اللوجو */
-    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.6));
-}
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            display: block;
+            background: transparent !important;
+            border: none !important;
+            box-shadow: none !important;
+            outline: none !important;
+            mix-blend-mode: darken; /* حل مشكلة المربع الأبيض وإظهار الخطوط فقط */
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+        }
 
         /* صندوق التاريخ مع ظل خفيف ونصف قطر ظل مصغر ليبدو أكثر حداثة ونعومة */
         .date-box {
@@ -112,7 +112,7 @@
             box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
         }
 
-        /* تدرج سفلي مخفف العتامة بنسبة 10-15% لإظهار التواقيع والأختام بوضوح كامل */
+        /* تدرج سفلي بشفافية عالية تقريباً 90% خلفية شفافة و10% عتامة خفيفة */
         .title-box-container {
             position: absolute;
             bottom: 39px; 
@@ -127,16 +127,16 @@
             justify-content: flex-end;
             text-align: center;
             background: linear-gradient(to top, 
-                rgba(15, 23, 42, 0.60) 0%, 
-                rgba(15, 23, 42, 0.45) 35%, 
-                rgba(15, 23, 42, 0.20) 70%, 
+                rgba(15, 23, 42, 0.25) 0%, 
+                rgba(15, 23, 42, 0.15) 35%, 
+                rgba(15, 23, 42, 0.05) 70%, 
                 rgba(15, 23, 42, 0) 100%
             );
             backdrop-filter: blur(1px);
             box-sizing: border-box;
         }
 
-        /* بطاقة "عاجل" (تم تكبيرها قليلاً لزيادة الحضور البصري) */
+        /* بطاقة "عاجل" (أكبر وأكثر بروزاً) */
         .news-category-badge {
             font-family: 'Cairo', sans-serif;
             font-size: 13px;
