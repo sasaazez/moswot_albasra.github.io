@@ -80,23 +80,17 @@
             user-select: none;
         }
 
-        .logo-box {
-            font-family: 'Cairo', sans-serif;
-            font-size: 13px;
-            font-weight: 900;
-            color: #0f172a;
-            background: #ffffff;
-            padding: 8px 12px;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-            text-align: center;
-            line-height: 1.25;
-            border: 1px solid rgba(15,23,42,0.1);
-        }
-
-        .logo-box span {
-            color: #1e3a8a;
-            font-size: 15px;
+        /* الحجم الجديد للشعار مع إخفاء المربع الأبيض نهائياً عبر خاصية الـ multiply */
+        .logo-img {
+            width: 110px;
+            height: 110px;
+            object-fit: contain;
+            display: block;
+            background: transparent !important;
+            border: none !important;
+            box-shadow: none !important;
+            outline: none !important;
+            mix-blend-mode: multiply;
         }
 
         .date-box {
@@ -111,6 +105,7 @@
             box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
         }
 
+        /* شريط العنوان الأساسي بخلفية شفافة وثابتة ومريحة للقراءة */
         .title-box-container {
             position: absolute;
             bottom: 39px; 
@@ -314,7 +309,7 @@
         
         <div class="top-overlay">
             <div class="brand-section">
-                <div class="logo-box">موسوعة<br><span>البصرة</span></div>
+                <img id="display-logo" class="logo-img" src="Logo.png" alt="logo">
             </div>
             <div class="date-box" id="display-date"></div>
         </div>
