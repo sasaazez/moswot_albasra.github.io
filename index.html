@@ -87,16 +87,17 @@
 
         /* الشعار بدون أي إطار أو خلفية وبشكل نظيف تماماً */
         .logo-img {
-            width: 75px;
-            height: 75px;
-            object-fit: contain;
-            display: block;
-            background: transparent !important;
-            border: none !important;
-            box-shadow: none !important;
-            outline: none !important;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.6));
-        }
+    width: 75px;
+    height: 75px;
+    object-fit: contain;
+    display: block;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+    mix-blend-mode: multiply; /* هذا السطر سيزيل اللون الأبيض تماماً وينقي اللوجو */
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.6));
+}
 
         /* صندوق التاريخ مع ظل خفيف ونصف قطر ظل مصغر ليبدو أكثر حداثة ونعومة */
         .date-box {
