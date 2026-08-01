@@ -83,9 +83,9 @@
         .logo-img {
             width: 65px;
             height: 65px;
-            object-fit: cover;
-            border-radius: 50%; /* تحويل الحاوية أو الصورة إلى شكل دائري تماماً */
+            object-fit: contain;
             display: block;
+            mix-blend-mode: multiply; /* هذا السطر سيقوم بإخفاء اللون الأبيض بالكامل ودمج الدائرة تماماً */
             background: transparent;
         }
         .date-box {
