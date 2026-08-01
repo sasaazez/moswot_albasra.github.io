@@ -79,14 +79,24 @@
             z-index: 5;
             user-select: none;
         }
-.logo-img {
-            width: 65px;
-            height: 65px;
-            object-fit: contain;
-            display: block;
-            background: transparent;
-        }
-        
+.logo-circle-bg{
+    width:65px;
+    height:65px;
+    border-radius:50%;
+    overflow:hidden;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:transparent;
+}
+
+.logo-img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    border:none;
+    background:transparent;
+}
         .date-box {
             font-size: 11.5px;
             font-weight: 900;
