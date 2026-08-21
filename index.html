@@ -158,11 +158,9 @@
             margin: 0;
             line-height: 1.60;
             text-shadow: 1px 1px 4px rgba(0,0,0,0.9), 0 0 6px rgba(0,0,0,0.5);
-            overflow: hidden;
-            display: -webkit-box;
-            -webkit-line-clamp: 3; 
-            -webkit-box-orient: vertical;
+            /* تم إزالة قيود الأسطر الثلاثة لتصبح حرة بالكامل */
             width: 100%;
+            word-break: break-word;
         }
 
         .social-footer {
@@ -278,14 +276,14 @@
 
         textarea {
             width: 100%;
-            height: 75px;
+            height: 110px; /* تم زيادة الارتفاع ليتناسب مع النصوص الأطول */
             background-color: #0f172a;
             border: 1px solid #334155;
             border-radius: 8px;
             color: white;
             padding: 12px;
             box-sizing: border-box;
-            resize: none;
+            resize: vertical; /* السماح بتغيير حجم المربع عند الحاجة */
             font-family: 'Tajawal', sans-serif;
             font-weight: 500;
             font-size: 14px;
@@ -328,7 +326,7 @@
         
         <div class="title-box-container">
             <div class="news-category-badge" id="display-category">عاجل</div>
-            <p class="title-text" id="display-title">ضع أهم كلمة في البداية.. عنوان خبري احترافي لا يتجاوز 20–25 كلمة ليظهر بوضوح تام...</p>
+            <p class="title-text" id="display-title">اكتب النص بالشول والطول الذي تريده دون التقيد بأي عدد محدد من الأسطر...</p>
         </div>
 
         <div class="social-footer">
@@ -380,8 +378,8 @@
             <span id="font-size-val" class="slider-val">15px</span>
         </div>
 
-        <div class="section-title">محتوى العنوان (بحد أقصى 3 أسطر)</div>
-        <textarea id="input-title" placeholder="اكتب نص العنوان هنا (ابدأ بأهم كلمة)..." oninput="updateTitle()"></textarea>
+        <div class="section-title">محتوى العنوان (مساحة حرة بدون قيود)</div>
+        <textarea id="input-title" placeholder="اكتب نص العنوان كاملاً بحرية تامة..." oninput="updateTitle()"></textarea>
 
         <button class="btn-download" onclick="downloadImage()">تصدير التصميم كصورة للنشر</button>
     </div>
@@ -457,7 +455,7 @@
             const titleInput = document.getElementById('input-title').value;
             const displayTitle = document.getElementById('display-title');
             if(titleInput.trim() === "") {
-                displayTitle.innerText = "ضع أهم كلمة في البداية.. عنوان خبري احترافي لا يتجاوز 20–25 كلمة ليظهر بوضوح تام...";
+                displayTitle.innerText = "اكتب النص بالشول والطول الذي تريده دون التقيد بأي عدد محدد من الأسطر...";
             } else {
                 displayTitle.innerText = titleInput;
             }
