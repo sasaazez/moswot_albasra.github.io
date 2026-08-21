@@ -35,6 +35,7 @@
             display: flex;
             flex-direction: column;
             box-sizing: border-box;
+            transition: all 0.3s ease;
         }
 
         .bottom-divider-line {
@@ -342,6 +343,13 @@
     </div>
 
     <div class="control-panel">
+        <div class="section-title">اختر منصة النشر (تغيير أبعاد القالب فورياً)</div>
+        <select id="platform-select" class="input-custom" onchange="changePlatformAspect()">
+            <option value="facebook-tiktok">الوضع الافتراضي (فيسبوك وتيك توك / 420x600)</option>
+            <option value="instagram-square">إنستغرام - بوست مربع (1:1 / 500x500)</option>
+            <option value="instagram-story">إنستغرام - ستوري / عمودي (4:5 / 420x525)</option>
+        </select>
+
         <div class="section-title">إدراج صورة الخبر أو الكتاب الرسمي</div>
         <input type="file" id="image-loader" class="input-custom" accept="image/*" onchange="loadImage(event)">
 
@@ -388,6 +396,21 @@
         }
         
         window.onload = setTodayDate;
+
+        function changePlatformAspect() {
+            const val = document.getElementById('platform-select').value;
+            const container = document.getElementById('capture-area');
+            if(val === 'facebook-tiktok') {
+                container.style.width = '420px';
+                container.style.height = '600px';
+            } else if(val === 'instagram-square') {
+                container.style.width = '500px';
+                container.style.height = '500px';
+            } else if(val === 'instagram-story') {
+                container.style.width = '420px';
+                container.style.height = '525px';
+            }
+        }
 
         function loadImage(event) {
             const reader = new FileReader();
