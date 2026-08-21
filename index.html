@@ -158,7 +158,6 @@
             margin: 0;
             line-height: 1.60;
             text-shadow: 1px 1px 4px rgba(0,0,0,0.9), 0 0 6px rgba(0,0,0,0.5);
-            /* تم إزالة قيود الأسطر الثلاثة لتصبح حرة بالكامل */
             width: 100%;
             word-break: break-word;
         }
@@ -276,14 +275,14 @@
 
         textarea {
             width: 100%;
-            height: 110px; /* تم زيادة الارتفاع ليتناسب مع النصوص الأطول */
+            height: 110px;
             background-color: #0f172a;
             border: 1px solid #334155;
             border-radius: 8px;
             color: white;
             padding: 12px;
             box-sizing: border-box;
-            resize: vertical; /* السماح بتغيير حجم المربع عند الحاجة */
+            resize: vertical;
             font-family: 'Tajawal', sans-serif;
             font-weight: 500;
             font-size: 14px;
@@ -326,7 +325,7 @@
         
         <div class="title-box-container">
             <div class="news-category-badge" id="display-category">عاجل</div>
-            <p class="title-text" id="display-title">اكتب النص بالشول والطول الذي تريده دون التقيد بأي عدد محدد من الأسطر...</p>
+            <p class="title-text" id="display-title">اكتب النص بالشكل والطول الذي تريده دون التقيد بأي عدد محدد من الأسطر...</p>
         </div>
 
         <div class="social-footer">
@@ -343,13 +342,16 @@
     <div class="control-panel">
         <div class="section-title">اختر منصة النشر (تغيير أبعاد القالب فورياً)</div>
         <select id="platform-select" class="input-custom" onchange="changePlatformAspect()">
-            <option value="facebook-tiktok">الوضع الافتراضي (فيسبوك وتيك توك / 420x600)</option>
+            <option value="facebook-tiktok">الوضع الافتراضي (فيسبوك وتيك توค / 420x600)</option>
             <option value="instagram-square">إنستغرام - بوست مربع (1:1 / 500x500)</option>
             <option value="instagram-story">إنستغرام - ستوري / عمودي (4:5 / 420x525)</option>
         </select>
 
         <div class="section-title">إدراج صورة الخبر أو الكتاب الرسمي</div>
-        <input type="file" id="image-loader" class="input-custom" accept="image/*" onchange="loadImage(event)">
+        <div style="display: flex; gap: 10px;">
+            <input type="file" id="image-loader" class="input-custom" accept="image/*" onchange="loadImage(event)" style="flex: 1;">
+            <button onclick="removeImage()" style="background-color: #ef4444; color: white; border: none; border-radius: 8px; padding: 0 12px; cursor: pointer; font-weight: bold; font-size: 12px;">بدون صورة</button>
+        </div>
 
         <div class="section-title">التحكم بشريط التمييز (عاجل أو تخصيص)</div>
         <div class="checkbox-group">
@@ -419,6 +421,12 @@
             reader.readAsDataURL(event.target.files[0]);
         }
 
+        function removeImage() {
+            const imageLayer = document.getElementById('bg-image-layer');
+            imageLayer.style.backgroundImage = 'none';
+            document.getElementById('image-loader').value = '';
+        }
+
         function toggleBadgeVisibility() {
             const isChecked = document.getElementById('toggle-badge').checked;
             const badge = document.getElementById('display-category');
@@ -455,7 +463,7 @@
             const titleInput = document.getElementById('input-title').value;
             const displayTitle = document.getElementById('display-title');
             if(titleInput.trim() === "") {
-                displayTitle.innerText = "اكتب النص بالشول والطول الذي تريده دون التقيد بأي عدد محدد من الأسطر...";
+                displayTitle.innerText = "اكتب النص بالشكل والطول الذي تريده دون التقيد بأي عدد محدد من الأسطر...";
             } else {
                 displayTitle.innerText = titleInput;
             }
