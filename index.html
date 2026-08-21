@@ -48,13 +48,13 @@
             z-index: 6;
         }
 
-       .image-area {
+        .image-area {
             width: 100%;
             height: 100%; 
             background-color: #ffffff; 
             background-repeat: no-repeat;
             background-size: cover; 
-            background-position: center 25%; /* تغيير المركز لتدفع الصورة نحو الأسفل قليلاً وتبتعد عن الشعار */
+            background-position: center 20%; /* موضع افتراضي ممتاز */
             position: absolute;
             top: 0;
             left: 0;
@@ -72,37 +72,41 @@
             padding: 6px 8px;
             z-index: 4;
             background: transparent;
+            pointer-events: none; /* لتسهيل النقر لو لزم الأمر */
         }
 
-       .brand-section {
+        .brand-section {
             display: flex;
             align-items: center;
             z-index: 5;
             user-select: none;
+            pointer-events: auto;
         }
-.logo-circle-bg{
-    width:65px;
-    height:65px;
-    overflow:hidden;
-    border-radius:50%;
-    background:transparent;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    padding:0;
-    margin:0;
-}
 
-.logo-img{
-    width:113%;
-    height:113%;
-    display:block;
-    object-fit:cover;
-    object-position:center;
-    background:transparent;
-    border:none;
-    box-shadow:none;
-}
+        .logo-circle-bg {
+            width: 65px;
+            height: 65px;
+            overflow: hidden;
+            border-radius: 50%;
+            background: transparent;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            margin: 0;
+        }
+
+        .logo-img {
+            width: 113%;
+            height: 113%;
+            display: block;
+            object-fit: cover;
+            object-position: center;
+            background: transparent;
+            border: none;
+            box-shadow: none;
+        }
+
         .date-box {
             font-size: 11.5px;
             font-weight: 900;
@@ -113,6 +117,7 @@
             backdrop-filter: blur(2px);
             letter-spacing: 0.5px;
             box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
+            pointer-events: auto;
         }
 
         .title-box-container {
@@ -177,15 +182,18 @@
             z-index: 5;
             background: rgba(15, 23, 42, 0.95);
             box-sizing: border-box;
+            direction: ltr;
         }
 
         .brand-handle {
             color: #ffffff; 
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9);
             letter-spacing: 0.5px;
-            order: 2;
             font-size: 12px;
             font-weight: 900;
+            direction: rtl;
+            display: flex;
+            align-items: center;
         }
 
         .brand-handle .sep {
@@ -204,7 +212,6 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            order: 1;
         }
 
         .social-item i {
@@ -315,10 +322,9 @@
         
         <div class="top-overlay">
             <div class="brand-section">
-                <!-- دائرة بيضاء تحتوي الشعار بداخلها -->
                 <div class="logo-circle-bg">
-    <img class="logo-img" src="Logo.png" alt="logo">
-</div>
+                    <img class="logo-img" src="Logo.png" alt="logo">
+                </div>
             </div>
             <div class="date-box" id="display-date"></div>
         </div>
@@ -342,7 +348,7 @@
     <div class="control-panel">
         <div class="section-title">اختر منصة النشر (تغيير أبعاد القالب فورياً)</div>
         <select id="platform-select" class="input-custom" onchange="changePlatformAspect()">
-            <option value="facebook-tiktok">الوضع الافتراضي (فيسبوك وتيك توค / 420x600)</option>
+            <option value="facebook-tiktok">الوضع الافتراضي (فيسبوك وتيك توك / 420x600)</option>
             <option value="instagram-square">إنستغرام - بوست مربع (1:1 / 500x500)</option>
             <option value="instagram-story">إنستغرام - ستوري / عمودي (4:5 / 420x525)</option>
         </select>
@@ -353,6 +359,24 @@
             <button onclick="removeImage()" style="background-color: #ef4444; color: white; border: none; border-radius: 8px; padding: 0 12px; cursor: pointer; font-weight: bold; font-size: 12px;">بدون صورة</button>
         </div>
 
+        <div class="section-title">تحريك الصورة عمودياً (لإبعاد الاسم عن الشعار)</div>
+        <div class="slider-container">
+            <input type="range" id="image-pos-y-slider" min="0" max="100" value="20" onchange="changeImagePositionY()" oninput="changeImagePositionY()">
+            <span id="image-pos-y-val" class="slider-val">20%</span>
+        </div>
+
+        <div class="section-title">تحجيم زوم الصورة الخلفية</div>
+        <div class="slider-container">
+            <input type="range" id="image-size-slider" min="30" max="200" value="100" oninput="changeImageSize()">
+            <span id="image-size-val" class="slider-val">100%</span>
+        </div>
+
+        <div class="section-title">طريقة احتواء الصورة داخل الإطار</div>
+        <select id="image-fit-select" class="input-custom" onchange="changeImageFit()">
+            <option value="cover">ملء الإطار بالكامل بدون فراغات (Cover - افتراضي)</option>
+            <option value="contain">إظهار الصورة أو الكتاب كاملة (Contain)</option>
+        </select>
+
         <div class="section-title">التحكم بشريط التمييز (عاجل أو تخصيص)</div>
         <div class="checkbox-group">
             <input type="checkbox" id="toggle-badge" checked onchange="toggleBadgeVisibility()">
@@ -361,18 +385,6 @@
 
         <div class="section-title">نص شريط التصنيف</div>
         <input type="text" id="input-badge-text" class="input-custom" value="عاجل" oninput="updateBadgeText()" placeholder="اكتب النص هنا (مثلاً: عاجل، حصري، بيان)...">
-
-        <div class="section-title">طريقة احتواء الصورة داخل الإطار</div>
-        <select id="image-fit-select" class="input-custom" onchange="changeImageFit()">
-            <option value="cover">ملء الإطار بالكامل بدون فراغات (Cover - افتراضي)</option>
-            <option value="contain">إظهار الصورة أو الكتاب كاملة (Contain)</option>
-        </select>
-
-        <div class="section-title">تحجيم زوم الصورة الخلفية</div>
-        <div class="slider-container">
-            <input type="range" id="image-size-slider" min="30" max="200" value="100" oninput="changeImageSize()">
-            <span id="image-size-val" class="slider-val">100%</span>
-        </div>
 
         <div class="section-title">حجم خط العنوان</div>
         <div class="slider-container">
@@ -387,6 +399,8 @@
     </div>
 
     <script>
+        let currentImageObj = null;
+
         function setTodayDate() {
             const today = new Date();
             const day = today.getDate();
@@ -425,6 +439,15 @@
             const imageLayer = document.getElementById('bg-image-layer');
             imageLayer.style.backgroundImage = 'none';
             document.getElementById('image-loader').value = '';
+        }
+
+        function changeImagePositionY() {
+            const posVal = document.getElementById('image-pos-y-slider').value;
+            const imageLayer = document.getElementById('bg-image-layer');
+            const sizeSlider = document.getElementById('image-size-slider').value;
+            
+            document.getElementById('image-pos-y-val').innerText = posVal + '%';
+            imageLayer.style.backgroundPosition = `center ${posVal}%`;
         }
 
         function toggleBadgeVisibility() {
