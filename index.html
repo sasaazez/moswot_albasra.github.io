@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>قوالب موسوعة البصرة الجاهزة - بدون صوت</title>
+    <title>صانع قوالب موسوعة البصرة - الريلز والصور</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap');
@@ -13,235 +13,235 @@
 <body class="bg-[#121212] text-white min-h-screen p-4 flex flex-col items-center">
 
     <!-- رأس الصفحة العام -->
-    <header class="w-full max-w-md text-center mb-6">
-        <div class="flex items-center justify-between bg-neutral-900 border border-neutral-800 px-4 py-2.5 rounded-2xl shadow-lg mb-2">
+    <header class="w-full max-w-md text-center mb-4">
+        <div class="flex items-center justify-between bg-neutral-900 border border-neutral-800 px-4 py-2.5 rounded-2xl shadow-lg">
             <div class="flex items-center gap-2">
                 <span class="bg-amber-500 text-black text-[10px] font-black px-2 py-0.5 rounded">بص</span>
-                <span class="text-xs font-bold text-slate-200">قوالب موسوعة البصرة الجاهزة - بدون صوت</span>
+                <span class="text-xs font-bold text-slate-200">صانع قوالب موسوعة البصرة</span>
             </div>
-            <span class="text-[10px] text-slate-400">9:16 عمودي</span>
+            <span class="text-[10px] text-amber-400">تحكم بالصور والنصوص 🖼️</span>
         </div>
     </header>
 
     <!-- حاوية العرض الرئيسية -->
-    <main class="w-full max-w-md flex flex-col items-center gap-6">
+    <main class="w-full max-w-md flex flex-col items-center gap-5">
 
-        <!-- 📱 إطار الموبايل (Mockup Phone) المعبر عن القالب النشط -->
-        <div class="w-full max-w-[320px] bg-black border-[8px] border-neutral-800 rounded-[40px] overflow-hidden shadow-2xl relative flex flex-col justify-between">
+        <!-- 📱 معاينة قالب الموبايل (الريلز 9:16) -->
+        <div class="w-full max-w-[300px] bg-black border-[8px] border-neutral-800 rounded-[35px] overflow-hidden shadow-2xl relative flex flex-col justify-between">
             
             <!-- كاميرا الهاتف العلوي -->
-            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-28 h-5 bg-neutral-800 rounded-b-xl z-20"></div>
+            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-4 bg-neutral-800 rounded-b-xl z-20"></div>
 
-            <!-- محتوى الشاشة الديناميكي -->
-            <div id="screenContainer" class="bg-white text-slate-900 pt-7 pb-4 px-4 flex flex-col justify-between min-h-[540px] relative transition-all duration-300">
+            <!-- محتوى الشاشة -->
+            <div class="relative text-white pt-9 pb-3 px-3.5 flex flex-col justify-between min-h-[520px] overflow-hidden">
                 
+                <!-- خلفية الصورة -->
+                <div class="absolute inset-0 z-0">
+                    <img id="previewBgImg" src="https://images.unsplash.com/photo-1517649763962-0c623266cf20?auto=format&fit=crop&q=80&w=800" alt="خلفية" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-b from-[#0b1329]/85 via-[#0b1329]/95 to-[#0b1329]"></div>
+                </div>
+
                 <!-- المحتوى العلوي -->
-                <div>
-                    <!-- شريط العنوان العلوي -->
-                    <div id="screenHeaderBar" class="bg-emerald-600 text-white px-3 py-2 rounded-xl flex justify-between items-center text-xs font-bold shadow mb-4">
-                        <div class="flex items-center gap-1.5">
-                            <span id="headerLogoText">موسوعة البصرة</span>
+                <div class="relative z-10">
+                    <!-- الشريط العلوي (شعار وبطاقة) -->
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="bg-white rounded-xl p-1.5 shadow-lg flex flex-col items-center w-12 h-12 justify-center">
+                            <span class="text-black font-black text-[11px]">بص</span>
+                            <span class="text-[7px] text-slate-600 font-bold">موسوعة البصرة</span>
                         </div>
-                        <div class="flex items-center gap-2">
-                            <span id="screenCategory" class="bg-black/20 px-2 py-0.5 rounded text-[11px]">خدمات</span>
-                            <span id="screenSubTag" class="bg-emerald-700 px-2 py-0.5 rounded text-[10px]">تنويه</span>
+                        <div class="bg-red-600/90 text-white text-[9px] font-bold px-2 py-0.5 rounded-full flex items-center gap-1 shadow">
+                            <span class="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>
+                            REEL
                         </div>
                     </div>
 
-                    <!-- شارة البادج -->
-                    <div class="inline-flex items-center gap-1 bg-neutral-900 text-white text-[10px] font-bold px-2.5 py-1 rounded-full mb-3 shadow">
-                        <span id="screenDot" class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-                        <span id="screenBadgeText">تنويه هام للمواطنين</span>
+                    <!-- التصنيف -->
+                    <div class="flex justify-center mb-2">
+                        <span id="previewCategory" class="bg-amber-500/20 border border-amber-500/40 text-amber-400 text-[10px] font-bold px-2.5 py-0.5 rounded-full">
+                            رياضة | الميناء
+                        </span>
                     </div>
 
-                    <!-- عنوان الخبر الرئيسي -->
-                    <h2 id="screenTitle" class="text-base font-black leading-relaxed mb-4">
-                        انقطاع مبرمج للماء في مناطق الجبيلة والطويسة من الساعة 8 صباحاً حتى 3 عصراً بسبب أعمال الصيانة
+                    <!-- عنوان الخبر -->
+                    <h2 id="previewTitle" class="text-center text-sm font-black leading-snug mb-3 text-white drop-shadow-md">
+                        اكتبي عنوان الخبر هنا...
                     </h2>
 
-                    <!-- صندوق التفاصيل المتغير حسب القالب -->
-                    <div id="screenBox" class="bg-slate-50 border border-slate-200 rounded-xl p-3 text-[11px] space-y-2 text-slate-700 shadow-sm">
-                        <!-- يُعبأ تلقائياً بالبرمجة -->
+                    <!-- صندوق التفاصيل -->
+                    <div id="previewBox" class="bg-black/40 backdrop-blur-md border border-amber-500/30 rounded-xl p-2.5 text-[10px] space-y-1.5 shadow-xl">
+                        <div class="flex items-center justify-between border-b border-white/10 pb-1">
+                            <span class="text-slate-200">النقطة الأولى هنا...</span>
+                            <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-slate-200">النقطة الثانية هنا...</span>
+                            <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+                        </div>
                     </div>
                 </div>
 
-                <!-- تذييل الشاشة داخل الموبايل -->
-                <div class="mt-4 pt-3 border-t border-slate-100">
-                    <div id="screenFooterBar" class="bg-emerald-600 text-white py-2 px-3 rounded-xl flex justify-between items-center text-xs font-bold shadow">
-                        <span id="footerLeft" class="text-[10px] opacity-90">BASRA SERVICES</span>
-                        <span id="footerRight" class="flex items-center gap-1">📍 البصرة - بلدية البصرة</span>
+                <!-- التذييل -->
+                <div class="relative z-10 mt-3 pt-2 border-t border-white/10 flex justify-between items-center text-[9px]">
+                    <div>
+                        <span id="previewFooterLeft" class="font-bold text-amber-400 block">AL-MINA'A SC</span>
+                        <span class="text-slate-400">2025 / 2026</span>
                     </div>
-                    <p id="screenNote" class="text-center text-[9px] text-slate-400 mt-2">يرجى مشاركة التنويه مع الجيران</p>
+                    <div class="text-center bg-white/10 p-1 rounded-full w-6 h-6 flex items-center justify-center">
+                        ⚽
+                    </div>
+                    <div class="text-left">
+                        <span class="font-bold block text-white">موسوعة البصرة</span>
+                        <span class="text-slate-400 text-[8px]">BASRA ENCYCLOPEDIA</span>
+                    </div>
                 </div>
 
             </div>
         </div>
 
-        <!-- 📋 صندوق نسخ الصيغة (COPY PASTE - STRUCTURE) -->
-        <div class="w-full bg-neutral-900 border border-neutral-800 rounded-2xl p-4 shadow-xl">
-            <div class="flex justify-between items-center mb-2">
-                <span class="text-[10px] tracking-wider text-slate-400 font-bold">COPY PASTE - STRUCTURE</span>
-                <button onclick="copyStructure()" class="bg-neutral-800 hover:bg-neutral-700 text-slate-200 text-[11px] px-3 py-1 rounded-lg flex items-center gap-1 transition">
-                    📋 نسخ الصيغة
-                </button>
-            </div>
-            <div id="structureText" class="text-xs text-slate-200 whitespace-pre-line bg-neutral-950 p-3 rounded-xl border border-neutral-800/80 leading-relaxed font-semibold">
-                <!-- نص الصيغة الجاهزة للنسخ -->
-            </div>
-        </div>
-
-        <!-- ⚙️ لوحة التحكم السريع للاختيار بين القوالب -->
+        <!-- ✍️ لوحة التحكم والصور -->
         <div class="w-full bg-neutral-900 border border-neutral-800 rounded-2xl p-4 shadow-xl space-y-3">
-            <h3 class="text-xs font-bold text-amber-400 border-b border-neutral-800 pb-2">اختر القالب للعرض والنسخ</h3>
-            <div class="grid grid-cols-2 gap-2">
-                <button onclick="setTemplate('services')" class="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold py-2.5 rounded-xl transition shadow">خدمات 🟢</button>
-                <button onclick="setTemplate('weather')" class="bg-sky-600 hover:bg-sky-700 text-white text-xs font-bold py-2.5 rounded-xl transition shadow">طقس 🔵</button>
-                <button onclick="setTemplate('urgent')" class="bg-red-600 hover:bg-red-700 text-white text-xs font-bold py-2.5 rounded-xl transition shadow">عاجل 🔴</button>
-                <button onclick="setTemplate('sport')" class="bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold py-2.5 rounded-xl transition shadow">رياضة 🟡</button>
+            <h3 class="text-xs font-bold text-amber-400 border-b border-neutral-800 pb-2">لوحة إدخال النصوص وتغيير الصور</h3>
+            
+            <!-- اختيار القسم الجاهز -->
+            <div>
+                <label class="block text-[11px] text-slate-400 mb-1">اختر نوع القالب الأساسي:</label>
+                <select id="templateSelect" onchange="changeTemplateType()" class="w-full bg-neutral-950 border border-neutral-800 text-white text-xs rounded-xl p-2.5 outline-none focus:border-amber-500">
+                    <option value="sport">🟡 رياضة (الميناء)</option>
+                    <option value="services">🟢 خدمات عامة</option>
+                    <option value="weather">🔵 طقس البصرة</option>
+                    <option value="urgent">🔴 خبر عاجل</option>
+                </select>
             </div>
+
+            <!-- 🖼️ إدخال رابط أو اختيار صورة سريعة -->
+            <div>
+                <label class="block text-[11px] text-slate-400 mb-1">رابط صورة الخلفية (أو اختاري من الأزرار أدناه):</label>
+                <input type="text" id="inputBgUrl" oninput="updatePreview()" class="w-full bg-neutral-950 border border-neutral-800 text-white text-xs rounded-xl p-2.5 outline-none focus:border-amber-500 mb-2" placeholder="ضعي رابط الصورة هنا...">
+                
+                <!-- أزرار صور جاهزة بنقرة واحدة -->
+                <div class="grid grid-cols-3 gap-1.5">
+                    <button onclick="setBgImage('https://images.unsplash.com/photo-1517649763962-0c623266cf20?auto=format&fit=crop&q=80&w=800')" class="bg-neutral-800 hover:bg-neutral-700 text-[10px] py-1.5 rounded-lg text-slate-300">⚽ فريق / رياضة</button>
+                    <button onclick="setBgImage('https://images.unsplash.com/photo-1541888946425-d0fbb18f7294?auto=format&fit=crop&q=80&w=800')" class="bg-neutral-800 hover:bg-neutral-700 text-[10px] py-1.5 rounded-lg text-slate-300">💧 خدمات / ماء</button>
+                    <button onclick="setBgImage('https://images.unsplash.com/photo-1592210454359-9043f067919b?auto=format&fit=crop&q=80&w=800')" class="bg-neutral-800 hover:bg-neutral-700 text-[10px] py-1.5 rounded-lg text-slate-300">☀️ طقس / شمس</button>
+                </div>
+            </div>
+
+            <!-- إدخال التصنيف الفرعي -->
+            <div>
+                <label class="block text-[11px] text-slate-400 mb-1">التصنيف العلوي:</label>
+                <input type="text" id="inputCategory" oninput="updatePreview()" class="w-full bg-neutral-950 border border-neutral-800 text-white text-xs rounded-xl p-2.5 outline-none focus:border-amber-500" value="رياضة | الميناء">
+            </div>
+
+            <!-- إدخال عنوان الخبر -->
+            <div>
+                <label class="block text-[11px] text-slate-400 mb-1">عنوان الخبر الرئيسي:</label>
+                <textarea id="inputTitle" oninput="updatePreview()" rows="2" class="w-full bg-neutral-950 border border-neutral-800 text-white text-xs rounded-xl p-2.5 outline-none focus:border-amber-500">العيداني يصرف مليار ونصف للاعبي الميناء مع توفير طائرة خاصة وتجهيز أديداس</textarea>
+            </div>
+
+            <!-- إدخال تفاصيل الصندوق -->
+            <div>
+                <label class="block text-[11px] text-slate-400 mb-1">تفاصيل الصندوق (كل سطر نقطة):</label>
+                <textarea id="inputDetails" oninput="updatePreview()" rows="3" class="w-full bg-neutral-950 border border-neutral-800 text-white text-xs rounded-xl p-2.5 outline-none focus:border-amber-500">طائرة خاصة للفريق
+تجهيز أديداس الرياضي
+معسكر خارجي وتأهيل الملعب</textarea>
+            </div>
+
+            <!-- زر النسخ -->
+            <button onclick="copyFinalText()" class="w-full bg-amber-500 hover:bg-amber-600 text-black font-bold text-xs py-3 rounded-xl transition shadow-lg flex items-center justify-center gap-1.5 mt-2">
+                📋 نسخ النص الجاهز للنشر
+            </button>
         </div>
 
     </main>
 
-    <!-- البرمجة التفاعلية للقوالب -->
+    <!-- البرمجة التفاعلية -->
     <script>
-        const templates = {
+        const presets = {
+            sport: {
+                cat: "رياضة | الميناء",
+                title: "العيداني يصرف مليار ونصف للاعبي الميناء مع توفير طائرة خاصة وتجهيز أديداس",
+                details: "طائرة خاصة للفريق\nتجهيز أديداس الرياضي\nمعسكر خارجي وتأهيل الملعب",
+                bg: "https://images.unsplash.com/photo-1517649763962-0c623266cf20?auto=format&fit=crop&q=80&w=800"
+            },
             services: {
-                bgClass: "bg-white text-slate-900",
-                headerClass: "bg-emerald-600 text-white",
-                footerClass: "bg-emerald-600 text-white",
-                category: "خدمات",
-                subTag: "تنويه",
-                dotColor: "bg-emerald-400",
-                badgeText: "تنويه هام للمواطنين",
-                title: "انقطاع مبرمج للماء في مناطق الجبيلة والطويسة من الساعة 8 صباحاً حتى 3 عصراً بسبب أعمال الصيانة",
-                boxHtml: `
-                    <div class="flex justify-between items-center text-[10px] text-amber-700 bg-amber-50 px-2 py-1 rounded mb-1 font-bold">
-                        <span>تفاصيل القطع</span>
-                        <span>مؤقت</span>
-                    </div>
-                    <div class="flex justify-between border-b border-slate-100 pb-1">
-                        <span class="text-slate-500">المناطق</span>
-                        <span class="font-bold text-slate-900">الجبيلة، الطويسة</span>
-                    </div>
-                    <div class="flex justify-between border-b border-slate-100 pb-1">
-                        <span class="text-slate-500">الوقت</span>
-                        <span class="font-bold text-slate-900">8 ص - 3 ع</span>
-                    </div>
-                    <div class="flex justify-between">
-                        <span class="text-slate-500">السبب</span>
-                        <span class="font-bold text-slate-900">صيانة دورية</span>
-                    </div>
-                `,
-                footerLeft: "BASRA SERVICES",
-                footerRight: "📍 البصرة - بلدية البصرة",
-                note: "يرجى مشاركة التنويه مع الجيران",
-                structure: "موسوعة البصرة | خدمات 🟢\n\nتنويه هام:\nانقطاع مبرمج للماء في مناطق الجبيلة والطويسة من الساعة 8 صباحاً حتى 3 عصراً بسبب أعمال الصيانة\nيرجى أخذ الاحتياط اللازم\n\n#البصرة_خدمات"
+                cat: "خدمات عامة",
+                title: "انقطاع مبرمج للماء في مناطق الجبيلة والطويسة من الساعة 8 صباحاً حتى 3 عصراً",
+                details: "المناطق: الجبيلة، الطويسة\nالوقت: 8 صباحاً - 3 عصراً\nالسبب: صيانة دورية لشبكة الماء",
+                bg: "https://images.unsplash.com/photo-1541888946425-d0fbb18f7294?auto=format&fit=crop&q=80&w=800"
             },
             weather: {
-                bgClass: "bg-gradient-to-b from-sky-400 to-sky-600 text-white",
-                headerClass: "bg-sky-800/60 text-white backdrop-blur",
-                footerClass: "bg-sky-900 text-white",
-                category: "طقس",
-                subTag: "تنبيه جوي",
-                dotColor: "bg-sky-200",
-                badgeText: "حالة الطقس اليوم",
-                title: "أجواء مغبرة وحارة جداً تشهدها البصرة اليوم مع رياح شمالية غربية",
-                boxHtml: `
-                    <div class="bg-white/10 backdrop-blur rounded-xl p-3 text-white space-y-2 text-[11px]">
-                        <div class="text-center font-bold text-amber-300 text-sm">47° مئوية</div>
-                        <div class="grid grid-cols-3 gap-1 text-center text-[10px] bg-black/20 p-2 rounded-lg">
-                            <div>الرطوبة<br><span class="font-bold">18%</span></div>
-                            <div>الرياح<br><span class="font-bold">22 كم</span></div>
-                            <div>الرؤية<br><span class="font-bold">3 كم</span></div>
-                        </div>
-                    </div>
-                `,
-                footerLeft: "BASRA WEATHER",
-                footerRight: "🌡️ الأرصاد الجوية البصرة",
-                note: "حافظ على سلامتك وارتدِ الكمامة عند الخروج",
-                structure: "موسوعة البصرة | طقس 🔵\n\nتنبيه جوي:\nأجواء مغبرة ودرجة حرارة تصل إلى 47 مئوية اليوم في البصرة\n\n#طقس_البصرة #الموسوعة"
+                cat: "طقس البصرة",
+                title: "تنبيه جوي: أجواء مغبرة ودرجة حرارة مرتفعة تسجلها المحافظة اليوم تصل إلى 47 مئوية",
+                details: "الرطوبة: 18%\nالرياح: 22 كم\nالرؤية: 3 كم",
+                bg: "https://images.unsplash.com/photo-1592210454359-9043f067919b?auto=format&fit=crop&q=80&w=800"
             },
             urgent: {
-                bgClass: "bg-neutral-950 text-white",
-                headerClass: "bg-red-600 text-white",
-                footerClass: "bg-red-900 text-white",
-                category: "عاجل",
-                subTag: "خبر عاجل",
-                dotColor: "bg-white animate-pulse",
-                badgeText: "عاجل الآن",
+                cat: "عاجل الآن",
                 title: "اندلاع حريق كبير في منطقة العشار وسط البصرة وفرق الدفاع المدني تهرع للمكان",
-                boxHtml: `
-                    <div class="bg-red-950/60 border border-red-500/40 rounded-xl p-3 text-[11px] text-red-200 font-bold text-center">
-                        ⚠️ غرفة أخبار الموسوعة تتابع التفاصيل أولاً باول
-                    </div>
-                `,
-                footerLeft: "AL-BASRAH NEWS",
-                footerRight: "🚨 البصرة الان",
-                note: "تابعونا لكل جديد وموثوق",
-                structure: "موسوعة البصرة | عاجل 🔴\n\nاندلاع حريق كبير في منطقة العشار وسط البصرة وفرق الدفاع المدني تهرع للمكان\n\n#موسوعة_البصرة #عاجل"
-            },
-            sport: {
-                bgClass: "bg-[#0b1329] text-white",
-                headerClass: "bg-[#070d1d] text-amber-400 border-b border-amber-500/30",
-                footerClass: "bg-[#070d1d] text-slate-300 border-t border-slate-800",
-                category: "رياضة",
-                subTag: "الميناء",
-                dotColor: "bg-amber-400",
-                badgeText: "نادي الميناء الرياضي",
-                title: "العيداني يصرف مليار ونصف للاعبي الميناء مع توفير طائرة خاصة وتجهيز أديداس",
-                boxHtml: `
-                    <ul class="space-y-1.5 text-slate-300 text-[11px] bg-black/30 p-2.5 rounded-xl border border-amber-500/20">
-                        <li class="flex items-center justify-between border-b border-slate-800 pb-1">
-                            <span>طائرة خاصة للفريق</span>
-                            <span class="w-2 h-2 rounded-full bg-amber-400"></span>
-                        </li>
-                        <li class="flex items-center justify-between border-b border-slate-800 pb-1">
-                            <span>تجهيز أديداس الرياضي</span>
-                            <span class="w-2 h-2 rounded-full bg-amber-400"></span>
-                        </li>
-                        <li class="flex items-center justify-between">
-                            <span>معسكر خارجي وتأهيل الملعب</span>
-                            <span class="w-2 h-2 rounded-full bg-amber-400"></span>
-                        </li>
-                    </ul>
-                `,
-                footerLeft: "AL-MINA'A SC",
-                footerRight: "⚽ موسوعة البصرة الرياضية",
-                note: "دعم مستمر للرياضة البصرية",
-                structure: "موسوعة البصرة | رياضة 🟡\n\nالعيداني يصرف مليار ونصف للاعبي الميناء مع توفير طائرة خاصة وتجهيز أديداس\n\n#نادي_الميناء #رياضة"
+                details: "غرفة أخبار الموسوعة تتابع التفاصيل أولاً باول",
+                bg: "https://images.unsplash.com/photo-1508873696983-2df5c920ac1c?auto=format&fit=crop&q=80&w=800"
             }
         };
 
-        function setTemplate(type) {
-            const data = templates[type];
-            
-            document.getElementById('screenContainer').className = data.bgClass + " pt-7 pb-4 px-4 flex flex-col justify-between min-h-[540px] relative transition-all duration-300";
-            document.getElementById('screenHeaderBar').className = data.headerClass + " px-3 py-2 rounded-xl flex justify-between items-center text-xs font-bold shadow mb-4";
-            document.getElementById('screenFooterBar').className = data.footerClass + " py-2 px-3 rounded-xl flex justify-between items-center text-xs font-bold shadow";
-            
-            document.getElementById('screenCategory').innerText = data.category;
-            document.getElementById('screenSubTag').innerText = data.subTag;
-            document.getElementById('screenBadgeText').innerText = data.badgeText;
-            document.getElementById('screenTitle').innerText = data.title;
-            document.getElementById('screenBox').innerHTML = data.boxHtml;
-            document.getElementById('footerLeft').innerText = data.footerLeft;
-            document.getElementById('footerRight').innerText = data.footerRight;
-            document.getElementById('screenNote').innerText = data.note;
-            document.getElementById('structureText').innerText = data.structure;
-            document.getElementById('screenDot').className = "w-1.5 h-1.5 rounded-full " + data.dotColor;
+        function changeTemplateType() {
+            const val = document.getElementById('templateSelect').value;
+            const p = presets[val];
+            document.getElementById('inputCategory').value = p.cat;
+            document.getElementById('inputTitle').value = p.title;
+            document.getElementById('inputDetails').value = p.details;
+            document.getElementById('inputBgUrl').value = p.bg;
+            document.getElementById('previewBgImg').src = p.bg;
+            updatePreview();
         }
 
-        function copyStructure() {
-            const text = document.getElementById('structureText').innerText;
-            navigator.clipboard.writeText(text).then(() => {
-                alert('تم نسخ الصيغة بنجاح!');
+        function setBgImage(url) {
+            document.getElementById('inputBgUrl').value = url;
+            document.getElementById('previewBgImg').src = url;
+        }
+
+        function updatePreview() {
+            const cat = document.getElementById('inputCategory').value;
+            const title = document.getElementById('inputTitle').value;
+            const detailsRaw = document.getElementById('inputDetails').value;
+            const bgUrl = document.getElementById('inputBgUrl').value;
+
+            document.getElementById('previewCategory').innerText = cat;
+            document.getElementById('previewTitle').innerText = title;
+            if(bgUrl.trim() !== '') {
+                document.getElementById('previewBgImg').src = bgUrl;
+            }
+
+            const lines = detailsRaw.split('\n').filter(l => l.trim() !== '');
+            let boxHtml = '';
+            lines.forEach((line, index) => {
+                const isLast = index === lines.length - 1;
+                boxHtml += `
+                    <div class="flex items-center justify-between ${!isLast ? 'border-b border-white/10 pb-1' : ''}">
+                        <span class="text-slate-200">${line}</span>
+                        <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+                    </div>
+                `;
+            });
+            document.getElementById('previewBox').innerHTML = boxHtml;
+        }
+
+        function copyFinalText() {
+            const cat = document.getElementById('inputCategory').value;
+            const title = document.getElementById('inputTitle').value;
+            const details = document.getElementById('inputDetails').value;
+
+            const finalString = `موسوعة البصرة | ${cat}\n\n${title}\n\n${details}\n\n#موسوعة_البصرة #البصرة`;
+            
+            navigator.clipboard.writeText(finalString).then(() => {
+                alert('تم نسخ النص جاهزاً للنشر!');
             });
         }
 
-        // تشغيل قالب الخدمات افتراضياً عند التحميل
-        setTemplate('services');
+        // تعيين القيمة الافتراضية للرابط عند التحميل
+        document.getElementById('inputBgUrl').value = presets.sport.bg;
+        updatePreview();
     </script>
 
 </body>
 </html>
+
