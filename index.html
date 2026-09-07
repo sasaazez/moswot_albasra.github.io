@@ -3,195 +3,153 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>منصة قوالب موسوعة البصرة التفاعلية</title>
+    <title>قوالب موسوعة البصرة الجاهزة</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap');
         body { font-family: 'Cairo', sans-serif; }
     </style>
 </head>
-<body class="bg-gray-950 text-white min-h-screen p-6 flex flex-col items-center justify-center">
+<body class="bg-gray-950 text-white min-h-screen p-4 flex flex-col items-center">
 
-    <!-- عنوان الصفحة والتحكم -->
-    <div class="w-full max-w-md mb-6 text-center">
-        <div class="flex items-center justify-center gap-2 mb-2">
-            <img src="Logo.png" alt="شعار موسوعة البصرة" class="w-10 h-10 object-contain bg-white/10 p-1 rounded-full shadow">
-            <h1 class="text-xl font-black text-amber-400">موسوعة البصرة • مولد القوالب</h1>
+    <!-- الهيدر والتحكم -->
+    <header class="w-full max-w-md text-center mb-6">
+        <div class="flex items-center justify-center gap-2 mb-1">
+            <img src="Logo.png" alt="شعار موسوعة البصرة" class="w-8 h-8 object-contain bg-white/10 p-1 rounded-full shadow">
+            <h1 class="text-lg font-black text-amber-400">قوالب موسوعة البصرة الجاهزة</h1>
         </div>
-        <p class="text-xs text-slate-400 mb-4">اختاري نوع القالب لعرضه وتعديل محتواه حسب رغبتك</p>
+        <p class="text-[11px] text-slate-400 mb-4">9:16 عمودي • جاهز للريلز • تحكم كامل بالنص والألوان</p>
 
         <!-- قائمة اختيار نوع القالب -->
-        <div class="bg-neutral-900 border border-neutral-800 p-3 rounded-2xl shadow-xl flex items-center gap-3">
+        <div class="bg-neutral-900 border border-neutral-800 p-2.5 rounded-2xl shadow-xl flex items-center gap-2">
             <label for="templateSelect" class="text-xs font-bold text-slate-300">نوع القالب:</label>
             <select id="templateSelect" onchange="switchTemplate()" class="w-full bg-neutral-950 border border-neutral-700 text-white text-xs rounded-xl px-3 py-2 focus:outline-none focus:border-amber-500 font-bold">
-                <option value="sport">رياضة (أزرق غامق وذهبي)</option>
-                <option value="urgent">عاجل (أحمر وأسود)</option>
-                <option value="weather">طقس (تدرج أزرق سماوي)</option>
-                <option value="services">خدمات (أخضر وأبيض)</option>
+                <option value="services">خدمات (أخضر)</option>
+                <option value="urgent">عاجل (أحمر)</option>
+                <option value="weather">طقس (أزرق)</option>
+                <option value="sport">رياضة (ذهبي وداكن)</option>
             </select>
         </div>
-    </div>
+    </header>
 
-    <!-- حاوية القالب المتغير -->
-    <div class="w-full max-w-sm">
+    <!-- حاوية القالب الرئيسي (مقاس عمودي 9:16) -->
+    <main class="w-full max-w-sm flex flex-col gap-4">
 
-        <!-- 1. قالب الرياضة -->
-        <div id="sport-template" class="template-card w-full bg-[#0b1329] border border-slate-800 rounded-2xl overflow-hidden shadow-2xl relative flex flex-col justify-between">
-            <div>
-                <div class="relative w-full h-48 bg-slate-800">
-                    <img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=1000&auto=format&fit=crop" alt="صورة الخبر" class="w-full h-full object-cover opacity-90">
-                    <div class="absolute top-3 left-3 bg-white/90 backdrop-blur px-3 py-1.5 rounded-xl flex items-center gap-2 shadow">
-                        <img src="Logo.png" alt="الشعار" class="w-4 h-4 object-contain">
-                        <span class="text-xs font-bold text-slate-900">موسوعة البصرة</span>
-                    </div>
-                </div>
-                <div class="p-5">
-                    <div class="mb-3">
-                        <span class="bg-[#d4af37]/20 text-[#d4af37] border border-[#d4af37]/30 text-xs font-semibold px-3 py-1 rounded-full">
-                            رياضة | الميناء
-                        </span>
-                    </div>
-                    <h2 class="text-white text-xl font-black leading-snug mb-4">
-                        العيداني يصرف مليار ونصف للاعبي الميناء
-                    </h2>
-                    <ul class="space-y-2 text-slate-300 text-xs">
-                        <li class="flex items-center justify-between border-b border-slate-800/60 pb-1.5">
-                            <span>طائرة خاصة</span>
-                            <span class="w-2 h-2 rounded-full bg-[#d4af37]"></span>
-                        </li>
-                        <li class="flex items-center justify-between border-b border-slate-800/60 pb-1.5">
-                            <span>تجهيز أديداس</span>
-                            <span class="w-2 h-2 rounded-full bg-[#d4af37]"></span>
-                        </li>
-                        <li class="flex items-center justify-between pb-1">
-                            <span>معسكر خارجي وتأهيل الملعب</span>
-                            <span class="w-2 h-2 rounded-full bg-[#d4af37]"></span>
-                        </li>
-                    </ul>
-                </div>
+        <!-- صندوق نسخ الصيغة (COPY PASTE - STRUCTURE) -->
+        <div class="bg-neutral-900 border border-neutral-800 rounded-2xl p-4 shadow-xl">
+            <div class="flex justify-between items-center mb-2">
+                <span class="text-[10px] tracking-wider text-slate-400 font-bold">COPY PASTE - STRUCTURE</span>
+                <button onclick="copyStructure()" class="bg-neutral-800 hover:bg-neutral-700 text-slate-200 text-[11px] px-2.5 py-1 rounded-lg flex items-center gap-1 transition">
+                    📋 نسخ الصيغة
+                </button>
             </div>
-            <div class="px-5 py-3 bg-[#070d1d] border-t border-slate-800 flex justify-between items-center text-xs text-slate-400">
-                <span class="font-bold text-slate-300 text-[11px]">AL-MINA'A SC</span>
-                <div class="flex items-center gap-1">
-                    <img src="Logo.png" alt="الشعار" class="w-3.5 h-3.5 object-contain opacity-80">
-                    <span class="text-[10px] text-slate-300 font-bold">موسوعة البصرة</span>
-                </div>
+            <div id="structureText" class="text-xs text-slate-200 whitespace-pre-line bg-neutral-950 p-3 rounded-xl border border-neutral-800/80 leading-relaxed font-semibold">
+                موسوعة البصرة | خدمات 🟢
+                تنويه هام:
+                انقطاع مبرمج للماء في مناطق الجبيلة والطويسة من الساعة 8 صباحاً حتى 3 عصراً بسبب أعمال الصيانة
+                يرجى أخذ الاحتياط اللازم
+                #البصرة_خدمات
             </div>
         </div>
 
-        <!-- 2. قالب عاجل -->
-        <div id="urgent-template" class="template-card hidden w-full bg-neutral-900 border border-red-900/40 rounded-2xl overflow-hidden shadow-2xl relative flex flex-col justify-between">
-            <div>
-                <div class="bg-red-600 px-4 py-2 flex justify-between items-center text-xs font-bold text-white">
-                    <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-white animate-pulse"></span> عاجل</span>
-                    <div class="flex items-center gap-1.5 bg-white/10 px-2 py-0.5 rounded">
-                        <img src="Logo.png" alt="الشعار" class="w-4 h-4 object-contain">
-                        <span>موسوعة البصرة</span>
-                    </div>
+        <!-- معاينة تصميم القالب المرئي -->
+        <div class="relative w-full aspect-[9/16] max-h-[480px] rounded-2xl overflow-hidden shadow-2xl border border-neutral-800 flex flex-col justify-between p-5 transition-all duration-300" id="visualPreviewCard">
+            
+            <!-- الهيدر الداخلي للقالب مع الشعار -->
+            <div class="flex justify-between items-center">
+                <div class="flex items-center gap-2 bg-black/30 backdrop-blur px-3 py-1 rounded-full border border-white/10">
+                    <img src="Logo.png" alt="الشعار" class="w-4 h-4 object-contain">
+                    <span id="previewBrand" class="text-xs font-bold text-white">موسوعة البصرة | خدمات</span>
                 </div>
-                <div class="p-6">
-                    <div class="inline-block bg-red-600/20 text-red-500 border border-red-600/30 text-[11px] font-bold px-2.5 py-1 rounded mb-4">
-                        خبر عاجل
-                    </div>
-                    <h2 class="text-white text-xl font-black leading-snug mb-6">
-                        اندلاع حريق كبير في منطقة العشار وسط البصرة وفرق الدفاع المدني تهرع للمكان
-                    </h2>
-                </div>
+                <span id="previewBadge" class="text-[10px] font-bold px-2.5 py-1 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">خدمات</span>
             </div>
-            <div class="px-5 py-3 bg-neutral-950 border-t border-neutral-800 flex justify-between items-center text-[11px] text-slate-400">
-                <span>البصرة</span>
-                <span>اليوم 9:30 ص</span>
-            </div>
-        </div>
 
-        <!-- 3. قالب طقس -->
-        <div id="weather-template" class="template-card hidden w-full bg-gradient-to-b from-sky-500 to-blue-700 rounded-2xl overflow-hidden shadow-2xl relative flex flex-col justify-between text-white">
-            <div class="p-6">
-                <div class="flex justify-between items-center text-xs mb-6 opacity-90">
-                    <div class="flex items-center gap-1.5 bg-black/20 px-2.5 py-1 rounded-full">
-                        <img src="Logo.png" alt="الشعار" class="w-4 h-4 object-contain">
-                        <span class="font-bold">موسوعة البصرة</span>
-                    </div>
-                    <span>الطقس</span>
-                </div>
-                <div class="text-center my-4">
-                    <div class="text-6xl font-black tracking-tighter mb-1">47°</div>
-                    <p class="text-sm font-semibold opacity-90">مئوية • حار جداً ومغبر</p>
-                </div>
-                <div class="bg-white text-slate-900 p-4 rounded-xl shadow-lg mt-6">
-                    <p class="text-xs font-bold text-sky-600 mb-2">تنبيه جوي ☁️</p>
-                    <p class="text-xs font-bold leading-relaxed mb-4">
-                        أجواء مغبرة وحارة جداً تشهدها البصرة اليوم مع رياح شمالية غربية
-                    </p>
-                    <div class="grid grid-cols-3 gap-2 text-center text-[10px] bg-slate-100 p-2 rounded-lg text-slate-600">
-                        <div>الرطوبة<br><span class="font-bold text-slate-900">18%</span></div>
-                        <div>الرياح<br><span class="font-bold text-slate-900">22 كم</span></div>
-                        <div>الرؤية<br><span class="font-bold text-slate-900">3 كم</span></div>
-                    </div>
-                </div>
+            <!-- محتوى النص في القالب -->
+            <div class="my-auto py-4">
+                <h2 id="previewTitle" class="text-white text-lg font-black leading-relaxed drop-shadow">
+                    انقطاع مبرمج للماء في مناطق الجبيلة والطويسة من الساعة 8 صباحاً حتى 3 عصراً بسبب أعمال الصيانة
+                </h2>
             </div>
-            <div class="px-5 py-3 bg-blue-900/40 text-[10px] text-center opacity-80">
-                BASRA WEATHER • البصرة - اليوم
-            </div>
-        </div>
 
-        <!-- 4. قالب خدمات -->
-        <div id="services-template" class="template-card hidden w-full bg-white text-slate-900 rounded-2xl overflow-hidden shadow-2xl relative flex flex-col justify-between">
-            <div>
-                <div class="bg-emerald-600 text-white px-4 py-3 flex justify-between items-center text-xs font-bold">
-                    <div class="flex items-center gap-1.5 bg-black/10 px-2 py-0.5 rounded">
-                        <img src="Logo.png" alt="الشعار" class="w-4 h-4 object-contain">
-                        <span>موسوعة البصرة</span>
-                    </div>
-                    <span>خدمات</span>
-                </div>
-                <div class="p-6">
-                    <div class="inline-block bg-emerald-100 text-emerald-700 text-[11px] font-bold px-2.5 py-1 rounded mb-3">
-                        تنويه هام للمواطنين
-                    </div>
-                    <h2 class="text-slate-900 text-lg font-black leading-snug mb-4">
-                        انقطاع مبرمج للماء في مناطق الجبيلة والطويسة من الساعة 8 صباحاً حتى 3 عصراً
-                    </h2>
-                    <div class="bg-slate-50 border border-slate-100 rounded-xl p-3 text-xs space-y-2 text-slate-600">
-                        <div class="flex justify-between border-b pb-1.5">
-                            <span>المناطق</span>
-                            <span class="font-bold text-slate-900">الجبيلة، الطويسة</span>
-                        </div>
-                        <div class="flex justify-between border-b pb-1.5">
-                            <span>الوقت</span>
-                            <span class="font-bold text-slate-900">8 ص - 3 ع</span>
-                        </div>
-                        <div class="flex justify-between">
-                            <span>السبب</span>
-                            <span class="font-bold text-slate-900">صيانة دورية</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="px-5 py-3 bg-emerald-700 text-white text-center text-xs font-bold">
-                البصرة - بلدية البصرة
+            <!-- التذييل -->
+            <div class="flex justify-between items-center text-[10px] text-slate-300 border-t border-white/10 pt-3">
+                <span id="previewFooter">بلدية البصرة</span>
+                <span>موسوعة البصرة • 2026</span>
             </div>
         </div>
 
     </main>
 
-    <!-- جافاسكريبت للتحكم بالتبديل -->
+    <!-- جافاسكريبت للتحكم بالأنواع والنصوص -->
     <script>
-        function switchTemplate() {
-            // جلب القيمة المحددة من القائمة
-            const selectedValue = document.getElementById('templateSelect').value;
-            
-            // إخفاء كل القوالب أولاً
-            const templates = document.querySelectorAll('.template-card');
-            templates.forEach(card => {
-                card.classList.add('hidden');
-            });
-
-            // إظهار القالب المطلوب فقط بناءً على الاختيار
-            const activeTemplate = document.getElementById(selectedValue + '-template');
-            if (activeTemplate) {
-                activeTemplate.classList.remove('hidden');
+        // بيانات القوالب المختلفة
+        const templatesData = {
+            services: {
+                structure: "موسوعة البصرة | خدمات 🟢\n\nتنويه هام:\nانقطاع مبرمج للماء في مناطق الجبيلة والطويسة من الساعة 8 صباحاً حتى 3 عصراً بسبب أعمال الصيانة\nيرجى أخذ الاحتياط اللازم\n\n#البصرة_خدمات",
+                brandText: "موسوعة البصرة | خدمات",
+                badgeText: "خدمات",
+                titleText: "انقطاع مبرمج للماء في مناطق الجبيلة والطويسة من الساعة 8 صباحاً حتى 3 عصراً بسبب أعمال الصيانة",
+                footerText: "بلدية البصرة",
+                cardClass: "bg-gradient-to-b from-emerald-900 via-neutral-900 to-neutral-950 border-emerald-600/40",
+                badgeClass: "bg-emerald-500/20 text-emerald-400 border-emerald-500/30"
+            },
+            urgent: {
+                structure: "موسوعة البصرة | عاجل 🔴\n\nاندلاع حريق كبير في منطقة العشار وسط البصرة وفرق الدفاع المدني تهرع للمكان\n\n#موسوعة_البصرة #عاجل",
+                brandText: "موسوعة البصرة | عاجل",
+                badgeText: "عاجل",
+                titleText: "اندلاع حريق كبير في منطقة العشار وسط البصرة وفرق الدفاع المدني تهرع للمكان",
+                footerText: "البصرة الان",
+                cardClass: "bg-gradient-to-b from-red-950 via-neutral-900 to-neutral-950 border-red-600/40",
+                badgeClass: "bg-red-500/20 text-red-400 border-red-500/30"
+            },
+            weather: {
+                structure: "موسوعة البصرة | طقس 🔵\n\nتنبيه جوي:\nأجواء مغبرة ودرجة حرارة تصل إلى 47 مئوية في عموم مناطق البصرة اليوم\n\n#طقس_البصرة",
+                brandText: "موسوعة البصرة | طقس",
+                badgeText: "طقس",
+                titleText: "أجواء مغبرة ودرجة حرارة تصل إلى 47 مئوية في عموم مناطق البصرة اليوم",
+                footerText: "رصد الأرصاد",
+                cardClass: "bg-gradient-to-b from-sky-950 via-neutral-900 to-neutral-950 border-sky-600/40",
+                badgeClass: "bg-sky-500/20 text-sky-400 border-sky-500/30"
+            },
+            sport: {
+                structure: "موسوعة البصرة | رياحين البصرة 🟡\n\nالعيداني يصرف مليار ونصف للاعبي الميناء مع توفير طائرة خاصة وتجهيز أديداس\n\n#نادي_الميناء #رياضة",
+                brandText: "موسوعة البصرة | رياضة",
+                badgeText: "رياضة",
+                titleText: "العيداني يصرف مليار ونصف للاعبي الميناء مع توفير طائرة خاصة وتجهيز أديداس",
+                footerText: "نادي الميناء الرياضي",
+                cardClass: "bg-gradient-to-b from-amber-950/60 via-neutral-900 to-neutral-950 border-amber-500/40",
+                badgeClass: "bg-amber-500/20 text-amber-400 border-amber-500/30"
             }
+        };
+
+        function switchTemplate() {
+            const selectVal = document.getElementById('templateSelect').value;
+            const data = templatesData[selectVal];
+
+            // تحديث نص الصيغة
+            document.getElementById('structureText').innerText = data.structure;
+
+            // تحديث محتوى المعاينة المرئية
+            document.getElementById('previewBrand').innerText = data.brandText;
+            document.getElementById('previewBadge').innerText = data.badgeText;
+            document.getElementById('previewTitle').innerText = data.titleText;
+            document.getElementById('previewFooter').innerText = data.footerText;
+
+            // تحديث ألوان الكارت
+            const card = document.getElementById('visualPreviewCard');
+            card.className = "relative w-full aspect-[9/16] max-h-[480px] rounded-2xl overflow-hidden shadow-2xl border flex flex-col justify-between p-5 transition-all duration-300 " + data.cardClass;
+
+            // تحديث الشارة
+            const badge = document.getElementById('previewBadge');
+            badge.className = "text-[10px] font-bold px-2.5 py-1 rounded-full border " + data.badgeClass;
+        }
+
+        // دالة نسخ الصيغة إلى الحافظة
+        function copyStructure() {
+            const textToCopy = document.getElementById('structureText').innerText;
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                alert('تم نسخ الصيغة بنجاح! يمكنك لصقها مباشرة.');
+            });
         }
     </script>
 
