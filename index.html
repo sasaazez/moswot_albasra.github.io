@@ -3,53 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>قوالب موسوعة البصرة الجاهزة</title>
+    <title>منصة قوالب موسوعة البصرة التفاعلية</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap');
-        body {
-            font-family: 'Cairo', sans-serif;
-        }
+        body { font-family: 'Cairo', sans-serif; }
     </style>
 </head>
-<body class="bg-gray-950 text-white min-h-screen p-6">
+<body class="bg-gray-950 text-white min-h-screen p-6 flex flex-col items-center justify-center">
 
-    <!-- عنوان الصفحة -->
-    <header class="text-center mb-10 flex flex-col items-center gap-2">
-        <img src="Logo.png" alt="شعار موسوعة البصرة" class="w-12 h-12 object-contain bg-white/10 p-1 rounded-full shadow">
-        <h1 class="text-2xl font-black text-amber-400">قوالب موسوعة البصرة الجاهزة</h1>
-        <p class="text-xs text-slate-400">مكتبة القوالب المخصصة للمنشورات والأخبار (رياضة، عاجل، طقس، خدمات)</p>
-    </header>
+    <!-- عنوان الصفحة والتحكم -->
+    <div class="w-full max-w-md mb-6 text-center">
+        <div class="flex items-center justify-center gap-2 mb-2">
+            <img src="Logo.png" alt="شعار موسوعة البصرة" class="w-10 h-10 object-contain bg-white/10 p-1 rounded-full shadow">
+            <h1 class="text-xl font-black text-amber-400">موسوعة البصرة • مولد القوالب</h1>
+        </div>
+        <p class="text-xs text-slate-400 mb-4">اختاري نوع القالب لعرضه وتعديل محتواه حسب رغبتك</p>
 
-    <!-- حاوية القوالب (تظهر بشكل منظم ومتجاوب) -->
-    <main class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 justify-items-center">
+        <!-- قائمة اختيار نوع القالب -->
+        <div class="bg-neutral-900 border border-neutral-800 p-3 rounded-2xl shadow-xl flex items-center gap-3">
+            <label for="templateSelect" class="text-xs font-bold text-slate-300">نوع القالب:</label>
+            <select id="templateSelect" onchange="switchTemplate()" class="w-full bg-neutral-950 border border-neutral-700 text-white text-xs rounded-xl px-3 py-2 focus:outline-none focus:border-amber-500 font-bold">
+                <option value="sport">رياضة (أزرق غامق وذهبي)</option>
+                <option value="urgent">عاجل (أحمر وأسود)</option>
+                <option value="weather">طقس (تدرج أزرق سماوي)</option>
+                <option value="services">خدمات (أخضر وأبيض)</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- حاوية القالب المتغير -->
+    <div class="w-full max-w-sm">
 
         <!-- 1. قالب الرياضة -->
-        <div class="w-full max-w-sm bg-[#0b1329] border border-slate-800 rounded-2xl overflow-hidden shadow-2xl relative flex flex-col justify-between">
+        <div id="sport-template" class="template-card w-full bg-[#0b1329] border border-slate-800 rounded-2xl overflow-hidden shadow-2xl relative flex flex-col justify-between">
             <div>
-                <!-- صورة الخبر -->
                 <div class="relative w-full h-48 bg-slate-800">
                     <img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=1000&auto=format&fit=crop" alt="صورة الخبر" class="w-full h-full object-cover opacity-90">
-                    
-                    <!-- شعار المنصة في الأعلى -->
                     <div class="absolute top-3 left-3 bg-white/90 backdrop-blur px-3 py-1.5 rounded-xl flex items-center gap-2 shadow">
                         <img src="Logo.png" alt="الشعار" class="w-4 h-4 object-contain">
                         <span class="text-xs font-bold text-slate-900">موسوعة البصرة</span>
                     </div>
                 </div>
-
-                <!-- محتوى الخبر -->
                 <div class="p-5">
                     <div class="mb-3">
                         <span class="bg-[#d4af37]/20 text-[#d4af37] border border-[#d4af37]/30 text-xs font-semibold px-3 py-1 rounded-full">
                             رياضة | الميناء
                         </span>
                     </div>
-
                     <h2 class="text-white text-xl font-black leading-snug mb-4">
                         العيداني يصرف مليار ونصف للاعبي الميناء
                     </h2>
-
                     <ul class="space-y-2 text-slate-300 text-xs">
                         <li class="flex items-center justify-between border-b border-slate-800/60 pb-1.5">
                             <span>طائرة خاصة</span>
@@ -59,60 +63,49 @@
                             <span>تجهيز أديداس</span>
                             <span class="w-2 h-2 rounded-full bg-[#d4af37]"></span>
                         </li>
-                        <li class="flex items-center justify-between border-b border-slate-800/60 pb-1.5">
-                            <span>معسكر خارجي</span>
-                            <span class="w-2 h-2 rounded-full bg-[#d4af37]"></span>
-                        </li>
                         <li class="flex items-center justify-between pb-1">
-                            <span>تأهيل ملعب الميناء الأولمبي</span>
+                            <span>معسكر خارجي وتأهيل الملعب</span>
                             <span class="w-2 h-2 rounded-full bg-[#d4af37]"></span>
                         </li>
                     </ul>
                 </div>
             </div>
-
-            <!-- التذييل السفلي -->
             <div class="px-5 py-3 bg-[#070d1d] border-t border-slate-800 flex justify-between items-center text-xs text-slate-400">
-                <div>
-                    <p class="font-bold text-slate-300 text-[11px]">AL-MINA'A SC</p>
-                    <p class="text-[9px] text-slate-500">2025 / 2026</p>
-                </div>
-                <div class="text-left flex items-center gap-1">
+                <span class="font-bold text-slate-300 text-[11px]">AL-MINA'A SC</span>
+                <div class="flex items-center gap-1">
                     <img src="Logo.png" alt="الشعار" class="w-3.5 h-3.5 object-contain opacity-80">
                     <span class="text-[10px] text-slate-300 font-bold">موسوعة البصرة</span>
                 </div>
             </div>
         </div>
 
-        <!-- 2. قالب عاجل (Template 01 - Red/Black) -->
-        <div class="w-full max-w-sm bg-neutral-900 border border-red-900/40 rounded-2xl overflow-hidden shadow-2xl relative flex flex-col justify-between">
+        <!-- 2. قالب عاجل -->
+        <div id="urgent-template" class="template-card hidden w-full bg-neutral-900 border border-red-900/40 rounded-2xl overflow-hidden shadow-2xl relative flex flex-col justify-between">
             <div>
-                <div class="bg-red-600 px-4 py-2 flex justify-between items-center text-xs font-bold">
+                <div class="bg-red-600 px-4 py-2 flex justify-between items-center text-xs font-bold text-white">
                     <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-white animate-pulse"></span> عاجل</span>
                     <div class="flex items-center gap-1.5 bg-white/10 px-2 py-0.5 rounded">
                         <img src="Logo.png" alt="الشعار" class="w-4 h-4 object-contain">
                         <span>موسوعة البصرة</span>
                     </div>
                 </div>
-                
                 <div class="p-6">
                     <div class="inline-block bg-red-600/20 text-red-500 border border-red-600/30 text-[11px] font-bold px-2.5 py-1 rounded mb-4">
                         خبر عاجل
                     </div>
                     <h2 class="text-white text-xl font-black leading-snug mb-6">
-                        اندلاع حريق كبير في منطقة العشار وسط البصرة وفرق الدفاع المدني تههر للمكان
+                        اندلاع حريق كبير في منطقة العشار وسط البصرة وفرق الدفاع المدني تهرع للمكان
                     </h2>
                 </div>
             </div>
-
             <div class="px-5 py-3 bg-neutral-950 border-t border-neutral-800 flex justify-between items-center text-[11px] text-slate-400">
                 <span>البصرة</span>
                 <span>اليوم 9:30 ص</span>
             </div>
         </div>
 
-        <!-- 3. قالب طقس (Template 02 - Blue Gradient) -->
-        <div class="w-full max-w-sm bg-gradient-to-b from-sky-500 to-blue-700 rounded-2xl overflow-hidden shadow-2xl relative flex flex-col justify-between text-white">
+        <!-- 3. قالب طقس -->
+        <div id="weather-template" class="template-card hidden w-full bg-gradient-to-b from-sky-500 to-blue-700 rounded-2xl overflow-hidden shadow-2xl relative flex flex-col justify-between text-white">
             <div class="p-6">
                 <div class="flex justify-between items-center text-xs mb-6 opacity-90">
                     <div class="flex items-center gap-1.5 bg-black/20 px-2.5 py-1 rounded-full">
@@ -121,12 +114,10 @@
                     </div>
                     <span>الطقس</span>
                 </div>
-
                 <div class="text-center my-4">
                     <div class="text-6xl font-black tracking-tighter mb-1">47°</div>
                     <p class="text-sm font-semibold opacity-90">مئوية • حار جداً ومغبر</p>
                 </div>
-
                 <div class="bg-white text-slate-900 p-4 rounded-xl shadow-lg mt-6">
                     <p class="text-xs font-bold text-sky-600 mb-2">تنبيه جوي ☁️</p>
                     <p class="text-xs font-bold leading-relaxed mb-4">
@@ -139,14 +130,13 @@
                     </div>
                 </div>
             </div>
-
             <div class="px-5 py-3 bg-blue-900/40 text-[10px] text-center opacity-80">
                 BASRA WEATHER • البصرة - اليوم
             </div>
         </div>
 
-        <!-- 4. قالب خدمات (Template 03 - Green/White) -->
-        <div class="w-full max-w-sm bg-white text-slate-900 rounded-2xl overflow-hidden shadow-2xl relative flex flex-col justify-between">
+        <!-- 4. قالب خدمات -->
+        <div id="services-template" class="template-card hidden w-full bg-white text-slate-900 rounded-2xl overflow-hidden shadow-2xl relative flex flex-col justify-between">
             <div>
                 <div class="bg-emerald-600 text-white px-4 py-3 flex justify-between items-center text-xs font-bold">
                     <div class="flex items-center gap-1.5 bg-black/10 px-2 py-0.5 rounded">
@@ -155,15 +145,13 @@
                     </div>
                     <span>خدمات</span>
                 </div>
-
                 <div class="p-6">
                     <div class="inline-block bg-emerald-100 text-emerald-700 text-[11px] font-bold px-2.5 py-1 rounded mb-3">
                         تنويه هام للمواطنين
                     </div>
                     <h2 class="text-slate-900 text-lg font-black leading-snug mb-4">
-                        انقطاع مبرمج للماء في مناطق الجبيلة والطويسة من الساعة 8 صباحاً حتى 3 عصراً بسبب أعمال الصيانة
+                        انقطاع مبرمج للماء في مناطق الجبيلة والطويسة من الساعة 8 صباحاً حتى 3 عصراً
                     </h2>
-
                     <div class="bg-slate-50 border border-slate-100 rounded-xl p-3 text-xs space-y-2 text-slate-600">
                         <div class="flex justify-between border-b pb-1.5">
                             <span>المناطق</span>
@@ -180,13 +168,32 @@
                     </div>
                 </div>
             </div>
-
             <div class="px-5 py-3 bg-emerald-700 text-white text-center text-xs font-bold">
                 البصرة - بلدية البصرة
             </div>
         </div>
 
     </main>
+
+    <!-- جافاسكريبت للتحكم بالتبديل -->
+    <script>
+        function switchTemplate() {
+            // جلب القيمة المحددة من القائمة
+            const selectedValue = document.getElementById('templateSelect').value;
+            
+            // إخفاء كل القوالب أولاً
+            const templates = document.querySelectorAll('.template-card');
+            templates.forEach(card => {
+                card.classList.add('hidden');
+            });
+
+            // إظهار القالب المطلوب فقط بناءً على الاختيار
+            const activeTemplate = document.getElementById(selectedValue + '-template');
+            if (activeTemplate) {
+                activeTemplate.classList.remove('hidden');
+            }
+        }
+    </script>
 
 </body>
 </html>
