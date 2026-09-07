@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>صانع قوالب موسوعة البصرة - الريلز</title>
+    <title>صانع قوالب موسوعة البصرة</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap');
@@ -12,45 +12,45 @@
 </head>
 <body class="bg-[#121212] text-white min-h-screen p-4 flex flex-col items-center">
 
-    <!-- رأس الصفحة العام -->
+    <!-- رأس الصفحة -->
     <header class="w-full max-w-md text-center mb-4">
         <div class="flex items-center justify-between bg-neutral-900 border border-neutral-800 px-4 py-2.5 rounded-2xl shadow-lg">
             <div class="flex items-center gap-2">
                 <span class="bg-amber-500 text-black text-[10px] font-black px-2 py-0.5 rounded">بص</span>
-                <span class="text-xs font-bold text-slate-200">صانع قوالب موسوعة البصرة</span>
+                <span class="text-xs font-bold text-slate-200">موسوعة البصرة</span>
             </div>
-            <span class="text-[10px] text-amber-400">النسخة المعدلة والمضبوطة 🖼️</span>
+            <span class="text-[10px] text-amber-400">النسخة النهائية المحدثة ⚡</span>
         </div>
     </header>
 
-    <!-- حاوية العرض الرئيسية -->
+    <!-- حاوية العرض -->
     <main class="w-full max-w-md flex flex-col items-center gap-5">
 
         <!-- 📱 معاينة قالب الموبايل (الريلز 9:16) -->
-        <div class="w-full max-w-[300px] bg-black border-[8px] border-neutral-800 rounded-[35px] overflow-hidden shadow-2xl relative flex flex-col justify-between">
+        <div class="w-full max-w-[300px] bg-neutral-950 border-[8px] border-neutral-800 rounded-[35px] overflow-hidden shadow-2xl relative flex flex-col justify-between">
             
             <!-- كاميرا الهاتف العلوي -->
-            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-4 bg-neutral-800 rounded-b-xl z-20"></div>
+            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-4 bg-neutral-800 rounded-b-xl z-30"></div>
 
             <!-- محتوى الشاشة -->
             <div class="relative text-white pt-9 pb-3 px-3.5 flex flex-col justify-between min-h-[520px] overflow-hidden">
                 
-                <!-- خلفية الصورة -->
+                <!-- خلفية الصورة (تم تعديل الطبقات لتظهر بوضوح قطعي) -->
                 <div class="absolute inset-0 z-0">
                     <img id="previewBgImg" src="https://images.unsplash.com/photo-1517649763962-0c623266cf20?auto=format&fit=crop&q=80&w=800" alt="خلفية" class="w-full h-full object-cover">
-                    <div class="absolute inset-0 bg-gradient-to-b from-[#0b1329]/80 via-[#0b1329]/90 to-[#0b1329]"></div>
+                    <div class="absolute inset-0 bg-neutral-950/75 backdrop-blur-[1px]"></div>
                 </div>
 
                 <!-- المحتوى العلوي -->
-                <div class="relative z-10">
+                <div class="relative z-20">
                     <!-- الشريط العلوي (شعار وبطاقة) -->
                     <div class="flex justify-between items-start mb-4">
-                        <!-- شعار موسوعة البصرة المربع المعتمد -->
-                        <div class="bg-white rounded-2xl p-1.5 shadow-lg flex flex-col items-center w-12 h-12 justify-center">
-                            <span class="text-black font-black text-[11px]">بص</span>
-                            <span class="text-[7px] text-slate-600 font-bold">موسوعة البصرة</span>
+                        <!-- شعار موسوعة البصرة (ثابت وواضح) -->
+                        <div class="bg-white text-black rounded-2xl p-2 shadow-xl flex flex-col items-center justify-center w-12 h-12">
+                            <span class="font-black text-xs leading-none">بص</span>
+                            <span class="text-[6px] font-bold text-neutral-700 mt-0.5">البصرة</span>
                         </div>
-                        <div class="bg-red-600/90 text-white text-[9px] font-bold px-2.5 py-1 rounded-full flex items-center gap-1 shadow">
+                        <div class="bg-red-600 text-white text-[9px] font-bold px-2.5 py-1 rounded-full flex items-center gap-1 shadow">
                             <span class="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>
                             REEL
                         </div>
@@ -58,18 +58,18 @@
 
                     <!-- التصنيف -->
                     <div class="flex justify-center mb-2">
-                        <span id="previewCategory" class="bg-amber-500/20 border border-amber-500/40 text-amber-400 text-[10px] font-bold px-2.5 py-0.5 rounded-full">
+                        <span id="previewCategory" class="bg-amber-500/20 border border-amber-500/50 text-amber-400 text-[10px] font-bold px-3 py-0.5 rounded-full">
                             رياضة | الميناء
                         </span>
                     </div>
 
                     <!-- عنوان الخبر -->
-                    <h2 id="previewTitle" class="text-center text-sm font-black leading-snug mb-3 text-white drop-shadow-md">
+                    <h2 id="previewTitle" class="text-center text-sm font-black leading-snug mb-3 text-white drop-shadow-lg">
                         العيداني يصرف مليار ونصف للاعبي الميناء مع توفير طائرة خاصة وتجهيز أديداس
                     </h2>
 
                     <!-- صندوق التفاصيل -->
-                    <div id="previewBox" class="bg-black/50 backdrop-blur-md border border-amber-500/30 rounded-xl p-2.5 text-[10px] space-y-1.5 shadow-xl">
+                    <div id="previewBox" class="bg-neutral-900/80 backdrop-blur-md border border-amber-500/40 rounded-xl p-2.5 text-[10px] space-y-1.5 shadow-xl">
                         <div class="flex items-center justify-between border-b border-white/10 pb-1">
                             <span class="text-slate-200">طائرة خاصة للفريق</span>
                             <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
@@ -86,7 +86,7 @@
                 </div>
 
                 <!-- التذييل -->
-                <div class="relative z-10 mt-3 pt-2 border-t border-white/10 flex justify-between items-center text-[9px]">
+                <div class="relative z-20 mt-3 pt-2 border-t border-white/10 flex justify-between items-center text-[9px]">
                     <div>
                         <span class="font-bold text-amber-400 block">AL-MINA'A SC</span>
                         <span class="text-slate-400">2025 / 2026</span>
@@ -103,9 +103,9 @@
             </div>
         </div>
 
-        <!-- ✍️ لوحة التحكم والإدخال الواضحة -->
+        <!-- ✍️ لوحة التحكم والإدخال -->
         <div class="w-full bg-neutral-900 border border-neutral-800 rounded-2xl p-4 shadow-xl space-y-3">
-            <h3 class="text-xs font-bold text-amber-400 border-b border-neutral-800 pb-2">لوحة التحكم وكتابة الأخبار والسيادة للصور</h3>
+            <h3 class="text-xs font-bold text-amber-400 border-b border-neutral-800 pb-2">لوحة التحكم وتغيير الصور والنصوص</h3>
             
             <!-- اختيار القالب -->
             <div>
@@ -118,10 +118,10 @@
                 </select>
             </div>
 
-            <!-- 🖼️ خانة رابط الصورة الظاهرة بوضوح -->
+            <!-- 🖼️ خانة رابط الصورة -->
             <div class="bg-neutral-950 p-3 rounded-xl border border-amber-500/30 space-y-2">
-                <label class="block text-[11px] text-amber-300 font-bold">🖼️ رابط صورة الخلفية (ضعي رابط الصورة هنا):</label>
-                <input type="text" id="inputBgUrl" oninput="updatePreview()" class="w-full bg-neutral-900 border border-neutral-700 text-white text-xs rounded-lg p-2.5 outline-none focus:border-amber-500" placeholder="https://example.com/image.jpg">
+                <label class="block text-[11px] text-amber-300 font-bold">🖼️ رابط صورة الخلفية:</label>
+                <input type="text" id="inputBgUrl" oninput="updatePreview()" class="w-full bg-neutral-900 border border-neutral-700 text-white text-xs rounded-lg p-2.5 outline-none focus:border-amber-500" placeholder="ضعي رابط الصورة هنا...">
                 
                 <div class="flex gap-2 pt-1">
                     <button onclick="setBgImage('https://images.unsplash.com/photo-1517649763962-0c623266cf20?auto=format&fit=crop&q=80&w=800')" class="bg-neutral-800 hover:bg-neutral-700 text-[10px] px-2 py-1.5 rounded text-slate-300 flex-1">⚽ رياضة</button>
@@ -130,21 +130,21 @@
                 </div>
             </div>
 
-            <!-- إدخال التصنيف -->
+            <!-- التصنيف -->
             <div>
                 <label class="block text-[11px] text-slate-400 mb-1">التصنيف العلوي:</label>
                 <input type="text" id="inputCategory" oninput="updatePreview()" class="w-full bg-neutral-950 border border-neutral-800 text-white text-xs rounded-xl p-2.5 outline-none focus:border-amber-500" value="رياضة | الميناء">
             </div>
 
-            <!-- إدخال عنوان الخبر -->
+            <!-- عنوان الخبر -->
             <div>
-                <label class="block text-[11px] text-slate-400 mb-1">عنوان الخبر الرئيسي (اكتبي هنا):</label>
+                <label class="block text-[11px] text-slate-400 mb-1">عنوان الخبر الرئيسي:</label>
                 <textarea id="inputTitle" oninput="updatePreview()" rows="2" class="w-full bg-neutral-950 border border-neutral-800 text-white text-xs rounded-xl p-2.5 outline-none focus:border-amber-500">العيداني يصرف مليار ونصف للاعبي الميناء مع توفير طائرة خاصة وتجهيز أديداس</textarea>
             </div>
 
-            <!-- إدخال تفاصيل الصندوق -->
+            <!-- تفاصيل الصندوق -->
             <div>
-                <label class="block text-[11px] text-slate-400 mb-1">تفاصيل الصندوق (كل سطر سيمثل نقطة):</label>
+                <label class="block text-[11px] text-slate-400 mb-1">تفاصيل الصندوق (كل سطر نقطة):</label>
                 <textarea id="inputDetails" oninput="updatePreview()" rows="3" class="w-full bg-neutral-950 border border-neutral-800 text-white text-xs rounded-xl p-2.5 outline-none focus:border-amber-500">طائرة خاصة للفريق
 تجهيز أديداس الرياضي
 معسكر خارجي وتأهيل الملعب</textarea>
@@ -241,7 +241,7 @@
             });
         }
 
-        // تعيين القيمة الافتراضية عند التحميل
+        // ضبط القيمة الابتدائية عند الفتح
         document.getElementById('inputBgUrl').value = presets.sport.bg;
         updatePreview();
     </script>
