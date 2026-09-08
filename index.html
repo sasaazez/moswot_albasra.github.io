@@ -12,8 +12,6 @@
         h1 { margin-bottom: 25px; font-size: 22px; color: #0b1329; text-align: center; font-weight: 900; }
         
         .templates-wrapper { display: flex; flex-wrap: wrap; gap: 35px; justify-content: center; width: 100%; max-width: 1250px; }
-        
-        /* إضافة حماية داخلية وتوسعة خفيفة لإطاحة أي قص عند الأطراف أو السكرين */
         .template-box { background: #fff; border-radius: 18px; box-shadow: 0 6px 25px rgba(0,0,0,0.12); width: 380px; overflow: hidden; display: flex; flex-direction: column; }
         
         .phone-frame { width: 100%; aspect-ratio: 9/16; position: relative; overflow: hidden; display: flex; flex-direction: column; color: #fff; }
@@ -25,7 +23,6 @@
         .theme-sport { background: #15803d; }
         .theme-local { background: #7c2d12; }
 
-        /* تعديل الشريط العلوي ليكون نازلاً قليلاً ومريحاً للتصوير */
         .top-header-bar { background: rgba(0, 0, 0, 0.25); padding: 12px 15px 8px 15px; display: flex; justify-content: space-between; align-items: center; min-height: 54px; border-bottom: 1px solid rgba(255,255,255,0.15); }
         .top-header-left { display: flex; align-items: center; gap: 8px; }
         .top-header-bar .cat-title-top { font-size: 13px; color: #fff; font-weight: 900; }
@@ -40,6 +37,8 @@
 
         .lower-content-box { flex-grow: 1; padding: 12px 16px; display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-end; gap: 6px; }
         .badge-pill { background: #fff; color: #111; padding: 3px 14px; font-size: 13px; border-radius: 20px; font-weight: 900; box-shadow: 0 2px 4px rgba(0,0,0,0.2); }
+        
+        /* حجم العنوان الافتراضي */
         .phone-frame h2 { font-size: 21px; line-height: 1.35; font-weight: 800; color: #fff; width: 100%; text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
 
         .bullet-list { list-style: none; display: flex; flex-direction: column; gap: 4px; width: 100%; padding: 0; margin-top: 4px; }
@@ -114,6 +113,10 @@
                     <label>ارتفاع الصورة:</label>
                     <input type="range" min="200" max="750" value="420" oninput="document.getElementById('media-container-1').style.height = this.value + 'px'">
                 </div>
+                <div class="range-group">
+                    <label>حجم خط العنوان:</label>
+                    <input type="range" min="14" max="32" value="21" oninput="document.getElementById('title-1').style.fontSize = this.value + 'px'">
+                </div>
                 <label>العنوان الرئيسي:</label>
                 <textarea rows="2" oninput="document.getElementById('title-1').innerText = this.value">هجمات الحوثيين على السعودية تشعل حرائق في منشآت نفطية</textarea>
                 <button class="save-btn" style="background: #b91c1c;" onclick="saveImage('frame-urgent', 'BSR_Urgent.png')">📥 حفظ صورة عاجل</button>
@@ -164,6 +167,10 @@
                 <div class="range-group">
                     <label>ارتفاع الصورة:</label>
                     <input type="range" min="200" max="750" value="420" oninput="document.getElementById('media-container-2').style.height = this.value + 'px'">
+                </div>
+                <div class="range-group">
+                    <label>حجم خط العنوان:</label>
+                    <input type="range" min="14" max="32" value="21" oninput="document.getElementById('title-2').style.fontSize = this.value + 'px'">
                 </div>
                 <label>العنوان الرئيسي:</label>
                 <textarea rows="2" oninput="document.getElementById('title-2').innerText = this.value">انطلاق حملة كبرى لتنظيف وصيانة شبكات الصرف الصحي</textarea>
@@ -216,6 +223,10 @@
                     <label>ارتفاع الصورة:</label>
                     <input type="range" min="200" max="750" value="420" oninput="document.getElementById('media-container-3').style.height = this.value + 'px'">
                 </div>
+                <div class="range-group">
+                    <label>حجم خط العنوان:</label>
+                    <input type="range" min="14" max="32" value="21" oninput="document.getElementById('title-3').style.fontSize = this.value + 'px'">
+                </div>
                 <label>العنوان الرئيسي:</label>
                 <textarea rows="2" oninput="document.getElementById('title-3').innerText = this.value">ارتفاع تدريجي لدرجات الحرارة وتحذيرات من تصاعد الغبار</textarea>
                 <button class="save-btn" style="background: #0c4a6e;" onclick="saveImage('frame-weather', 'BSR_Weather.png')">📥 حفظ صورة الطقس</button>
@@ -267,6 +278,10 @@
                     <label>ارتفاع الصورة:</label>
                     <input type="range" min="200" max="750" value="420" oninput="document.getElementById('media-container-4').style.height = this.value + 'px'">
                 </div>
+                <div class="range-group">
+                    <label>حجم خط العنوان:</label>
+                    <input type="range" min="14" max="32" value="21" oninput="document.getElementById('title-4').style.fontSize = this.value + 'px'">
+                </div>
                 <label>العنوان الرئيسي:</label>
                 <textarea rows="2" oninput="document.getElementById('title-4').innerText = this.value">نادي الميناء يكتسح ضيفه ويصعد للمربع الذهبي للدوري</textarea>
                 <button class="save-btn" style="background: #15803d;" onclick="saveImage('frame-sport', 'BSR_Sport.png')">📥 حفظ صورة الرياضة</button>
@@ -317,6 +332,10 @@
                 <div class="range-group">
                     <label>ارتفاع الصورة:</label>
                     <input type="range" min="200" max="750" value="420" oninput="document.getElementById('media-container-5').style.height = this.value + 'px'">
+                </div>
+                <div class="range-group">
+                    <label>حجم خط العنوان:</label>
+                    <input type="range" min="14" max="32" value="21" oninput="document.getElementById('title-5').style.fontSize = this.value + 'px'">
                 </div>
                 <label>العنوان الرئيسي:</label>
                 <textarea rows="2" oninput="document.getElementById('title-5').innerText = this.value">حملة اعمار واسعة تشمل أقضية ونواحي محافظة البصرة</textarea>
