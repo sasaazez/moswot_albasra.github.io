@@ -21,6 +21,7 @@
         .theme-services { background: #064e3b; }
         .theme-weather { background: #0c4a6e; }
         .theme-sport { background: #15803d; }
+        .theme-local { background: #7c2d12; } /* ثيم محليات بني دافئ / طوبي مميز */
 
         .top-header-bar { background: rgba(0, 0, 0, 0.25); padding: 8px 15px; display: flex; justify-content: space-between; align-items: center; height: 48px; border-bottom: 1px solid rgba(255,255,255,0.15); }
         .top-header-left { display: flex; align-items: center; gap: 8px; }
@@ -31,7 +32,6 @@
         .top-header-logo-box img { width: 22px; height: 22px; object-fit: contain; }
         .top-header-logo-box span { font-size: 11px; font-weight: bold; color: #111; }
 
-        /* حاوية الصورة مع دعم التكبير والتصغير المناسب للكتب الرسمية والتصميم */
         .media-container { position: relative; width: 100%; height: 420px; overflow: hidden; border-bottom: 3px solid rgba(255,255,255,0.2); flex-shrink: 0; }
         .hero-news-img { width: 100%; height: 100%; object-fit: cover; }
 
@@ -267,6 +267,57 @@
                 <label>العنوان الرئيسي:</label>
                 <textarea rows="2" oninput="document.getElementById('title-4').innerText = this.value">نادي الميناء يكتسح ضيفه ويصعد للمربع الذهبي للدوري</textarea>
                 <button class="save-btn" style="background: #15803d;" onclick="saveImage('frame-sport', 'BSR_Sport.png')">📥 حفظ صورة الرياضة</button>
+            </div>
+        </div>
+
+        <!-- 5. قالب المحليات (جديد) -->
+        <div class="template-box">
+            <div class="phone-frame theme-local" id="frame-local">
+                <div class="top-header-bar">
+                    <div class="top-header-left">
+                        <span class="cat-title-top" id="cat-top-5">أخبار المحليات</span>
+                        <span class="date-text-top auto-date">جاري التحميل...</span>
+                    </div>
+                    <div class="top-header-logo-box"><img src="Logo.png" alt="شعار"><span>موسوعة البصرة</span></div>
+                </div>
+                <div class="media-container" id="media-container-5"><img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=500" class="hero-news-img" id="img-5" alt="صورة"></div>
+                <div class="lower-content-box">
+                    <div class="badge-pill" id="badge-5">محليات البصرة 🏙️</div>
+                    <h2 id="title-5">حملة اعمار واسعة تشمل أقضية ونواحي محافظة البصرة</h2>
+                    <ul class="bullet-list" contenteditable="true">
+                        <li>إحالة عدة مشاريع خدمية وبنى تحتية جديدة</li>
+                        <li>متابعة ميدانية من المحافظ لنسب انجاز الطرق</li>
+                        <li>تلبية احتياجات المناطق الريفية والقرى النائية</li>
+                    </ul>
+                </div>
+                <div class="footer-box">
+                    <div class="footer-right-side">
+                        <span class="follow-label-rtl">تابعنا على:</span>
+                        <div class="footer-social-icons-rtl">
+                            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                            <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+                            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+                            <a href="#"><i class="fa-brands fa-telegram-plane"></i></a>
+                        </div>
+                    </div>
+                    <div class="footer-center-logo-single"><img src="Logo.png" alt="شعار"><span>mwsuat_albasra</span></div>
+                </div>
+            </div>
+            <div class="controls">
+                <label>تعديل التصنيف العلوي:</label>
+                <input type="text" value="أخبار المحليات" oninput="document.getElementById('cat-top-5').innerText = this.value">
+                <label>تعديل الشارة البارزة:</label>
+                <input type="text" value="محليات البصرة 🏙️" oninput="document.getElementById('badge-5').innerText = this.value">
+                <label>اختر الصورة:</label>
+                <input type="file" accept="image/*" onchange="loadFile(event, 'img-5')">
+                <div class="range-group">
+                    <label>ارتفاع الصورة:</label>
+                    <input type="range" min="200" max="750" value="420" oninput="document.getElementById('media-container-5').style.height = this.value + 'px'">
+                </div>
+                <label>العنوان الرئيسي:</label>
+                <textarea rows="2" oninput="document.getElementById('title-5').innerText = this.value">حملة اعمار واسعة تشمل أقضية ونواحي محافظة البصرة</textarea>
+                <button class="save-btn" style="background: #7c2d12;" onclick="saveImage('frame-local', 'BSR_Local.png')">📥 حفظ صورة المحليات</button>
             </div>
         </div>
 
