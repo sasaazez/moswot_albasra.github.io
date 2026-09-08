@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>قوالب موسوعة البصرة الاحترافية - ريلز (النسخة الاحترافية المحدثة)</title>
+    <title>قوالب موسوعة البصرة الاحترافية - ريلز (النسخة الكاملة المحدثة)</title>
     <!-- مكتبة html2canvas لتحويل القالب إلى صورة حقيقية ونقرة زر التحميل -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <style>
@@ -51,7 +51,7 @@
         .logo-area { display: flex; align-items: center; gap: 8px; font-size: 15px; }
         .logo-img { width: 36px; height: 36px; background: transparent; object-fit: contain; }
 
-        /* Middle Image Frame (Approx 40% height) */
+        /* Middle Image Frame */
         .media-container {
             position: relative;
             width: 100%;
@@ -88,7 +88,7 @@
         }
 
         .phone-frame h2 {
-            font-size: 22px;
+            font-size: 21px;
             line-height: 1.35;
             font-weight: 900;
             color: #fff;
@@ -100,7 +100,7 @@
             display: flex;
             flex-direction: column;
             gap: 6px;
-            margin-top: 4px;
+            margin-top: 2px;
         }
 
         .bullet-list li {
@@ -160,7 +160,7 @@
 
     <div class="container">
 
-        <!-- 1. قالب عاجل وأمن (أحمر) -->
+        <!-- 1. قالب عاجل وسياسة (أحمر) -->
         <div class="template-card">
             <div class="template-header"><span>1. عاجل وسياسة</span><span style="color:red">RED</span></div>
             <div class="phone-frame" id="frame-1">
@@ -172,9 +172,9 @@
                     <img src="https://images.unsplash.com/photo-1541872703-74c5e44368f9?w=500" class="hero-news-img" id="img-t1" alt="صورة">
                 </div>
                 <div class="lower-content-box theme-red">
-                    <div class="cat-pill" id="pill-t1">عاجل | سياسة</div>
+                    <div class="cat-pill">عاجل | سياسة</div>
                     <h2 id="text-t1">وصول القنصل الايراني الجديد مصطفى الطرفي الى البصرة</h2>
-                    <ul class="bullet-list" id="bullets-t1">
+                    <ul class="bullet-list">
                         <li>يباشر مهامه رسمياً وسط استقبال رسمي</li>
                         <li>لقاء مرتقب في ديوان المحافظة لبحث التعاون المشترك</li>
                     </ul>
@@ -204,7 +204,7 @@
                     <img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=500" class="hero-news-img" id="img-sport" alt="صورة">
                 </div>
                 <div class="lower-content-box theme-sport">
-                    <div class="cat-pill" id="pill-sport">رياضة | الميناء</div>
+                    <div class="cat-pill">رياضة | الميناء</div>
                     <h2 id="text-sport">نادي الميناء الرياضي يواصل تحضيراته لمواجهة الجولة المقبلة</h2>
                     <ul class="bullet-list">
                         <li>تدريبات مكثفة بقيادة الكادر التدريبي</li>
@@ -253,6 +253,102 @@
                 <label>عنوان الشريط العلوي:</label><input type="text" value="مناشدات إنسانية" oninput="document.getElementById('top-title-appeal').innerText = this.value">
                 <label>العنوان الرئيسي:</label><textarea rows="2" oninput="document.getElementById('text-appeal').innerText = this.value">عائلة متعففة في قضاء الزبير تناشد عبر "موسوعة البصرة" لمد يد العون</textarea>
                 <button class="save-btn" onclick="saveImage('frame-appeal', 'BSR_Appeal.png')">📥 حفظ كصورة 1080x1920</button>
+            </div>
+        </div>
+
+        <!-- 4. قالب الطقس والأحوال الجوية (أزرق سماوي #0284c7) -->
+        <div class="template-card">
+            <div class="template-header"><span>4. الطقس والأحوال الجوية</span><span style="color:#0284c7">WEATHER</span></div>
+            <div class="phone-frame" id="frame-weather">
+                <div class="top-bar theme-blue">
+                    <span id="top-title-weather">الطقس والأحوال</span>
+                    <div class="logo-area"><span>موسوعة البصرة</span><img src="Logo.png" class="logo-img" alt="شعار"></div>
+                </div>
+                <div class="media-container">
+                    <img src="https://images.unsplash.com/photo-1592210454359-9043f067919b?w=500" class="hero-news-img" id="img-weather" alt="صورة">
+                </div>
+                <div class="lower-content-box theme-blue">
+                    <div class="cat-pill">تنبيه جوي ☀️</div>
+                    <h2 id="text-weather">ارتفاع درجات الحرارة في البصرة لتسجل 47 مئوية اليوم</h2>
+                    <ul class="bullet-list">
+                        <li>أجواء مشمسة ومستقرة عموماً</li>
+                        <li>دعوات لتقليل التعرض المباشر لأشعة الشمس</li>
+                    </ul>
+                </div>
+                <div class="footer-box">
+                    <span style="color: #38bdf8; font-weight: bold;">الأنواء الجوية البصرة</span>
+                    <span>البصرة 📍 Al-Basra</span>
+                </div>
+            </div>
+            <div class="controls">
+                <label>اختر صورة الخبر من الهاتف:</label><input type="file" accept="image/*" onchange="loadFile(event, 'img-weather')">
+                <label>عنوان الشريط العلوي:</label><input type="text" value="الطقس والأحوال" oninput="document.getElementById('top-title-weather').innerText = this.value">
+                <label>العنوان الرئيسي:</label><textarea rows="2" oninput="document.getElementById('text-weather').innerText = this.value">ارتفاع درجات الحرارة في البصرة لتسجل 47 مئوية اليوم</textarea>
+                <button class="save-btn" onclick="saveImage('frame-weather', 'BSR_Weather.png')">📥 حفظ كصورة 1080x1920</button>
+            </div>
+        </div>
+
+        <!-- 5. قالب الخدمات والبلدية (أخضر زمردي #059669) -->
+        <div class="template-card">
+            <div class="template-header"><span>5. الخدمات والبلدية</span><span style="color:#059669">SERVICES</span></div>
+            <div class="phone-frame" id="frame-services">
+                <div class="top-bar theme-green">
+                    <span id="top-title-services">خدمات وبلدية</span>
+                    <div class="logo-area"><span>موسوعة البصرة</span><img src="Logo.png" class="logo-img" alt="شعار"></div>
+                </div>
+                <div class="media-container">
+                    <img src="https://images.unsplash.com/photo-1585829365295-ab7cd400c167?w=500" class="hero-news-img" id="img-services" alt="صورة">
+                </div>
+                <div class="lower-content-box theme-green">
+                    <div class="cat-pill">خدمات ونقاط</div>
+                    <h2 id="text-services">انطلاق حملة كبرى لتنظيف وصيانة شبكات الصرف الصحي في العشار</h2>
+                    <ul class="bullet-list">
+                        <li>استنفرت الكوادر البلدية آلياتها الخدمية</li>
+                        <li>دعوات للمواطنين للتعاون وإنجاح الحملة</li>
+                    </ul>
+                </div>
+                <div class="footer-box">
+                    <span style="color: #34d399; font-weight: bold;">قسم الخدمات البلدية</span>
+                    <span>البصرة 📍 Al-Basra</span>
+                </div>
+            </div>
+            <div class="controls">
+                <label>اختر صورة الخبر من الهاتف:</label><input type="file" accept="image/*" onchange="loadFile(event, 'img-services')">
+                <label>عنوان الشريط العلوي:</label><input type="text" value="خدمات وبلدية" oninput="document.getElementById('top-title-services').innerText = this.value">
+                <label>العنوان الرئيسي:</label><textarea rows="2" oninput="document.getElementById('text-services').innerText = this.value">انطلاق حملة كبرى لتنظيف وصيانة شبكات الصرف الصحي في العشار</textarea>
+                <button class="save-btn" onclick="saveImage('frame-services', 'BSR_Services.png')">📥 حفظ كصورة 1080x1920</button>
+            </div>
+        </div>
+
+        <!-- 6. قالب محليات وأمن (ذهبي / عنبري #d97706) -->
+        <div class="template-card">
+            <div class="template-header"><span>6. محليات وأمن</span><span style="color:#d97706">LOCAL / SECURITY</span></div>
+            <div class="phone-frame" id="frame-local">
+                <div class="top-bar theme-gold">
+                    <span id="top-title-local">محليات وأمن</span>
+                    <div class="logo-area"><span>موسوعة البصرة</span><img src="Logo.png" class="logo-img" alt="شعار"></div>
+                </div>
+                <div class="media-container">
+                    <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=500" class="hero-news-img" id="img-local" alt="صورة">
+                </div>
+                <div class="lower-content-box theme-gold">
+                    <div class="cat-pill">محليات البصرة</div>
+                    <h2 id="text-local">قيادة شرطة البصرة تعلن القبض على مطلوبين بتهم جنائية مختلفة</h2>
+                    <ul class="bullet-list">
+                        <li>عمليات أمنية دقيقة ومكثفة</li>
+                        <li>فرض سلطة القانون وتعزيز الاستقرار الأمني</li>
+                    </ul>
+                </div>
+                <div class="footer-box">
+                    <span style="color: #fbbf24; font-weight: bold;">الأمن المحلي - البصرة</span>
+                    <span>البصرة 📍 Al-Basra</span>
+                </div>
+            </div>
+            <div class="controls">
+                <label>اختر صورة الخبر من الهاتف:</label><input type="file" accept="image/*" onchange="loadFile(event, 'img-local')">
+                <label>عنوان الشريط العلوي:</label><input type="text" value="محليات وأمن" oninput="document.getElementById('top-title-local').innerText = this.value">
+                <label>العنوان الرئيسي:</label><textarea rows="2" oninput="document.getElementById('text-local').innerText = this.value">قيادة شرطة البصرة تعلن القبض على مطلوبين بتهم جنائية مختلفة</textarea>
+                <button class="save-btn" onclick="saveImage('frame-local', 'BSR_Local.png')">📥 حفظ كصورة 1080x1920</button>
             </div>
         </div>
 
