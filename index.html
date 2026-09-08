@@ -11,7 +11,453 @@
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         body { background: #f4f4f4; color: #333; padding: 20px; display: flex; flex-direction: column; align-items: center; direction: rtl; text-align: right; }
         h1 { margin-bottom: 20px; font-size: 20px; color: #111; text-align: center; }
+        <!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>قوالب موسوعة البصرة - التاريخ التلقائي</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <!-- استدعاء مكتبة FontAwesome للأيقونات -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background: #f4f4f4; color: #333; padding: 20px; display: flex; flex-direction: column; align-items: center; direction: rtl; text-align: right; }
+        h1 { margin-bottom: 20px; font-size: 20px; color: #111; text-align: center; }
         
+        .container { display: flex; flex-direction: column; gap: 40px; width: 100%; max-width: 420px; }
+        
+        .template-card { background: #fff; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); overflow: hidden; padding-bottom: 15px; }
+        .template-header { padding: 10px 15px; background: #eee; font-size: 14px; font-weight: bold; display: flex; justify-content: space-between; align-items: center; direction: rtl; }
+        
+        /* Phone Frame (9:16 Ratio - Reels Format) */
+        .phone-frame {
+            width: 100%;
+            aspect-ratio: 9/16;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            color: #fff;
+            direction: rtl;
+            text-align: right;
+        }
+
+        /* الألوان المعتمدة بالكامل */
+        .theme-urgent { background: #b91c1c; }      /* عاجل وسياسة: أحمر */
+        .theme-services { background: #064e3b; }    /* خدمات وبلدية: أخضر داكن */
+        .theme-weather { background: #0c4a6e; }     /* الطقس: أزرق */
+        .theme-sport { background: #15803d; }       /* الرياضة: أخضر الملاعب */
+
+        /*شريط التاريخ العلوي (أسود بريميوم)*/
+        .date-bar {
+            background: #2C2C2C;
+            padding: 5px 15px;
+            font-size: 11px;
+            font-weight: bold;
+            color: #ffffff;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+            direction: rtl;
+        }
+
+        /* 1. Top Header Bar */
+        .top-header-bar {
+            padding: 8px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 48px;
+            font-weight: 900;
+            direction: rtl;
+        }
+        .top-header-bar .cat-title-top {
+            font-size: 17px;
+            color: #fff;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+            text-align: right;
+            direction: rtl;
+        }
+        .top-header-logo-box {
+            display: flex;
+            align-items: center;
+            background: #fff;
+            padding: 3px 8px;
+            border-radius: 30px;
+            gap: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+            direction: rtl;
+        }
+        .top-header-logo-box img { width: 22px; height: 22px; object-fit: contain; }
+        .top-header-logo-box span { font-size: 11px; font-weight: bold; color: #111; }
+
+        /* 2. Middle Image Frame with Dynamic Height */
+        .media-container {
+            position: relative;
+            width: 100%;
+            height: 420px;
+            overflow: hidden;
+            border-bottom: 3px solid rgba(255,255,255,0.2);
+            flex-shrink: 0;
+        }
+        .hero-news-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center center;
+            transform: scale(1);
+            transition: transform 0.1s ease;
+        }
+
+        /* 3. Lower Content Container */
+        .lower-content-box {
+            flex-grow: 1;
+            padding: 10px 16px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-end;
+            text-align: right;
+            direction: rtl;
+            gap: 6px;
+            overflow: hidden;
+        }
+
+        /* Category Pill */
+        .badge-pill {
+            background: #ffffff;
+            color: #111;
+            padding: 3px 14px;
+            font-size: 14px;
+            border-radius: 20px;
+            font-weight: 900;
+            align-self: flex-end;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            text-align: right;
+            direction: rtl;
+        }
+
+        /* العنوان الرئيسي */
+        .phone-frame h2 {
+            font-size: 32px;
+            line-height: 1.35;
+            font-weight: 800;
+            color: #fff;
+            width: 100%;
+            text-align: right;
+            direction: rtl;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        /* النقاط الفرعية */
+        .bullet-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            width: 100%;
+            text-align: right;
+            direction: rtl;
+            padding: 0;
+        }
+
+        .bullet-list li {
+            font-size: 14px;
+            color: #ffffff;
+            line-height: 1.3;
+            font-weight: 700;
+            position: relative;
+            padding-right: 16px;
+            text-align: right;
+            direction: rtl;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+        }
+
+        .bullet-list li::before {
+            content: "•";
+            position: absolute;
+            right: 0;
+            left: auto;
+            color: #ffffff;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        /* 4. Footer Design المحدث والمصحح RTL مع الإطار الذهبي */
+        .footer-box {
+            background: #0b1329;
+            padding: 8px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 2px solid #d4af37; /* خط ذهبي فاصل */
+            color: #fff;
+            direction: rtl;
+        }
+
+        .footer-right-side {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 3px;
+            direction: rtl;
+            text-align: right;
+        }
+
+        .follow-label-rtl {
+            font-size: 11px;
+            color: #d4af37; /* لون ذهبي */
+            font-weight: 800;
+        }
+
+        .footer-social-icons-rtl {
+            display: flex;
+            gap: 6px;
+            align-items: center;
+            direction: ltr; /* الحفاظ على ترتيب الأيقونات البرمجي */
+        }
+
+        .footer-social-icons-rtl a {
+            width: 24px;
+            height: 24px;
+            border: 1px solid #d4af37; /* إطار ذهبي للأيقونات */
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            font-size: 11px;
+            text-decoration: none;
+            background: rgba(212, 175, 55, 0.1);
+            transition: background 0.2s;
+        }
+
+        .footer-social-icons-rtl a:hover {
+            background: #d4af37;
+            color: #0b1329;
+        }
+
+        .footer-center-logo-single {
+            display: flex;
+            align-items: center;
+            background: #fff;
+            padding: 3px 12px;
+            border-radius: 20px;
+            gap: 6px;
+            direction: rtl;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        .footer-center-logo-single img { width: 20px; height: 20px; object-fit: contain; }
+        .footer-center-logo-single span { font-size: 11px; color: #0b1329; font-weight: 900; direction: ltr; }
+
+        /* Control Inputs Area */
+        .controls { padding: 12px 15px; display: flex; flex-direction: column; gap: 8px; background: #fff; border-top: 1px solid #eee; direction: rtl; text-align: right; }
+        .controls label { font-size: 11px; font-weight: bold; color: #555; display: flex; align-items: center; gap: 6px; cursor: pointer; justify-content: flex-start; margin-top: 4px; }
+        .controls textarea, .controls input[type="text"] { width: 100%; padding: 7px; border: 1px solid #ccc; border-radius: 6px; font-size: 12px; font-family: inherit; resize: vertical; text-align: right; direction: rtl; }
+        .controls input[type="file"] { font-size: 11px; padding: 6px; background: #f9f9f9; border: 1px dashed #666; border-radius: 6px; cursor: pointer; text-align: right; }
+        .controls select, .controls input[type="range"] { width: 100%; padding: 5px; border: 1px solid #ccc; border-radius: 6px; font-size: 12px; background: #fff; direction: rtl; }
+        
+        .save-btn {
+            color: #fff;
+            border: none;
+            padding: 10px;
+            border-radius: 6px;
+            font-weight: bold;
+            font-size: 13px;
+            cursor: pointer;
+            text-align: center;
+            transition: background 0.2s;
+            margin-top: 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>قوالب موسوعة البصرة - مع التاريخ التلقائي</h1>
+
+    <div class="container">
+
+        <!-- 1. عاجل وسياسة (أحمر) -->
+        <div class="template-card">
+            <div class="template-header"><span>1. عاجل وسياسة (أحمر)</span><span style="color:#b91c1c">RED</span></div>
+            <div class="phone-frame" id="frame-urgent">
+                <div class="date-bar" id="date-text-urgent">جاري تحميل التاريخ...</div>
+                <div class="top-header-bar theme-urgent">
+                    <span class="cat-title-top" id="top-title-urgent">عاجل وسياسة</span>
+                    <div class="top-header-logo-box"><img src="Logo.png" alt="شعار"><span>موسوعة البصرة</span></div>
+                </div>
+                <div class="media-container" id="media-box-urgent"><img src="https://images.unsplash.com/photo-1541872703-74c5e44368f9?w=500" class="hero-news-img" id="img-urgent" alt="صورة"></div>
+                <div class="lower-content-box theme-urgent">
+                    <div class="badge-pill" id="badge-urgent">عاجل جداً 🔴</div>
+                    <h2 id="text-urgent" style="font-size: 32px;">نيويورك بوست عن مسؤولين: هجمات الحوثيين على السعودية تشعل حرائق في منشآت نفطية وتصيب 73 شخصاً</h2>
+                    <ul class="bullet-list" id="list-urgent">
+                        <li id="li-urgent-1">اندلاع حرائق ضخمة في المنشآت</li>
+                        <li id="li-urgent-2">إصابة 73 شخصاً حسب مصادر أولية</li>
+                        <li id="li-urgent-3">الجهات المعنية لم تعلن حتى الآن عن حجم الأضرار بشكل رسمي.</li>
+                    </ul>
+                </div>
+                <div class="footer-box">
+                    <div class="footer-right-side">
+                        <span class="follow-label-rtl">تابعنا على:</span>
+                        <div class="footer-social-icons-rtl">
+                            <a href="https://facebook.com" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+                            <a href="https://tiktok.com" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
+                            <a href="https://instagram.com" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="https://whatsapp.com" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+                            <a href="https://telegram.org" target="_blank"><i class="fa-brands fa-telegram-plane"></i></a>
+                        </div>
+                    </div>
+                    <div class="footer-center-logo-single"><img src="Logo.png" alt="شعار"><span>mwsuat_albasra</span></div>
+                </div>
+            </div>
+            <div class="controls">
+                <label>تاريخ النشر العلوي (تلقائي / قابل للتعديل):</label>
+                <input type="text" id="date-input-urgent" oninput="document.getElementById('date-text-urgent').innerText = this.value">
+                
+                <label>اختر صورة الخبر:</label><input type="file" accept="image/*" onchange="loadFile(event, 'img-urgent')">
+                <label>ارتفاع إطار الصورة: <span id="val-h-urgent">420</span>px</label>
+                <input type="range" min="200" max="600" step="10" value="420" oninput="document.getElementById('media-box-urgent').style.height = this.value + 'px'; document.getElementById('val-h-urgent').innerText = this.value;">
+                <label>تكبير / تصغير محتوى الصورة (Zoom):</label>
+                <input type="range" min="1" max="2.5" step="0.05" value="1" oninput="document.getElementById('img-urgent').style.transform = 'scale(' + this.value + ')'">
+                <label>تحكم بموضع الصورة (التركيز):</label>
+                <select onchange="document.getElementById('img-urgent').style.objectPosition = this.value">
+                    <option value="center center">المنتصف (افتراضي)</option>
+                    <option value="top center">الأعلى</option>
+                    <option value="bottom center">الأسفل</option>
+                    <option value="center left">اليمين</option>
+                    <option value="center right">اليسار</option>
+                </select>
+                <label>حجم العنوان الرئيسي: <span id="val-fs-urgent">32</span>px</label>
+                <input type="range" min="20" max="45" step="1" value="32" oninput="document.getElementById('text-urgent').style.fontSize = this.value + 'px'; document.getElementById('val-fs-urgent').innerText = this.value;">
+                <label>حجم خط النقاط الفرعية: <span id="val-li-urgent">14</span>px</label>
+                <input type="range" min="11" max="20" step="1" value="14" oninput="updateListFontSize('list-urgent', this.value); document.getElementById('val-li-urgent').innerText = this.value;">
+                <label>عنوان الشريط العلوي:</label><input type="text" value="عاجل وسياسة" oninput="document.getElementById('top-title-urgent').innerText = this.value">
+                <label>شارة التصنيف (Badge):</label><input type="text" value="عاجل جداً 🔴" oninput="document.getElementById('badge-urgent').innerText = this.value">
+                <label>العنوان الرئيسي:</label><textarea rows="3" oninput="document.getElementById('text-urgent').innerText = this.value">نيويورك بوست عن مسؤولين: هجمات الحوثيين على السعودية تشعل حرائق في منشآت نفطية وتصيب 73 شخصاً</textarea>
+                <label>النقطة 1:</label><input type="text" value="اندلاع حرائق ضخمة في المنشآت" oninput="document.getElementById('li-urgent-1').innerText = this.value">
+                <label>النقطة 2:</label><input type="text" value="إصابة 73 شخصاً حسب مصادر أولية" oninput="document.getElementById('li-urgent-2').innerText = this.value">
+                <label>النقطة 3:</label><input type="text" value="الجهات المعنية لم تعلن حتى الآن عن حجم الأضرار بشكل رسمي." oninput="document.getElementById('li-urgent-3').innerText = this.value">
+                <button class="save-btn" style="background: #b91c1c;" onclick="saveImage('frame-urgent', 'BSR_Urgent.png')">📥 حفظ كصورة 1080x1920</button>
+            </div>
+        </div>
+
+        <!-- 2. خدمات وبلدية (أخضر داكن) -->
+        <div class="template-card">
+            <div class="template-header"><span>2. خدمات وبلدية (أخضر داكن)</span><span style="color:#064e3b">GREEN</span></div>
+            <div class="phone-frame" id="frame-services">
+                <div class="date-bar" id="date-text-services">جاري تحميل التاريخ...</div>
+                <div class="top-header-bar theme-services">
+                    <span class="cat-title-top" id="top-title-services">خدمات وبلدية</span>
+                    <div class="top-header-logo-box"><img src="Logo.png" alt="شعار"><span>موسوعة البصرة</span></div>
+                </div>
+                <div class="media-container" id="media-box-services"><img src="https://images.unsplash.com/photo-1585829365295-ab7cd400c167?w=500" class="hero-news-img" id="img-services" alt="صورة"></div>
+                <div class="lower-content-box theme-services">
+                    <div class="badge-pill" id="badge-services">خدمات ونقاط</div>
+                    <h2 id="text-services" style="font-size: 32px;">انطلاق حملة كبرى لتنظيف وصيانة شبكات الصرف الصحي</h2>
+                    <ul class="bullet-list" id="list-services">
+                        <li id="li-services-1">استنفرت الكوادر البلدية آلياتها الخدمية والهندسية</li>
+                        <li id="li-services-2">دعوات للمواطنين للتعاون وإنجاح الحملة الخدمية</li>
+                        <li id="li-services-3">معالجة الطفحات المائية وفتح الخطوط المسدودة</li>
+                    </ul>
+                </div>
+                <div class="footer-box">
+                    <div class="footer-right-side">
+                        <span class="follow-label-rtl">تابعنا على:</span>
+                        <div class="footer-social-icons-rtl">
+                            <a href="https://facebook.com" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+                            <a href="https://tiktok.com" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
+                            <a href="https://instagram.com" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="https://whatsapp.com" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+                            <a href="https://telegram.org" target="_blank"><i class="fa-brands fa-telegram-plane"></i></a>
+                        </div>
+                    </div>
+                    <div class="footer-center-logo-single"><img src="Logo.png" alt="شعار"><span>mwsuat_albasra</span></div>
+                </div>
+            </div>
+            <div class="controls">
+                <label>تاريخ النشر العلوي (تلقائي / قابل للتعديل):</label>
+                <input type="text" id="date-input-services" oninput="document.getElementById('date-text-services').innerText = this.value">
+
+                <label>اختر صورة الخبر:</label><input type="file" accept="image/*" onchange="loadFile(event, 'img-services')">
+                <label>ارتفاع إطار الصورة: <span id="val-h-services">420</span>px</label>
+                <input type="range" min="200" max="600" step="10" value="420" oninput="document.getElementById('media-box-services').style.height = this.value + 'px'; document.getElementById('val-h-services').innerText = this.value;">
+                <label>تكبير / تصغير محتوى الصورة (Zoom):</label>
+                <input type="range" min="1" max="2.5" step="0.05" value="1" oninput="document.getElementById('img-services').style.transform = 'scale(' + this.value + ')'">
+                <label>تحكم بموضع الصورة (التركيز):</label>
+                <select onchange="document.getElementById('img-services').style.objectPosition = this.value">
+                    <option value="center center">المنتصف (افتراضي)</option>
+                    <option value="top center">الأعلى</option>
+                    <option value="bottom center">الأسفل</option>
+                    <option value="center left">اليمين</option>
+                    <option value="center right">اليسار</option>
+                </select>
+                <label>حجم العنوان الرئيسي: <span id="val-fs-services">32</span>px</label>
+                <input type="range" min="20" max="45" step="1" value="32" oninput="document.getElementById('text-services').style.fontSize = this.value + 'px'; document.getElementById('val-fs-services').innerText = this.value;">
+                <label>حجم خط النقاط الفرعية: <span id="val-li-services">14</span>px</label>
+                <input type="range" min="11" max="20" step="1" value="14" oninput="updateListFontSize('list-services', this.value); document.getElementById('val-li-services').innerText = this.value;">
+                <label>عنوان الشريط العلوي:</label><input type="text" value="خدمات وبلدية" oninput="document.getElementById('top-title-services').innerText = this.value">
+                <label>شارة التصنيف (Badge):</label><input type="text" value="خدمات ونقاط" oninput="document.getElementById('badge-services').innerText = this.value">
+                <label>العنوان الرئيسي:</label><textarea rows="2" oninput="document.getElementById('text-services').innerText = this.value">انطلاق حملة كبرى لتنظيف وصيانة شبكات الصرف الصحي</textarea>
+                <label>النقطة 1:</label><input type="text" value="استنفرت الكوادر البلدية آلياتها الخدمية والهندسية" oninput="document.getElementById('li-services-1').innerText = this.value">
+                <label>النقطة 2:</label><input type="text" value="دعوات للمواطنين للتعاون وإنجاح الحملة الخدمية" oninput="document.getElementById('li-services-2').innerText = this.value">
+                <label>النقطة 3:</label><input type="text" value="معالجة الطفحات المائية وفتح الخطوط المسدودة" oninput="document.getElementById('li-services-3').innerText = this.value">
+                <button class="save-btn" style="background: #064e3b;" onclick="saveImage('frame-services', 'BSR_Services.png')">📥 حفظ كصورة 1080x1920</button>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // دالة توليد التاريخ الحالي تلقائياً باللغة العربية (مثال: الثلاثاء، 8 أيلول 2026)
+        function getFormattedDate() {
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            const today = new Date();
+            return today.toLocaleDateString('ar-IQ', options);
+        }
+
+        // تعيين التاريخ التلقائي عند فتح الصفحة لجميع القوالب
+        window.onload = function() {
+            const currentDate = getFormattedDate();
+            
+            // قالب 1
+            document.getElementById('date-text-urgent').innerText = currentDate;
+            document.getElementById('date-input-urgent').value = currentDate;
+
+            // قالب 2
+            document.getElementById('date-text-services').innerText = currentDate;
+            document.getElementById('date-input-services').value = currentDate;
+        };
+
+        function loadFile(event, imgId) {
+            const image = document.getElementById(imgId);
+            image.src = URL.createObjectURL(event.target.files[0]);
+        }
+
+        function updateListFontSize(listId, size) {
+            const items = document.querySelectorAll('#' + listId + ' li');
+            items.forEach(item => {
+                item.style.fontSize = size + 'px';
+            });
+        }
+
+        function saveImage(frameId, filename) {
+            const frame = document.getElementById(frameId);
+            html2canvas(frame, {
+                scale: 3,
+                useCORS: true,
+                allowTaint: true
+            }).then(canvas => {
+                const link = document.createElement('a');
+                link.download = filename;
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+            });
+        }
+    </script>
+</body>
+</html>
         .container { display: flex; flex-direction: column; gap: 40px; width: 100%; max-width: 420px; }
         
         .template-card { background: #fff; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); overflow: hidden; padding-bottom: 15px; }
