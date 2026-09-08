@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>قوالب موسوعة البصرة - النسخة المحدثة</title>
+    <title>قوالب موسوعة البصرة - النسخة المحدثة بأيقونات التواصل</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <!-- استدعاء مكتبة FontAwesome للأيقونات -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         body { background: #f4f4f4; color: #333; padding: 20px; display: flex; flex-direction: column; align-items: center; direction: rtl; text-align: right; }
@@ -33,7 +35,7 @@
         .theme-services { background: #064e3b; }    /* خدمات وبلدية: أخضر داكن */
         .theme-weather { background: #0c4a6e; }     /* الطقس: أزرق */
         .theme-sport { background: #15803d; }       /* الرياضة: أخضر الملاعب */
-        .theme-appeal { background: #581c87; }      /* مناشدة إنسانية: بنفسجي */
+        .theme-appeal { background: #581c87; }     /* مناشدة إنسانية: بنفسجي */
         .theme-local { background: #E67E22; }       /* المحليات: برتقالي محروق هادئ */
 
         /*شريط التاريخ العلوي (أسود بريميوم)*/
@@ -172,20 +174,20 @@
             font-size: 16px;
         }
 
-        /* 4. Footer Design */
+        /* 4. Footer Design مع قسم "تابعنا" والأيقونات */
         .footer-box {
             background: #050814;
-            padding: 6px 15px;
+            padding: 7px 15px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 11px;
             border-top: 2px solid rgba(255,255,255,0.15);
             color: #fff;
             direction: rtl;
-            text-align: right;
         }
-        .footer-right { font-weight: bold; font-size: 11px; text-align: right; }
+        .footer-right { font-weight: bold; font-size: 11px; text-align: right; line-height: 1.2; }
+        .footer-right .follow-label { font-size: 9px; color: #fbbf24; font-weight: 700; display: block; margin-bottom: 1px; }
+        
         .footer-center-logo {
             display: flex;
             align-items: center;
@@ -195,9 +197,22 @@
             gap: 6px;
             direction: rtl;
         }
-        .footer-center-logo img { width: 22px; height: 22px; object-fit: contain; }
+        .footer-center-logo img { width: 20px; height: 20px; object-fit: contain; }
         .footer-center-logo span { font-size: 11px; color: #0b1329; font-weight: 900; direction: ltr; }
-        .footer-left { font-size: 10px; color: #cbd5e1; text-align: left; line-height: 1.1; font-weight: bold; direction: ltr; }
+        
+        .footer-social-icons {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            font-size: 13px;
+            direction: ltr;
+        }
+        .footer-social-icons a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: opacity 0.2s;
+        }
+        .footer-social-icons a:hover { opacity: 0.8; }
 
         /* Control Inputs Area */
         .controls { padding: 12px 15px; display: flex; flex-direction: column; gap: 8px; background: #fff; border-top: 1px solid #eee; direction: rtl; text-align: right; }
@@ -222,7 +237,7 @@
 </head>
 <body>
 
-    <h1>قوالب موسوعة البصرة - النسخة المحدثة</h1>
+    <h1>قوالب موسوعة البصرة - النسخة المحدثة مع أيقونات التواصل</h1>
 
     <div class="container">
 
@@ -246,15 +261,24 @@
                     </ul>
                 </div>
                 <div class="footer-box">
-                    <div class="footer-right">البصرة<br><span style="font-size:10px; font-weight:normal; direction:ltr; display:inline-block;">mwsuat_albasra</span></div>
+                    <div class="footer-right">
+                        <span class="follow-label">تابعنا:</span>
+                        البصرة<br><span style="font-size:10px; font-weight:normal; direction:ltr; display:inline-block;">mwsuat_albasra</span>
+                    </div>
                     <div class="footer-center-logo"><img src="Logo.png" alt="شعار"><span>mwsuat_albasra</span></div>
-                    <div class="footer-left">عاجل<br>mwsuat_albasra</div>
+                    <div class="footer-social-icons">
+                        <a href="https://facebook.com" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="https://whatsapp.com" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+                        <a href="https://tiktok.com" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
+                        <a href="https://instagram.com" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="https://telegram.org" target="_blank"><i class="fa-brands fa-telegram"></i></a>
+                    </div>
                 </div>
             </div>
             <div class="controls">
                 <label>تاريخ النشر العلوي:</label><input type="text" value="الثلاثاء، 8 أيلول 2026" oninput="document.getElementById('date-text-urgent').innerText = this.value">
                 <label>اختر صورة الخبر:</label><input type="file" accept="image/*" onchange="loadFile(event, 'img-urgent')">
-                <label>ارتفاع إطار الصورة (تكبير/تصغير مساحة الصورة): <span id="val-h-urgent">420</span>px</label>
+                <label>ارتفاع إطار الصورة: <span id="val-h-urgent">420</span>px</label>
                 <input type="range" min="200" max="600" step="10" value="420" oninput="document.getElementById('media-box-urgent').style.height = this.value + 'px'; document.getElementById('val-h-urgent').innerText = this.value;">
                 <label>تكبير / تصغير محتوى الصورة (Zoom):</label>
                 <input type="range" min="1" max="2.5" step="0.05" value="1" oninput="document.getElementById('img-urgent').style.transform = 'scale(' + this.value + ')'">
@@ -282,16 +306,16 @@
 
         <!-- 2. خدمات وبلدية (أخضر داكن) -->
         <div class="template-card">
-            <div class="template-header"><span>2. خدمات (أخضر داكن)</span><span style="color:#064e3b">GREEN</span></div>
+            <div class="template-header"><span>2. خدمات وبلدية (أخضر داكن)</span><span style="color:#064e3b">GREEN</span></div>
             <div class="phone-frame" id="frame-services">
                 <div class="date-bar" id="date-text-services">الثلاثاء، 8 أيلول 2026</div>
                 <div class="top-header-bar theme-services">
-                    <span class="cat-title-top" id="top-title-services">خدمات </span>
+                    <span class="cat-title-top" id="top-title-services">خدمات وبلدية</span>
                     <div class="top-header-logo-box"><img src="Logo.png" alt="شعار"><span>موسوعة البصرة</span></div>
                 </div>
                 <div class="media-container" id="media-box-services"><img src="https://images.unsplash.com/photo-1585829365295-ab7cd400c167?w=500" class="hero-news-img" id="img-services" alt="صورة"></div>
                 <div class="lower-content-box theme-services">
-                    <div class="badge-pill" id="badge-services">خدمات </div>
+                    <div class="badge-pill" id="badge-services">خدمات ونقاط</div>
                     <h2 id="text-services" style="font-size: 32px;">انطلاق حملة كبرى لتنظيف وصيانة شبكات الصرف الصحي</h2>
                     <ul class="bullet-list" id="list-services">
                         <li id="li-services-1">استنفرت الكوادر البلدية آلياتها الخدمية والهندسية</li>
@@ -300,9 +324,18 @@
                     </ul>
                 </div>
                 <div class="footer-box">
-                    <div class="footer-right">البصرة<br><span style="font-size:10px; font-weight:normal; direction:ltr; display:inline-block;">mwsuat_albasra</span></div>
+                    <div class="footer-right">
+                        <span class="follow-label">تابعنا:</span>
+                        البصرة<br><span style="font-size:10px; font-weight:normal; direction:ltr; display:inline-block;">mwsuat_albasra</span>
+                    </div>
                     <div class="footer-center-logo"><img src="Logo.png" alt="شعار"><span>mwsuat_albasra</span></div>
-                    <div class="footer-left">خدمات<br>mwsuat_albasra</div>
+                    <div class="footer-social-icons">
+                        <a href="https://facebook.com" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="https://whatsapp.com" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+                        <a href="https://tiktok.com" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
+                        <a href="https://instagram.com" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="https://telegram.org" target="_blank"><i class="fa-brands fa-telegram"></i></a>
+                    </div>
                 </div>
             </div>
             <div class="controls">
@@ -324,8 +357,8 @@
                 <input type="range" min="20" max="45" step="1" value="32" oninput="document.getElementById('text-services').style.fontSize = this.value + 'px'; document.getElementById('val-fs-services').innerText = this.value;">
                 <label>حجم خط النقاط الفرعية: <span id="val-li-services">14</span>px</label>
                 <input type="range" min="11" max="20" step="1" value="14" oninput="updateListFontSize('list-services', this.value); document.getElementById('val-li-services').innerText = this.value;">
-                <label>عنوان الشريط العلوي:</label><input type="text" value="خدمات " oninput="document.getElementById('top-title-services').innerText = this.value">
-                <label>شارة التصنيف (Badge):</label><input type="text" value="خدمات " oninput="document.getElementById('badge-services').innerText = this.value">
+                <label>عنوان الشريط العلوي:</label><input type="text" value="خدمات وبلدية" oninput="document.getElementById('top-title-services').innerText = this.value">
+                <label>شارة التصنيف (Badge):</label><input type="text" value="خدمات ونقاط" oninput="document.getElementById('badge-services').innerText = this.value">
                 <label>العنوان الرئيسي:</label><textarea rows="2" oninput="document.getElementById('text-services').innerText = this.value">انطلاق حملة كبرى لتنظيف وصيانة شبكات الصرف الصحي</textarea>
                 <label>النقطة 1:</label><input type="text" value="استنفرت الكوادر البلدية آلياتها الخدمية والهندسية" oninput="document.getElementById('li-services-1').innerText = this.value">
                 <label>النقطة 2:</label><input type="text" value="دعوات للمواطنين للتعاون وإنجاح الحملة الخدمية" oninput="document.getElementById('li-services-2').innerText = this.value">
@@ -354,9 +387,18 @@
                     </ul>
                 </div>
                 <div class="footer-box">
-                    <div class="footer-right">البصرة<br><span style="font-size:10px; font-weight:normal; direction:ltr; display:inline-block;">mwsuat_albasra</span></div>
+                    <div class="footer-right">
+                        <span class="follow-label">تابعنا:</span>
+                        البصرة<br><span style="font-size:10px; font-weight:normal; direction:ltr; display:inline-block;">mwsuat_albasra</span>
+                    </div>
                     <div class="footer-center-logo"><img src="Logo.png" alt="شعار"><span>mwsuat_albasra</span></div>
-                    <div class="footer-left">الطقس<br>mwsuat_albasra</div>
+                    <div class="footer-social-icons">
+                        <a href="https://facebook.com" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="https://whatsapp.com" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+                        <a href="https://tiktok.com" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
+                        <a href="https://instagram.com" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="https://telegram.org" target="_blank"><i class="fa-brands fa-telegram"></i></a>
+                    </div>
                 </div>
             </div>
             <div class="controls">
@@ -408,9 +450,18 @@
                     </ul>
                 </div>
                 <div class="footer-box">
-                    <div class="footer-right">البصرة<br><span style="font-size:10px; font-weight:normal; direction:ltr; display:inline-block;">mwsuat_albasra</span></div>
+                    <div class="footer-right">
+                        <span class="follow-label">تابعنا:</span>
+                        البصرة<br><span style="font-size:10px; font-weight:normal; direction:ltr; display:inline-block;">mwsuat_albasra</span>
+                    </div>
                     <div class="footer-center-logo"><img src="Logo.png" alt="شعار"><span>mwsuat_albasra</span></div>
-                    <div class="footer-left">رياضة<br>mwsuat_albasra</div>
+                    <div class="footer-social-icons">
+                        <a href="https://facebook.com" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="https://whatsapp.com" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+                        <a href="https://tiktok.com" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
+                        <a href="https://instagram.com" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="https://telegram.org" target="_blank"><i class="fa-brands fa-telegram"></i></a>
+                    </div>
                 </div>
             </div>
             <div class="controls">
@@ -442,134 +493,24 @@
             </div>
         </div>
 
-        <!-- 5. مناشدة إنسانية (بنفسجي) -->
-        <div class="template-card">
-            <div class="template-header"><span>5. مناشدة إنسانية (بنفسجي)</span><span style="color:#581c87">PURPLE</span></div>
-            <div class="phone-frame" id="frame-appeal">
-                <div class="date-bar" id="date-text-appeal">الثلاثاء، 8 أيلول 2026</div>
-                <div class="top-header-bar theme-appeal">
-                    <span class="cat-title-top" id="top-title-appeal">مناشدة إنسانية</span>
-                    <div class="top-header-logo-box"><img src="Logo.png" alt="شعار"><span>موسوعة البصرة</span></div>
-                </div>
-                <div class="media-container" id="media-box-appeal"><img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=500" class="hero-news-img" id="img-appeal" alt="صورة"></div>
-                <div class="lower-content-box theme-appeal">
-                    <div class="badge-pill" id="badge-appeal">إنسانية | أهل الخير</div>
-                    <h2 id="text-appeal" style="font-size: 32px;">عائلة متعففة في البصرة تناشد عبر "موسوعة البصرة" لمد يد العون</h2>
-                    <ul class="bullet-list" id="list-appeal">
-                        <li id="li-appeal-1">ظروف معيشية صعبة وقاسية تواجه الأسرة المعوزة</li>
-                        <li id="li-appeal-2">مناشدة عاجلة لتقديم الدعم العلاجي والمعيشي العاجل</li>
-                        <li id="li-appeal-3">رب الأسرة يمر بظروف صحية تمنعه عن العمل</li>
-                    </ul>
-                </div>
-                <div class="footer-box">
-                    <div class="footer-right">البصرة<br><span style="font-size:10px; font-weight:normal; direction:ltr; display:inline-block;">mwsuat_albasra</span></div>
-                    <div class="footer-center-logo"><img src="Logo.png" alt="شعار"><span>mwsuat_albasra</span></div>
-                    <div class="footer-left">مناشدات<br>mwsuat_albasra</div>
-                </div>
-            </div>
-            <div class="controls">
-                <label>تاريخ النشر العلوي:</label><input type="text" value="الثلاثاء، 8 أيلول 2026" oninput="document.getElementById('date-text-appeal').innerText = this.value">
-                <label>اختر صورة الخبر:</label><input type="file" accept="image/*" onchange="loadFile(event, 'img-appeal')">
-                <label>ارتفاع إطار الصورة: <span id="val-h-appeal">420</span>px</label>
-                <input type="range" min="200" max="600" step="10" value="420" oninput="document.getElementById('media-box-appeal').style.height = this.value + 'px'; document.getElementById('val-h-appeal').innerText = this.value;">
-                <label>تكبير / تصغير محتوى الصورة (Zoom):</label>
-                <input type="range" min="1" max="2.5" step="0.05" value="1" oninput="document.getElementById('img-appeal').style.transform = 'scale(' + this.value + ')'">
-                <label>تحكم بموضع الصورة (التركيز):</label>
-                <select onchange="document.getElementById('img-appeal').style.objectPosition = this.value">
-                    <option value="center center">المنتصف (افتراضي)</option>
-                    <option value="top center">الأعلى</option>
-                    <option value="bottom center">الأسفل</option>
-                    <option value="center left">اليمين</option>
-                    <option value="center right">اليسار</option>
-                </select>
-                <label>حجم العنوان الرئيسي: <span id="val-fs-appeal">32</span>px</label>
-                <input type="range" min="20" max="45" step="1" value="32" oninput="document.getElementById('text-appeal').style.fontSize = this.value + 'px'; document.getElementById('val-fs-appeal').innerText = this.value;">
-                <label>حجم خط النقاط الفرعية: <span id="val-li-appeal">14</span>px</label>
-                <input type="range" min="11" max="20" step="1" value="14" oninput="updateListFontSize('list-appeal', this.value); document.getElementById('val-li-appeal').innerText = this.value;">
-                <label>عنوان الشريط العلوي:</label><input type="text" value="مناشدة إنسانية" oninput="document.getElementById('top-title-appeal').innerText = this.value">
-                <label>شارة التصنيف (Badge):</label><input type="text" value="إنسانية | أهل الخير" oninput="document.getElementById('badge-appeal').innerText = this.value">
-                <label>العنوان الرئيسي:</label><textarea rows="2" oninput="document.getElementById('text-appeal').innerText = this.value">عائلة متعففة في البصرة تناشد عبر "موسوعة البصرة" لمد يد العون</textarea>
-                <label>النقطة 1:</label><input type="text" value="ظروف معيشية صعبة وقاسية تواجه الأسرة المعوزة" oninput="document.getElementById('li-appeal-1').innerText = this.value">
-                <label>النقطة 2:</label><input type="text" value="مناشدة عاجلة لتقديم الدعم العلاجي والمعيشي العاجل" oninput="document.getElementById('li-appeal-2').innerText = this.value">
-                <label>النقطة 3:</label><input type="text" value="رب الأسرة يمر بظروف صحية تمنعه عن العمل" oninput="document.getElementById('li-appeal-3').innerText = this.value">
-                <button class="save-btn" style="background: #581c87;" onclick="saveImage('frame-appeal', 'BSR_Appeal.png')">📥 حفظ كصورة 1080x1920</button>
-            </div>
-        </div>
-
-        <!-- 6. المحليات (برتقالي محروق هادئ) -->
-        <div class="template-card">
-            <div class="template-header"><span>6. المحليات (برتقالي هادئ)</span><span style="color:#E67E22">BURNT ORANGE</span></div>
-            <div class="phone-frame" id="frame-local">
-                <div class="date-bar" id="date-text-local">الثلاثاء، 8 أيلول 2026</div>
-                <div class="top-header-bar theme-local">
-                    <span class="cat-title-top" id="top-title-local">أخبار المحليات</span>
-                    <div class="top-header-logo-box"><img src="Logo.png" alt="شعار"><span>موسوعة البصرة</span></div>
-                </div>
-                <div class="media-container" id="media-box-local"><img src="https://images.unsplash.com/photo-1577495508048-b635879837f1?w=500" class="hero-news-img" id="img-local" alt="صورة"></div>
-                <div class="lower-content-box theme-local">
-                    <div class="badge-pill" id="badge-local">محليات البصرة 🏙️</div>
-                    <h2 id="text-local" style="font-size: 32px;">متابعات ميدانية لأبرز النشاطات والفعاليات المحلية في أقضية ونواحي المحافظة</h2>
-                    <ul class="bullet-list" id="list-local">
-                        <li id="li-local-1">جولات ميدانية للمسؤولين للاطلاع على احتياجات الأهالي</li>
-                        <li id="li-local-2">مناقشة مشاريع البنى التحتية والخطط الخدمية الجديدة</li>
-                        <li id="li-local-3">تفاعل واسع من المواطنين مع المبادرات المحلية</li>
-                    </ul>
-                </div>
-                <div class="footer-box">
-                    <div class="footer-right">البصرة<br><span style="font-size:10px; font-weight:normal; direction:ltr; display:inline-block;">mwsuat_albasra</span></div>
-                    <div class="footer-center-logo"><img src="Logo.png" alt="شعار"><span>mwsuat_albasra</span></div>
-                    <div class="footer-left">محليات<br>mwsuat_albasra</div>
-                </div>
-            </div>
-            <div class="controls">
-                <label>تاريخ النشر العلوي:</label><input type="text" value="الثلاثاء، 8 أيلول 2026" oninput="document.getElementById('date-text-local').innerText = this.value">
-                <label>اختر صورة الخبر:</label><input type="file" accept="image/*" onchange="loadFile(event, 'img-local')">
-                <label>ارتفاع إطار الصورة: <span id="val-h-local">420</span>px</label>
-                <input type="range" min="200" max="600" step="10" value="420" oninput="document.getElementById('media-box-local').style.height = this.value + 'px'; document.getElementById('val-h-local').innerText = this.value;">
-                <label>تكبير / تصغير محتوى الصورة (Zoom):</label>
-                <input type="range" min="1" max="2.5" step="0.05" value="1" oninput="document.getElementById('img-local').style.transform = 'scale(' + this.value + ')'">
-                <label>تحكم بموضع الصورة (التركيز):</label>
-                <select onchange="document.getElementById('img-local').style.objectPosition = this.value">
-                    <option value="center center">المنتصف (افتراضي)</option>
-                    <option value="top center">الأعلى</option>
-                    <option value="bottom center">الأسفل</option>
-                    <option value="center left">اليمين</option>
-                    <option value="center right">اليسار</option>
-                </select>
-                <label>حجم العنوان الرئيسي: <span id="val-fs-local">32</span>px</label>
-                <input type="range" min="20" max="45" step="1" value="32" oninput="document.getElementById('text-local').style.fontSize = this.value + 'px'; document.getElementById('val-fs-local').innerText = this.value;">
-                <label>حجم خط النقاط الفرعية: <span id="val-li-local">14</span>px</label>
-                <input type="range" min="11" max="20" step="1" value="14" oninput="updateListFontSize('list-local', this.value); document.getElementById('val-li-local').innerText = this.value;">
-                <label>عنوان الشريط العلوي:</label><input type="text" value="أخبار المحليات" oninput="document.getElementById('top-title-local').innerText = this.value">
-                <label>شارة التصنيف (Badge):</label><input type="text" value="محليات البصرة 🏙️" oninput="document.getElementById('badge-local').innerText = this.value">
-                <label>العنوان الرئيسي:</label><textarea rows="2" oninput="document.getElementById('text-local').innerText = this.value">متابعات ميدانية لأبرز النشاطات والفعاليات المحلية في أقضية ونواحي المحافظة</textarea>
-                <label>النقطة 1:</label><input type="text" value="جولات ميدانية للمسؤولين للاطلاع على احتياجات الأهالي" oninput="document.getElementById('li-local-1').innerText = this.value">
-                <label>النقطة 2:</label><input type="text" value="مناقشة مشاريع البنى التحتية والخطط الخدمية الجديدة" oninput="document.getElementById('li-local-2').innerText = this.value">
-                <label>النقطة 3:</label><input type="text" value="تفاعل واسع من المواطنين مع المبادرات المحلية" oninput="document.getElementById('li-local-3').innerText = this.value">
-                <button class="save-btn" style="background: #E67E22;" onclick="saveImage('frame-local', 'BSR_Local.png')">📥 حفظ كصورة 1080x1920</button>
-            </div>
-        </div>
-
     </div>
 
     <script>
         function loadFile(event, imgId) {
-            const imageTag = document.getElementById(imgId);
-            if (event.target.files && event.target.files[0]) {
-                imageTag.src = URL.createObjectURL(event.target.files[0]);
-            }
+            const image = document.getElementById(imgId);
+            image.src = URL.createObjectURL(event.target.files[0]);
         }
 
         function updateListFontSize(listId, size) {
             const items = document.querySelectorAll('#' + listId + ' li');
-            items.forEach(li => {
-                li.style.fontSize = size + 'px';
+            items.forEach(item => {
+                item.style.fontSize = size + 'px';
             });
         }
 
         function saveImage(frameId, filename) {
-            const frameElement = document.getElementById(frameId);
-            html2canvas(frameElement, {
+            const frame = document.getElementById(frameId);
+            html2canvas(frame, {
                 scale: 3,
                 useCORS: true,
                 allowTaint: true
@@ -581,6 +522,5 @@
             });
         }
     </script>
-
 </body>
 </html>
