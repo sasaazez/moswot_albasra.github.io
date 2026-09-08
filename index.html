@@ -22,12 +22,11 @@
             overflow: hidden;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            background: linear-gradient(180deg, #1a0000 0%, #0d0d0d 100%);
+            background: #0d0d0d;
             color: #fff;
         }
 
-        /* Top Bar with Date & Time */
+        /* Top Bar with Date & Time (Attached directly to top) */
         .top-bar-standard {
             padding: 10px 15px;
             display: flex;
@@ -43,36 +42,45 @@
         .logo-area { display: flex; align-items: center; gap: 6px; }
         .logo-img { width: 28px; height: 28px; background: #fff; border-radius: 50%; padding: 2px; object-fit: contain; }
 
-        /* 75% Image Container & 25% Overlay Text Area */
+        /* Media Container taking maximum space directly under red bar */
         .media-container {
             position: relative;
             width: 100%;
-            height: 72%;
+            flex-grow: 1; /* تأخذ المساحة المتبقية بالكامل بدون فراغات */
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
         }
 
         .hero-news-img {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
             object-fit: cover;
+            z-index: 1;
         }
 
-        /* Gradient Overlay on image for text readability */
+        /* Gradient Overlay for text readability */
         .overlay-gradient {
             position: absolute;
             bottom: 0;
             left: 0;
             width: 100%;
-            height: 100%;
-            background: linear-gradient(0deg, rgba(0,0,0,0.9) 10%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.1) 100%);
+            height: 85%;
+            background: linear-gradient(0deg, rgba(0,0,0,0.95) 20%, rgba(0,0,0,0.6) 60%, rgba(0,0,0,0.1) 100%);
+            z-index: 2;
         }
 
         .content-over-image {
-            position: absolute;
-            bottom: 15px;
-            left: 15px;
-            right: 15px;
-            z-index: 5;
+            position: relative;
+            z-index: 3;
+            padding: 20px 20px 12px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
         }
 
         .tag {
@@ -82,28 +90,36 @@
             font-size: 12px;
             border-radius: 4px;
             width: fit-content;
-            margin-bottom: 8px;
             font-weight: bold;
             box-shadow: 0 2px 5px rgba(0,0,0,0.5);
         }
 
         .phone-frame h2 {
-            font-size: 26px; /* Optimized for Reels */
+            font-size: 26px; /* خط كبير بارز للريلز */
             line-height: 1.35;
             font-weight: 900;
             color: #fff;
             text-shadow: 0 2px 8px rgba(0,0,0,0.9);
         }
 
+        .sub-desc {
+            font-size: 14px;
+            color: #d1d5db;
+            line-height: 1.4;
+            font-weight: 500;
+        }
+
         /* Footer Info */
         .footer-box {
-            background: rgba(0, 0, 0, 0.8);
-            padding: 10px 15px;
+            position: relative;
+            z-index: 3;
+            background: rgba(0, 0, 0, 0.9);
+            padding: 10px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 12px;
-            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 13px;
+            border-top: 1px solid rgba(255,255,255,0.15);
         }
 
         /* Control Inputs Area */
@@ -122,10 +138,10 @@
 
         <!-- Template 01: Red / Black (Optimized for Reels) -->
         <div class="template-card">
-            <div class="template-header"><span>REELS TEMPLATE - عاجل</span><span style="color:red">RED / BLACK PRO</span></div>
+            <div class="template-header"><span>REELS TEMPLATE - عاجل</span><span style="color:red">RED / BLACK PRO (10/10)</span></div>
             <div class="phone-frame">
                 
-                <!-- Top Bar with Logo, Name & Date/Time -->
+                <!-- Top Bar with Logo, Name & Date/Time (Attached to Top) -->
                 <div class="top-bar-standard">
                     <div class="logo-area">
                         <img src="Logo.png" class="logo-img" alt="شعار">
@@ -134,7 +150,7 @@
                     <span id="out-top-date">الثلاثاء 2026/9/8 - 9:30 ص</span>
                 </div>
 
-                <!-- 75% Image Section with Text Overlay -->
+                <!-- Media Container (No top black space, image starts immediately) -->
                 <div class="media-container">
                     <img src="https://images.unsplash.com/photo-1541872703-74c5e44368f9?w=500" class="hero-news-img" id="img-t1" alt="صورة الخبر">
                     <div class="overlay-gradient"></div>
@@ -142,13 +158,14 @@
                     <div class="content-over-image">
                         <div class="tag" id="badge-t1">خبر عاجل</div>
                         <h2 id="out-t1-text">وصول القنصل الايراني الجديد مصطفى الطرفي الى البصرة</h2>
+                        <div class="sub-desc" id="out-t1-sub">يباشر مهامه رسمياً وسط استقبال رسمية في ديوان المحافظة</div>
                     </div>
                 </div>
 
-                <!-- Footer Location -->
+                <!-- Footer Location & Clear Live Status -->
                 <div class="footer-box">
                     <span>البصرة 📍 Al-Basra</span>
-                    <span style="color: #ff4d4d; font-weight: bold;">🔴 مباشر</span>
+                    <span style="color: #ff4d4d; font-weight: bold; font-size: 14px;">🔴 مباشر - البصرة</span>
                 </div>
             </div>
 
@@ -159,8 +176,10 @@
                 <input type="file" accept="image/*" onchange="loadFile(event, 'img-t1')">
                 <label>أو رابط الصورة:</label>
                 <input type="text" value="https://images.unsplash.com/photo-1541872703-74c5e44368f9?w=500" oninput="document.getElementById('img-t1').src = this.value">
-                <label>نص الخبر (خط كبير بارز):</label>
+                <label>نص الخبر الرئيسي (خط كبير بارز):</label>
                 <textarea rows="2" oninput="document.getElementById('out-t1-text').innerText = this.value">وصول القنصل الايراني الجديد مصطفى الطرفي الى البصرة</textarea>
+                <label>السطر الفرعي (لملء المساحة تحت العنوان):</label>
+                <input type="text" value="يباشر مهامه رسمياً وسط استقبال رسمية في ديوان المحافظة" oninput="document.getElementById('out-t1-sub').innerText = this.value">
                 <label>التاريخ والوقت في الأعلى:</label>
                 <input type="text" value="الثلاثاء 2026/9/8 - 9:30 ص" oninput="document.getElementById('out-top-date').innerText = this.value">
             </div>
