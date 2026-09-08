@@ -3,35 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>قالب عاجل - موسوعة البصرة</title>
+    <title>قوالب موسوعة البصرة الاحترافية</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        body { background: #f4f4f4; color: #333; padding: 20px; display: flex; flex-direction: column; align-items: center; direction: rtl; text-align: right; }
-        .template-box { background: #fff; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); width: 380px; overflow: hidden; display: flex; flex-direction: column; }
+        body { background: #eef2f7; color: #333; padding: 20px; display: flex; flex-direction: column; align-items: center; direction: rtl; text-align: right; }
+        h1 { margin-bottom: 20px; font-size: 22px; color: #0b1329; text-align: center; font-weight: 900; }
         
-        .phone-frame { width: 100%; aspect-ratio: 9/16; position: relative; overflow: hidden; display: flex; flex-direction: column; color: #fff; background: #b91c1c; }
+        .templates-wrapper { display: flex; flex-wrap: wrap; gap: 30px; justify-content: center; width: 100%; max-width: 1250px; }
+        .template-box { background: #fff; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.12); width: 380px; overflow: hidden; display: flex; flex-direction: column; }
+        
+        .phone-frame { width: 100%; aspect-ratio: 9/16; position: relative; overflow: hidden; display: flex; flex-direction: column; color: #fff; }
+        
+        /* الثيمات والألوان الخاصة بكل قالب */
+        .theme-urgent { background: #b91c1c; }
+        .theme-services { background: #064e3b; }
+        .theme-weather { background: #0c4a6e; }
+        .theme-sport { background: #15803d; }
 
         .top-header-bar { background: rgba(0, 0, 0, 0.25); padding: 8px 15px; display: flex; justify-content: space-between; align-items: center; height: 48px; border-bottom: 1px solid rgba(255,255,255,0.15); }
         .top-header-left { display: flex; align-items: center; gap: 8px; }
-        .top-header-bar .cat-title-top { font-size: 14px; color: #fff; font-weight: 900; }
-        .top-header-bar .date-text-top { font-size: 10px; color: #e2e8f0; font-weight: bold; }
+        .top-header-bar .cat-title-top { font-size: 13px; color: #fff; font-weight: 900; }
+        .top-header-bar .date-text-top { font-size: 9.5px; color: #e2e8f0; font-weight: bold; }
 
-        .top-header-logo-box { display: flex; align-items: center; background: #fff; padding: 3px 8px; border-radius: 30px; gap: 5px; }
+        .top-header-logo-box { display: flex; align-items: center; background: #fff; padding: 3px 8px; border-radius: 30px; gap: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.15); }
         .top-header-logo-box img { width: 22px; height: 22px; object-fit: contain; }
         .top-header-logo-box span { font-size: 11px; font-weight: bold; color: #111; }
 
-        /* حاوية الصورة مع إمكانية التحكم الكامل بالارتفاع */
-        .media-container { position: relative; width: 100%; height: 450px; overflow: hidden; border-bottom: 3px solid rgba(255,255,255,0.2); flex-shrink: 0; }
+        /* حاوية الصورة مع دعم التكبير والتصغير المناسب للكتب الرسمية والتصميم */
+        .media-container { position: relative; width: 100%; height: 420px; overflow: hidden; border-bottom: 3px solid rgba(255,255,255,0.2); flex-shrink: 0; }
         .hero-news-img { width: 100%; height: 100%; object-fit: cover; }
 
         .lower-content-box { flex-grow: 1; padding: 10px 16px; display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-end; gap: 6px; }
-        .badge-pill { background: #fff; color: #111; padding: 3px 14px; font-size: 14px; border-radius: 20px; font-weight: 900; box-shadow: 0 2px 4px rgba(0,0,0,0.2); }
-        .phone-frame h2 { font-size: 24px; line-height: 1.35; font-weight: 800; color: #fff; width: 100%; text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
+        .badge-pill { background: #fff; color: #111; padding: 3px 14px; font-size: 13px; border-radius: 20px; font-weight: 900; box-shadow: 0 2px 4px rgba(0,0,0,0.2); }
+        .phone-frame h2 { font-size: 22px; line-height: 1.35; font-weight: 800; color: #fff; width: 100%; text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
 
         .bullet-list { list-style: none; display: flex; flex-direction: column; gap: 4px; width: 100%; padding: 0; margin-top: 5px; }
-        .bullet-list li { font-size: 13px; color: #fff; line-height: 1.3; font-weight: 700; position: relative; padding-right: 18px; }
+        .bullet-list li { font-size: 12.5px; color: #fff; line-height: 1.3; font-weight: 700; position: relative; padding-right: 18px; text-shadow: 0 1px 2px rgba(0,0,0,0.3); }
         .bullet-list li::before { content: "•"; position: absolute; right: 0; color: #fff; font-weight: bold; font-size: 18px; }
 
         .footer-box { background: #0b1329; padding: 8px 15px; display: flex; justify-content: space-between; align-items: center; border-top: 2px solid #d4af37; color: #fff; }
@@ -39,91 +48,250 @@
         .follow-label-rtl { font-size: 11px; color: #d4af37; font-weight: 800; }
         .footer-social-icons-rtl { display: flex; gap: 6px; align-items: center; direction: ltr; }
         .footer-social-icons-rtl a { width: 24px; height: 24px; border: 1px solid #d4af37; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 11px; text-decoration: none; background: rgba(212, 175, 55, 0.1); }
-        .footer-center-logo-single { display: flex; align-items: center; background: #fff; padding: 3px 12px; border-radius: 20px; gap: 6px; }
+        .footer-center-logo-single { display: flex; align-items: center; background: #fff; padding: 3px 12px; border-radius: 20px; gap: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
         .footer-center-logo-single img { width: 20px; height: 20px; object-fit: contain; }
         .footer-center-logo-single span { font-size: 11px; color: #0b1329; font-weight: 900; direction: ltr; }
 
-        .controls { padding: 15px; display: flex; flex-direction: column; gap: 8px; background: #fff; border-top: 1px solid #eee; }
-        .controls label { font-size: 11px; font-weight: bold; color: #555; margin-top: 4px; }
-        .controls input, .controls textarea { width: 100%; padding: 7px; border: 1px solid #ccc; border-radius: 6px; font-size: 12px; text-align: right; }
+        .controls { padding: 14px; display: flex; flex-direction: column; gap: 8px; background: #fff; border-top: 1px solid #eee; }
+        .controls label { font-size: 11px; font-weight: bold; color: #555; margin-top: 3px; }
+        .controls textarea, .controls input[type="text"] { width: 100%; padding: 6px; border: 1px solid #ccc; border-radius: 6px; font-size: 12px; text-align: right; }
+        .controls input[type="file"], .controls input[type="range"] { width: 100%; cursor: pointer; }
         .range-group { display: flex; align-items: center; gap: 10px; font-size: 11px; color: #666; }
-        .save-btn { background: #b91c1c; color: #fff; border: none; padding: 10px; border-radius: 6px; font-weight: bold; font-size: 13px; cursor: pointer; text-align: center; margin-top: 8px; }
+        .save-btn { color: #fff; border: none; padding: 9px; border-radius: 6px; font-weight: bold; font-size: 13px; cursor: pointer; text-align: center; margin-top: 6px; }
     </style>
 </head>
 <body>
 
-    <div class="template-box">
-        <div class="phone-frame" id="frame-urgent">
-            <div class="top-header-bar">
-                <div class="top-header-left">
-                    <!-- عنوان التصنيف العلوي القابل للتعديل -->
-                    <span class="cat-title-top" id="cat-display-top">عاجل وسياسة</span>
-                    <span class="date-text-top" id="date-text-urgent">التاريخ</span>
-                </div>
-                <div class="top-header-logo-box"><img src="Logo.png" alt="شعار"><span>موسوعة البصرة</span></div>
-            </div>
-            
-            <!-- حاوية الصورة (الارتفاع يتحكم به الشريط بالأسفل) -->
-            <div class="media-container" id="media-container-urgent">
-                <img src="https://images.unsplash.com/photo-1541872703-74c5e44368f9?w=500" class="hero-news-img" id="img-urgent" alt="صورة">
-            </div>
+    <h1>موسوعة البصرة - صانع القوالب الشامل والمحدث</h1>
 
-            <div class="lower-content-box">
-                <!-- الشارة البارزة القابلة للتعديل (بدل عاجل جداً) -->
-                <div class="badge-pill" id="badge-display">عاجل جداً 🔴</div>
-                <h2 id="title-urgent">هجمات الحوثيين على السعودية تشعل حرائق في منشآت نفطية</h2>
-                <ul class="bullet-list" contenteditable="true">
-                    <li>اندلاع حرائق ضخمة في المنشآت المستهدفة</li>
-                    <li>إصابة 73 شخصاً حسب مصادر أولية رسمية</li>
-                    <li>الجهات المعنية لم تعلن عن حجم الأضرار بالكامل</li>
-                </ul>
-            </div>
-            <div class="footer-box">
-                <div class="footer-right-side">
-                    <span class="follow-label-rtl">تابعنا على:</span>
-                    <div class="footer-social-icons-rtl">
-                        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-                        <a href="#"><i class="fa-brands fa-tiktok"></i></a>
-                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
-                        <a href="#"><i class="fa-brands fa-telegram-plane"></i></a>
+    <div class="templates-wrapper">
+
+        <!-- 1. قالب عاجل وسياسة -->
+        <div class="template-box">
+            <div class="phone-frame theme-urgent" id="frame-urgent">
+                <div class="top-header-bar">
+                    <div class="top-header-left">
+                        <span class="cat-title-top" id="cat-top-1">عاجل وسياسة</span>
+                        <span class="date-text-top auto-date">جاري التحميل...</span>
                     </div>
+                    <div class="top-header-logo-box"><img src="Logo.png" alt="شعار"><span>موسوعة البصرة</span></div>
                 </div>
-                <div class="footer-center-logo-single"><img src="Logo.png" alt="شعار"><span>mwsuat_albasra</span></div>
+                <div class="media-container" id="media-container-1"><img src="https://images.unsplash.com/photo-1541872703-74c5e44368f9?w=500" class="hero-news-img" id="img-1" alt="صورة"></div>
+                <div class="lower-content-box">
+                    <div class="badge-pill" id="badge-1">عاجل جداً 🔴</div>
+                    <h2 id="title-1">هجمات الحوثيين على السعودية تشعل حرائق في منشآت نفطية</h2>
+                    <ul class="bullet-list" contenteditable="true">
+                        <li>اندلاع حرائق ضخمة في المنشآت المستهدفة</li>
+                        <li>إصابة 73 شخصاً حسب مصادر أولية رسمية</li>
+                        <li>الجهات المعنية لم تعلن عن حجم الأضرار بالكامل</li>
+                    </ul>
+                </div>
+                <div class="footer-box">
+                    <div class="footer-right-side">
+                        <span class="follow-label-rtl">تابعنا على:</span>
+                        <div class="footer-social-icons-rtl">
+                            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                            <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+                            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+                            <a href="#"><i class="fa-brands fa-telegram-plane"></i></a>
+                        </div>
+                    </div>
+                    <div class="footer-center-logo-single"><img src="Logo.png" alt="شعار"><span>mwsuat_albasra</span></div>
+                </div>
+            </div>
+            <div class="controls">
+                <label>تعديل التصنيف العلوي:</label>
+                <input type="text" value="عاجل وسياسة" oninput="document.getElementById('cat-top-1').innerText = this.value">
+                <label>تعديل الشارة البارزة:</label>
+                <input type="text" value="عاجل جداً 🔴" oninput="document.getElementById('badge-1').innerText = this.value">
+                <label>اختر الصورة:</label>
+                <input type="file" accept="image/*" onchange="loadFile(event, 'img-1')">
+                <div class="range-group">
+                    <label>ارتفاع الصورة:</label>
+                    <input type="range" min="200" max="750" value="420" oninput="document.getElementById('media-container-1').style.height = this.value + 'px'">
+                </div>
+                <label>العنوان الرئيسي:</label>
+                <textarea rows="2" oninput="document.getElementById('title-1').innerText = this.value">هجمات الحوثيين على السعودية تشعل حرائق في منشآت نفطية</textarea>
+                <button class="save-btn" style="background: #b91c1c;" onclick="saveImage('frame-urgent', 'BSR_Urgent.png')">📥 حفظ صورة عاجل</button>
             </div>
         </div>
 
-        <!-- لوحة التحكم الجديدة المحدثة -->
-        <div class="controls">
-            <label>التاريخ العلوي:</label>
-            <input type="text" oninput="document.getElementById('date-text-urgent').innerText = this.value" placeholder="اكتب التاريخ هنا...">
-
-            <label>تعديل عنوان التصنيف العلوي (مثال: عاجل، محليات، طقس):</label>
-            <input type="text" value="عاجل وسياسة" oninput="document.getElementById('cat-display-top').innerText = this.value">
-
-            <label>تعديل الشارة البارزة (مثال: عاجل جداً، حصري، تقرير):</label>
-            <input type="text" value="عاجل جداً 🔴" oninput="document.getElementById('badge-display').innerText = this.value">
-
-            <label>اختر صورة الخبر:</label>
-            <input type="file" accept="image/*" onchange="loadFile(event, 'img-urgent')">
-            
-            <div class="range-group">
-                <label>تكبير/تصغير ارتفاع الصورة:</label>
-                <input type="range" min="200" max="750" value="450" oninput="document.getElementById('media-container-urgent').style.height = this.value + 'px'">
+        <!-- 2. قالب خدمات وبلدية -->
+        <div class="template-box">
+            <div class="phone-frame theme-services" id="frame-services">
+                <div class="top-header-bar">
+                    <div class="top-header-left">
+                        <span class="cat-title-top" id="cat-top-2">خدمات ونقاط</span>
+                        <span class="date-text-top auto-date">جاري التحميل...</span>
+                    </div>
+                    <div class="top-header-logo-box"><img src="Logo.png" alt="شعار"><span>موسوعة البصرة</span></div>
+                </div>
+                <div class="media-container" id="media-container-2"><img src="https://images.unsplash.com/photo-1584467735817-6950fb6dbf43?w=500" class="hero-news-img" id="img-2" alt="صورة"></div>
+                <div class="lower-content-box">
+                    <div class="badge-pill" id="badge-2">خدمات عامة</div>
+                    <h2 id="title-2">انطلاق حملة كبرى لتنظيف وصيانة شبكات الصرف الصحي</h2>
+                    <ul class="bullet-list" contenteditable="true">
+                        <li>استنفرت الكوادر البلدية آلياتها الخدمية والهندسية</li>
+                        <li>دعوات للمواطنين للتعاون وإنجاح الحملة الخدمية</li>
+                        <li>معالجة الطفحات المائية وفتح الخطوط المسدودة</li>
+                    </ul>
+                </div>
+                <div class="footer-box">
+                    <div class="footer-right-side">
+                        <span class="follow-label-rtl">تابعنا على:</span>
+                        <div class="footer-social-icons-rtl">
+                            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                            <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+                            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+                            <a href="#"><i class="fa-brands fa-telegram-plane"></i></a>
+                        </div>
+                    </div>
+                    <div class="footer-center-logo-single"><img src="Logo.png" alt="شعار"><span>mwsuat_albasra</span></div>
+                </div>
             </div>
-
-            <label>العنوان الرئيسي:</label>
-            <textarea rows="2" oninput="document.getElementById('title-urgent').innerText = this.value">هجمات الحوثيين على السعودية تشعل حرائق في منشآت نفطية</textarea>
-
-            <button class="save-btn" onclick="saveImage('frame-urgent', 'BSR_Urgent.png')">📥 حفظ كصورة</button>
+            <div class="controls">
+                <label>تعديل التصنيف العلوي:</label>
+                <input type="text" value="خدمات ونقاط" oninput="document.getElementById('cat-top-2').innerText = this.value">
+                <label>تعديل الشارة البارزة:</label>
+                <input type="text" value="خدمات عامة" oninput="document.getElementById('badge-2').innerText = this.value">
+                <label>اختر الصورة:</label>
+                <input type="file" accept="image/*" onchange="loadFile(event, 'img-2')">
+                <div class="range-group">
+                    <label>ارتفاع الصورة:</label>
+                    <input type="range" min="200" max="750" value="420" oninput="document.getElementById('media-container-2').style.height = this.value + 'px'">
+                </div>
+                <label>العنوان الرئيسي:</label>
+                <textarea rows="2" oninput="document.getElementById('title-2').innerText = this.value">انطلاق حملة كبرى لتنظيف وصيانة شبكات الصرف الصحي</textarea>
+                <button class="save-btn" style="background: #064e3b;" onclick="saveImage('frame-services', 'BSR_Services.png')">📥 حفظ صورة خدمات</button>
+            </div>
         </div>
+
+        <!-- 3. قالب الطقس والبيئة -->
+        <div class="template-box">
+            <div class="phone-frame theme-weather" id="frame-weather">
+                <div class="top-header-bar">
+                    <div class="top-header-left">
+                        <span class="cat-title-top" id="cat-top-3">الطقس والبيئة</span>
+                        <span class="date-text-top auto-date">جاري التحميل...</span>
+                    </div>
+                    <div class="top-header-logo-box"><img src="Logo.png" alt="شعار"><span>موسوعة البصرة</span></div>
+                </div>
+                <div class="media-container" id="media-container-3"><img src="https://images.unsplash.com/photo-1592210454359-9043f067919b?w=500" class="hero-news-img" id="img-3" alt="صورة"></div>
+                <div class="lower-content-box">
+                    <div class="badge-pill" id="badge-3">حالة الطقس ⛅</div>
+                    <h2 id="title-3">ارتفاع تدريجي لدرجات الحرارة وتحذيرات من تصاعد الغبار</h2>
+                    <ul class="bullet-list" contenteditable="true">
+                        <li>درجات الحرارة العظمى تسجل مستويات صيفية معتادة</li>
+                        <li>رياح شمالية غربية تنشط فترات الظهر مسببة غبار خفيف</li>
+                        <li>دعوات لارتداء الواطورات والابتعاد عن الشمس المباشرة</li>
+                    </ul>
+                </div>
+                <div class="footer-box">
+                    <div class="footer-right-side">
+                        <span class="follow-label-rtl">تابعنا على:</span>
+                        <div class="footer-social-icons-rtl">
+                            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                            <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+                            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+                            <a href="#"><i class="fa-brands fa-telegram-plane"></i></a>
+                        </div>
+                    </div>
+                    <div class="footer-center-logo-single"><img src="Logo.png" alt="شعار"><span>mwsuat_albasra</span></div>
+                </div>
+            </div>
+            <div class="controls">
+                <label>تعديل التصنيف العلوي:</label>
+                <input type="text" value="الطقس والبيئة" oninput="document.getElementById('cat-top-3').innerText = this.value">
+                <label>تعديل الشارة البارزة:</label>
+                <input type="text" value="حالة الطقس ⛅" oninput="document.getElementById('badge-3').innerText = this.value">
+                <label>اختر الصورة:</label>
+                <input type="file" accept="image/*" onchange="loadFile(event, 'img-3')">
+                <div class="range-group">
+                    <label>ارتفاع الصورة:</label>
+                    <input type="range" min="200" max="750" value="420" oninput="document.getElementById('media-container-3').style.height = this.value + 'px'">
+                </div>
+                <label>العنوان الرئيسي:</label>
+                <textarea rows="2" oninput="document.getElementById('title-3').innerText = this.value">ارتفاع تدريجي لدرجات الحرارة وتحذيرات من تصاعد الغبار</textarea>
+                <button class="save-btn" style="background: #0c4a6e;" onclick="saveImage('frame-weather', 'BSR_Weather.png')">📥 حفظ صورة الطقس</button>
+            </div>
+        </div>
+
+        <!-- 4. قالب الرياضة والمباريات -->
+        <div class="template-box">
+            <div class="phone-frame theme-sport" id="frame-sport">
+                <div class="top-header-bar">
+                    <div class="top-header-left">
+                        <span class="cat-title-top" id="cat-top-4">الرياضة المحلية</span>
+                        <span class="date-text-top auto-date">جاري التحميل...</span>
+                    </div>
+                    <div class="top-header-logo-box"><img src="Logo.png" alt="شعار"><span>موسوعة البصرة</span></div>
+                </div>
+                <div class="media-container" id="media-container-4"><img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=500" class="hero-news-img" id="img-4" alt="صورة"></div>
+                <div class="lower-content-box">
+                    <div class="badge-pill" id="badge-4">رياضة البصرة ⚽</div>
+                    <h2 id="title-4">نادي الميناء يكتسح ضيفه ويصعد للمربع الذهبي للدوري</h2>
+                    <ul class="bullet-list" contenteditable="true">
+                        <li>حقق الفوز بثلاثة أهداف نظيفة على أرضه وجمهوره</li>
+                        <li>أداء متميز للاعبي خط الوسط طوال مجريات اللقاء</li>
+                        <li>احتفالات صاخبة للجماهير البصرية في كورنيش الفاو</li>
+                    </ul>
+                </div>
+                <div class="footer-box">
+                    <div class="footer-right-side">
+                        <span class="follow-label-rtl">تابعنا على:</span>
+                        <div class="footer-social-icons-rtl">
+                            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                            <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+                            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+                            <a href="#"><i class="fa-brands fa-telegram-plane"></i></a>
+                        </div>
+                    </div>
+                    <div class="footer-center-logo-single"><img src="Logo.png" alt="شعار"><span>mwsuat_albasra</span></div>
+                </div>
+            </div>
+            <div class="controls">
+                <label>تعديل التصنيف العلوي:</label>
+                <input type="text" value="الرياضة المحلية" oninput="document.getElementById('cat-top-4').innerText = this.value">
+                <label>تعديل الشارة البارزة:</label>
+                <input type="text" value="رياضة البصرة ⚽" oninput="document.getElementById('badge-4').innerText = this.value">
+                <label>اختر الصورة:</label>
+                <input type="file" accept="image/*" onchange="loadFile(event, 'img-4')">
+                <div class="range-group">
+                    <label>ارتفاع الصورة:</label>
+                    <input type="range" min="200" max="750" value="420" oninput="document.getElementById('media-container-4').style.height = this.value + 'px'">
+                </div>
+                <label>العنوان الرئيسي:</label>
+                <textarea rows="2" oninput="document.getElementById('title-4').innerText = this.value">نادي الميناء يكتسح ضيفه ويصعد للمربع الذهبي للدوري</textarea>
+                <button class="save-btn" style="background: #15803d;" onclick="saveImage('frame-sport', 'BSR_Sport.png')">📥 حفظ صورة الرياضة</button>
+            </div>
+        </div>
+
     </div>
 
     <script>
+        // دالة التحديث التلقائي للتاريخ الحالي
+        function updateCurrentDate() {
+            const options = { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' };
+            const today = new Date();
+            const dateString = today.toLocaleDateString('ar-IQ', options);
+            
+            // تحديث كافة حقول التاريخ في القوالب تلقائياً
+            const dateElements = document.querySelectorAll('.auto-date');
+            dateElements.forEach(el => {
+                el.innerText = dateString;
+            });
+        }
+        window.onload = updateCurrentDate;
+
         function loadFile(event, imgId) {
             const image = document.getElementById(imgId);
             image.src = URL.createObjectURL(event.target.files[0]);
         }
+
         function saveImage(frameId, filename) {
             const frame = document.getElementById(frameId);
             html2canvas(frame, { scale: 2, useCORS: true }).then(canvas => {
