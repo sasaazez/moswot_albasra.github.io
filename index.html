@@ -3,22 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>قوالب موسوعة البصرة الاحترافية</title>
+    <title>قوالب موسوعة البصرة - جـ1 (عاجل وخدمات)</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         body { background: #f4f4f4; color: #333; padding: 20px; display: flex; flex-direction: column; align-items: center; direction: rtl; text-align: right; }
         h1 { margin-bottom: 20px; font-size: 20px; color: #111; text-align: center; }
-        .templates-wrapper { display: flex; flex-wrap: wrap; gap: 30px; justify-content: center; width: 100%; max-width: 1200px; }
+        .templates-wrapper { display: flex; flex-wrap: wrap; gap: 30px; justify-content: center; width: 100%; max-width: 800px; }
         .template-box { background: #fff; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); width: 380px; overflow: hidden; display: flex; flex-direction: column; }
         
         .phone-frame { width: 100%; aspect-ratio: 9/16; position: relative; overflow: hidden; display: flex; flex-direction: column; color: #fff; }
         
         .theme-urgent { background: #b91c1c; }
         .theme-services { background: #064e3b; }
-        .theme-weather { background: #0c4a6e; }
-        .theme-sport { background: #15803d; }
 
         .top-header-bar { background: rgba(0, 0, 0, 0.25); padding: 8px 15px; display: flex; justify-content: space-between; align-items: center; height: 48px; border-bottom: 1px solid rgba(255,255,255,0.15); }
         .top-header-left { display: flex; align-items: center; gap: 8px; }
@@ -29,7 +27,6 @@
         .top-header-logo-box img { width: 22px; height: 22px; object-fit: contain; }
         .top-header-logo-box span { font-size: 11px; font-weight: bold; color: #111; }
 
-        /* تم تعديل الارتفاع الأولي للحاوية ليكون أكبر قليلاً */
         .media-container { position: relative; width: 100%; height: 450px; overflow: hidden; border-bottom: 3px solid rgba(255,255,255,0.2); flex-shrink: 0; }
         .hero-news-img { width: 100%; height: 100%; object-fit: cover; }
 
@@ -60,7 +57,7 @@
 </head>
 <body>
 
-    <h1>موسوعة البصرة - قوالب النشر الاحترافية</h1>
+    <h1>قوالب موسوعة البصرة - جـ1 (عاجل وخدمات)</h1>
 
     <div class="templates-wrapper">
 
@@ -106,7 +103,6 @@
                 
                 <div class="range-group">
                     <label>حجم الصورة (الارتفاع):</label>
-                    <!-- تم زيادة مدى وقيمة الشريط لتكبير الصورة بشكل كبير -->
                     <input type="range" min="200" max="800" value="450" oninput="document.getElementById('media-container-urgent').style.height = this.value + 'px'">
                 </div>
 
@@ -160,4 +156,17 @@
             <div class="controls">
                 <label>تاريخ النشر العلوي:</label>
                 <input type="text" id="date-input-services" oninput="document.getElementById('date-text-services').innerText = this.value">
-                <label>اخ
+                <label>اختر صورة الخبر:</label>
+                <input type="file" accept="image/*" onchange="loadFile(event, 'img-services')">
+                
+                <div class="range-group">
+                    <label>حجم الصورة (الارتفاع):</label>
+                    <input type="range" min="200" max="800" value="450" oninput="document.getElementById('media-container-services').style.height = this.value + 'px'">
+                </div>
+
+                <label>العنوان الرئيسي:</label>
+                <textarea rows="2" oninput="document.getElementById('title-services').innerText = this.value">انطلاق حملة كبرى لتنظيف وصيانة شبكات الصرف الصحي</textarea>
+                
+                <div class="range-group">
+                    <label>حجم خط العنوان:</label>
+                    <input type="range" min="16" max="36" value="24" on
