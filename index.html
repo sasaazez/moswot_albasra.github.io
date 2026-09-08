@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>قوالب موسوعة البصرة - الاحترافية</title>
+    <title>قوالب موسوعة البصرة - النسخة الكاملة</title>
     <!-- مكتبة تحويل القالب إلى صورة -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <!-- مكتبة الأيقونات -->
@@ -28,8 +28,11 @@
             text-align: right;
         }
 
-        .theme-urgent { background: #b91c1c; }
-        .theme-services { background: #064e3b; }
+        /* الألوان المعتمدة */
+        .theme-urgent { background: #b91c1c; }      /* عاجل وسياسة: أحمر */
+        .theme-services { background: #064e3b; }    /* خدمات وبلدية: أخضر داكن */
+        .theme-weather { background: #0c4a6e; }     /* الطقس: أزرق */
+        .theme-sport { background: #15803d; }       /* الرياضة: أخضر الملاعب */
 
         .date-bar {
             background: #2C2C2C;
@@ -218,12 +221,13 @@
 </head>
 <body>
 
-    <h1>قوالب موسوعة البصرة الاحترافية</h1>
+    <h1>قوالب موسوعة البصرة - النسخة الكاملة</h1>
 
     <div class="container">
+        
         <!-- 1. قالب عاجل وسياسة -->
         <div class="template-card">
-            <div class="template-header"><span>عاجل وسياسة (أحمر)</span><span style="color:#b91c1c">RED</span></div>
+            <div class="template-header"><span>1. عاجل وسياسة (أحمر)</span><span style="color:#b91c1c">RED</span></div>
             <div class="phone-frame theme-urgent" id="frame-urgent">
                 <div class="date-bar" id="date-text-urgent">جاري التحميل...</div>
                 <div class="top-header-bar">
@@ -267,7 +271,7 @@
 
         <!-- 2. قالب خدمات وبلدية -->
         <div class="template-card">
-            <div class="template-header"><span>خدمات وبلدية (أخضر داكن)</span><span style="color:#064e3b">GREEN</span></div>
+            <div class="template-header"><span>2. خدمات وبلدية (أخضر داكن)</span><span style="color:#064e3b">GREEN</span></div>
             <div class="phone-frame theme-services" id="frame-services">
                 <div class="date-bar" id="date-text-services">جاري التحميل...</div>
                 <div class="top-header-bar">
@@ -308,6 +312,95 @@
                 <button class="save-btn" style="background: #064e3b;" onclick="saveImage('frame-services', 'BSR_Services.png')">📥 حفظ كصورة 1080x1920</button>
             </div>
         </div>
+
+        <!-- 3. قالب الطقس -->
+        <div class="template-card">
+            <div class="template-header"><span>3. الطقس (أزرق)</span><span style="color:#0c4a6e">WEATHER</span></div>
+            <div class="phone-frame theme-weather" id="frame-weather">
+                <div class="date-bar" id="date-text-weather">جاري التحميل...</div>
+                <div class="top-header-bar">
+                    <span class="cat-title-top">الطقس والأحوال</span>
+                    <div class="top-header-logo-box"><img src="Logo.png" alt="شعار"><span>موسوعة البصرة</span></div>
+                </div>
+                <div class="media-container"><img src="https://images.unsplash.com/photo-1592210454359-9043f067919b?w=500" class="hero-news-img" id="img-weather" alt="صورة"></div>
+                <div class="lower-content-box">
+                    <div class="badge-pill">حالة الطقس ⛅</div>
+                    <h2 id="title-weather">تخفيف درجات الحرارة المتوقعة في عموم المحافظات</h2>
+                    <ul class="bullet-list">
+                        <li>أجواء مستقرة ومرتفعة نسبياً خلال ساعات النهار</li>
+                        <li>رياح شمالية غربية خفيفة إلى معتدلة السرعة</li>
+                        <li>درجات الحرارة العظمى تسجل معدلات طبيعية</li>
+                    </ul>
+                </div>
+                <div class="footer-box">
+                    <div class="footer-right-side">
+                        <span class="follow-label-rtl">تابعنا على:</span>
+                        <div class="footer-social-icons-rtl">
+                            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                            <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+                            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+                            <a href="#"><i class="fa-brands fa-telegram-plane"></i></a>
+                        </div>
+                    </div>
+                    <div class="footer-center-logo-single"><img src="Logo.png" alt="شعار"><span>mwsuat_albasra</span></div>
+                </div>
+            </div>
+            <div class="controls">
+                <label>تاريخ النشر العلوي:</label>
+                <input type="text" id="date-input-weather" oninput="document.getElementById('date-text-weather').innerText = this.value">
+                <label>اختر صورة الخبر:</label>
+                <input type="file" accept="image/*" onchange="loadFile(event, 'img-weather')">
+                <label>العنوان الرئيسي:</label>
+                <textarea rows="2" oninput="document.getElementById('title-weather').innerText = this.value">تخفيف درجات الحرارة المتوقعة في عموم المحافظات</textarea>
+                <button class="save-btn" style="background: #0c4a6e;" onclick="saveImage('frame-weather', 'BSR_Weather.png')">📥 حفظ كصورة 1080x1920</button>
+            </div>
+        </div>
+
+        <!-- 4. قالب الرياضة -->
+        <div class="template-card">
+            <div class="template-header"><span>4. الرياضة (أخضر الملاعب)</span><span style="color:#15803d">SPORT</span></div>
+            <div class="phone-frame theme-sport" id="frame-sport">
+                <div class="date-bar" id="date-text-sport">جاري التحميل...</div>
+                <div class="top-header-bar">
+                    <span class="cat-title-top">الرياضة المحلية</span>
+                    <div class="top-header-logo-box"><img src="Logo.png" alt="شعار"><span>موسوعة البصرة</span></div>
+                </div>
+                <div class="media-container"><img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=500" class="hero-news-img" id="img-sport" alt="صورة"></div>
+                <div class="lower-content-box">
+                    <div class="badge-pill">رياضة ⚽</div>
+                    <h2 id="title-sport">استعدادات مكثفة لخوض غمار المنافسات الكروية المقبلة</h2>
+                    <ul class="bullet-list">
+                        <li>الفريق يباشر تدريباته اليومية بصفوف مكتملة</li>
+                        <li>الجهاز الفني يؤكد جاهزية اللاعبين للمباراة</li>
+                        <li>طموحات عالية لتحقيق نتائج إيجابية ومتميزة</li>
+                    </ul>
+                </div>
+                <div class="footer-box">
+                    <div class="footer-right-side">
+                        <span class="follow-label-rtl">تابعنا على:</span>
+                        <div class="footer-social-icons-rtl">
+                            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                            <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+                            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+                            <a href="#"><i class="fa-brands fa-telegram-plane"></i></a>
+                        </div>
+                    </div>
+                    <div class="footer-center-logo-single"><img src="Logo.png" alt="شعار"><span>mwsuat_albasra</span></div>
+                </div>
+            </div>
+            <div class="controls">
+                <label>تاريخ النشر العلوي:</label>
+                <input type="text" id="date-input-sport" oninput="document.getElementById('date-text-sport').innerText = this.value">
+                <label>اختر صورة الخبر:</label>
+                <input type="file" accept="image/*" onchange="loadFile(event, 'img-sport')">
+                <label>العنوان الرئيسي:</label>
+                <textarea rows="2" oninput="document.getElementById('title-sport').innerText = this.value">استعدادات مكثفة لخوض غمار المنافسات الكروية المقبلة</textarea>
+                <button class="save-btn" style="background: #15803d;" onclick="saveImage('frame-sport', 'BSR_Sport.png')">📥 حفظ كصورة 1080x1920</button>
+            </div>
+        </div>
+
     </div>
 
     <script>
@@ -319,12 +412,15 @@
 
         window.onload = function() {
             const currentDate = getFormattedDate();
-            // تعيين التاريخ التلقائي للقوالب
-            document.getElementById('date-text-urgent').innerText = currentDate;
-            document.getElementById('date-input-urgent').value = currentDate;
-
-            document.getElementById('date-text-services').innerText = currentDate;
-            document.getElementById('date-input-services').value = currentDate;
+            
+            // تعيين التاريخ التلقائي لجميع القوالب
+            const frames = ['urgent', 'services', 'weather', 'sport'];
+            frames.forEach(id => {
+                const dateText = document.getElementById('date-text-' + id);
+                const dateInput = document.getElementById('date-input-' + id);
+                if (dateText) dateText.innerText = currentDate;
+                if (dateInput) dateInput.value = currentDate;
+            });
         };
 
         function loadFile(event, imgId) {
