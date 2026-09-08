@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>قوالب موسوعة البصرة - مع التاريخ والهوية المتكاملة</title>
+    <title>قوالب موسوعة البصرة - مع التعديلات الاحترافية</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
@@ -28,21 +28,21 @@
             text-align: right;
         }
 
-        /* الألوان المعتمدة بالكامل */
+        /* الألوان المعتمدة بالكامل (مع تحديث درجة البرتقالي للمحليات) */
         .theme-urgent { background: #b91c1c; }      /* عاجل وسياسة: أحمر */
         .theme-services { background: #064e3b; }    /* خدمات وبلدية: أخضر داكن */
         .theme-weather { background: #0c4a6e; }     /* الطقس: أزرق */
         .theme-sport { background: #15803d; }       /* الرياضة: أخضر الملاعب */
         .theme-appeal { background: #581c87; }      /* مناشدة إنسانية: بنفسجي */
-        .theme-local { background: #e68a00; }       /* المحليات: برتقالي */
+        .theme-local { background: #E67E22; }       /* المحليات: برتقالي محروق هادئ */
 
-        /*شريط التاريخ العلوي الجديد فوق الهيدر*/
+        /*شريط التاريخ العلوي المحدث (أسود بريميوم)*/
         .date-bar {
-            background: rgba(0, 0, 0, 0.25);
-            padding: 4px 15px;
+            background: #2C2C2C;
+            padding: 5px 15px;
             font-size: 11px;
             font-weight: bold;
-            color: #f8fafc;
+            color: #ffffff;
             display: flex;
             justify-content: flex-start;
             align-items: center;
@@ -217,7 +217,7 @@
 </head>
 <body>
 
-    <h1>قوالب موسوعة البصرة - مع شريط التاريخ العلوي</h1>
+    <h1>قوالب موسوعة البصرة - النسخة المحدثة والمطورة</h1>
 
     <div class="container">
 
@@ -225,7 +225,7 @@
         <div class="template-card">
             <div class="template-header"><span>1. عاجل وسياسة (أحمر)</span><span style="color:#b91c1c">RED</span></div>
             <div class="phone-frame" id="frame-urgent">
-                <div class="date-bar theme-urgent" id="date-text-urgent">الثلاثاء، 8 أيلول 2026</div>
+                <div class="date-bar" id="date-text-urgent">الثلاثاء، 8 أيلول 2026</div>
                 <div class="top-header-bar theme-urgent">
                     <span class="cat-title-top" id="top-title-urgent">عاجل وسياسة</span>
                     <div class="top-header-logo-box"><img src="Logo.png" alt="شعار"><span>موسوعة البصرة</span></div>
@@ -261,11 +261,11 @@
             </div>
         </div>
 
-        <!-- 2. خدمات  (أخضر داكن) -->
+        <!-- 2. خدمات وبلدية (أخضر داكن) -->
         <div class="template-card">
-            <div class="template-header"><span>2. خدمات  (أخضر داكن)</span><span style="color:#064e3b">GREEN</span></div>
+            <div class="template-header"><span>2. خدمات وبلدية (أخضر داكن)</span><span style="color:#064e3b">GREEN</span></div>
             <div class="phone-frame" id="frame-services">
-                <div class="date-bar theme-services" id="date-text-services">الثلاثاء، 8 أيلول 2026</div>
+                <div class="date-bar" id="date-text-services">الثلاثاء، 8 أيلول 2026</div>
                 <div class="top-header-bar theme-services">
                     <span class="cat-title-top" id="top-title-services">خدمات وبلدية</span>
                     <div class="top-header-logo-box"><img src="Logo.png" alt="شعار"><span>موسوعة البصرة</span></div>
@@ -290,7 +290,7 @@
             <div class="controls">
                 <label>تاريخ النشر العلوي:</label><input type="text" value="الثلاثاء، 8 أيلول 2026" oninput="document.getElementById('date-text-services').innerText = this.value">
                 <label>اختر صورة الخبر:</label><input type="file" accept="image/*" onchange="loadFile(event, 'img-services')">
-                <label>عنوان الشريط العلوي:</label><input type="text" value="خدمات " oninput="document.getElementById('top-title-services').innerText = this.value">
+                <label>عنوان الشريط العلوي:</label><input type="text" value="خدمات وبلدية" oninput="document.getElementById('top-title-services').innerText = this.value">
                 <label>شارة التصنيف (Badge):</label><input type="text" value="خدمات ونقاط" oninput="document.getElementById('badge-services').innerText = this.value">
                 <label>العنوان الرئيسي:</label><textarea rows="2" oninput="document.getElementById('text-services').innerText = this.value">انطلاق حملة كبرى لتنظيف وصيانة شبكات الصرف الصحي</textarea>
                 <label>النقطة 1:</label><input type="text" value="استنفرت الكوادر البلدية آلياتها الخدمية والهندسية" oninput="document.getElementById('li-services-1').innerText = this.value">
@@ -305,7 +305,7 @@
         <div class="template-card">
             <div class="template-header"><span>3. الطقس (أزرق)</span><span style="color:#0c4a6e">BLUE</span></div>
             <div class="phone-frame" id="frame-weather">
-                <div class="date-bar theme-weather" id="date-text-weather">الثلاثاء، 8 أيلول 2026</div>
+                <div class="date-bar" id="date-text-weather">الثلاثاء، 8 أيلول 2026</div>
                 <div class="top-header-bar theme-weather">
                     <span class="cat-title-top" id="top-title-weather">الطقس والأحوال</span>
                     <div class="top-header-logo-box"><img src="Logo.png" alt="شعار"><span>موسوعة البصرة</span></div>
@@ -345,7 +345,7 @@
         <div class="template-card">
             <div class="template-header"><span>4. الرياضة (أخضر الملاعب)</span><span style="color:#15803d">STADIUM GREEN</span></div>
             <div class="phone-frame" id="frame-sport">
-                <div class="date-bar theme-sport" id="date-text-sport">الثلاثاء، 8 أيلول 2026</div>
+                <div class="date-bar" id="date-text-sport">الثلاثاء، 8 أيلول 2026</div>
                 <div class="top-header-bar theme-sport">
                     <span class="cat-title-top" id="top-title-sport">رياضة وملاعب</span>
                     <div class="top-header-logo-box"><img src="Logo.png" alt="شعار"><span>موسوعة البصرة</span></div>
@@ -385,7 +385,7 @@
         <div class="template-card">
             <div class="template-header"><span>5. مناشدة إنسانية (بنفسجي)</span><span style="color:#581c87">PURPLE</span></div>
             <div class="phone-frame" id="frame-appeal">
-                <div class="date-bar theme-appeal" id="date-text-appeal">الثلاثاء، 8 أيلول 2026</div>
+                <div class="date-bar" id="date-text-appeal">الثلاثاء، 8 أيلول 2026</div>
                 <div class="top-header-bar theme-appeal">
                     <span class="cat-title-top" id="top-title-appeal">مناشدة إنسانية</span>
                     <div class="top-header-logo-box"><img src="Logo.png" alt="شعار"><span>موسوعة البصرة</span></div>
@@ -421,11 +421,11 @@
             </div>
         </div>
 
-        <!-- 6. المحليات (برتقالي) -->
+        <!-- 6. المحليات (برتقالي محروق هادئ) -->
         <div class="template-card">
-            <div class="template-header"><span>6. المحليات (برتقالي)</span><span style="color:#e68a00">ORANGE</span></div>
+            <div class="template-header"><span>6. المحليات (برتقالي هادئ)</span><span style="color:#E67E22">BURNT ORANGE</span></div>
             <div class="phone-frame" id="frame-local">
-                <div class="date-bar theme-local" id="date-text-local">الثلاثاء، 8 أيلول 2026</div>
+                <div class="date-bar" id="date-text-local">الثلاثاء، 8 أيلول 2026</div>
                 <div class="top-header-bar theme-local">
                     <span class="cat-title-top" id="top-title-local">أخبار المحليات</span>
                     <div class="top-header-logo-box"><img src="Logo.png" alt="شعار"><span>موسوعة البصرة</span></div>
@@ -457,7 +457,7 @@
                 <label>النقطة 2:</label><input type="text" value="مناقشة مشاريع البنى التحتية والخطط الخدمية الجديدة" oninput="document.getElementById('li-local-2').innerText = this.value">
                 <label>النقطة 3:</label><input type="text" value="تفاعل واسع من المواطنين مع المبادرات المحلية" oninput="document.getElementById('li-local-3').innerText = this.value">
                 <label>النقطة 4:</label><input type="text" value="موسوعة البصرة ترصد نبض الشارع المحلي باستممرار" oninput="document.getElementById('li-local-4').innerText = this.value">
-                <button class="save-btn" style="background: #e68a00;" onclick="saveImage('frame-local', 'BSR_Local.png')">📥 حفظ كصورة 1080x1920</button>
+                <button class="save-btn" style="background: #E67E22;" onclick="saveImage('frame-local', 'BSR_Local.png')">📥 حفظ كصورة 1080x1920</button>
             </div>
         </div>
 
