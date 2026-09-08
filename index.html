@@ -20,9 +20,12 @@
         .theme-weather { background: #0c4a6e; }
         .theme-sport { background: #15803d; }
 
-        .date-bar { background: #2C2C2C; padding: 5px 15px; font-size: 11px; font-weight: bold; color: #fff; border-bottom: 1px solid rgba(255,255,255,0.15); }
-        .top-header-bar { padding: 8px 15px; display: flex; justify-content: space-between; align-items: center; height: 48px; font-weight: 900; }
-        .top-header-bar .cat-title-top { font-size: 17px; color: #fff; text-shadow: 0 1px 2px rgba(0,0,0,0.2); }
+        /* شريط العنوان العلوي مع التاريخ المدمج */
+        .top-header-bar { background: rgba(0, 0, 0, 0.25); padding: 8px 15px; display: flex; justify-content: space-between; align-items: center; height: 48px; border-bottom: 1px solid rgba(255,255,255,0.15); }
+        .top-header-left { display: flex; flex-direction: column; align-items: flex-start; }
+        .top-header-bar .cat-title-top { font-size: 15px; color: #fff; font-weight: 900; text-shadow: 0 1px 2px rgba(0,0,0,0.2); }
+        .top-header-bar .date-text-top { font-size: 10px; color: #e2e8f0; font-weight: bold; }
+
         .top-header-logo-box { display: flex; align-items: center; background: #fff; padding: 3px 8px; border-radius: 30px; gap: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.15); }
         .top-header-logo-box img { width: 22px; height: 22px; object-fit: contain; }
         .top-header-logo-box span { font-size: 11px; font-weight: bold; color: #111; }
@@ -64,9 +67,11 @@
         <!-- 1. قالب عاجل وسياسة -->
         <div class="template-box">
             <div class="phone-frame theme-urgent" id="frame-urgent">
-                <div class="date-bar" id="date-text-urgent">جاري التحميل...</div>
                 <div class="top-header-bar">
-                    <span class="cat-title-top">عاجل وسياسة</span>
+                    <div class="top-header-left">
+                        <span class="cat-title-top">عاجل وسياسة</span>
+                        <span class="date-text-top" id="date-text-urgent">جاري التحميل...</span>
+                    </div>
                     <div class="top-header-logo-box"><img src="Logo.png" alt="شعار"><span>موسوعة البصرة</span></div>
                 </div>
                 <div class="media-container" id="media-container-urgent"><img src="https://images.unsplash.com/photo-1541872703-74c5e44368f9?w=500" class="hero-news-img" id="img-urgent" alt="صورة"></div>
@@ -123,9 +128,11 @@
         <!-- 2. قالب خدمات وبلدية -->
         <div class="template-box">
             <div class="phone-frame theme-services" id="frame-services">
-                <div class="date-bar" id="date-text-services">جاري التحميل...</div>
                 <div class="top-header-bar">
-                    <span class="cat-title-top">خدمات</span>
+                    <div class="top-header-left">
+                        <span class="cat-title-top">خدمات ونقاط</span>
+                        <span class="date-text-top" id="date-text-services">جاري التحميل...</span>
+                    </div>
                     <div class="top-header-logo-box"><img src="Logo.png" alt="شعار"><span>موسوعة البصرة</span></div>
                 </div>
                 <div class="media-container" id="media-container-services"><img src="https://images.unsplash.com/photo-1584467735817-6950fb6dbf43?w=500" class="hero-news-img" id="img-services" alt="صورة"></div>
@@ -182,9 +189,11 @@
         <!-- 3. قالب الطقس -->
         <div class="template-box">
             <div class="phone-frame theme-weather" id="frame-weather">
-                <div class="date-bar" id="date-text-weather">جاري التحميل...</div>
                 <div class="top-header-bar">
-                    <span class="cat-title-top">الطقس والأحوال</span>
+                    <div class="top-header-left">
+                        <span class="cat-title-top">الطقس والأحوال</span>
+                        <span class="date-text-top" id="date-text-weather">جاري التحميل...</span>
+                    </div>
                     <div class="top-header-logo-box"><img src="Logo.png" alt="شعار"><span>موسوعة البصرة</span></div>
                 </div>
                 <div class="media-container" id="media-container-weather"><img src="https://images.unsplash.com/photo-1592210454359-9043f067919b?w=500" class="hero-news-img" id="img-weather" alt="صورة"></div>
@@ -241,9 +250,11 @@
         <!-- 4. قالب الرياضة -->
         <div class="template-box">
             <div class="phone-frame theme-sport" id="frame-sport">
-                <div class="date-bar" id="date-text-sport">جاري التحميل...</div>
                 <div class="top-header-bar">
-                    <span class="cat-title-top">الرياضة المحلية</span>
+                    <div class="top-header-left">
+                        <span class="cat-title-top">الرياضة المحلية</span>
+                        <span class="date-text-top" id="date-text-sport">جاري التحميل...</span>
+                    </div>
                     <div class="top-header-logo-box"><img src="Logo.png" alt="شعار"><span>موسوعة البصرة</span></div>
                 </div>
                 <div class="media-container" id="media-container-sport"><img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=500" class="hero-news-img" id="img-sport" alt="صورة"></div>
