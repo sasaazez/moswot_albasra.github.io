@@ -3,517 +3,620 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مصمم قوالب موسوعة البصرة</title>
+    <title>قوالب موسوعة البصرة - النسخة الاحترافية المحدثة بالكامل</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@900&family=Tajawal:wght@500;700&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #0f172a;
-            color: #ffffff;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 20px;
-            margin: 0;
-        }
-
-        h2 {
-            margin-bottom: 20px;
-            color: #38bdf8;
-        }
-
-        .preview-container {
-            width: 420px;
-            height: 600px;
-            background-color: #ffffff;
-            border-radius: 4px;
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background: #f4f4f4; color: #333; padding: 20px; display: flex; flex-direction: column; align-items: center; direction: rtl; text-align: right; }
+        h1 { margin-bottom: 20px; font-size: 20px; color: #111; text-align: center; }
+        
+        .container { display: flex; flex-direction: column; gap: 40px; width: 100%; max-width: 420px; }
+        
+        .template-card { background: #fff; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); overflow: hidden; padding-bottom: 15px; }
+        .template-header { padding: 10px 15px; background: #eee; font-size: 14px; font-weight: bold; display: flex; justify-content: space-between; align-items: center; direction: rtl; }
+        
+        /* Phone Frame (9:16 Ratio - Reels Format) */
+        .phone-frame {
+            width: 100%;
+            aspect-ratio: 9/16;
             position: relative;
-            box-shadow: 0 12px 35px rgba(0,0,0,0.6);
             overflow: hidden;
             display: flex;
             flex-direction: column;
-            box-sizing: border-box;
-            transition: all 0.3s ease;
+            color: #fff;
+            direction: rtl;
+            text-align: right;
         }
 
-        .bottom-divider-line {
-            position: absolute;
-            bottom: 38px;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background-color: rgba(15, 23, 42, 0.25);
-            z-index: 6;
+        /* الألوان المعتمدة بالكامل */
+        .theme-urgent { background: #b91c1c; }      /* عاجل وسياسة: أحمر */
+        .theme-services { background: #064e3b; }    /* خدمات وبلدية: أخضر داكن */
+        .theme-weather { background: #0c4a6e; }     /* الطقس: أزرق */
+        .theme-sport { background: #15803d; }       /* الرياضة: أخضر الملاعب */
+        .theme-appeal { background: #581c87; }      /* مناشدة إنسانية: بنفسجي */
+        .theme-local { background: #E67E22; }       /* المحليات: برتقالي محروق هادئ */
+
+        /*شريط التاريخ العلوي (أسود بريميوم)*/
+        .date-bar {
+            background: #2C2C2C;
+            padding: 5px 15px;
+            font-size: 11px;
+            font-weight: bold;
+            color: #ffffff;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+            direction: rtl;
         }
 
-        .image-area {
-            width: 100%;
-            height: 100%; 
-            background-color: #ffffff; 
-            background-repeat: no-repeat;
-            background-size: cover; 
-            background-position: center 20%;
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: 1;
-        }
-
-        .top-overlay {
-            position: absolute;
-            top: 14px;
-            left: 12px;
-            right: 12px;
+        /* 1. Top Header Bar */
+        .top-header-bar {
+            padding: 8px 15px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 6px 8px;
-            z-index: 4;
-            background: transparent;
-            pointer-events: none;
-        }
-
-        .brand-section {
-            display: flex;
-            align-items: center;
-            z-index: 5;
-            user-select: none;
-            pointer-events: auto;
-        }
-
-        .logo-circle-bg {
-            width: 65px;
-            height: 65px;
-            overflow: hidden;
-            border-radius: 50%;
-            background: transparent;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0;
-            margin: 0;
-        }
-
-        .logo-img {
-            width: 113%;
-            height: 113%;
-            display: block;
-            object-fit: cover;
-            object-position: center;
-            background: transparent;
-            border: none;
-            box-shadow: none;
-        }
-
-        .date-box {
-            font-size: 11.5px;
+            height: 48px;
             font-weight: 900;
-            color: #ffffff;
-            background-color: rgba(15, 23, 42, 0.92); 
-            padding: 4px 9px;
-            border-radius: 4px;
-            backdrop-filter: blur(2px);
-            letter-spacing: 0.5px;
-            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
-            pointer-events: auto;
+            direction: rtl;
+        }
+        .top-header-bar .cat-title-top {
+            font-size: 17px;
+            color: #fff;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+            text-align: right;
+            direction: rtl;
+        }
+        .top-header-logo-box {
+            display: flex;
+            align-items: center;
+            background: #fff;
+            padding: 3px 8px;
+            border-radius: 30px;
+            gap: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+            direction: rtl;
+        }
+        .top-header-logo-box img { width: 22px; height: 22px; object-fit: contain; }
+        .top-header-logo-box span { font-size: 11px; font-weight: bold; color: #111; }
+
+        /* 2. Middle Image Frame with Dynamic Height */
+        .media-container {
+            position: relative;
+            width: 100%;
+            height: 420px; /* مساحة افتراضية واسعة للصورة قابلة للتحكم */
+            overflow: hidden;
+            border-bottom: 3px solid rgba(255,255,255,0.2);
+            flex-shrink: 0;
+        }
+        .hero-news-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center center;
+            transform: scale(1);
+            transition: transform 0.1s ease;
         }
 
-        .title-box-container {
-            position: absolute;
-            bottom: 39px; 
-            left: 0;
-            right: 0;
-            min-height: 125px;
-            padding: 15px 16px 14px 16px; 
-            z-index: 3;
+        /* 3. Lower Content Container */
+        .lower-content-box {
+            flex-grow: 1;
+            padding: 10px 16px;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            justify-content: flex-end;
-            text-align: center;
-            background: rgba(15, 23, 42, 0.45);
-            backdrop-filter: blur(3px);
-            box-sizing: border-box;
+            justify-content: flex-start;
+            align-items: flex-end;
+            text-align: right;
+            direction: rtl;
+            gap: 6px;
+            overflow: hidden;
         }
 
-        .news-category-badge {
-            font-family: 'Cairo', sans-serif;
-            font-size: 13px;
+        /* Category Pill */
+        .badge-pill {
+            background: #ffffff;
+            color: #111;
+            padding: 3px 14px;
+            font-size: 14px;
+            border-radius: 20px;
             font-weight: 900;
-            margin-bottom: 9px; 
-            letter-spacing: 1.2px;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
-            display: inline-block;
-            padding: 4px 12px;
-            min-width: 95px; 
-            text-align: center;
-            border-radius: 5px;
-            color: #ffffff;
-            background-color: #D32F2F;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+            align-self: flex-end;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            text-align: right;
+            direction: rtl;
         }
 
-        .title-text {
-            font-family: 'Cairo', sans-serif;
-            font-size: 15px; 
-            font-weight: 900; 
-            color: #ffffff;
-            margin: 0;
-            line-height: 1.60;
-            text-shadow: 1px 1px 4px rgba(0,0,0,0.9), 0 0 6px rgba(0,0,0,0.5);
+        /* العنوان الرئيسي */
+        .phone-frame h2 {
+            font-size: 32px; /* افتراضي متناسق ويقبل التعديل */
+            line-height: 1.35;
+            font-weight: 800;
+            color: #fff;
             width: 100%;
-            word-break: break-word;
+            text-align: right;
+            direction: rtl;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
         }
 
-        .social-footer {
+        /* النقاط الفرعية */
+        .bullet-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            width: 100%;
+            text-align: right;
+            direction: rtl;
+            padding: 0;
+        }
+
+        .bullet-list li {
+            font-size: 14px;
+            color: #ffffff;
+            line-height: 1.3;
+            font-weight: 700;
+            position: relative;
+            padding-right: 16px;
+            text-align: right;
+            direction: rtl;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+        }
+
+        .bullet-list li::before {
+            content: "•";
             position: absolute;
-            bottom: 0;
-            left: 0;
             right: 0;
-            height: 38px;
-            padding: 0 12px;
+            left: auto;
+            color: #ffffff;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        /* 4. Footer Design */
+        .footer-box {
+            background: #050814;
+            padding: 6px 15px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             font-size: 11px;
-            font-weight: bold;
-            z-index: 5;
-            background: rgba(15, 23, 42, 0.95);
-            box-sizing: border-box;
-            direction: ltr;
+            border-top: 2px solid rgba(255,255,255,0.15);
+            color: #fff;
+            direction: rtl;
+            text-align: right;
         }
-
-        .brand-handle {
-            color: #ffffff; 
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9);
-            letter-spacing: 0.5px;
-            font-size: 12px;
-            font-weight: 900;
-            direction: ltr; /* تم ضبطه ليعرض الاسم الإنجليزي بشكل صحيح من اليسار لليمين */
+        .footer-right { font-weight: bold; font-size: 11px; text-align: right; }
+        .footer-center-logo {
             display: flex;
             align-items: center;
+            background: #fff;
+            padding: 2px 8px;
+            border-radius: 20px;
             gap: 5px;
+            direction: rtl;
         }
+        .footer-center-logo img { width: 20px; height: 20px; object-fit: contain; }
+        .footer-center-logo div { font-size: 9px; line-height: 1.1; color: #0b1329; font-weight: bold; text-align: right; }
+        .footer-left { font-size: 10px; color: #cbd5e1; text-align: left; line-height: 1.1; font-weight: bold; direction: ltr; }
 
-        .brand-handle .sep {
-            color: #94a3b8; 
-            margin: 0 5px;
-            font-weight: normal;
-        }
-
-        .brand-handle span.sub-title {
-            color: #D4AF37;
-            font-size: 10px;
-            font-weight: 700;
-            direction: rtl; /* لإبقاء الوصف باللغة العربية بشكل صحيح */
-        }
-
-        .social-icons-group {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .social-item i {
-            color: #ffffff !important;
-            font-size: 12.5px;
-            filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.9));
-        }
-
-        .control-panel {
-            width: 420px;
-            background-color: #1e293b;
-            border-radius: 16px;
-            padding: 20px;
-            margin-top: 20px;
-            box-sizing: border-box;
-        }
-
-        .section-title {
-            font-size: 14px;
-            color: #94a3b8;
-            margin-bottom: 8px;
-            margin-top: 15px;
-        }
-
-        .section-title:first-child { margin-top: 0; }
-
-        .input-custom {
-            width: 100%;
-            background-color: #0f172a;
-            border: 1px solid #334155;
-            border-radius: 8px;
-            color: white;
-            padding: 10px;
-            box-sizing: border-box;
-            font-family: inherit;
-            font-size: 13px;
-        }
-
-        .checkbox-group {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            background-color: #0f172a;
-            padding: 10px;
-            border-radius: 8px;
-            border: 1px solid #334155;
-            cursor: pointer;
-        }
-
-        .checkbox-group input {
-            width: 18px;
-            height: 18px;
-            cursor: pointer;
-        }
-
-        .slider-container {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            background-color: #0f172a;
-            padding: 10px;
-            border-radius: 8px;
-            border: 1px solid #334155;
-        }
-
-        .slider-container input { flex: 1; cursor: pointer; }
-        .slider-val { font-size: 13px; color: #94a3b8; min-width: 45px; text-align: center; }
-
-        textarea {
-            width: 100%;
-            height: 110px;
-            background-color: #0f172a;
-            border: 1px solid #334155;
-            border-radius: 8px;
-            color: white;
-            padding: 12px;
-            box-sizing: border-box;
-            resize: vertical;
-            font-family: 'Tajawal', sans-serif;
-            font-weight: 500;
-            font-size: 14px;
-            margin-bottom: 15px;
-        }
-
-        .btn-download {
-            background-color: #38bdf8; 
-            color: #0f172a;
-            width: 100%;
-            font-size: 15px;
-            padding: 12px;
+        /* Control Inputs Area */
+        .controls { padding: 12px 15px; display: flex; flex-direction: column; gap: 8px; background: #fff; border-top: 1px solid #eee; direction: rtl; text-align: right; }
+        .controls label { font-size: 11px; font-weight: bold; color: #555; display: flex; align-items: center; gap: 6px; cursor: pointer; justify-content: flex-start; margin-top: 4px; }
+        .controls textarea, .controls input[type="text"] { width: 100%; padding: 7px; border: 1px solid #ccc; border-radius: 6px; font-size: 12px; font-family: inherit; resize: vertical; text-align: right; direction: rtl; }
+        .controls input[type="file"] { font-size: 11px; padding: 6px; background: #f9f9f9; border: 1px dashed #666; border-radius: 6px; cursor: pointer; text-align: right; }
+        .controls select, .controls input[type="range"] { width: 100%; padding: 5px; border: 1px solid #ccc; border-radius: 6px; font-size: 12px; background: #fff; direction: rtl; }
+        
+        .save-btn {
+            color: #fff;
             border: none;
-            border-radius: 8px;
+            padding: 10px;
+            border-radius: 6px;
             font-weight: bold;
+            font-size: 13px;
             cursor: pointer;
-            transition: 0.2s;
-            margin-top: 5px;
+            text-align: center;
+            transition: background 0.2s;
+            margin-top: 8px;
         }
-        .btn-download:active { transform: scale(0.98); }
     </style>
 </head>
 <body>
 
-    <h2>محرر قوالب موسوعة البصرة</h2>
+    <h1>قوالب موسوعة البصرة - النسخة المحدثة مع تحكم كامل</h1>
 
-    <div class="preview-container" id="capture-area">
-        <div class="image-area" id="bg-image-layer"></div>
-        <div class="bottom-divider-line"></div>
-        
-        <div class="top-overlay">
-            <div class="brand-section">
-                <div class="logo-circle-bg">
-                    <img class="logo-img" src="Logo.png" alt="logo">
+    <div class="container">
+
+        <!-- 1. عاجل وسياسة (أحمر) -->
+        <div class="template-card">
+            <div class="template-header"><span>1. عاجل وسياسة (أحمر)</span><span style="color:#b91c1c">RED</span></div>
+            <div class="phone-frame" id="frame-urgent">
+                <div class="date-bar" id="date-text-urgent">الثلاثاء، 8 أيلول 2026</div>
+                <div class="top-header-bar theme-urgent">
+                    <span class="cat-title-top" id="top-title-urgent">عاجل وسياسة</span>
+                    <div class="top-header-logo-box"><img src="Logo.png" alt="شعار"><span>موسوعة البصرة</span></div>
+                </div>
+                <div class="media-container" id="media-box-urgent"><img src="https://images.unsplash.com/photo-1541872703-74c5e44368f9?w=500" class="hero-news-img" id="img-urgent" alt="صورة"></div>
+                <div class="lower-content-box theme-urgent">
+                    <div class="badge-pill" id="badge-urgent">عاجل جداً 🔴</div>
+                    <h2 id="text-urgent" style="font-size: 32px;">نيويورك بوست عن مسؤولين: هجمات الحوثيين على السعودية تشعل حرائق في منشآت نفطية وتصيب 73 شخصاً</h2>
+                    <ul class="bullet-list" id="list-urgent">
+                        <li id="li-urgent-1">اندلاع حرائق ضخمة في المنشآت</li>
+                        <li id="li-urgent-2">إصابة 73 شخصاً حسب مصادر أولية</li>
+                        <li id="li-urgent-3">الجهات المعنية لم تعلن حتى الآن عن حجم الأضرار بشكل رسمي.</li>
+                    </ul>
+                </div>
+                <div class="footer-box">
+                    <div class="footer-right">البصرة<br><span style="font-size:10px; font-weight:normal; direction:ltr; display:inline-block;">mwsuat_albasra</span></div>
+                    <div class="footer-center-logo"><img src="Logo.png" alt="شعار"><div><span style="font-size:10px;">BASRA</span><br><span style="font-size:8px; color:#555;">ENCYCLOPEDIA</span></div></div>
+                    <div class="footer-left">عاجل<br>mwsuat_albasra</div>
                 </div>
             </div>
-            <div class="date-box" id="display-date"></div>
-        </div>
-        
-        <div class="title-box-container">
-            <div class="news-category-badge" id="display-category">عاجل</div>
-            <p class="title-text" id="display-title">اكتب النص بالشكل والطول الذي تريده دون التقيد بأي عدد محدد من الأسطر...</p>
-        </div>
+            <div class="controls">
+                <label>تاريخ النشر العلوي:</label><input type="text" value="الثلاثاء، 8 أيلول 2026" oninput="document.getElementById('date-text-urgent').innerText = this.value">
+                <label>اختر صورة الخبر:</label><input type="file" accept="image/*" onchange="loadFile(event, 'img-urgent')">
+                
+                <label>ارتفاع إطار الصورة (تكبير/تصغير مساحة الصورة): <span id="val-h-urgent">420</span>px</label>
+                <input type="range" min="200" max="600" step="10" value="420" oninput="document.getElementById('media-box-urgent').style.height = this.value + 'px'; document.getElementById('val-h-urgent').innerText = this.value;">
 
-        <div class="social-footer">
-            <!-- تم تحديث الاسم إلى الشكل الإنجليزي المطلوب -->
-            <span class="brand-handle">mwsuat_albasra <span class="sep">│</span> <span class="sub-title">منصة إخبارية مستقلة</span></span>
-            <div class="social-icons-group">
-                <div class="social-item"><i class="fab fa-facebook-f"></i></div>
-                <div class="social-item"><i class="fab fa-instagram"></i></div>
-                <div class="social-item"><i class="fab fa-tiktok"></i></div>
-                <div class="social-item"><i class="fab fa-telegram-plane"></i></div>
+                <label>تكبير / تصغير محتوى الصورة (Zoom):</label>
+                <input type="range" min="1" max="2.5" step="0.05" value="1" oninput="document.getElementById('img-urgent').style.transform = 'scale(' + this.value + ')'">
+
+                <label>تحكم بموضع الصورة (التركيز):</label>
+                <select onchange="document.getElementById('img-urgent').style.objectPosition = this.value">
+                    <option value="center center">المنتصف (افتراضي)</option>
+                    <option value="top center">الأعلى</option>
+                    <option value="bottom center">الأسفل</option>
+                    <option value="center left">اليمين</option>
+                    <option value="center right">اليسار</option>
+                </select>
+
+                <label>حجم العنوان الرئيسي: <span id="val-fs-urgent">32</span>px</label>
+                <input type="range" min="20" max="45" step="1" value="32" oninput="document.getElementById('text-urgent').style.fontSize = this.value + 'px'; document.getElementById('val-fs-urgent').innerText = this.value;">
+
+                <label>حجم خط النقاط الفرعية: <span id="val-li-urgent">14</span>px</label>
+                <input type="range" min="11" max="20" step="1" value="14" oninput="updateListFontSize('list-urgent', this.value); document.getElementById('val-li-urgent').innerText = this.value;">
+
+                <label>عنوان الشريط العلوي:</label><input type="text" value="عاجل وسياسة" oninput="document.getElementById('top-title-urgent').innerText = this.value">
+                <label>شارة التصنيف (Badge):</label><input type="text" value="عاجل جداً 🔴" oninput="document.getElementById('badge-urgent').innerText = this.value">
+                <label>العنوان الرئيسي:</label><textarea rows="3" oninput="document.getElementById('text-urgent').innerText = this.value">نيويورك بوست عن مسؤولين: هجمات الحوثيين على السعودية تشعل حرائق في منشآت نفطية وتصيب 73 شخصاً</textarea>
+                <label>النقطة 1:</label><input type="text" value="اندلاع حرائق ضخمة في المنشآت" oninput="document.getElementById('li-urgent-1').innerText = this.value">
+                <label>النقطة 2:</label><input type="text" value="إصابة 73 شخصاً حسب مصادر أولية" oninput="document.getElementById('li-urgent-2').innerText = this.value">
+                <label>النقطة 3:</label><input type="text" value="الجهات المعنية لم تعلن حتى الآن عن حجم الأضرار بشكل رسمي." oninput="document.getElementById('li-urgent-3').innerText = this.value">
+                <button class="save-btn" style="background: #b91c1c;" onclick="saveImage('frame-urgent', 'BSR_Urgent.png')">📥 حفظ كصورة 1080x1920</button>
             </div>
         </div>
-    </div>
 
-    <div class="control-panel">
-        <div class="section-title">اختر منصة النشر (تغيير أبعاد القالب فورياً)</div>
-        <select id="platform-select" class="input-custom" onchange="changePlatformAspect()">
-            <option value="facebook-tiktok">الوضع الافتراضي (فيسبوك وتيك توك / 420x600)</option>
-            <option value="instagram-square">إنستغرام - بوست مربع (1:1 / 500x500)</option>
-            <option value="instagram-story">إنستغرام - ستوري / عمودي (4:5 / 420x525)</option>
-        </select>
+        <!-- 2. خدمات وبلدية (أخضر داكن) -->
+        <div class="template-card">
+            <div class="template-header"><span>2. خدمات وبلدية (أخضر داكن)</span><span style="color:#064e3b">GREEN</span></div>
+            <div class="phone-frame" id="frame-services">
+                <div class="date-bar" id="date-text-services">الثلاثاء، 8 أيلول 2026</div>
+                <div class="top-header-bar theme-services">
+                    <span class="cat-title-top" id="top-title-services">خدمات وبلدية</span>
+                    <div class="top-header-logo-box"><img src="Logo.png" alt="شعار"><span>موسوعة البصرة</span></div>
+                </div>
+                <div class="media-container" id="media-box-services"><img src="https://images.unsplash.com/photo-1585829365295-ab7cd400c167?w=500" class="hero-news-img" id="img-services" alt="صورة"></div>
+                <div class="lower-content-box theme-services">
+                    <div class="badge-pill" id="badge-services">خدمات ونقاط</div>
+                    <h2 id="text-services" style="font-size: 32px;">انطلاق حملة كبرى لتنظيف وصيانة شبكات الصرف الصحي</h2>
+                    <ul class="bullet-list" id="list-services">
+                        <li id="li-services-1">استنفرت الكوادر البلدية آلياتها الخدمية والهندسية</li>
+                        <li id="li-services-2">دعوات للمواطنين للتعاون وإنجاح الحملة الخدمية</li>
+                        <li id="li-services-3">معالجة الطفحات المائية وفتح الخطوط المسدودة</li>
+                    </ul>
+                </div>
+                <div class="footer-box">
+                    <div class="footer-right">البصرة<br><span style="font-size:10px; font-weight:normal; direction:ltr; display:inline-block;">mwsuat_albasra</span></div>
+                    <div class="footer-center-logo"><img src="Logo.png" alt="شعار"><div><span style="font-size:10px;">BASRA</span><br><span style="font-size:8px; color:#555;">ENCYCLOPEDIA</span></div></div>
+                    <div class="footer-left">خدمات<br>mwsuat_albasra</div>
+                </div>
+            </div>
+            <div class="controls">
+                <label>تاريخ النشر العلوي:</label><input type="text" value="الثلاثاء، 8 أيلول 2026" oninput="document.getElementById('date-text-services').innerText = this.value">
+                <label>اختر صورة الخبر:</label><input type="file" accept="image/*" onchange="loadFile(event, 'img-services')">
+                
+                <label>ارتفاع إطار الصورة: <span id="val-h-services">420</span>px</label>
+                <input type="range" min="200" max="600" step="10" value="420" oninput="document.getElementById('media-box-services').style.height = this.value + 'px'; document.getElementById('val-h-services').innerText = this.value;">
 
-        <div class="section-title">إدراج صورة الخبر أو الكتاب الرسمي</div>
-        <div style="display: flex; gap: 10px;">
-            <input type="file" id="image-loader" class="input-custom" accept="image/*" onchange="loadImage(event)" style="flex: 1;">
-            <button onclick="removeImage()" style="background-color: #ef4444; color: white; border: none; border-radius: 8px; padding: 0 12px; cursor: pointer; font-weight: bold; font-size: 12px;">بدون صورة</button>
+                <label>تكبير / تصغير محتوى الصورة (Zoom):</label>
+                <input type="range" min="1" max="2.5" step="0.05" value="1" oninput="document.getElementById('img-services').style.transform = 'scale(' + this.value + ')'">
+
+                <label>تحكم بموضع الصورة (التركيز):</label>
+                <select onchange="document.getElementById('img-services').style.objectPosition = this.value">
+                    <option value="center center">المنتصف (افتراضي)</option>
+                    <option value="top center">الأعلى</option>
+                    <option value="bottom center">الأسفل</option>
+                    <option value="center left">اليمين</option>
+                    <option value="center right">اليسار</option>
+                </select>
+
+                <label>حجم العنوان الرئيسي: <span id="val-fs-services">32</span>px</label>
+                <input type="range" min="20" max="45" step="1" value="32" oninput="document.getElementById('text-services').style.fontSize = this.value + 'px'; document.getElementById('val-fs-services').innerText = this.value;">
+
+                <label>حجم خط النقاط الفرعية: <span id="val-li-services">14</span>px</label>
+                <input type="range" min="11" max="20" step="1" value="14" oninput="updateListFontSize('list-services', this.value); document.getElementById('val-li-services').innerText = this.value;">
+
+                <label>عنوان الشريط العلوي:</label><input type="text" value="خدمات وبلدية" oninput="document.getElementById('top-title-services').innerText = this.value">
+                <label>شارة التصنيف (Badge):</label><input type="text" value="خدمات ونقاط" oninput="document.getElementById('badge-services').innerText = this.value">
+                <label>العنوان الرئيسي:</label><textarea rows="2" oninput="document.getElementById('text-services').innerText = this.value">انطلاق حملة كبرى لتنظيف وصيانة شبكات الصرف الصحي</textarea>
+                <label>النقطة 1:</label><input type="text" value="استنفرت الكوادر البلدية آلياتها الخدمية والهندسية" oninput="document.getElementById('li-services-1').innerText = this.value">
+                <label>النقطة 2:</label><input type="text" value="دعوات للمواطنين للتعاون وإنجاح الحملة الخدمية" oninput="document.getElementById('li-services-2').innerText = this.value">
+                <label>النقطة 3:</label><input type="text" value="معالجة الطفحات المائية وفتح الخطوط المسدودة" oninput="document.getElementById('li-services-3').innerText = this.value">
+                <button class="save-btn" style="background: #064e3b;" onclick="saveImage('frame-services', 'BSR_Services.png')">📥 حفظ كصورة 1080x1920</button>
+            </div>
         </div>
 
-        <div class="section-title">تحريك الصورة عمودياً (لإبعاد الاسم عن الشعار)</div>
-        <div class="slider-container">
-            <input type="range" id="image-pos-y-slider" min="0" max="100" value="20" onchange="changeImagePositionY()" oninput="changeImagePositionY()">
-            <span id="image-pos-y-val" class="slider-val">20%</span>
+        <!-- 3. الطقس (أزرق) -->
+        <div class="template-card">
+            <div class="template-header"><span>3. الطقس (أزرق)</span><span style="color:#0c4a6e">BLUE</span></div>
+            <div class="phone-frame" id="frame-weather">
+                <div class="date-bar" id="date-text-weather">الثلاثاء، 8 أيلول 2026</div>
+                <div class="top-header-bar theme-weather">
+                    <span class="cat-title-top" id="top-title-weather">الطقس والأحوال</span>
+                    <div class="top-header-logo-box"><img src="Logo.png" alt="شعار"><span>موسوعة البصرة</span></div>
+                </div>
+                <div class="media-container" id="media-box-weather"><img src="https://images.unsplash.com/photo-1592210454359-9043f067919b?w=500" class="hero-news-img" id="img-weather" alt="صورة"></div>
+                <div class="lower-content-box theme-weather">
+                    <div class="badge-pill" id="badge-weather">تنبيه جوي ☀️</div>
+                    <h2 id="text-weather" style="font-size: 32px;">ارتفاع درجات الحرارة في البصرة لتسجل معدلات مرتفعة</h2>
+                    <ul class="bullet-list" id="list-weather">
+                        <li id="li-weather-1">أجواء مشمسة ومستقرة عموماً في عموم مناطق المحافظة</li>
+                        <li id="li-weather-2">دعوات لتقليل التعرض المباشر لأشعة الشمس وقت الذروة</li>
+                        <li id="li-weather-3">رياح شمالية غربية خفيفة إلى معتدلة السرعة</li>
+                    </ul>
+                </div>
+                <div class="footer-box">
+                    <div class="footer-right">البصرة<br><span style="font-size:10px; font-weight:normal; direction:ltr; display:inline-block;">mwsuat_albasra</span></div>
+                    <div class="footer-center-logo"><img src="Logo.png" alt="شعار"><div><span style="font-size:10px;">BASRA</span><br><span style="font-size:8px; color:#555;">ENCYCLOPEDIA</span></div></div>
+                    <div class="footer-left">الطقس<br>mwsuat_albasra</div>
+                </div>
+            </div>
+            <div class="controls">
+                <label>تاريخ النشر العلوي:</label><input type="text" value="الثلاثاء، 8 أيلول 2026" oninput="document.getElementById('date-text-weather').innerText = this.value">
+                <label>اختر صورة الخبر:</label><input type="file" accept="image/*" onchange="loadFile(event, 'img-weather')">
+                
+                <label>ارتفاع إطار الصورة: <span id="val-h-weather">420</span>px</label>
+                <input type="range" min="200" max="600" step="10" value="420" oninput="document.getElementById('media-box-weather').style.height = this.value + 'px'; document.getElementById('val-h-weather').innerText = this.value;">
+
+                <label>تكبير / تصغير محتوى الصورة (Zoom):</label>
+                <input type="range" min="1" max="2.5" step="0.05" value="1" oninput="document.getElementById('img-weather').style.transform = 'scale(' + this.value + ')'">
+
+                <label>تحكم بموضع الصورة (التركيز):</label>
+                <select onchange="document.getElementById('img-weather').style.objectPosition = this.value">
+                    <option value="center center">المنتصف (افتراضي)</option>
+                    <option value="top center">الأعلى</option>
+                    <option value="bottom center">الأسفل</option>
+                    <option value="center left">اليمين</option>
+                    <option value="center right">اليسار</option>
+                </select>
+
+                <label>حجم العنوان الرئيسي: <span id="val-fs-weather">32</span>px</label>
+                <input type="range" min="20" max="45" step="1" value="32" oninput="document.getElementById('text-weather').style.fontSize = this.value + 'px'; document.getElementById('val-fs-weather').innerText = this.value;">
+
+                <label>حجم خط النقاط الفرعية: <span id="val-li-weather">14</span>px</label>
+                <input type="range" min="11" max="20" step="1" value="14" oninput="updateListFontSize('list-weather', this.value); document.getElementById('val-li-weather').innerText = this.value;">
+
+                <label>عنوان الشريط العلوي:</label><input type="text" value="الطقس والأحوال" oninput="document.getElementById('top-title-weather').innerText = this.value">
+                <label>شارة التصنيف (Badge):</label><input type="text" value="تنبيه جوي ☀️" oninput="document.getElementById('badge-weather').innerText = this.value">
+                <label>العنوان الرئيسي:</label><textarea rows="2" oninput="document.getElementById('text-weather').innerText = this.value">ارتفاع درجات الحرارة في البصرة لتسجل معدلات مرتفعة</textarea>
+                <label>النقطة 1:</label><input type="text" value="أجواء مشمسة ومستقرة عموماً في عموم مناطق المحافظة" oninput="document.getElementById('li-weather-1').innerText = this.value">
+                <label>النقطة 2:</label><input type="text" value="دعوات لتقليل التعرض المباشر لأشعة الشمس وقت الذروة" oninput="document.getElementById('li-weather-2').innerText = this.value">
+                <label>النقطة 3:</label><input type="text" value="رياح شمالية غربية خفيفة إلى معتدلة السرعة" oninput="document.getElementById('li-weather-3').innerText = this.value">
+                <button class="save-btn" style="background: #0c4a6e;" onclick="saveImage('frame-weather', 'BSR_Weather.png')">📥 حفظ كصورة 1080x1920</button>
+            </div>
         </div>
 
-        <div class="section-title">تحجيم زوم الصورة الخلفية</div>
-        <div class="slider-container">
-            <input type="range" id="image-size-slider" min="30" max="200" value="100" oninput="changeImageSize()">
-            <span id="image-size-val" class="slider-val">100%</span>
+        <!-- 4. الرياضة (أخضر الملاعب) -->
+        <div class="template-card">
+            <div class="template-header"><span>4. الرياضة (أخضر الملاعب)</span><span style="color:#15803d">STADIUM GREEN</span></div>
+            <div class="phone-frame" id="frame-sport">
+                <div class="date-bar" id="date-text-sport">الثلاثاء، 8 أيلول 2026</div>
+                <div class="top-header-bar theme-sport">
+                    <span class="cat-title-top" id="top-title-sport">رياضة وملاعب</span>
+                    <div class="top-header-logo-box"><img src="Logo.png" alt="شعار"><span>موسوعة البصرة</span></div>
+                </div>
+                <div class="media-container" id="media-box-sport"><img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=500" class="hero-news-img" id="img-sport" alt="صورة"></div>
+                <div class="lower-content-box theme-sport">
+                    <div class="badge-pill" id="badge-sport">رياضة | الميناء</div>
+                    <h2 id="text-sport" style="font-size: 32px;">نادي الميناء الرياضي يواصل تحضيراته لمواجهة الجولة المقبلة</h2>
+                    <ul class="bullet-list" id="list-sport">
+                        <li id="li-sport-1">تدريبات مكثفة بقيادة الكادر التدريبي لتحقيق الفوز</li>
+                        <li id="li-sport-2">الجماهير البصرية تترقب بحماس لتعزيز الصدارة</li>
+                        <li id="li-sport-3">اكتمال صفوف الفريق وعودة اللاعبين المصابين للتدريبات</li>
+                    </ul>
+                </div>
+                <div class="footer-box">
+                    <div class="footer-right">البصرة<br><span style="font-size:10px; font-weight:normal; direction:ltr; display:inline-block;">mwsuat_albasra</span></div>
+                    <div class="footer-center-logo"><img src="Logo.png" alt="شعار"><div><span style="font-size:10px;">BASRA</span><br><span style="font-size:8px; color:#555;">ENCYCLOPEDIA</span></div></div>
+                    <div class="footer-left">رياضة<br>mwsuat_albasra</div>
+                </div>
+            </div>
+            <div class="controls">
+                <label>تاريخ النشر العلوي:</label><input type="text" value="الثلاثاء، 8 أيلول 2026" oninput="document.getElementById('date-text-sport').innerText = this.value">
+                <label>اختر صورة الخبر:</label><input type="file" accept="image/*" onchange="loadFile(event, 'img-sport')">
+                
+                <label>ارتفاع إطار الصورة: <span id="val-h-sport">420</span>px</label>
+                <input type="range" min="200" max="600" step="10" value="420" oninput="document.getElementById('media-box-sport').style.height = this.value + 'px'; document.getElementById('val-h-sport').innerText = this.value;">
+
+                <label>تكبير / تصغير محتوى الصورة (Zoom):</label>
+                <input type="range" min="1" max="2.5" step="0.05" value="1" oninput="document.getElementById('img-sport').style.transform = 'scale(' + this.value + ')'">
+
+                <label>تحكم بموضع الصورة (التركيز):</label>
+                <select onchange="document.getElementById('img-sport').style.objectPosition = this.value">
+                    <option value="center center">المنتصف (افتراضي)</option>
+                    <option value="top center">الأعلى</option>
+                    <option value="bottom center">الأسفل</option>
+                    <option value="center left">اليمين</option>
+                    <option value="center right">اليسار</option>
+                </select>
+
+                <label>حجم العنوان الرئيسي: <span id="val-fs-sport">32</span>px</label>
+                <input type="range" min="20" max="45" step="1" value="32" oninput="document.getElementById('text-sport').style.fontSize = this.value + 'px'; document.getElementById('val-fs-sport').innerText = this.value;">
+
+                <label>حجم خط النقاط الفرعية: <span id="val-li-sport">14</span>px</label>
+                <input type="range" min="11" max="20" step="1" value="14" oninput="updateListFontSize('list-sport', this.value); document.getElementById('val-li-sport').innerText = this.value;">
+
+                <label>عنوان الشريط العلوي:</label><input type="text" value="رياضة وملاعب" oninput="document.getElementById('top-title-sport').innerText = this.value">
+                <label>شارة التصنيف (Badge):</label><input type="text" value="رياضة | الميناء" oninput="document.getElementById('badge-sport').innerText = this.value">
+                <label>العنوان الرئيسي:</label><textarea rows="2" oninput="document.getElementById('text-sport').innerText = this.value">نادي الميناء الرياضي يواصل تحضيراته لمواجهة الجولة المقبلة</textarea>
+                <label>النقطة 1:</label><input type="text" value="تدريبات مكثفة بقيادة الكادر التدريبي لتحقيق الفوز" oninput="document.getElementById('li-sport-1').innerText = this.value">
+                <label>النقطة 2:</label><input type="text" value="الجماهير البصرية تترقب بحماس لتعزيز الصدارة" oninput="document.getElementById('li-sport-2').innerText = this.value">
+                <label>النقطة 3:</label><input type="text" value="اكتمال صفوف الفريق وعودة اللاعبين المصابين للتدريبات" oninput="document.getElementById('li-sport-3').innerText = this.value">
+                <button class="save-btn" style="background: #15803d;" onclick="saveImage('frame-sport', 'BSR_Sport.png')">📥 حفظ كصورة 1080x1920</button>
+            </div>
         </div>
 
-        <div class="section-title">طريقة احتواء الصورة داخل الإطار</div>
-        <select id="image-fit-select" class="input-custom" onchange="changeImageFit()">
-            <option value="cover">ملء الإطار بالكامل بدون فراغات (Cover - افتراضي)</option>
-            <option value="contain">إظهار الصورة أو الكتاب كاملة (Contain)</option>
-        </select>
+        <!-- 5. مناشدة إنسانية (بنفسجي) -->
+        <div class="template-card">
+            <div class="template-header"><span>5. مناشدة إنسانية (بنفسجي)</span><span style="color:#581c87">PURPLE</span></div>
+            <div class="phone-frame" id="frame-appeal">
+                <div class="date-bar" id="date-text-appeal">الثلاثاء، 8 أيلول 2026</div>
+                <div class="top-header-bar theme-appeal">
+                    <span class="cat-title-top" id="top-title-appeal">مناشدة إنسانية</span>
+                    <div class="top-header-logo-box"><img src="Logo.png" alt="شعار"><span>موسوعة البصرة</span></div>
+                </div>
+                <div class="media-container" id="media-box-appeal"><img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=500" class="hero-news-img" id="img-appeal" alt="صورة"></div>
+                <div class="lower-content-box theme-appeal">
+                    <div class="badge-pill" id="badge-appeal">إنسانية | أهل الخير</div>
+                    <h2 id="text-appeal" style="font-size: 32px;">عائلة متعففة في البصرة تناشد عبر "موسوعة البصرة" لمد يد العون</h2>
+                    <ul class="bullet-list" id="list-appeal">
+                        <li id="li-appeal-1">ظروف معيشية صعبة وقاسية تواجه الأسرة المعوزة</li>
+                        <li id="li-appeal-2">مناشدة عاجلة لتقديم الدعم العلاجي والمعيشي العاجل</li>
+                        <li id="li-appeal-3">رب الأسرة يمر بظروف صحية تمنعه عن العمل</li>
+                    </ul>
+                </div>
+                <div class="footer-box">
+                    <div class="footer-right">البصرة<br><span style="font-size:10px; font-weight:normal; direction:ltr; display:inline-block;">mwsuat_albasra</span></div>
+                    <div class="footer-center-logo"><img src="Logo.png" alt="شعار"><div><span style="font-size:10px;">BASRA</span><br><span style="font-size:8px; color:#555;">ENCYCLOPEDIA</span></div></div>
+                    <div class="footer-left">مناشدات<br>mwsuat_albasra</div>
+                </div>
+            </div>
+            <div class="controls">
+                <label>تاريخ النشر العلوي:</label><input type="text" value="الثلاثاء، 8 أيلول 2026" oninput="document.getElementById('date-text-appeal').innerText = this.value">
+                <label>اختر صورة الخبر:</label><input type="file" accept="image/*" onchange="loadFile(event, 'img-appeal')">
+                
+                <label>ارتفاع إطار الصورة: <span id="val-h-appeal">420</span>px</label>
+                <input type="range" min="200" max="600" step="10" value="420" oninput="document.getElementById('media-box-appeal').style.height = this.value + 'px'; document.getElementById('val-h-appeal').innerText = this.value;">
 
-        <div class="section-title">التحكم بشريط التمييز (عاجل أو تخصيص)</div>
-        <div class="checkbox-group">
-            <input type="checkbox" id="toggle-badge" checked onchange="toggleBadgeVisibility()">
-            <label for="toggle-badge" style="font-size: 13px; cursor: pointer; flex: 1;">إظهار شريط التصنيف في التصميم</label>
+                <label>تكبير / تصغير محتوى الصورة (Zoom):</label>
+                <input type="range" min="1" max="2.5" step="0.05" value="1" oninput="document.getElementById('img-appeal').style.transform = 'scale(' + this.value + ')'">
+
+                <label>تحكم بموضع الصورة (التركيز):</label>
+                <select onchange="document.getElementById('img-appeal').style.objectPosition = this.value">
+                    <option value="center center">المنتصف (افتراضي)</option>
+                    <option value="top center">الأعلى</option>
+                    <option value="bottom center">الأسفل</option>
+                    <option value="center left">اليمين</option>
+                    <option value="center right">اليسار</option>
+                </select>
+
+                <label>حجم العنوان الرئيسي: <span id="val-fs-appeal">32</span>px</label>
+                <input type="range" min="20" max="45" step="1" value="32" oninput="document.getElementById('text-appeal').style.fontSize = this.value + 'px'; document.getElementById('val-fs-appeal').innerText = this.value;">
+
+                <label>حجم خط النقاط الفرعية: <span id="val-li-appeal">14</span>px</label>
+                <input type="range" min="11" max="20" step="1" value="14" oninput="updateListFontSize('list-appeal', this.value); document.getElementById('val-li-appeal').innerText = this.value;">
+
+                <label>عنوان الشريط العلوي:</label><input type="text" value="مناشدة إنسانية" oninput="document.getElementById('top-title-appeal').innerText = this.value">
+                <label>شارة التصنيف (Badge):</label><input type="text" value="إنسانية | أهل الخير" oninput="document.getElementById('badge-appeal').innerText = this.value">
+                <label>العنوان الرئيسي:</label><textarea rows="2" oninput="document.getElementById('text-appeal').innerText = this.value">عائلة متعففة في البصرة تناشد عبر "موسوعة البصرة" لمد يد العون</textarea>
+                <label>النقطة 1:</label><input type="text" value="ظروف معيشية صعبة وقاسية تواجه الأسرة المعوزة" oninput="document.getElementById('li-appeal-1').innerText = this.value">
+                <label>النقطة 2:</label><input type="text" value="مناشدة عاجلة لتقديم الدعم العلاجي والمعيشي العاجل" oninput="document.getElementById('li-appeal-2').innerText = this.value">
+                <label>النقطة 3:</label><input type="text" value="رب الأسرة يمر بظروف صحية تمنعه عن العمل" oninput="document.getElementById('li-appeal-3').innerText = this.value">
+                <button class="save-btn" style="background: #581c87;" onclick="saveImage('frame-appeal', 'BSR_Appeal.png')">📥 حفظ كصورة 1080x1920</button>
+            </div>
         </div>
 
-        <div class="section-title">نص شريط التصنيف</div>
-        <input type="text" id="input-badge-text" class="input-custom" value="عاجل" oninput="updateBadgeText()" placeholder="اكتب النص هنا (مثلاً: عاجل، حصري، بيان)...">
+        <!-- 6. المحليات (برتقالي محروق هادئ) -->
+        <div class="template-card">
+            <div class="template-header"><span>6. المحليات (برتقالي هادئ)</span><span style="color:#E67E22">BURNT ORANGE</span></div>
+            <div class="phone-frame" id="frame-local">
+                <div class="date-bar" id="date-text-local">الثلاثاء، 8 أيلول 2026</div>
+                <div class="top-header-bar theme-local">
+                    <span class="cat-title-top" id="top-title-local">أخبار المحليات</span>
+                    <div class="top-header-logo-box"><img src="Logo.png" alt="شعار"><span>موسوعة البصرة</span></div>
+                </div>
+                <div class="media-container" id="media-box-local"><img src="https://images.unsplash.com/photo-1577495508048-b635879837f1?w=500" class="hero-news-img" id="img-local" alt="صورة"></div>
+                <div class="lower-content-box theme-local">
+                    <div class="badge-pill" id="badge-local">محليات البصرة 🏙️</div>
+                    <h2 id="text-local" style="font-size: 32px;">متابعات ميدانية لأبرز النشاطات والفعاليات المحلية في أقضية ونواحي المحافظة</h2>
+                    <ul class="bullet-list" id="list-local">
+                        <li id="li-local-1">جولات ميدانية للمسؤولين للاطلاع على احتياجات الأهالي</li>
+                        <li id="li-local-2">مناقشة مشاريع البنى التحتية والخطط الخدمية الجديدة</li>
+                        <li id="li-local-3">تفاعل واسع من المواطنين مع المبادرات المحلية</li>
+                    </ul>
+                </div>
+                <div class="footer-box">
+                    <div class="footer-right">البصرة<br><span style="font-size:10px; font-weight:normal; direction:ltr; display:inline-block;">mwsuat_albasra</span></div>
+                    <div class="footer-center-logo"><img src="Logo.png" alt="شعار"><div><span style="font-size:10px;">BASRA</span><br><span style="font-size:8px; color:#555;">ENCYCLOPEDIA</span></div></div>
+                    <div class="footer-left">محليات<br>mwsuat_albasra</div>
+                </div>
+            </div>
+            <div class="controls">
+                <label>تاريخ النشر العلوي:</label><input type="text" value="الثلاثاء، 8 أيلول 2026" oninput="document.getElementById('date-text-local').innerText = this.value">
+                <label>اختر صورة الخبر:</label><input type="file" accept="image/*" onchange="loadFile(event, 'img-local')">
+                
+                <label>ارتفاع إطار الصورة: <span id="val-h-local">420</span>px</label>
+                <input type="range" min="200" max="600" step="10" value="420" oninput="document.getElementById('media-box-local').style.height = this.value + 'px'; document.getElementById('val-h-local').innerText = this.value;">
 
-        <div class="section-title">حجم خط العنوان</div>
-        <div class="slider-container">
-            <input type="range" id="font-size-slider" min="12" max="24" value="15" oninput="changeFontSize()">
-            <span id="font-size-val" class="slider-val">15px</span>
+                <label>تكبير / تصغير محتوى الصورة (Zoom):</label>
+                <input type="range" min="1" max="2.5" step="0.05" value="1" oninput="document.getElementById('img-local').style.transform = 'scale(' + this.value + ')'">
+
+                <label>تحكم بموضع الصورة (التركيز):</label>
+                <select onchange="document.getElementById('img-local').style.objectPosition = this.value">
+                    <option value="center center">المنتصف (افتراضي)</option>
+                    <option value="top center">الأعلى</option>
+                    <option value="bottom center">الأسفل</option>
+                    <option value="center left">اليمين</option>
+                    <option value="center right">اليسار</option>
+                </select>
+
+                <label>حجم العنوان الرئيسي: <span id="val-fs-local">32</span>px</label>
+                <input type="range" min="20" max="45" step="1" value="32" oninput="document.getElementById('text-local').style.fontSize = this.value + 'px'; document.getElementById('val-fs-local').innerText = this.value;">
+
+                <label>حجم خط النقاط الفرعية: <span id="val-li-local">14</span>px</label>
+                <input type="range" min="11" max="20" step="1" value="14" oninput="updateListFontSize('list-local', this.value); document.getElementById('val-li-local').innerText = this.value;">
+
+                <label>عنوان الشريط العلوي:</label><input type="text" value="أخبار المحليات" oninput="document.getElementById('top-title-local').innerText = this.value">
+                <label>شارة التصنيف (Badge):</label><input type="text" value="محليات البصرة 🏙️" oninput="document.getElementById('badge-local').innerText = this.value">
+                <label>العنوان الرئيسي:</label><textarea rows="2" oninput="document.getElementById('text-local').innerText = this.value">متابعات ميدانية لأبرز النشاطات والفعاليات المحلية في أقضية ونواحي المحافظة</textarea>
+                <label>النقطة 1:</label><input type="text" value="جولات ميدانية للمسؤولين للاطلاع على احتياجات الأهالي" oninput="document.getElementById('li-local-1').innerText = this.value">
+                <label>النقطة 2:</label><input type="text" value="مناقشة مشاريع البنى التحتية والخطط الخدمية الجديدة" oninput="document.getElementById('li-local-2').innerText = this.value">
+                <label>النقطة 3:</label><input type="text" value="تفاعل واسع من المواطنين مع المبادرات المحلية" oninput="document.getElementById('li-local-3').innerText = this.value">
+                <button class="save-btn" style="background: #E67E22;" onclick="saveImage('frame-local', 'BSR_Local.png')">📥 حفظ كصورة 1080x1920</button>
+            </div>
         </div>
 
-        <div class="section-title">محتوى العنوان (مساحة حرة بدون قيود)</div>
-        <textarea id="input-title" placeholder="اكتب نص العنوان كاملاً بحرية تامة..." oninput="updateTitle()"></textarea>
-
-        <button class="btn-download" onclick="downloadImage()">تصدير التصميم كصورة للنشر</button>
     </div>
 
     <script>
-        function setTodayDate() {
-            const today = new Date();
-            const day = today.getDate();
-            const month = today.getMonth() + 1;
-            const year = today.getFullYear();
-            document.getElementById('display-date').innerText = `${day}-${month}-${year}`;
-        }
-        
-        window.onload = setTodayDate;
-
-        function changePlatformAspect() {
-            const val = document.getElementById('platform-select').value;
-            const container = document.getElementById('capture-area');
-            if(val === 'facebook-tiktok') {
-                container.style.width = '420px';
-                container.style.height = '600px';
-            } else if(val === 'instagram-square') {
-                container.style.width = '500px';
-                container.style.height = '500px';
-            } else if(val === 'instagram-story') {
-                container.style.width = '420px';
-                container.style.height = '525px';
+        function loadFile(event, imgId) {
+            const imageTag = document.getElementById(imgId);
+            if (event.target.files && event.target.files[0]) {
+                imageTag.src = URL.createObjectURL(event.target.files[0]);
             }
         }
 
-        function loadImage(event) {
-            const reader = new FileReader();
-            reader.onload = function() {
-                const imageLayer = document.getElementById('bg-image-layer');
-                imageLayer.style.backgroundImage = `url(${reader.result})`;
-            }
-            reader.readAsDataURL(event.target.files[0]);
+        function updateListFontSize(listId, size) {
+            const items = document.querySelectorAll('#' + listId + ' li');
+            items.forEach(li => {
+                li.style.fontSize = size + 'px';
+            });
         }
 
-        function removeImage() {
-            const imageLayer = document.getElementById('bg-image-layer');
-            imageLayer.style.backgroundImage = 'none';
-            document.getElementById('image-loader').value = '';
-        }
-
-        function changeImagePositionY() {
-            const posVal = document.getElementById('image-pos-y-slider').value;
-            const imageLayer = document.getElementById('bg-image-layer');
-            
-            document.getElementById('image-pos-y-val').innerText = posVal + '%';
-            imageLayer.style.backgroundPosition = `center ${posVal}%`;
-        }
-
-        function toggleBadgeVisibility() {
-            const isChecked = document.getElementById('toggle-badge').checked;
-            const badge = document.getElementById('display-category');
-            badge.style.display = isChecked ? 'inline-block' : 'none';
-        }
-
-        function updateBadgeText() {
-            const textVal = document.getElementById('input-badge-text').value;
-            const badge = document.getElementById('display-category');
-            if(textVal.trim() === "") {
-                badge.innerText = "عاجل";
-            } else {
-                badge.innerText = textVal;
-            }
-        }
-
-        function changeImageFit() {
-            const fitValue = document.getElementById('image-fit-select').value;
-            const imageLayer = document.getElementById('bg-image-layer');
-            imageLayer.style.backgroundSize = fitValue;
-            document.getElementById('image-size-slider').value = 100;
-            document.getElementById('image-size-val').innerText = '100%';
-        }
-
-        function changeImageSize() {
-            const sliderValue = document.getElementById('image-size-slider').value;
-            const imageLayer = document.getElementById('bg-image-layer');
-            const sizeLabel = document.getElementById('image-size-val');
-            imageLayer.style.backgroundSize = sliderValue + '%';
-            sizeLabel.innerText = sliderValue + '%';
-        }
-
-        function updateTitle() {
-            const titleInput = document.getElementById('input-title').value;
-            const displayTitle = document.getElementById('display-title');
-            if(titleInput.trim() === "") {
-                displayTitle.innerText = "اكتب النص بالشكل والطول الذي تريده دون التقيد بأي عدد محدد من الأسطر...";
-            } else {
-                displayTitle.innerText = titleInput;
-            }
-        }
-
-        function changeFontSize() {
-            const fontSizeVal = document.getElementById('font-size-slider').value;
-            document.getElementById('display-title').style.fontSize = fontSizeVal + 'px';
-            document.getElementById('font-size-val').innerText = fontSizeVal + 'px';
-        }
-
-        function downloadImage() {
-            const captureArea = document.getElementById('capture-area');
-            const options = {
-                scale: 2, 
-                useCORS: true, 
-                backgroundColor: null
-            };
-
-            html2canvas(captureArea, options).then(canvas => {
-                const image = canvas.toDataURL("image/png");
+        function saveImage(frameId, filename) {
+            const frameElement = document.getElementById(frameId);
+            html2canvas(frameElement, {
+                scale: 3,
+                useCORS: true,
+                allowTaint: true
+            }).then(canvas => {
                 const link = document.createElement('a');
-                link.download = `basra_news_post_${Date.now()}.png`;
-                link.href = image;
+                link.download = filename;
+                link.href = canvas.toDataURL('image/png');
                 link.click();
             });
         }
     </script>
+
 </body>
 </html>
