@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>قوالب موسوعة البصرة الاحترافية - ريلز (النسخة الكاملة المحدثة)</title>
+    <title>قوالب موسوعة البصرة الاحترافية - ريلز (النسخة المحدثة والمضبوطة)</title>
     <!-- مكتبة html2canvas لتحويل القالب إلى صورة حقيقية ونقرة زر التحميل -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <style>
@@ -43,7 +43,7 @@
         /* Category Theme Colors */
         .theme-red { background: #cc0000; }
         .theme-sport { background: #15803D; }
-        .theme-appeal { background: #7C3AED; }
+        .theme-appeal { background: #7C3AED; } /* مناشدات بنفسجي */
         .theme-blue { background: #0284c7; }
         .theme-green { background: #059669; }
         .theme-gold { background: #d97706; }
@@ -65,13 +65,15 @@
             object-fit: cover;
         }
 
-        /* Lower Content Container (Solid Color Theme) */
+        /* Lower Content Container (Solid Color Theme with Right Alignment) */
         .lower-content-box {
             flex-grow: 1;
             padding: 16px 20px;
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
+            align-items: flex-start; /* محاذاة كافة العناصر للفرع الأيمن */
+            text-align: right;
             gap: 10px;
         }
 
@@ -92,15 +94,18 @@
             line-height: 1.35;
             font-weight: 900;
             color: #fff;
+            width: 100%;
         }
 
-        /* Bullet Points Area */
+        /* Bullet Points Area (Right Aligned) */
         .bullet-list {
             list-style: none;
             display: flex;
             flex-direction: column;
             gap: 6px;
             margin-top: 2px;
+            width: 100%;
+            text-align: right;
         }
 
         .bullet-list li {
@@ -135,7 +140,7 @@
         /* Control Inputs Area */
         .controls { padding: 12px 15px; display: flex; flex-direction: column; gap: 8px; background: #fff; border-top: 1px solid #eee; }
         .controls label { font-size: 11px; font-weight: bold; color: #555; display: flex; align-items: center; gap: 6px; cursor: pointer; }
-        .controls textarea, .controls input[type="text"] { width: 100%; padding: 7px; border: 1px solid #ccc; border-radius: 6px; font-size: 12px; font-family: inherit; resize: vertical; }
+        .controls textarea, .controls input[type="text"] { width: 100%; padding: 7px; border: 1px solid #ccc; border-radius: 6px; font-size: 12px; font-family: inherit; resize: vertical; text-align: right; }
         .controls input[type="file"] { font-size: 11px; padding: 6px; background: #f9f9f9; border: 1px dashed #666; border-radius: 6px; cursor: pointer; }
         
         .save-btn {
