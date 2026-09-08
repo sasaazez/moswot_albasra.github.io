@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>قوالب موسوعة البصرة الاحترافية</title>
+    <title>قوالب موسوعة البصرة - أبعاد سوشيال ميديا (4:5)</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -11,10 +11,11 @@
         body { background: #eef2f7; color: #333; padding: 30px 20px; display: flex; flex-direction: column; align-items: center; direction: rtl; text-align: right; }
         h1 { margin-bottom: 25px; font-size: 22px; color: #0b1329; text-align: center; font-weight: 900; }
         
-        .templates-wrapper { display: flex; flex-wrap: wrap; gap: 35px; justify-content: center; width: 100%; max-width: 1250px; }
+        .templates-wrapper { display: flex; flex-wrap: wrap; gap: 35px; justify-content: center; width: 100%; max-width: 1300px; }
         .template-box { background: #fff; border-radius: 18px; box-shadow: 0 6px 25px rgba(0,0,0,0.12); width: 380px; overflow: hidden; display: flex; flex-direction: column; }
         
-        .phone-frame { width: 100%; aspect-ratio: 9/16; position: relative; overflow: hidden; display: flex; flex-direction: column; color: #fff; }
+        /* ضبط إطار الهاتف ليناسب أبعاد النشر المتوافقة (4:5) - عرض 1080 × ارتفاع 1350 */
+        .phone-frame { width: 100%; aspect-ratio: 4/5; position: relative; overflow: hidden; display: flex; flex-direction: column; color: #fff; }
         
         /* الثيمات والألوان الخاصة بكل قالب */
         .theme-urgent { background: #b91c1c; }
@@ -23,36 +24,36 @@
         .theme-sport { background: #15803d; }
         .theme-local { background: #7c2d12; }
 
-        .top-header-bar { background: rgba(0, 0, 0, 0.25); padding: 12px 15px 8px 15px; display: flex; justify-content: space-between; align-items: center; min-height: 54px; border-bottom: 1px solid rgba(255,255,255,0.15); }
+        .top-header-bar { background: rgba(0, 0, 0, 0.25); padding: 10px 15px 8px 15px; display: flex; justify-content: space-between; align-items: center; min-height: 50px; border-bottom: 1px solid rgba(255,255,255,0.15); }
         .top-header-left { display: flex; align-items: center; gap: 8px; }
         .top-header-bar .cat-title-top { font-size: 13px; color: #fff; font-weight: 900; }
-        .top-header-bar .date-text-top { font-size: 9.5px; color: #e2e8f0; font-weight: bold; }
+        .top-header-bar .date-text-top { font-size: 9px; color: #e2e8f0; font-weight: bold; }
 
         .top-header-logo-box { display: flex; align-items: center; background: #fff; padding: 3px 8px; border-radius: 30px; gap: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.15); }
-        .top-header-logo-box img { width: 22px; height: 22px; object-fit: contain; }
+        .top-header-logo-box img { width: 20px; height: 20px; object-fit: contain; }
         .top-header-logo-box span { font-size: 11px; font-weight: bold; color: #111; }
 
-        .media-container { position: relative; width: 100%; height: 420px; overflow: hidden; border-bottom: 3px solid rgba(255,255,255,0.2); flex-shrink: 0; }
+        .media-container { position: relative; width: 100%; height: 320px; overflow: hidden; border-bottom: 3px solid rgba(255,255,255,0.2); flex-shrink: 0; }
         .hero-news-img { width: 100%; height: 100%; object-fit: cover; }
 
         .lower-content-box { flex-grow: 1; padding: 12px 16px; display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-end; gap: 6px; }
-        .badge-pill { background: #fff; color: #111; padding: 3px 14px; font-size: 13px; border-radius: 20px; font-weight: 900; box-shadow: 0 2px 4px rgba(0,0,0,0.2); }
+        .badge-pill { background: #fff; color: #111; padding: 3px 14px; font-size: 12px; border-radius: 20px; font-weight: 900; box-shadow: 0 2px 4px rgba(0,0,0,0.2); }
         
         /* حجم العنوان الافتراضي */
-        .phone-frame h2 { font-size: 21px; line-height: 1.35; font-weight: 800; color: #fff; width: 100%; text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
+        .phone-frame h2 { font-size: 20px; line-height: 1.35; font-weight: 800; color: #fff; width: 100%; text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
 
-        .bullet-list { list-style: none; display: flex; flex-direction: column; gap: 4px; width: 100%; padding: 0; margin-top: 4px; }
-        .bullet-list li { font-size: 12px; color: #fff; line-height: 1.3; font-weight: 700; position: relative; padding-right: 18px; text-shadow: 0 1px 2px rgba(0,0,0,0.3); }
-        .bullet-list li::before { content: "•"; position: absolute; right: 0; color: #fff; font-weight: bold; font-size: 18px; }
+        .bullet-list { list-style: none; display: flex; flex-direction: column; gap: 3px; width: 100%; padding: 0; margin-top: 2px; }
+        .bullet-list li { font-size: 11.5px; color: #fff; line-height: 1.25; font-weight: 700; position: relative; padding-right: 16px; text-shadow: 0 1px 2px rgba(0,0,0,0.3); }
+        .bullet-list li::before { content: "•"; position: absolute; right: 0; color: #fff; font-weight: bold; font-size: 16px; }
 
-        .footer-box { background: #0b1329; padding: 10px 15px; display: flex; justify-content: space-between; align-items: center; border-top: 2px solid #d4af37; color: #fff; }
-        .footer-right-side { display: flex; flex-direction: column; align-items: flex-start; gap: 3px; }
-        .follow-label-rtl { font-size: 11px; color: #d4af37; font-weight: 800; }
-        .footer-social-icons-rtl { display: flex; gap: 6px; align-items: center; direction: ltr; }
-        .footer-social-icons-rtl a { width: 24px; height: 24px; border: 1px solid #d4af37; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 11px; text-decoration: none; background: rgba(212, 175, 55, 0.1); }
-        .footer-center-logo-single { display: flex; align-items: center; background: #fff; padding: 3px 12px; border-radius: 20px; gap: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
-        .footer-center-logo-single img { width: 20px; height: 20px; object-fit: contain; }
-        .footer-center-logo-single span { font-size: 11px; color: #0b1329; font-weight: 900; direction: ltr; }
+        .footer-box { background: #0b1329; padding: 8px 15px; display: flex; justify-content: space-between; align-items: center; border-top: 2px solid #d4af37; color: #fff; }
+        .footer-right-side { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; }
+        .follow-label-rtl { font-size: 10.5px; color: #d4af37; font-weight: 800; }
+        .footer-social-icons-rtl { display: flex; gap: 5px; align-items: center; direction: ltr; }
+        .footer-social-icons-rtl a { width: 22px; height: 22px; border: 1px solid #d4af37; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 10px; text-decoration: none; background: rgba(212, 175, 55, 0.1); }
+        .footer-center-logo-single { display: flex; align-items: center; background: #fff; padding: 3px 10px; border-radius: 20px; gap: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+        .footer-center-logo-single img { width: 18px; height: 18px; object-fit: contain; }
+        .footer-center-logo-single span { font-size: 10.5px; color: #0b1329; font-weight: 900; direction: ltr; }
 
         .controls { padding: 14px; display: flex; flex-direction: column; gap: 8px; background: #fff; border-top: 1px solid #eee; }
         .controls label { font-size: 11px; font-weight: bold; color: #555; margin-top: 3px; }
@@ -64,7 +65,7 @@
 </head>
 <body>
 
-    <h1>موسوعة البصرة - صانع القوالب الشامل والمحدث</h1>
+    <h1>موسوعة البصرة - صانع القوالب (أبعاد سوشيال ميديا 4:5)</h1>
 
     <div class="templates-wrapper">
 
@@ -111,11 +112,11 @@
                 <input type="file" accept="image/*" onchange="loadFile(event, 'img-1')">
                 <div class="range-group">
                     <label>ارتفاع الصورة:</label>
-                    <input type="range" min="200" max="750" value="420" oninput="document.getElementById('media-container-1').style.height = this.value + 'px'">
+                    <input type="range" min="150" max="500" value="320" oninput="document.getElementById('media-container-1').style.height = this.value + 'px'">
                 </div>
                 <div class="range-group">
                     <label>حجم خط العنوان:</label>
-                    <input type="range" min="14" max="32" value="21" oninput="document.getElementById('title-1').style.fontSize = this.value + 'px'">
+                    <input type="range" min="14" max="30" value="20" oninput="document.getElementById('title-1').style.fontSize = this.value + 'px'">
                 </div>
                 <label>العنوان الرئيسي:</label>
                 <textarea rows="2" oninput="document.getElementById('title-1').innerText = this.value">هجمات الحوثيين على السعودية تشعل حرائق في منشآت نفطية</textarea>
@@ -166,11 +167,11 @@
                 <input type="file" accept="image/*" onchange="loadFile(event, 'img-2')">
                 <div class="range-group">
                     <label>ارتفاع الصورة:</label>
-                    <input type="range" min="200" max="750" value="420" oninput="document.getElementById('media-container-2').style.height = this.value + 'px'">
+                    <input type="range" min="150" max="500" value="320" oninput="document.getElementById('media-container-2').style.height = this.value + 'px'">
                 </div>
                 <div class="range-group">
                     <label>حجم خط العنوان:</label>
-                    <input type="range" min="14" max="32" value="21" oninput="document.getElementById('title-2').style.fontSize = this.value + 'px'">
+                    <input type="range" min="14" max="30" value="20" oninput="document.getElementById('title-2').style.fontSize = this.value + 'px'">
                 </div>
                 <label>العنوان الرئيسي:</label>
                 <textarea rows="2" oninput="document.getElementById('title-2').innerText = this.value">انطلاق حملة كبرى لتنظيف وصيانة شبكات الصرف الصحي</textarea>
@@ -195,7 +196,7 @@
                     <ul class="bullet-list" contenteditable="true">
                         <li>درجات الحرارة العظمى تسجل مستويات صيفية معتادة</li>
                         <li>رياح شمالية غربية تنشط فترات الظهر مسببة غبار خفيف</li>
-                        <li>دعوات لارتداء الواطورات والابتعاد عن الشمس المباشرة</li>
+                        <li>دعوات لارتداء الواطرات والابتعاد عن الشمس المباشرة</li>
                     </ul>
                 </div>
                 <div class="footer-box">
@@ -221,11 +222,11 @@
                 <input type="file" accept="image/*" onchange="loadFile(event, 'img-3')">
                 <div class="range-group">
                     <label>ارتفاع الصورة:</label>
-                    <input type="range" min="200" max="750" value="420" oninput="document.getElementById('media-container-3').style.height = this.value + 'px'">
+                    <input type="range" min="150" max="500" value="320" oninput="document.getElementById('media-container-3').style.height = this.value + 'px'">
                 </div>
                 <div class="range-group">
                     <label>حجم خط العنوان:</label>
-                    <input type="range" min="14" max="32" value="21" oninput="document.getElementById('title-3').style.fontSize = this.value + 'px'">
+                    <input type="range" min="14" max="30" value="20" oninput="document.getElementById('title-3').style.fontSize = this.value + 'px'">
                 </div>
                 <label>العنوان الرئيسي:</label>
                 <textarea rows="2" oninput="document.getElementById('title-3').innerText = this.value">ارتفاع تدريجي لدرجات الحرارة وتحذيرات من تصاعد الغبار</textarea>
@@ -276,11 +277,11 @@
                 <input type="file" accept="image/*" onchange="loadFile(event, 'img-4')">
                 <div class="range-group">
                     <label>ارتفاع الصورة:</label>
-                    <input type="range" min="200" max="750" value="420" oninput="document.getElementById('media-container-4').style.height = this.value + 'px'">
+                    <input type="range" min="150" max="500" value="320" oninput="document.getElementById('media-container-4').style.height = this.value + 'px'">
                 </div>
                 <div class="range-group">
                     <label>حجم خط العنوان:</label>
-                    <input type="range" min="14" max="32" value="21" oninput="document.getElementById('title-4').style.fontSize = this.value + 'px'">
+                    <input type="range" min="14" max="30" value="20" oninput="document.getElementById('title-4').style.fontSize = this.value + 'px'">
                 </div>
                 <label>العنوان الرئيسي:</label>
                 <textarea rows="2" oninput="document.getElementById('title-4').innerText = this.value">نادي الميناء يكتسح ضيفه ويصعد للمربع الذهبي للدوري</textarea>
@@ -331,11 +332,11 @@
                 <input type="file" accept="image/*" onchange="loadFile(event, 'img-5')">
                 <div class="range-group">
                     <label>ارتفاع الصورة:</label>
-                    <input type="range" min="200" max="750" value="420" oninput="document.getElementById('media-container-5').style.height = this.value + 'px'">
+                    <input type="range" min="150" max="500" value="320" oninput="document.getElementById('media-container-5').style.height = this.value + 'px'">
                 </div>
                 <div class="range-group">
                     <label>حجم خط العنوان:</label>
-                    <input type="range" min="14" max="32" value="21" oninput="document.getElementById('title-5').style.fontSize = this.value + 'px'">
+                    <input type="range" min="14" max="30" value="20" oninput="document.getElementById('title-5').style.fontSize = this.value + 'px'">
                 </div>
                 <label>العنوان الرئيسي:</label>
                 <textarea rows="2" oninput="document.getElementById('title-5').innerText = this.value">حملة اعمار واسعة تشمل أقضية ونواحي محافظة البصرة</textarea>
