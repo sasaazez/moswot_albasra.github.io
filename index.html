@@ -40,12 +40,12 @@
         .logo-area { display: flex; align-items: center; gap: 8px; }
         .logo-img { width: 32px; height: 32px; background: #fff; border-radius: 50%; padding: 2px; object-fit: contain; }
 
-        /* 1. Template 01: Red / Black (Breaking News) */
-        .t1 .hero-news-img { width: 100%; height: 210px; object-fit: cover; border-bottom: 3px solid #cc0000; }
-        .t1 .t1-content { padding: 15px 20px; flex-grow: 1; display: flex; flex-direction: column; justify-content: center; background: #111; }
-        .t1 .tag { background: #cc0000; color: white; padding: 3px 10px; font-size: 11px; border-radius: 4px; width: fit-content; margin-bottom: 10px; font-weight: bold; }
-        .t1 h2 { font-size: 22px; line-height: 1.4; font-weight: 800; color: #fff; }
-        .t1 .footer-box { background: rgba(255,255,255,0.08); margin: 10px 15px; padding: 8px 12px; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; font-size: 12px; }
+        /* 1. Template 01: Red / Black (Breaking News) - Larger Image View */
+        .t1 .hero-news-img { width: 100%; height: 280px; object-fit: cover; border-bottom: 3px solid #cc0000; }
+        .t1 .t1-content { padding: 12px 20px; flex-grow: 1; display: flex; flex-direction: column; justify-content: center; background: #111; }
+        .t1 .tag { background: #cc0000; color: white; padding: 3px 10px; font-size: 11px; border-radius: 4px; width: fit-content; margin-bottom: 8px; font-weight: bold; }
+        .t1 h2 { font-size: 20px; line-height: 1.4; font-weight: 800; color: #fff; }
+        .t1 .footer-box { background: rgba(255,255,255,0.08); margin: 8px 15px; padding: 8px 12px; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; font-size: 12px; }
 
         /* 2. Template 02: Blue Gradient (Weather) */
         .t2 { background: linear-gradient(135deg, #0072ff, #00c6ff); }
@@ -72,7 +72,8 @@
         /* Control Inputs Area */
         .controls { padding: 12px 15px; display: flex; flex-direction: column; gap: 8px; background: #fff; border-top: 1px solid #eee; }
         .controls label { font-size: 11px; font-weight: bold; color: #555; }
-        .controls textarea, .controls input { width: 100%; padding: 7px; border: 1px solid #ccc; border-radius: 6px; font-size: 12px; font-family: inherit; resize: vertical; }
+        .controls textarea, .controls input[type="text"] { width: 100%; padding: 7px; border: 1px solid #ccc; border-radius: 6px; font-size: 12px; font-family: inherit; resize: vertical; }
+        .controls input[type="file"] { font-size: 11px; padding: 4px; background: #f9f9f9; border: 1px dashed #0072ff; border-radius: 6px; cursor: pointer; }
     </style>
 </head>
 <body>
@@ -105,10 +106,15 @@
                 </div>
             </div>
             <div class="controls">
-                <label>رابط صورة الخبر:</label>
+                <label>اختر صورة من الاستديو / الملفات:</label>
+                <input type="file" accept="image/*" onchange="loadFile(event, 'img-t1')">
+                
+                <label>أو ضع رابط صورة الخبر:</label>
                 <input type="text" value="https://images.unsplash.com/photo-1541872703-74c5e44368f9?w=500" oninput="document.getElementById('img-t1').src = this.value">
+                
                 <label>نص الخبر العاجل:</label>
                 <textarea rows="2" oninput="document.getElementById('out-t1-text').innerText = this.value">وصول القنصل الايراني الجديد مصطفى الطرفي الى البصرة</textarea>
+                
                 <label>اليوم والتاريخ والسنة:</label>
                 <input type="text" value="الثلاثاء 8 / 9 / 2026" oninput="document.getElementById('out-t1-date').innerText = this.value">
             </div>
@@ -181,5 +187,16 @@
 
     </div>
 
+    <script>
+        // دالة لتحميل واختيار الصورة من ملفات الجهاز أو الاستديو مباشرة
+        function loadFile(event, imgId) {
+            const imageTag = document.getElementById(imgId);
+            if (event.target.files && event.target.files[0]) {
+                imageTag.src = URL.createObjectURL(event.target.files[0]);
+            }
+        }
+    </script>
+
 </body>
 </html>
+
