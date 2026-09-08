@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>قوالب موسوعة البصرة - الاحترافية</title>
+    <!-- مكتبة تحويل القالب إلى صورة -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <!-- مكتبة الأيقونات -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
@@ -79,8 +81,6 @@
             height: 100%;
             object-fit: cover;
             object-position: center center;
-            transform: scale(1);
-            transition: transform 0.1s ease;
         }
 
         .lower-content-box {
@@ -221,23 +221,23 @@
     <h1>قوالب موسوعة البصرة الاحترافية</h1>
 
     <div class="container">
-        <!-- قالب عاجل -->
+        <!-- 1. قالب عاجل وسياسة -->
         <div class="template-card">
             <div class="template-header"><span>عاجل وسياسة (أحمر)</span><span style="color:#b91c1c">RED</span></div>
-            <div class="phone-frame" id="frame-urgent">
-                <div class="date-bar" id="date-text-urgent">جاري تحميل التاريخ...</div>
-                <div class="top-header-bar theme-urgent">
-                    <span class="cat-title-top" id="top-title-urgent">عاجل وسياسة</span>
+            <div class="phone-frame theme-urgent" id="frame-urgent">
+                <div class="date-bar" id="date-text-urgent">جاري التحميل...</div>
+                <div class="top-header-bar">
+                    <span class="cat-title-top">عاجل وسياسة</span>
                     <div class="top-header-logo-box"><img src="Logo.png" alt="شعار"><span>موسوعة البصرة</span></div>
                 </div>
-                <div class="media-container" id="media-box-urgent"><img src="https://images.unsplash.com/photo-1541872703-74c5e44368f9?w=500" class="hero-news-img" id="img-urgent" alt="صورة"></div>
-                <div class="lower-content-box theme-urgent">
-                    <div class="badge-pill" id="badge-urgent">عاجل جداً 🔴</div>
-                    <h2 id="text-urgent" style="font-size: 32px;">عنوان الخبر الرئيسي هنا</h2>
-                    <ul class="bullet-list" id="list-urgent">
-                        <li id="li-urgent-1">النقطة الأولى للخبر</li>
-                        <li id="li-urgent-2">النقطة الثانية للخبر</li>
-                        <li id="li-urgent-3">النقطة الثالثة للخبر</li>
+                <div class="media-container"><img src="https://images.unsplash.com/photo-1541872703-74c5e44368f9?w=500" class="hero-news-img" id="img-urgent" alt="صورة"></div>
+                <div class="lower-content-box">
+                    <div class="badge-pill">عاجل جداً 🔴</div>
+                    <h2 id="title-urgent">هجمات الحوثيين على السعودية تشعل حرائق في منشآت نفطية</h2>
+                    <ul class="bullet-list">
+                        <li>اندلاع حرائق ضخمة في المنشآت المستهدفة</li>
+                        <li>إصابة 73 شخصاً حسب مصادر أولية رسمية</li>
+                        <li>الجهات المعنية لم تعلن عن حجم الأضرار بالكامل</li>
                     </ul>
                 </div>
                 <div class="footer-box">
@@ -257,9 +257,55 @@
             <div class="controls">
                 <label>تاريخ النشر العلوي:</label>
                 <input type="text" id="date-input-urgent" oninput="document.getElementById('date-text-urgent').innerText = this.value">
-                <label>اختر صورة الخبر:</label><input type="file" accept="image/*" onchange="loadFile(event, 'img-urgent')">
-                <label>العنوان الرئيسي:</label><textarea rows="2" oninput="document.getElementById('text-urgent').innerText = this.value">عنوان الخبر الرئيسي هنا</textarea>
+                <label>اختر صورة الخبر:</label>
+                <input type="file" accept="image/*" onchange="loadFile(event, 'img-urgent')">
+                <label>العنوان الرئيسي:</label>
+                <textarea rows="2" oninput="document.getElementById('title-urgent').innerText = this.value">هجمات الحوثيين على السعودية تشعل حرائق في منشآت نفطية</textarea>
                 <button class="save-btn" style="background: #b91c1c;" onclick="saveImage('frame-urgent', 'BSR_Urgent.png')">📥 حفظ كصورة 1080x1920</button>
+            </div>
+        </div>
+
+        <!-- 2. قالب خدمات وبلدية -->
+        <div class="template-card">
+            <div class="template-header"><span>خدمات وبلدية (أخضر داكن)</span><span style="color:#064e3b">GREEN</span></div>
+            <div class="phone-frame theme-services" id="frame-services">
+                <div class="date-bar" id="date-text-services">جاري التحميل...</div>
+                <div class="top-header-bar">
+                    <span class="cat-title-top">خدمات ونقاط</span>
+                    <div class="top-header-logo-box"><img src="Logo.png" alt="شعار"><span>موسوعة البصرة</span></div>
+                </div>
+                <div class="media-container"><img src="https://images.unsplash.com/photo-1584467735817-6950fb6dbf43?w=500" class="hero-news-img" id="img-services" alt="صورة"></div>
+                <div class="lower-content-box">
+                    <div class="badge-pill">خدمات عامة</div>
+                    <h2 id="title-services">انطلاق حملة كبرى لتنظيف وصيانة شبكات الصرف الصحي</h2>
+                    <ul class="bullet-list">
+                        <li>استنفرت الكوادر البلدية آلياتها الخدمية والهندسية</li>
+                        <li>دعوات للمواطنين للتعاون وإنجاح الحملة الخدمية</li>
+                        <li>معالجة الطفحات المائية وفتح الخطوط المسدودة</li>
+                    </ul>
+                </div>
+                <div class="footer-box">
+                    <div class="footer-right-side">
+                        <span class="follow-label-rtl">تابعنا على:</span>
+                        <div class="footer-social-icons-rtl">
+                            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                            <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+                            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+                            <a href="#"><i class="fa-brands fa-telegram-plane"></i></a>
+                        </div>
+                    </div>
+                    <div class="footer-center-logo-single"><img src="Logo.png" alt="شعار"><span>mwsuat_albasra</span></div>
+                </div>
+            </div>
+            <div class="controls">
+                <label>تاريخ النشر العلوي:</label>
+                <input type="text" id="date-input-services" oninput="document.getElementById('date-text-services').innerText = this.value">
+                <label>اختر صورة الخبر:</label>
+                <input type="file" accept="image/*" onchange="loadFile(event, 'img-services')">
+                <label>العنوان الرئيسي:</label>
+                <textarea rows="2" oninput="document.getElementById('title-services').innerText = this.value">انطلاق حملة كبرى لتنظيف وصيانة شبكات الصرف الصحي</textarea>
+                <button class="save-btn" style="background: #064e3b;" onclick="saveImage('frame-services', 'BSR_Services.png')">📥 حفظ كصورة 1080x1920</button>
             </div>
         </div>
     </div>
@@ -273,8 +319,12 @@
 
         window.onload = function() {
             const currentDate = getFormattedDate();
+            // تعيين التاريخ التلقائي للقوالب
             document.getElementById('date-text-urgent').innerText = currentDate;
             document.getElementById('date-input-urgent').value = currentDate;
+
+            document.getElementById('date-text-services').innerText = currentDate;
+            document.getElementById('date-input-services').value = currentDate;
         };
 
         function loadFile(event, imgId) {
