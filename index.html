@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>قوالب موسوعة البصرة - النسخة الاحترافية المحدثة بالكامل</title>
+    <title>قوالب موسوعة البصرة - النسخة المحدثة</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
@@ -84,7 +84,7 @@
         .media-container {
             position: relative;
             width: 100%;
-            height: 420px; /* مساحة افتراضية واسعة للصورة قابلة للتحكم */
+            height: 420px;
             overflow: hidden;
             border-bottom: 3px solid rgba(255,255,255,0.2);
             flex-shrink: 0;
@@ -128,7 +128,7 @@
 
         /* العنوان الرئيسي */
         .phone-frame h2 {
-            font-size: 32px; /* افتراضي متناسق ويقبل التعديل */
+            font-size: 32px;
             line-height: 1.35;
             font-weight: 800;
             color: #fff;
@@ -190,13 +190,13 @@
             display: flex;
             align-items: center;
             background: #fff;
-            padding: 2px 8px;
+            padding: 3px 10px;
             border-radius: 20px;
-            gap: 5px;
+            gap: 6px;
             direction: rtl;
         }
-        .footer-center-logo img { width: 20px; height: 20px; object-fit: contain; }
-        .footer-center-logo div { font-size: 9px; line-height: 1.1; color: #0b1329; font-weight: bold; text-align: right; }
+        .footer-center-logo img { width: 22px; height: 22px; object-fit: contain; }
+        .footer-center-logo span { font-size: 11px; color: #0b1329; font-weight: 900; direction: ltr; }
         .footer-left { font-size: 10px; color: #cbd5e1; text-align: left; line-height: 1.1; font-weight: bold; direction: ltr; }
 
         /* Control Inputs Area */
@@ -222,7 +222,7 @@
 </head>
 <body>
 
-    <h1>قوالب موسوعة البصرة - النسخة المحدثة مع تحكم كامل</h1>
+    <h1>قوالب موسوعة البصرة - النسخة المحدثة</h1>
 
     <div class="container">
 
@@ -247,20 +247,17 @@
                 </div>
                 <div class="footer-box">
                     <div class="footer-right">البصرة<br><span style="font-size:10px; font-weight:normal; direction:ltr; display:inline-block;">mwsuat_albasra</span></div>
-                    <div class="footer-center-logo"><img src="Logo.png" alt="شعار"><div><span style="font-size:10px;">BASRA</span><br><span style="font-size:8px; color:#555;">ENCYCLOPEDIA</span></div></div>
+                    <div class="footer-center-logo"><img src="Logo.png" alt="شعار"><span>mwsuat_albasra</span></div>
                     <div class="footer-left">عاجل<br>mwsuat_albasra</div>
                 </div>
             </div>
             <div class="controls">
                 <label>تاريخ النشر العلوي:</label><input type="text" value="الثلاثاء، 8 أيلول 2026" oninput="document.getElementById('date-text-urgent').innerText = this.value">
                 <label>اختر صورة الخبر:</label><input type="file" accept="image/*" onchange="loadFile(event, 'img-urgent')">
-                
                 <label>ارتفاع إطار الصورة (تكبير/تصغير مساحة الصورة): <span id="val-h-urgent">420</span>px</label>
                 <input type="range" min="200" max="600" step="10" value="420" oninput="document.getElementById('media-box-urgent').style.height = this.value + 'px'; document.getElementById('val-h-urgent').innerText = this.value;">
-
                 <label>تكبير / تصغير محتوى الصورة (Zoom):</label>
                 <input type="range" min="1" max="2.5" step="0.05" value="1" oninput="document.getElementById('img-urgent').style.transform = 'scale(' + this.value + ')'">
-
                 <label>تحكم بموضع الصورة (التركيز):</label>
                 <select onchange="document.getElementById('img-urgent').style.objectPosition = this.value">
                     <option value="center center">المنتصف (افتراضي)</option>
@@ -269,13 +266,10 @@
                     <option value="center left">اليمين</option>
                     <option value="center right">اليسار</option>
                 </select>
-
                 <label>حجم العنوان الرئيسي: <span id="val-fs-urgent">32</span>px</label>
                 <input type="range" min="20" max="45" step="1" value="32" oninput="document.getElementById('text-urgent').style.fontSize = this.value + 'px'; document.getElementById('val-fs-urgent').innerText = this.value;">
-
                 <label>حجم خط النقاط الفرعية: <span id="val-li-urgent">14</span>px</label>
                 <input type="range" min="11" max="20" step="1" value="14" oninput="updateListFontSize('list-urgent', this.value); document.getElementById('val-li-urgent').innerText = this.value;">
-
                 <label>عنوان الشريط العلوي:</label><input type="text" value="عاجل وسياسة" oninput="document.getElementById('top-title-urgent').innerText = this.value">
                 <label>شارة التصنيف (Badge):</label><input type="text" value="عاجل جداً 🔴" oninput="document.getElementById('badge-urgent').innerText = this.value">
                 <label>العنوان الرئيسي:</label><textarea rows="3" oninput="document.getElementById('text-urgent').innerText = this.value">نيويورك بوست عن مسؤولين: هجمات الحوثيين على السعودية تشعل حرائق في منشآت نفطية وتصيب 73 شخصاً</textarea>
@@ -288,11 +282,11 @@
 
         <!-- 2. خدمات وبلدية (أخضر داكن) -->
         <div class="template-card">
-            <div class="template-header"><span>2. خدمات وبلدية (أخضر داكن)</span><span style="color:#064e3b">GREEN</span></div>
+            <div class="template-header"><span>2. خدمات (أخضر داكن)</span><span style="color:#064e3b">GREEN</span></div>
             <div class="phone-frame" id="frame-services">
                 <div class="date-bar" id="date-text-services">الثلاثاء، 8 أيلول 2026</div>
                 <div class="top-header-bar theme-services">
-                    <span class="cat-title-top" id="top-title-services">خدمات وبلدية</span>
+                    <span class="cat-title-top" id="top-title-services">خدمات </span>
                     <div class="top-header-logo-box"><img src="Logo.png" alt="شعار"><span>موسوعة البصرة</span></div>
                 </div>
                 <div class="media-container" id="media-box-services"><img src="https://images.unsplash.com/photo-1585829365295-ab7cd400c167?w=500" class="hero-news-img" id="img-services" alt="صورة"></div>
@@ -307,20 +301,17 @@
                 </div>
                 <div class="footer-box">
                     <div class="footer-right">البصرة<br><span style="font-size:10px; font-weight:normal; direction:ltr; display:inline-block;">mwsuat_albasra</span></div>
-                    <div class="footer-center-logo"><img src="Logo.png" alt="شعار"><div><span style="font-size:10px;">BASRA</span><br><span style="font-size:8px; color:#555;">ENCYCLOPEDIA</span></div></div>
+                    <div class="footer-center-logo"><img src="Logo.png" alt="شعار"><span>mwsuat_albasra</span></div>
                     <div class="footer-left">خدمات<br>mwsuat_albasra</div>
                 </div>
             </div>
             <div class="controls">
                 <label>تاريخ النشر العلوي:</label><input type="text" value="الثلاثاء، 8 أيلول 2026" oninput="document.getElementById('date-text-services').innerText = this.value">
                 <label>اختر صورة الخبر:</label><input type="file" accept="image/*" onchange="loadFile(event, 'img-services')">
-                
                 <label>ارتفاع إطار الصورة: <span id="val-h-services">420</span>px</label>
                 <input type="range" min="200" max="600" step="10" value="420" oninput="document.getElementById('media-box-services').style.height = this.value + 'px'; document.getElementById('val-h-services').innerText = this.value;">
-
                 <label>تكبير / تصغير محتوى الصورة (Zoom):</label>
                 <input type="range" min="1" max="2.5" step="0.05" value="1" oninput="document.getElementById('img-services').style.transform = 'scale(' + this.value + ')'">
-
                 <label>تحكم بموضع الصورة (التركيز):</label>
                 <select onchange="document.getElementById('img-services').style.objectPosition = this.value">
                     <option value="center center">المنتصف (افتراضي)</option>
@@ -329,14 +320,11 @@
                     <option value="center left">اليمين</option>
                     <option value="center right">اليسار</option>
                 </select>
-
                 <label>حجم العنوان الرئيسي: <span id="val-fs-services">32</span>px</label>
                 <input type="range" min="20" max="45" step="1" value="32" oninput="document.getElementById('text-services').style.fontSize = this.value + 'px'; document.getElementById('val-fs-services').innerText = this.value;">
-
                 <label>حجم خط النقاط الفرعية: <span id="val-li-services">14</span>px</label>
                 <input type="range" min="11" max="20" step="1" value="14" oninput="updateListFontSize('list-services', this.value); document.getElementById('val-li-services').innerText = this.value;">
-
-                <label>عنوان الشريط العلوي:</label><input type="text" value="خدمات وبلدية" oninput="document.getElementById('top-title-services').innerText = this.value">
+                <label>عنوان الشريط العلوي:</label><input type="text" value="خدمات " oninput="document.getElementById('top-title-services').innerText = this.value">
                 <label>شارة التصنيف (Badge):</label><input type="text" value="خدمات ونقاط" oninput="document.getElementById('badge-services').innerText = this.value">
                 <label>العنوان الرئيسي:</label><textarea rows="2" oninput="document.getElementById('text-services').innerText = this.value">انطلاق حملة كبرى لتنظيف وصيانة شبكات الصرف الصحي</textarea>
                 <label>النقطة 1:</label><input type="text" value="استنفرت الكوادر البلدية آلياتها الخدمية والهندسية" oninput="document.getElementById('li-services-1').innerText = this.value">
@@ -367,20 +355,17 @@
                 </div>
                 <div class="footer-box">
                     <div class="footer-right">البصرة<br><span style="font-size:10px; font-weight:normal; direction:ltr; display:inline-block;">mwsuat_albasra</span></div>
-                    <div class="footer-center-logo"><img src="Logo.png" alt="شعار"><div><span style="font-size:10px;">BASRA</span><br><span style="font-size:8px; color:#555;">ENCYCLOPEDIA</span></div></div>
+                    <div class="footer-center-logo"><img src="Logo.png" alt="شعار"><span>mwsuat_albasra</span></div>
                     <div class="footer-left">الطقس<br>mwsuat_albasra</div>
                 </div>
             </div>
             <div class="controls">
                 <label>تاريخ النشر العلوي:</label><input type="text" value="الثلاثاء، 8 أيلول 2026" oninput="document.getElementById('date-text-weather').innerText = this.value">
                 <label>اختر صورة الخبر:</label><input type="file" accept="image/*" onchange="loadFile(event, 'img-weather')">
-                
                 <label>ارتفاع إطار الصورة: <span id="val-h-weather">420</span>px</label>
                 <input type="range" min="200" max="600" step="10" value="420" oninput="document.getElementById('media-box-weather').style.height = this.value + 'px'; document.getElementById('val-h-weather').innerText = this.value;">
-
                 <label>تكبير / تصغير محتوى الصورة (Zoom):</label>
                 <input type="range" min="1" max="2.5" step="0.05" value="1" oninput="document.getElementById('img-weather').style.transform = 'scale(' + this.value + ')'">
-
                 <label>تحكم بموضع الصورة (التركيز):</label>
                 <select onchange="document.getElementById('img-weather').style.objectPosition = this.value">
                     <option value="center center">المنتصف (افتراضي)</option>
@@ -389,13 +374,10 @@
                     <option value="center left">اليمين</option>
                     <option value="center right">اليسار</option>
                 </select>
-
                 <label>حجم العنوان الرئيسي: <span id="val-fs-weather">32</span>px</label>
                 <input type="range" min="20" max="45" step="1" value="32" oninput="document.getElementById('text-weather').style.fontSize = this.value + 'px'; document.getElementById('val-fs-weather').innerText = this.value;">
-
                 <label>حجم خط النقاط الفرعية: <span id="val-li-weather">14</span>px</label>
                 <input type="range" min="11" max="20" step="1" value="14" oninput="updateListFontSize('list-weather', this.value); document.getElementById('val-li-weather').innerText = this.value;">
-
                 <label>عنوان الشريط العلوي:</label><input type="text" value="الطقس والأحوال" oninput="document.getElementById('top-title-weather').innerText = this.value">
                 <label>شارة التصنيف (Badge):</label><input type="text" value="تنبيه جوي ☀️" oninput="document.getElementById('badge-weather').innerText = this.value">
                 <label>العنوان الرئيسي:</label><textarea rows="2" oninput="document.getElementById('text-weather').innerText = this.value">ارتفاع درجات الحرارة في البصرة لتسجل معدلات مرتفعة</textarea>
@@ -427,20 +409,17 @@
                 </div>
                 <div class="footer-box">
                     <div class="footer-right">البصرة<br><span style="font-size:10px; font-weight:normal; direction:ltr; display:inline-block;">mwsuat_albasra</span></div>
-                    <div class="footer-center-logo"><img src="Logo.png" alt="شعار"><div><span style="font-size:10px;">BASRA</span><br><span style="font-size:8px; color:#555;">ENCYCLOPEDIA</span></div></div>
+                    <div class="footer-center-logo"><img src="Logo.png" alt="شعار"><span>mwsuat_albasra</span></div>
                     <div class="footer-left">رياضة<br>mwsuat_albasra</div>
                 </div>
             </div>
             <div class="controls">
                 <label>تاريخ النشر العلوي:</label><input type="text" value="الثلاثاء، 8 أيلول 2026" oninput="document.getElementById('date-text-sport').innerText = this.value">
                 <label>اختر صورة الخبر:</label><input type="file" accept="image/*" onchange="loadFile(event, 'img-sport')">
-                
                 <label>ارتفاع إطار الصورة: <span id="val-h-sport">420</span>px</label>
                 <input type="range" min="200" max="600" step="10" value="420" oninput="document.getElementById('media-box-sport').style.height = this.value + 'px'; document.getElementById('val-h-sport').innerText = this.value;">
-
                 <label>تكبير / تصغير محتوى الصورة (Zoom):</label>
                 <input type="range" min="1" max="2.5" step="0.05" value="1" oninput="document.getElementById('img-sport').style.transform = 'scale(' + this.value + ')'">
-
                 <label>تحكم بموضع الصورة (التركيز):</label>
                 <select onchange="document.getElementById('img-sport').style.objectPosition = this.value">
                     <option value="center center">المنتصف (افتراضي)</option>
@@ -449,13 +428,10 @@
                     <option value="center left">اليمين</option>
                     <option value="center right">اليسار</option>
                 </select>
-
                 <label>حجم العنوان الرئيسي: <span id="val-fs-sport">32</span>px</label>
                 <input type="range" min="20" max="45" step="1" value="32" oninput="document.getElementById('text-sport').style.fontSize = this.value + 'px'; document.getElementById('val-fs-sport').innerText = this.value;">
-
                 <label>حجم خط النقاط الفرعية: <span id="val-li-sport">14</span>px</label>
                 <input type="range" min="11" max="20" step="1" value="14" oninput="updateListFontSize('list-sport', this.value); document.getElementById('val-li-sport').innerText = this.value;">
-
                 <label>عنوان الشريط العلوي:</label><input type="text" value="رياضة وملاعب" oninput="document.getElementById('top-title-sport').innerText = this.value">
                 <label>شارة التصنيف (Badge):</label><input type="text" value="رياضة | الميناء" oninput="document.getElementById('badge-sport').innerText = this.value">
                 <label>العنوان الرئيسي:</label><textarea rows="2" oninput="document.getElementById('text-sport').innerText = this.value">نادي الميناء الرياضي يواصل تحضيراته لمواجهة الجولة المقبلة</textarea>
@@ -487,20 +463,17 @@
                 </div>
                 <div class="footer-box">
                     <div class="footer-right">البصرة<br><span style="font-size:10px; font-weight:normal; direction:ltr; display:inline-block;">mwsuat_albasra</span></div>
-                    <div class="footer-center-logo"><img src="Logo.png" alt="شعار"><div><span style="font-size:10px;">BASRA</span><br><span style="font-size:8px; color:#555;">ENCYCLOPEDIA</span></div></div>
+                    <div class="footer-center-logo"><img src="Logo.png" alt="شعار"><span>mwsuat_albasra</span></div>
                     <div class="footer-left">مناشدات<br>mwsuat_albasra</div>
                 </div>
             </div>
             <div class="controls">
                 <label>تاريخ النشر العلوي:</label><input type="text" value="الثلاثاء، 8 أيلول 2026" oninput="document.getElementById('date-text-appeal').innerText = this.value">
                 <label>اختر صورة الخبر:</label><input type="file" accept="image/*" onchange="loadFile(event, 'img-appeal')">
-                
                 <label>ارتفاع إطار الصورة: <span id="val-h-appeal">420</span>px</label>
                 <input type="range" min="200" max="600" step="10" value="420" oninput="document.getElementById('media-box-appeal').style.height = this.value + 'px'; document.getElementById('val-h-appeal').innerText = this.value;">
-
                 <label>تكبير / تصغير محتوى الصورة (Zoom):</label>
                 <input type="range" min="1" max="2.5" step="0.05" value="1" oninput="document.getElementById('img-appeal').style.transform = 'scale(' + this.value + ')'">
-
                 <label>تحكم بموضع الصورة (التركيز):</label>
                 <select onchange="document.getElementById('img-appeal').style.objectPosition = this.value">
                     <option value="center center">المنتصف (افتراضي)</option>
@@ -509,13 +482,10 @@
                     <option value="center left">اليمين</option>
                     <option value="center right">اليسار</option>
                 </select>
-
                 <label>حجم العنوان الرئيسي: <span id="val-fs-appeal">32</span>px</label>
                 <input type="range" min="20" max="45" step="1" value="32" oninput="document.getElementById('text-appeal').style.fontSize = this.value + 'px'; document.getElementById('val-fs-appeal').innerText = this.value;">
-
                 <label>حجم خط النقاط الفرعية: <span id="val-li-appeal">14</span>px</label>
                 <input type="range" min="11" max="20" step="1" value="14" oninput="updateListFontSize('list-appeal', this.value); document.getElementById('val-li-appeal').innerText = this.value;">
-
                 <label>عنوان الشريط العلوي:</label><input type="text" value="مناشدة إنسانية" oninput="document.getElementById('top-title-appeal').innerText = this.value">
                 <label>شارة التصنيف (Badge):</label><input type="text" value="إنسانية | أهل الخير" oninput="document.getElementById('badge-appeal').innerText = this.value">
                 <label>العنوان الرئيسي:</label><textarea rows="2" oninput="document.getElementById('text-appeal').innerText = this.value">عائلة متعففة في البصرة تناشد عبر "موسوعة البصرة" لمد يد العون</textarea>
@@ -547,20 +517,17 @@
                 </div>
                 <div class="footer-box">
                     <div class="footer-right">البصرة<br><span style="font-size:10px; font-weight:normal; direction:ltr; display:inline-block;">mwsuat_albasra</span></div>
-                    <div class="footer-center-logo"><img src="Logo.png" alt="شعار"><div><span style="font-size:10px;">BASRA</span><br><span style="font-size:8px; color:#555;">ENCYCLOPEDIA</span></div></div>
+                    <div class="footer-center-logo"><img src="Logo.png" alt="شعار"><span>mwsuat_albasra</span></div>
                     <div class="footer-left">محليات<br>mwsuat_albasra</div>
                 </div>
             </div>
             <div class="controls">
                 <label>تاريخ النشر العلوي:</label><input type="text" value="الثلاثاء، 8 أيلول 2026" oninput="document.getElementById('date-text-local').innerText = this.value">
                 <label>اختر صورة الخبر:</label><input type="file" accept="image/*" onchange="loadFile(event, 'img-local')">
-                
                 <label>ارتفاع إطار الصورة: <span id="val-h-local">420</span>px</label>
                 <input type="range" min="200" max="600" step="10" value="420" oninput="document.getElementById('media-box-local').style.height = this.value + 'px'; document.getElementById('val-h-local').innerText = this.value;">
-
                 <label>تكبير / تصغير محتوى الصورة (Zoom):</label>
                 <input type="range" min="1" max="2.5" step="0.05" value="1" oninput="document.getElementById('img-local').style.transform = 'scale(' + this.value + ')'">
-
                 <label>تحكم بموضع الصورة (التركيز):</label>
                 <select onchange="document.getElementById('img-local').style.objectPosition = this.value">
                     <option value="center center">المنتصف (افتراضي)</option>
@@ -569,13 +536,10 @@
                     <option value="center left">اليمين</option>
                     <option value="center right">اليسار</option>
                 </select>
-
                 <label>حجم العنوان الرئيسي: <span id="val-fs-local">32</span>px</label>
                 <input type="range" min="20" max="45" step="1" value="32" oninput="document.getElementById('text-local').style.fontSize = this.value + 'px'; document.getElementById('val-fs-local').innerText = this.value;">
-
                 <label>حجم خط النقاط الفرعية: <span id="val-li-local">14</span>px</label>
                 <input type="range" min="11" max="20" step="1" value="14" oninput="updateListFontSize('list-local', this.value); document.getElementById('val-li-local').innerText = this.value;">
-
                 <label>عنوان الشريط العلوي:</label><input type="text" value="أخبار المحليات" oninput="document.getElementById('top-title-local').innerText = this.value">
                 <label>شارة التصنيف (Badge):</label><input type="text" value="محليات البصرة 🏙️" oninput="document.getElementById('badge-local').innerText = this.value">
                 <label>العنوان الرئيسي:</label><textarea rows="2" oninput="document.getElementById('text-local').innerText = this.value">متابعات ميدانية لأبرز النشاطات والفعاليات المحلية في أقضية ونواحي المحافظة</textarea>
