@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>قوالب موسوعة البصرة - الألوان المعدلة</title>
+    <title>قوالب موسوعة البصرة - الألوان النهائية المعتمدة</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        body { background: #f4f4f4; color: #333; padding: 20px; display: flex; flex-direction: column; align-items: center; }
-        h1 { margin-bottom: 20px; font-size: 22px; color: #111; text-align: center; }
+        body { background: #f4f4f4; color: #333; padding: 20px; display: flex; flex-direction: column; align-items: center; direction: rtl; text-align: right; }
+        h1 { margin-bottom: 20px; font-size: 20px; color: #111; text-align: center; }
         
         .container { display: flex; flex-direction: column; gap: 40px; width: 100%; max-width: 420px; }
         
         .template-card { background: #fff; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); overflow: hidden; padding-bottom: 15px; }
-        .template-header { padding: 10px 15px; background: #eee; font-size: 14px; font-weight: bold; display: flex; justify-content: space-between; align-items: center; }
+        .template-header { padding: 10px 15px; background: #eee; font-size: 14px; font-weight: bold; display: flex; justify-content: space-between; align-items: center; direction: rtl; }
         
         /* Phone Frame (9:16 Ratio - Reels Format) */
         .phone-frame {
@@ -24,15 +24,17 @@
             display: flex;
             flex-direction: column;
             color: #fff;
+            direction: rtl;
+            text-align: right;
         }
 
-        /* الألوان المعتمدة */
-        .theme-politics { background: #0b1329; }     /* السياسة: نيلي */
-        .theme-local { background: #e68a00; }        /* المحليات: برتقالي */
-        .theme-appeal { background: #581c87; }       /* المناشدات: بنفسجي */
-        .theme-sport { background: #064e3b; }        /* الرياضة: أخضر داكن */
-        .theme-weather { background: #0c4a6e; }      /* الطقس: أزرق */
-        .theme-services { background: #15803d; }     /* الخدمات: أخضر فاتح */
+        /* الألوان المعتمدة بدقة */
+        .theme-urgent { background: #b91c1c; }      /* عاجل وسياسة: أحمر */
+        .theme-services { background: #064e3b; }    /* خدمات وبلدية: أخضر داكن */
+        .theme-weather { background: #0c4a6e; }     /* الطقس: أزرق */
+        .theme-sport { background: #15803d; }       /* الرياضة: أخضر الملاعب */
+        .theme-appeal { background: #581c87; }      /* مناشدة إنسانية: بنفسجي */
+        .theme-local { background: #e68a00; }       /* المحليات: برتقالي */
 
         /* 1. Top Header Bar */
         .top-header-bar {
@@ -43,6 +45,7 @@
             height: 60px;
             font-weight: 900;
             font-size: 18px;
+            direction: rtl;
         }
         .top-header-bar .cat-title-top {
             font-size: 19px;
@@ -59,6 +62,7 @@
             border-radius: 30px;
             gap: 6px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+            direction: rtl;
         }
         .top-header-logo-box img { width: 30px; height: 30px; object-fit: contain; }
         .top-header-logo-box span { font-size: 13px; font-weight: bold; color: #111; }
@@ -93,14 +97,16 @@
         /* Category Pill */
         .badge-pill {
             background: #ffffff;
-            color: #0b1329;
+            color: #111;
             padding: 4px 16px;
             font-size: 13px;
             border-radius: 20px;
             font-weight: 900;
-            align-self: center;
+            align-self: flex-end;
             margin-bottom: 2px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            text-align: right;
+            direction: rtl;
         }
 
         .phone-frame h2 {
@@ -123,6 +129,7 @@
             width: 100%;
             text-align: right;
             direction: rtl;
+            padding: 0;
         }
 
         .bullet-list li {
@@ -131,8 +138,8 @@
             line-height: 1.3;
             font-weight: 600;
             position: relative;
-            padding-left: 14px;
-            padding-right: 0;
+            padding-right: 14px;
+            padding-left: 0;
             text-align: right;
             direction: rtl;
         }
@@ -140,8 +147,8 @@
         .bullet-list li::before {
             content: "•";
             position: absolute;
-            left: 0;
-            right: auto;
+            right: 0;
+            left: auto;
             color: #ffffff;
             font-weight: bold;
             font-size: 15px;
@@ -158,6 +165,7 @@
             border-top: 2px solid rgba(255,255,255,0.15);
             color: #fff;
             direction: rtl;
+            text-align: right;
         }
         .footer-right { font-weight: bold; font-size: 13px; text-align: right; }
         .footer-center-logo {
@@ -167,6 +175,7 @@
             padding: 2px 8px;
             border-radius: 20px;
             gap: 5px;
+            direction: rtl;
         }
         .footer-center-logo img { width: 24px; height: 24px; object-fit: contain; }
         .footer-center-logo div { font-size: 9px; line-height: 1.1; color: #0b1329; font-weight: bold; text-align: right; }
@@ -174,12 +183,12 @@
 
         /* Control Inputs Area */
         .controls { padding: 12px 15px; display: flex; flex-direction: column; gap: 8px; background: #fff; border-top: 1px solid #eee; direction: rtl; text-align: right; }
-        .controls label { font-size: 11px; font-weight: bold; color: #555; display: flex; align-items: center; gap: 6px; cursor: pointer; }
-        .controls textarea, .controls input[type="text"] { width: 100%; padding: 7px; border: 1px solid #ccc; border-radius: 6px; font-size: 12px; font-family: inherit; resize: vertical; text-align: right; }
-        .controls input[type="file"] { font-size: 11px; padding: 6px; background: #f9f9f9; border: 1px dashed #666; border-radius: 6px; cursor: pointer; }
+        .controls label { font-size: 11px; font-weight: bold; color: #555; display: flex; align-items: center; gap: 6px; cursor: pointer; justify-content: flex-start; }
+        .controls textarea, .controls input[type="text"] { width: 100%; padding: 7px; border: 1px solid #ccc; border-radius: 6px; font-size: 12px; font-family: inherit; resize: vertical; text-align: right; direction: rtl; }
+        .controls input[type="file"] { font-size: 11px; padding: 6px; background: #f9f9f9; border: 1px dashed #666; border-radius: 6px; cursor: pointer; text-align: right; }
         
         .save-btn {
-            background: #0b1329;
+            background: #15803d;
             color: #fff;
             border: none;
             padding: 10px;
@@ -191,37 +200,37 @@
             transition: background 0.2s;
             margin-top: 5px;
         }
-        .save-btn:hover { background: #1e293b; }
+        .save-btn:hover { background: #166534; }
     </style>
 </head>
 <body>
 
-    <h1>قوالب موسوعة البصرة - النسخة النهائية المحدثة</h1>
+    <h1>قوالب موسوعة البصرة - لون الملاعب للرياضة</h1>
 
     <div class="container">
 
-        <!-- 1. قالب السياسة والعاجل (نيلي) -->
+        <!-- 1. عاجل وسياسة (أحمر) -->
         <div class="template-card">
-            <div class="template-header"><span>1. السياسة (نيلي)</span><span style="color:#0b1329">INDIGO</span></div>
-            <div class="phone-frame" id="frame-politics">
-                <div class="top-header-bar theme-politics">
-                    <span class="cat-title-top" id="top-title-politics">عاجل وسياسة</span>
+            <div class="template-header"><span>1. عاجل وسياسة (أحمر)</span><span style="color:#b91c1c">RED</span></div>
+            <div class="phone-frame" id="frame-urgent">
+                <div class="top-header-bar theme-urgent">
+                    <span class="cat-title-top" id="top-title-urgent">عاجل وسياسة</span>
                     <div class="top-header-logo-box">
                         <img src="Logo.png" alt="شعار">
                         <span>موسوعة البصرة</span>
                     </div>
                 </div>
                 <div class="media-container">
-                    <img src="https://images.unsplash.com/photo-1541872703-74c5e44368f9?w=500" class="hero-news-img" id="img-politics" alt="صورة">
+                    <img src="https://images.unsplash.com/photo-1541872703-74c5e44368f9?w=500" class="hero-news-img" id="img-urgent" alt="صورة">
                 </div>
-                <div class="lower-content-box theme-politics">
-                    <div class="badge-pill" id="badge-politics">عاجل | سياسة</div>
-                    <h2 id="text-politics">وصول الشخصية السياسية الرسمية إلى محافظة البصرة</h2>
+                <div class="lower-content-box theme-urgent">
+                    <div class="badge-pill" id="badge-urgent">عاجل جداً 🔴</div>
+                    <h2 id="text-urgent">بيان مهم يصدر عن الجهات الرسمية في محافظة البصرة</h2>
                     <ul class="bullet-list">
-                        <li id="li-politics-1">استقبال رسمـي رفيع المستوى في ديوان المحافظة</li>
-                        <li id="li-politics-2">بحث أفق التعاون المشترك والملفات الخدمية</li>
-                        <li id="li-politics-3">التأكيد على استمرار التنسيق المشترك</li>
-                        <li id="li-politics-4">جولة ميدانية للاطلاع على مشاريع الإعمار</li>
+                        <li id="li-urgent-1">إجراءات طارئة وفورية لضمان استقرار الأوضاع</li>
+                        <li id="li-urgent-2">توجه أمني وخدمي مكثف لاحتواء الموقف بالكامل</li>
+                        <li id="li-urgent-3">توجيهات مشددة للدوائر بأخذ الحيطة والحذر</li>
+                        <li id="li-urgent-4">موسوعة البصرة ستوافيكم بالتفاصيل حال ورودها</li>
                     </ul>
                 </div>
                 <div class="footer-box">
@@ -230,90 +239,44 @@
                         <img src="Logo.png" alt="شعار">
                         <div><span style="font-size:10px;">BASRA</span><br><span style="font-size:8px; color:#555;">ENCYCLOPEDIA</span></div>
                     </div>
-                    <div class="footer-left">سياسة<br>موسوعة البصرة</div>
+                    <div class="footer-left">عاجل<br>موسوعة البصرة</div>
                 </div>
             </div>
             <div class="controls">
-                <label>اختر صورة الخبر:</label><input type="file" accept="image/*" onchange="loadFile(event, 'img-politics')">
-                <label>عنوان الشريط العلوي:</label><input type="text" value="عاجل وسياسة" oninput="document.getElementById('top-title-politics').innerText = this.value">
-                <label>شارة التصنيف (Badge):</label><input type="text" value="عاجل | سياسة" oninput="document.getElementById('badge-politics').innerText = this.value">
-                <label>العنوان الرئيسي:</label><textarea rows="2" oninput="document.getElementById('text-politics').innerText = this.value">وصول الشخصية السياسية الرسمية إلى محافظة البصرة</textarea>
-                <label>النقطة 1:</label><input type="text" value="استقبال رسمـي رفيع المستوى في ديوان المحافظة" oninput="document.getElementById('li-politics-1').innerText = this.value">
-                <label>النقطة 2:</label><input type="text" value="بحث أفق التعاون المشترك والملفات الخدمية" oninput="document.getElementById('li-politics-2').innerText = this.value">
-                <label>النقطة 3:</label><input type="text" value="التأكيد على استمرار التنسيق المشترك" oninput="document.getElementById('li-politics-3').innerText = this.value">
-                <label>النقطة 4:</label><input type="text" value="جولة ميدانية للاطلاع على مشاريع الإعمار" oninput="document.getElementById('li-politics-4').innerText = this.value">
-                <button class="save-btn" onclick="saveImage('frame-politics', 'BSR_Politics.png')">📥 حفظ كصورة 1080x1920</button>
+                <label>اختر صورة الخبر:</label><input type="file" accept="image/*" onchange="loadFile(event, 'img-urgent')">
+                <label>عنوان الشريط العلوي:</label><input type="text" value="عاجل وسياسة" oninput="document.getElementById('top-title-urgent').innerText = this.value">
+                <label>شارة التصنيف (Badge):</label><input type="text" value="عاجل جداً 🔴" oninput="document.getElementById('badge-urgent').innerText = this.value">
+                <label>العنوان الرئيسي:</label><textarea rows="2" oninput="document.getElementById('text-urgent').innerText = this.value">بيان مهم يصدر عن الجهات الرسمية في محافظة البصرة</textarea>
+                <label>النقطة 1:</label><input type="text" value="إجراءات طارئة وفورية لضمان استقرار الأوضاع" oninput="document.getElementById('li-urgent-1').innerText = this.value">
+                <label>النقطة 2:</label><input type="text" value="توجه أمني وخدمي مكثف لاحتواء الموقف بالكامل" oninput="document.getElementById('li-urgent-2').innerText = this.value">
+                <label>النقطة 3:</label><input type="text" value="توجيهات مشددة للدوائر بأخذ الحيطة والحذر" oninput="document.getElementById('li-urgent-3').innerText = this.value">
+                <label>النقطة 4:</label><input type="text" value="موسوعة البصرة ستوافيكم بالتفاصيل حال ورودها" oninput="document.getElementById('li-urgent-4').innerText = this.value">
+                <button class="save-btn" onclick="saveImage('frame-urgent', 'BSR_Urgent.png')">📥 حفظ كصورة 1080x1920</button>
             </div>
         </div>
 
-        <!-- 2. قالب المحليات والأمن (برتقالي) -->
+        <!-- 2. خدمات وبلدية (أخضر داكن) -->
         <div class="template-card">
-            <div class="template-header"><span>2. المحليات (برتقالي)</span><span style="color:#e68a00">ORANGE</span></div>
-            <div class="phone-frame" id="frame-local">
-                <div class="top-header-bar theme-local">
-                    <span class="cat-title-top" id="top-title-local">محليات وأمن</span>
+            <div class="template-header"><span>2. خدمات وبلدية (أخضر داكن)</span><span style="color:#064e3b">GREEN</span></div>
+            <div class="phone-frame" id="frame-services">
+                <div class="top-header-bar theme-services">
+                    <span class="cat-title-top" id="top-title-services">خدمات وبلدية</span>
                     <div class="top-header-logo-box">
                         <img src="Logo.png" alt="شعار">
                         <span>موسوعة البصرة</span>
                     </div>
                 </div>
                 <div class="media-container">
-                    <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=500" class="hero-news-img" id="img-local" alt="صورة">
+                    <img src="https://images.unsplash.com/photo-1585829365295-ab7cd400c167?w=500" class="hero-news-img" id="img-services" alt="صورة">
                 </div>
-                <div class="lower-content-box theme-local">
-                    <div class="badge-pill" id="badge-local">محليات | النزاهة</div>
-                    <h2 id="text-local">النزاهة: ضبط موظفين اثنين متلبسين بتسليم الرشوة في بلدية كربلاء</h2>
+                <div class="lower-content-box theme-services">
+                    <div class="badge-pill" id="badge-services">خدمات ونقاط</div>
+                    <h2 id="text-services">انطلاق حملة كبرى لتنظيف وصيانة شبكات الصرف الصحي</h2>
                     <ul class="bullet-list">
-                        <li id="li-local-1">موظفين في قسم التجاوزات ببلدية كربلاء</li>
-                        <li id="li-local-2">كمين محكم من مكتب تحقيق كربلاء</li>
-                        <li id="li-local-3">رشوة مقابل السماح ببناء دار على أرض زراعية</li>
-                        <li id="li-local-4">توقيفهم وفق القرار 160 لسنة 1983</li>
-                    </ul>
-                </div>
-                <div class="footer-box">
-                    <div class="footer-right">كربلاء<br><span style="font-size:11px; font-weight:normal;">Al-Karbala</span></div>
-                    <div class="footer-center-logo">
-                        <img src="Logo.png" alt="شعار">
-                        <div><span style="font-size:10px;">BASRA</span><br><span style="font-size:8px; color:#555;">ENCYCLOPEDIA</span></div>
-                    </div>
-                    <div class="footer-left">محليات<br>موسوعة البصرة</div>
-                </div>
-            </div>
-            <div class="controls">
-                <label>اختر صورة الخبر:</label><input type="file" accept="image/*" onchange="loadFile(event, 'img-local')">
-                <label>عنوان الشريط العلوي:</label><input type="text" value="محليات وأمن" oninput="document.getElementById('top-title-local').innerText = this.value">
-                <label>شارة التصنيف (Badge):</label><input type="text" value="محليات | النزاهة" oninput="document.getElementById('badge-local').innerText = this.value">
-                <label>العنوان الرئيسي:</label><textarea rows="2" oninput="document.getElementById('text-local').innerText = this.value">النزاهة: ضبط موظفين اثنين متلبسين بتسليم الرشوة في بلدية كربلاء</textarea>
-                <label>النقطة 1:</label><input type="text" value="موظفين في قسم التجاوزات ببلدية كربلاء" oninput="document.getElementById('li-local-1').innerText = this.value">
-                <label>النقطة 2:</label><input type="text" value="كمين محكم من مكتب تحقيق كربلاء" oninput="document.getElementById('li-local-2').innerText = this.value">
-                <label>النقطة 3:</label><input type="text" value="رشوة مقابل السماح ببناء دار على أرض زراعية" oninput="document.getElementById('li-local-3').innerText = this.value">
-                <label>النقطة 4:</label><input type="text" value="توقيفهم وفق القرار 160 لسنة 1983" oninput="document.getElementById('li-local-4').innerText = this.value">
-                <button class="save-btn" onclick="saveImage('frame-local', 'BSR_Local.png')">📥 حفظ كصورة 1080x1920</button>
-            </div>
-        </div>
-
-        <!-- 3. قالب المناشدات الإنسانية (بنفسجي) -->
-        <div class="template-card">
-            <div class="template-header"><span>3. المناشدات (بنفسجي)</span><span style="color:#581c87">PURPLE</span></div>
-            <div class="phone-frame" id="frame-appeal">
-                <div class="top-header-bar theme-appeal">
-                    <span class="cat-title-top" id="top-title-appeal">مناشدات إنسانية</span>
-                    <div class="top-header-logo-box">
-                        <img src="Logo.png" alt="شعار">
-                        <span>موسوعة البصرة</span>
-                    </div>
-                </div>
-                <div class="media-container">
-                    <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=500" class="hero-news-img" id="img-appeal" alt="صورة">
-                </div>
-                <div class="lower-content-box theme-appeal">
-                    <div class="badge-pill" id="badge-appeal">إنسانية | أهل الخير</div>
-                    <h2 id="text-appeal">عائلة متعففة في قضاء الزبير تناشد عبر "موسوعة البصرة" لمد يد العون</h2>
-                    <ul class="bullet-list">
-                        <li id="li-appeal-1">ظروف معيشية صعبة وقاسية تواجه الأسرة المعوزة</li>
-                        <li id="li-appeal-2">مناشدة عاجلة لتقديم الدعم العلاجي والمعيشي العاجل</li>
-                        <li id="li-appeal-3">رب الأسرة يعاني من مرض حاد يمنعه عن العمل</li>
-                        <li id="li-appeal-4">أهل الخير والجهات المعنية مدعوون لتقديم المساعدة</li>
+                        <li id="li-services-1">استنفرت الكوادر البلدية آلياتها الخدمية والهندسية</li>
+                        <li id="li-services-2">دعوات للمواطنين للتعاون وإنجاح الحملة الخدمية</li>
+                        <li id="li-services-3">معالجة الطفحات المائية وفتح الخطوط المسدودة</li>
+                        <li id="li-services-4">استمرار العمل على مدار الساعة ليشمل مختلف المناطق</li>
                     </ul>
                 </div>
                 <div class="footer-box">
@@ -322,25 +285,71 @@
                         <img src="Logo.png" alt="شعار">
                         <div><span style="font-size:10px;">BASRA</span><br><span style="font-size:8px; color:#555;">ENCYCLOPEDIA</span></div>
                     </div>
-                    <div class="footer-left">مناشدات<br>موسوعة البصرة</div>
+                    <div class="footer-left">خدمات<br>موسوعة البصرة</div>
                 </div>
             </div>
             <div class="controls">
-                <label>اختر صورة الخبر:</label><input type="file" accept="image/*" onchange="loadFile(event, 'img-appeal')">
-                <label>عنوان الشريط العلوي:</label><input type="text" value="مناشدات إنسانية" oninput="document.getElementById('top-title-appeal').innerText = this.value">
-                <label>شارة التصنيف (Badge):</label><input type="text" value="إنسانية | أهل الخير" oninput="document.getElementById('badge-appeal').innerText = this.value">
-                <label>العنوان الرئيسي:</label><textarea rows="2" oninput="document.getElementById('text-appeal').innerText = this.value">عائلة متعففة في قضاء الزبير تناشد عبر "موسوعة البصرة" لمد يد العون</textarea>
-                <label>النقطة 1:</label><input type="text" value="ظروف معيشية صعبة وقاسية تواجه الأسرة المعوزة" oninput="document.getElementById('li-appeal-1').innerText = this.value">
-                <label>النقطة 2:</label><input type="text" value="مناشدة عاجلة لتقديم الدعم العلاجي والمعيشي العاجل" oninput="document.getElementById('li-appeal-2').innerText = this.value">
-                <label>النقطة 3:</label><input type="text" value="رب الأسرة يعاني من مرض حاد يمنعه عن العمل" oninput="document.getElementById('li-appeal-3').innerText = this.value">
-                <label>النقطة 4:</label><input type="text" value="أهل الخير والجهات المعنية مدعوون لتقديم المساعدة" oninput="document.getElementById('li-appeal-4').innerText = this.value">
-                <button class="save-btn" onclick="saveImage('frame-appeal', 'BSR_Appeal.png')">📥 حفظ كصورة 1080x1920</button>
+                <label>اختر صورة الخبر:</label><input type="file" accept="image/*" onchange="loadFile(event, 'img-services')">
+                <label>عنوان الشريط العلوي:</label><input type="text" value="خدمات وبلدية" oninput="document.getElementById('top-title-services').innerText = this.value">
+                <label>شارة التصنيف (Badge):</label><input type="text" value="خدمات ونقاط" oninput="document.getElementById('badge-services').innerText = this.value">
+                <label>العنوان الرئيسي:</label><textarea rows="2" oninput="document.getElementById('text-services').innerText = this.value">انطلاق حملة كبرى لتنظيف وصيانة شبكات الصرف الصحي</textarea>
+                <label>النقطة 1:</label><input type="text" value="استنفرت الكوادر البلدية آلياتها الخدمية والهندسية" oninput="document.getElementById('li-services-1').innerText = this.value">
+                <label>النقطة 2:</label><input type="text" value="دعوات للمواطنين للتعاون وإنجاح الحملة الخدمية" oninput="document.getElementById('li-services-2').innerText = this.value">
+                <label>النقطة 3:</label><input type="text" value="معالجة الطفحات المائية وفتح الخطوط المسدودة" oninput="document.getElementById('li-services-3').innerText = this.value">
+                <label>النقطة 4:</label><input type="text" value="استمرار العمل على مدار الساعة ليشمل مختلف المناطق" oninput="document.getElementById('li-services-4').innerText = this.value">
+                <button class="save-btn" onclick="saveImage('frame-services', 'BSR_Services.png')">📥 حفظ كصورة 1080x1920</button>
             </div>
         </div>
 
-        <!-- 4. قالب الرياضة والميناء (أخضر داكن) -->
+        <!-- 3. الطقس (أزرق) -->
         <div class="template-card">
-            <div class="template-header"><span>4. الرياضة (أخضر داكن)</span><span style="color:#064e3b">GREEN</span></div>
+            <div class="template-header"><span>3. الطقس (أزرق)</span><span style="color:#0c4a6e">BLUE</span></div>
+            <div class="phone-frame" id="frame-weather">
+                <div class="top-header-bar theme-weather">
+                    <span class="cat-title-top" id="top-title-weather">الطقس والأحوال</span>
+                    <div class="top-header-logo-box">
+                        <img src="Logo.png" alt="شعار">
+                        <span>موسوعة البصرة</span>
+                    </div>
+                </div>
+                <div class="media-container">
+                    <img src="https://images.unsplash.com/photo-1592210454359-9043f067919b?w=500" class="hero-news-img" id="img-weather" alt="صورة">
+                </div>
+                <div class="lower-content-box theme-weather">
+                    <div class="badge-pill" id="badge-weather">تنبيه جوي ☀️</div>
+                    <h2 id="text-weather">ارتفاع درجات الحرارة في البصرة لتسجل معدلات مرتفعة</h2>
+                    <ul class="bullet-list">
+                        <li id="li-weather-1">أجواء مشمسة ومستقرة عموماً في عموم مناطق المحافظة</li>
+                        <li id="li-weather-2">دعوات لتقليل التعرض المباشر لأشعة الشمس وقت الذروة</li>
+                        <li id="li-weather-3">رياح شمالية غربية خفيفة إلى معتدلة السرعة</li>
+                        <li id="li-weather-4">توقعات بانخفاض طفيف في الحرارة ابتداءً من الغد</li>
+                    </ul>
+                </div>
+                <div class="footer-box">
+                    <div class="footer-right">البصرة<br><span style="font-size:11px; font-weight:normal;">Al-Basra</span></div>
+                    <div class="footer-center-logo">
+                        <img src="Logo.png" alt="شعار">
+                        <div><span style="font-size:10px;">BASRA</span><br><span style="font-size:8px; color:#555;">ENCYCLOPEDIA</span></div>
+                    </div>
+                    <div class="footer-left">الطقس<br>موسوعة البصرة</div>
+                </div>
+            </div>
+            <div class="controls">
+                <label>اختر صورة الخبر:</label><input type="file" accept="image/*" onchange="loadFile(event, 'img-weather')">
+                <label>عنوان الشريط العلوي:</label><input type="text" value="الطقس والأحوال" oninput="document.getElementById('top-title-weather').innerText = this.value">
+                <label>شارة التصنيف (Badge):</label><input type="text" value="تنبيه جوي ☀️" oninput="document.getElementById('badge-weather').innerText = this.value">
+                <label>العنوان الرئيسي:</label><textarea rows="2" oninput="document.getElementById('text-weather').innerText = this.value">ارتفاع درجات الحرارة في البصرة لتسجل معدلات مرتفعة</textarea>
+                <label>النقطة 1:</label><input type="text" value="أجواء مشمسة ومستقرة عموماً في عموم مناطق المحافظة" oninput="document.getElementById('li-weather-1').innerText = this.value">
+                <label>النقطة 2:</label><input type="text" value="دعوات لتقليل التعرض المباشر لأشعة الشمس وقت الذروة" oninput="document.getElementById('li-weather-2').innerText = this.value">
+                <label>النقطة 3:</label><input type="text" value="رياح شمالية غربية خفيفة إلى معتدلة السرعة" oninput="document.getElementById('li-weather-3').innerText = this.value">
+                <label>النقطة 4:</label><input type="text" value="توقعات بانخفاض طفيف في الحرارة ابتداءً من الغد" oninput="document.getElementById('li-weather-4').innerText = this.value">
+                <button class="save-btn" onclick="saveImage('frame-weather', 'BSR_Weather.png')">📥 حفظ كصورة 1080x1920</button>
+            </div>
+        </div>
+
+        <!-- 4. الرياضة (أخضر لون الملاعب) -->
+        <div class="template-card">
+            <div class="template-header"><span>4. الرياضة (أخضر الملاعب)</span><span style="color:#15803d">STADIUM GREEN</span></div>
             <div class="phone-frame" id="frame-sport">
                 <div class="top-header-bar theme-sport">
                     <span class="cat-title-top" id="top-title-sport">رياضة وملاعب</span>
@@ -384,28 +393,28 @@
             </div>
         </div>
 
-        <!-- 5. قالب الطقس والأحوال (أزرق) -->
+        <!-- 5. مناشدة إنسانية (بنفسجي) -->
         <div class="template-card">
-            <div class="template-header"><span>5. الطقس (أزرق)</span><span style="color:#0c4a6e">BLUE</span></div>
-            <div class="phone-frame" id="frame-weather">
-                <div class="top-header-bar theme-weather">
-                    <span class="cat-title-top" id="top-title-weather">الطقس والأحوال</span>
+            <div class="template-header"><span>5. مناشدة إنسانية (بنفسجي)</span><span style="color:#581c87">PURPLE</span></div>
+            <div class="phone-frame" id="frame-appeal">
+                <div class="top-header-bar theme-appeal">
+                    <span class="cat-title-top" id="top-title-appeal">مناشدة إنسانية</span>
                     <div class="top-header-logo-box">
                         <img src="Logo.png" alt="شعار">
                         <span>موسوعة البصرة</span>
                     </div>
                 </div>
                 <div class="media-container">
-                    <img src="https://images.unsplash.com/photo-1592210454359-9043f067919b?w=500" class="hero-news-img" id="img-weather" alt="صورة">
+                    <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=500" class="hero-news-img" id="img-appeal" alt="صورة">
                 </div>
-                <div class="lower-content-box theme-weather">
-                    <div class="badge-pill" id="badge-weather">تنبيه جوي ☀️</div>
-                    <h2 id="text-weather">ارتفاع درجات الحرارة في البصرة لتسجل 47 مئوية اليوم</h2>
+                <div class="lower-content-box theme-appeal">
+                    <div class="badge-pill" id="badge-appeal">إنسانية | أهل الخير</div>
+                    <h2 id="text-appeal">عائلة متعففة في البصرة تناشد عبر "موسوعة البصرة" لمد يد العون</h2>
                     <ul class="bullet-list">
-                        <li id="li-weather-1">أجواء مشمسة ومستقرة عموماً في عموم مناطق المحافظة</li>
-                        <li id="li-weather-2">دعوات لتقليل التعرض المباشر لأشعة الشمس وقت الذروة</li>
-                        <li id="li-weather-3">رياح شمالية غربية خفيفة إلى معتدلة السرعة</li>
-                        <li id="li-weather-4">توقعات بانخفاض طفيف في الحرارة ابتداءً من الغد</li>
+                        <li id="li-appeal-1">ظروف معيشية صعبة وقاسية تواجه الأسرة المعوزة</li>
+                        <li id="li-appeal-2">مناشدة عاجلة لتقديم الدعم العلاجي والمعيشي العاجل</li>
+                        <li id="li-appeal-3">رب الأسرة يمر بظروف صحية تمنعه عن العمل</li>
+                        <li id="li-appeal-4">أهل الخير والجهات المعنية مدعوون لتقديم المساعدة</li>
                     </ul>
                 </div>
                 <div class="footer-box">
@@ -414,65 +423,19 @@
                         <img src="Logo.png" alt="شعار">
                         <div><span style="font-size:10px;">BASRA</span><br><span style="font-size:8px; color:#555;">ENCYCLOPEDIA</span></div>
                     </div>
-                    <div class="footer-left">الطقس<br>موسوعة البصرة</div>
+                    <div class="footer-left">مناشدات<br>موسوعة البصرة</div>
                 </div>
             </div>
             <div class="controls">
-                <label>اختر صورة الخبر:</label><input type="file" accept="image/*" onchange="loadFile(event, 'img-weather')">
-                <label>عنوان الشريط العلوي:</label><input type="text" value="الطقس والأحوال" oninput="document.getElementById('top-title-weather').innerText = this.value">
-                <label>شارة التصنيف (Badge):</label><input type="text" value="تنبيه جوي ☀️" oninput="document.getElementById('badge-weather').innerText = this.value">
-                <label>العنوان الرئيسي:</label><textarea rows="2" oninput="document.getElementById('text-weather').innerText = this.value">ارتفاع درجات الحرارة في البصرة لتسجل 47 مئوية اليوم</textarea>
-                <label>النقطة 1:</label><input type="text" value="أجواء مشمسة ومستقرة عموماً في عموم مناطق المحافظة" oninput="document.getElementById('li-weather-1').innerText = this.value">
-                <label>النقطة 2:</label><input type="text" value="دعوات لتقليل التعرض المباشر لأشعة الشمس وقت الذروة" oninput="document.getElementById('li-weather-2').innerText = this.value">
-                <label>النقطة 3:</label><input type="text" value="رياح شمالية غربية خفيفة إلى معتدلة السرعة" oninput="document.getElementById('li-weather-3').innerText = this.value">
-                <label>النقطة 4:</label><input type="text" value="توقعات بانخفاض طفيف في الحرارة ابتداءً من الغد" oninput="document.getElementById('li-weather-4').innerText = this.value">
-                <button class="save-btn" onclick="saveImage('frame-weather', 'BSR_Weather.png')">📥 حفظ كصورة 1080x1920</button>
-            </div>
-        </div>
-
-        <!-- 6. قالب الخدمات والبلدية (أخضر فاتح) -->
-        <div class="template-card">
-            <div class="template-header"><span>6. الخدمات (أخضر فاتح)</span><span style="color:#15803d">LIGHT GREEN</span></div>
-            <div class="phone-frame" id="frame-services">
-                <div class="top-header-bar theme-services">
-                    <span class="cat-title-top" id="top-title-services">خدمات وبلدية</span>
-                    <div class="top-header-logo-box">
-                        <img src="Logo.png" alt="شعار">
-                        <span>موسوعة البصرة</span>
-                    </div>
-                </div>
-                <div class="media-container">
-                    <img src="https://images.unsplash.com/photo-1585829365295-ab7cd400c167?w=500" class="hero-news-img" id="img-services" alt="صورة">
-                </div>
-                <div class="lower-content-box theme-services">
-                    <div class="badge-pill" id="badge-services">خدمات ونقاط</div>
-                    <h2 id="text-services">انطلاق حملة كبرى لتنظيف وصيانة شبكات الصرف الصحي في العشار</h2>
-                    <ul class="bullet-list">
-                        <li id="li-services-1">استنفرت الكوادر البلدية آلياتها الخدمية والهندسية</li>
-                        <li id="li-services-2">دعوات للمواطنين للتعاون وإنجاح الحملة الخدمية</li>
-                        <li id="li-services-3">معالجة الطفحات المائية وفتح الخطوط المسدودة</li>
-                        <li id="li-services-4">استمرار العمل على مدار الساعة ليشمل مختلف المناطق</li>
-                    </ul>
-                </div>
-                <div class="footer-box">
-                    <div class="footer-right">البصرة<br><span style="font-size:11px; font-weight:normal;">Al-Basra</span></div>
-                    <div class="footer-center-logo">
-                        <img src="Logo.png" alt="شعار">
-                        <div><span style="font-size:10px;">BASRA</span><br><span style="font-size:8px; color:#555;">ENCYCLOPEDIA</span></div>
-                    </div>
-                    <div class="footer-left">خدمات<br>موسوعة البصرة</div>
-                </div>
-            </div>
-            <div class="controls">
-                <label>اختر صورة الخبر:</label><input type="file" accept="image/*" onchange="loadFile(event, 'img-services')">
-                <label>عنوان الشريط العلوي:</label><input type="text" value="خدمات وبلدية" oninput="document.getElementById('top-title-services').innerText = this.value">
-                <label>شارة التصنيف (Badge):</label><input type="text" value="خدمات ونقاط" oninput="document.getElementById('badge-services').innerText = this.value">
-                <label>العنوان الرئيسي:</label><textarea rows="2" oninput="document.getElementById('text-services').innerText = this.value">انطلاق حملة كبرى لتنظيف وصيانة شبكات الصرف الصحي في العشار</textarea>
-                <label>النقطة 1:</label><input type="text" value="استنفرت الكوادر البلدية آلياتها الخدمية والهندسية" oninput="document.getElementById('li-services-1').innerText = this.value">
-                <label>النقطة 2:</label><input type="text" value="دعوات للمواطنين للتعاون وإنجاح الحملة الخدمية" oninput="document.getElementById('li-services-2').innerText = this.value">
-                <label>النقطة 3:</label><input type="text" value="معالجة الطفحات المائية وفتح الخطوط المسدودة" oninput="document.getElementById('li-services-3').innerText = this.value">
-                <label>النقطة 4:</label><input type="text" value="استمرار العمل على مدار الساعة ليشمل مختلف المناطق" oninput="document.getElementById('li-services-4').innerText = this.value">
-                <button class="save-btn" onclick="saveImage('frame-services', 'BSR_Services.png')">📥 حفظ كصورة 1080x1920</button>
+                <label>اختر صورة الخبر:</label><input type="file" accept="image/*" onchange="loadFile(event, 'img-appeal')">
+                <label>عنوان الشريط العلوي:</label><input type="text" value="مناشدة إنسانية" oninput="document.getElementById('top-title-appeal').innerText = this.value">
+                <label>شارة التصنيف (Badge):</label><input type="text" value="إنسانية | أهل الخير" oninput="document.getElementById('badge-appeal').innerText = this.value">
+                <label>العنوان الرئيسي:</label><textarea rows="2" oninput="document.getElementById('text-appeal').innerText = this.value">عائلة متعففة في البصرة تناشد عبر "موسوعة البصرة" لمد يد العون</textarea>
+                <label>النقطة 1:</label><input type="text" value="ظروف معيشية صعبة وقاسية تواجه الأسرة المعوزة" oninput="document.getElementById('li-appeal-1').innerText = this.value">
+                <label>النقطة 2:</label><input type="text" value="مناشدة عاجلة لتقديم الدعم العلاجي والمعيشي العاجل" oninput="document.getElementById('li-appeal-2').innerText = this.value">
+                <label>النقطة 3:</label><input type="text" value="رب الأسرة يمر بظروف صحية تمنعه عن العمل" oninput="document.getElementById('li-appeal-3').innerText = this.value">
+                <label>النقطة 4:</label><input type="text" value="أهل الخير والجهات المعنية مدعوون لتقديم المساعدة" oninput="document.getElementById('li-appeal-4').innerText = this.value">
+                <button class="save-btn" onclick="saveImage('frame-appeal', 'BSR_Appeal.png')">📥 حفظ كصورة 1080x1920</button>
             </div>
         </div>
 
