@@ -3,20 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>قوالب موسوعة البصرة - جـ1 (عاجل وخدمات)</title>
+    <title>قوالب موسوعة البصرة الشاملة</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         body { background: #f4f4f4; color: #333; padding: 20px; display: flex; flex-direction: column; align-items: center; direction: rtl; text-align: right; }
-        h1 { margin-bottom: 20px; font-size: 20px; color: #111; text-align: center; }
-        .templates-wrapper { display: flex; flex-wrap: wrap; gap: 30px; justify-content: center; width: 100%; max-width: 800px; }
-        .template-box { background: #fff; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); width: 380px; overflow: hidden; display: flex; flex-direction: column; }
+        h1 { margin-bottom: 15px; font-size: 18px; color: #111; text-align: center; }
+        .container { display: flex; flex-direction: column; gap: 20px; width: 100%; max-width: 420px; }
+        
+        /* شريط التنقل */
+        .nav-tabs { display: flex; gap: 5px; width: 100%; margin-bottom: 5px; flex-wrap: wrap; justify-content: center; }
+        .nav-tab { padding: 8px 12px; background: #ddd; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; font-size: 12px; flex: 1; text-align: center; }
+        .nav-tab.active { background: #0b1329; color: #fff; }
+
+        .template-card { background: #fff; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); overflow: hidden; padding-bottom: 15px; display: none; }
+        .template-card.active { display: block; }
         
         .phone-frame { width: 100%; aspect-ratio: 9/16; position: relative; overflow: hidden; display: flex; flex-direction: column; color: #fff; }
         
         .theme-urgent { background: #b91c1c; }
         .theme-services { background: #064e3b; }
+        .theme-weather { background: #0c4a6e; }
+        .theme-sport { background: #15803d; }
 
         .top-header-bar { background: rgba(0, 0, 0, 0.25); padding: 8px 15px; display: flex; justify-content: space-between; align-items: center; height: 48px; border-bottom: 1px solid rgba(255,255,255,0.15); }
         .top-header-left { display: flex; align-items: center; gap: 8px; }
@@ -27,7 +36,7 @@
         .top-header-logo-box img { width: 22px; height: 22px; object-fit: contain; }
         .top-header-logo-box span { font-size: 11px; font-weight: bold; color: #111; }
 
-        .media-container { position: relative; width: 100%; height: 450px; overflow: hidden; border-bottom: 3px solid rgba(255,255,255,0.2); flex-shrink: 0; }
+        .media-container { position: relative; width: 100%; height: 420px; overflow: hidden; border-bottom: 3px solid rgba(255,255,255,0.2); flex-shrink: 0; }
         .hero-news-img { width: 100%; height: 100%; object-fit: cover; }
 
         .lower-content-box { flex-grow: 1; padding: 10px 16px; display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-end; gap: 6px; }
@@ -47,7 +56,7 @@
         .footer-center-logo-single img { width: 20px; height: 20px; object-fit: contain; }
         .footer-center-logo-single span { font-size: 11px; color: #0b1329; font-weight: 900; direction: ltr; }
 
-        .controls { padding: 15px; display: flex; flex-direction: column; gap: 8px; background: #fff; border-top: 1px solid #eee; }
+        .controls { padding: 12px 15px; display: flex; flex-direction: column; gap: 8px; background: #fff; border-top: 1px solid #eee; }
         .controls label { font-size: 11px; font-weight: bold; color: #555; margin-top: 4px; }
         .controls textarea, .controls input[type="text"] { width: 100%; padding: 7px; border: 1px solid #ccc; border-radius: 6px; font-size: 12px; text-align: right; }
         .controls input[type="file"], .controls input[type="range"] { width: 100%; cursor: pointer; }
@@ -57,12 +66,19 @@
 </head>
 <body>
 
-    <h1>قوالب موسوعة البصرة - جـ1 (عاجل وخدمات)</h1>
+    <h1>موسوعة البصرة - صانع القوالب الشامل</h1>
 
-    <div class="templates-wrapper">
+    <div class="container">
+        <!-- شريط التنقل -->
+        <div class="nav-tabs">
+            <button class="nav-tab active" onclick="switchTab('urgent', this)">عاجل</button>
+            <button class="nav-tab" onclick="switchTab('services', this)">خدمات</button>
+            <button class="nav-tab" onclick="switchTab('weather', this)">الطقس</button>
+            <button class="nav-tab" onclick="switchTab('sport', this)">الرياضة</button>
+        </div>
 
-        <!-- 1. قالب عاجل وسياسة -->
-        <div class="template-box">
+        <!-- 1. قالب عاجل -->
+        <div class="template-card active" id="card-urgent">
             <div class="phone-frame theme-urgent" id="frame-urgent">
                 <div class="top-header-bar">
                     <div class="top-header-left">
@@ -96,31 +112,26 @@
                 </div>
             </div>
             <div class="controls">
-                <label>تاريخ النشر العلوي:</label>
+                <label>التاريخ العلوي:</label>
                 <input type="text" id="date-input-urgent" oninput="document.getElementById('date-text-urgent').innerText = this.value">
-                <label>اختر صورة الخبر:</label>
+                <label>اختر الصورة:</label>
                 <input type="file" accept="image/*" onchange="loadFile(event, 'img-urgent')">
-                
                 <div class="range-group">
-                    <label>حجم الصورة (الارتفاع):</label>
-                    <input type="range" min="200" max="800" value="450" oninput="document.getElementById('media-container-urgent').style.height = this.value + 'px'">
+                    <label>ارتفاع الصورة:</label>
+                    <input type="range" min="200" max="600" value="420" oninput="document.getElementById('media-container-urgent').style.height = this.value + 'px'">
                 </div>
-
                 <label>العنوان الرئيسي:</label>
                 <textarea rows="2" oninput="document.getElementById('title-urgent').innerText = this.value">هجمات الحوثيين على السعودية تشعل حرائق في منشآت نفطية</textarea>
-                
                 <div class="range-group">
                     <label>حجم خط العنوان:</label>
                     <input type="range" min="16" max="36" value="24" oninput="document.getElementById('title-urgent').style.fontSize = this.value + 'px'">
                 </div>
-                <label style="font-size: 11px; color: #666;">يمكنك تعديل النقاط الفرعية بالأسفل مباشرة بالضغط عليها داخل الصورة:</label>
-
                 <button class="save-btn" style="background: #b91c1c;" onclick="saveImage('frame-urgent', 'BSR_Urgent.png')">📥 حفظ كصورة عاجل</button>
             </div>
         </div>
 
-        <!-- 2. قالب خدمات وبلدية -->
-        <div class="template-box">
+        <!-- 2. قالب خدمات -->
+        <div class="template-card" id="card-services">
             <div class="phone-frame theme-services" id="frame-services">
                 <div class="top-header-bar">
                     <div class="top-header-left">
@@ -143,30 +154,4 @@
                     <div class="footer-right-side">
                         <span class="follow-label-rtl">تابعنا على:</span>
                         <div class="footer-social-icons-rtl">
-                            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-                            <a href="#"><i class="fa-brands fa-tiktok"></i></a>
-                            <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                            <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
-                            <a href="#"><i class="fa-brands fa-telegram-plane"></i></a>
-                        </div>
-                    </div>
-                    <div class="footer-center-logo-single"><img src="Logo.png" alt="شعار"><span>mwsuat_albasra</span></div>
-                </div>
-            </div>
-            <div class="controls">
-                <label>تاريخ النشر العلوي:</label>
-                <input type="text" id="date-input-services" oninput="document.getElementById('date-text-services').innerText = this.value">
-                <label>اختر صورة الخبر:</label>
-                <input type="file" accept="image/*" onchange="loadFile(event, 'img-services')">
-                
-                <div class="range-group">
-                    <label>حجم الصورة (الارتفاع):</label>
-                    <input type="range" min="200" max="800" value="450" oninput="document.getElementById('media-container-services').style.height = this.value + 'px'">
-                </div>
-
-                <label>العنوان الرئيسي:</label>
-                <textarea rows="2" oninput="document.getElementById('title-services').innerText = this.value">انطلاق حملة كبرى لتنظيف وصيانة شبكات الصرف الصحي</textarea>
-                
-                <div class="range-group">
-                    <label>حجم خط العنوان:</label>
-                    <input type="range" min="16" max="36" value="24" on
+                            <a href="#"><i class="fa-brands fa-facebook-
