@@ -3,254 +3,210 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>صانع قوالب موسوعة البصرة</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>قوالب موسوعة البصرة الجاهزة</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap');
-        body { font-family: 'Cairo', sans-serif; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background: #f4f4f4; color: #333; padding: 20px; display: flex; flex-direction: column; align-items: center; }
+        h1 { margin-bottom: 20px; font-size: 22px; color: #111; text-align: center; }
+        
+        .container { display: flex; flex-direction: column; gap: 40px; width: 100%; max-width: 420px; }
+        
+        .template-card { background: #fff; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); overflow: hidden; padding-bottom: 15px; }
+        .template-header { padding: 10px 15px; background: #eee; font-size: 14px; font-weight: bold; display: flex; justify-content: space-between; align-items: center; }
+        
+        /* Phone Frame (9:16 Ratio) */
+        .phone-frame {
+            width: 100%;
+            aspect-ratio: 9/16;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* 1. Template 01: Red / Black (Breaking News) */
+        .t1 { background: #111; color: #fff; }
+        .t1 .top-bar { background: #cc0000; padding: 12px 15px; display: flex; justify-content: space-between; align-items: center; font-weight: bold; font-size: 14px; }
+        .t1 .content-area { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; justify-content: center; background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('Logo.png') center/contain no-repeat; }
+        .t1 .tag { background: #cc0000; color: white; padding: 4px 10px; font-size: 12px; border-radius: 4px; width: fit-content; margin-bottom: 15px; }
+        .t1 h2 { font-size: 26px; line-height: 1.4; font-weight: 800; }
+        .t1 .footer-box { background: rgba(255,255,255,0.1); backdrop-filter: blur(5px); margin: 15px; padding: 10px 15px; border-radius: 10px; display: flex; justify-content: space-between; align-items: center; font-size: 12px; }
+
+        /* 2. Template 02: Blue Gradient (Weather) */
+        .t2 { background: linear-gradient(135deg, #0072ff, #00c6ff); color: #fff; }
+        .t2 .top-bar { padding: 15px; display: flex; justify-content: space-between; align-items: center; font-weight: bold; }
+        .t2 .weather-icon { width: 70px; height: 70px; background: #fff; border-radius: 16px; margin: 0 auto 10px auto; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .t2 .temp-display { text-align: center; font-size: 45px; font-weight: bold; }
+        .t2 .temp-sub { text-align: center; font-size: 14px; margin-bottom: 15px; opacity: 0.9; }
+        .t2 .weather-card { background: #fff; color: #333; margin: 0 15px 15px 15px; padding: 15px; border-radius: 14px; }
+        .t2 .weather-card h4 { font-size: 16px; margin-bottom: 8px; color: #0072ff; }
+        .t2 .weather-card p { font-size: 15px; font-weight: bold; line-height: 1.4; margin-bottom: 10px; }
+        .t2 .weather-stats { display: flex; justify-content: space-between; text-align: center; font-size: 12px; color: #666; background: #f9f9f9; padding: 8px; border-radius: 8px; }
+
+        /* 3. Template 03: Green / White (Services) */
+        .t3 { background: #f4fcf7; color: #222; }
+        .t3 .top-bar { background: #00b060; color: #fff; padding: 12px 15px; display: flex; justify-content: space-between; align-items: center; font-weight: bold; }
+        .t3 .content-area { padding: 20px; flex-grow: 1; }
+        .t3 .badge-warning { background: #222; color: #fff; padding: 4px 10px; font-size: 11px; border-radius: 20px; width: fit-content; margin-bottom: 10px; }
+        .t3 h2 { font-size: 22px; font-weight: 800; line-height: 1.4; color: #111; margin-bottom: 15px; }
+        .t3 .service-box { background: #fff; border: 1px solid #e0e0e0; border-radius: 12px; padding: 12px; font-size: 13px; }
+        .t3 .service-row { display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid #f0f0f0; }
+        .t3 .service-row:last-child { border-bottom: none; }
+        .t3 .footer-btn { background: #00b060; color: #fff; text-align: center; padding: 10px; font-weight: bold; font-size: 13px; margin: 15px; border-radius: 8px; }
+
+        /* 4. Template 04: Sport (Dark Gold Theme) */
+        .t4 { background: #0a1128; color: #fff; }
+        .t4 .top-bar { padding: 15px; display: flex; justify-content: space-between; align-items: center; }
+        .t4 .logo-img { width: 35px; height: 35px; background: #fff; border-radius: 50%; padding: 3px; object-fit: contain; }
+        .t4 .hero-img { width: 100%; height: 160px; object-fit: cover; opacity: 0.85; }
+        .t4 .category-tag { background: #c5a059; color: #000; padding: 3px 12px; font-size: 11px; font-weight: bold; border-radius: 4px; width: fit-content; margin: 10px 15px; }
+        .t4 h2 { font-size: 24px; font-weight: 800; padding: 0 15px; line-height: 1.3; color: #fff; }
+        .t4 .bullet-list { padding: 15px; display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 600; }
+
+        /* Control Inputs Area */
+        .controls { padding: 12px 15px; display: flex; flex-direction: column; gap: 8px; }
+        .controls label { font-size: 12px; font-weight: bold; color: #555; }
+        .controls textarea, .controls input { width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 6px; font-size: 13px; font-family: inherit; resize: vertical; }
     </style>
 </head>
-<body class="bg-[#121212] text-white min-h-screen p-4 flex flex-col items-center">
+<body>
 
-    <!-- رأس الصفحة -->
-    <header class="w-full max-w-md text-center mb-4">
-        <div class="flex items-center justify-between bg-neutral-900 border border-neutral-800 px-4 py-2.5 rounded-2xl shadow-lg">
-            <div class="flex items-center gap-2">
-                <span class="bg-amber-500 text-black text-[10px] font-black px-2 py-0.5 rounded">بص</span>
-                <span class="text-xs font-bold text-slate-200">موسوعة البصرة</span>
+    <h1>قوالب موسوعة البصرة الجاهزة</h1>
+
+    <div class="container">
+
+        <!-- 1. عاجل -->
+        <div class="template-card">
+            <div class="template-header"><span>TEMPLATE 01 - عاجل</span><span style="color:red">RED / BLACK</span></div>
+            <div class="phone-frame t1">
+                <div class="top-bar">
+                    <span>موسوعة البصرة</span>
+                    <span>عاجل</span>
+                </div>
+                <div class="content-area">
+                    <div class="tag">خبر عاجل</div>
+                    <h2 id="out-t1-text">اندلاع حريق كبير في منطقة العشار وسط البصرة وفرق الدفاع المدني تهرع للمكان</h2>
+                </div>
+                <div class="footer-box">
+                    <span>البصرة 📍</span>
+                    <span>اليوم 9:30 ص</span>
+                </div>
             </div>
-            <span class="text-[10px] text-amber-400">النسخة النهائية المضبوطة ⚡</span>
-        </div>
-    </header>
-
-    <!-- حاوية العرض -->
-    <main class="w-full max-w-md flex flex-col items-center gap-5">
-
-        <!-- 📱 معاينة قالب الموبايل (الريلز 9:16) -->
-        <div class="w-full max-w-[300px] bg-neutral-950 border-[8px] border-neutral-800 rounded-[35px] overflow-hidden shadow-2xl relative flex flex-col justify-between">
-            
-            <!-- كاميرا الهاتف العلوي -->
-            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-4 bg-neutral-800 rounded-b-xl z-30"></div>
-
-            <!-- محتوى الشاشة -->
-            <div class="relative text-white pt-9 pb-3 px-3.5 flex flex-col justify-between min-h-[520px] overflow-hidden">
-                
-                <!-- خلفية القالب -->
-                <div id="previewBg" class="absolute inset-0 z-0 bg-gradient-to-br from-blue-950 via-slate-900 to-black transition-all duration-300">
-                    <img id="previewUploadedImg" src="" alt="" class="w-full h-full object-cover hidden">
-                    <div class="absolute inset-0 bg-black/45"></div>
-                </div>
-
-                <!-- المحتوى العلوي -->
-                <div class="relative z-20">
-                    <!-- الشريط العلوي (شعار وبطاقة) -->
-                    <div class="flex justify-between items-center mb-4 bg-black/30 p-2 rounded-2xl border border-white/10 backdrop-blur-md">
-                        <!-- شعار موسوعة البصرة (ظاهر وثابت بوضوح تام) -->
-                        <div class="flex items-center gap-2">
-                            <div class="bg-amber-500 text-black font-black text-xs px-2.5 py-1 rounded-xl shadow-lg flex items-center justify-center">
-                                بص
-                            </div>
-                            <div class="leading-tight">
-                                <span class="text-[10px] font-bold block text-white">موسوعة البصرة</span>
-                                <span class="text-[7px] text-amber-400 font-semibold tracking-wider">BASRA ENCYCLOPEDIA</span>
-                            </div>
-                        </div>
-                        <div class="bg-red-600 text-white text-[9px] font-bold px-2.5 py-0.5 rounded-full flex items-center gap-1 shadow">
-                            <span class="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>
-                            REEL
-                        </div>
-                    </div>
-
-                    <!-- التصنيف -->
-                    <div class="flex justify-center mb-2">
-                        <span id="previewCategory" class="bg-amber-500/20 border border-amber-500/50 text-amber-400 text-[10px] font-bold px-3 py-0.5 rounded-full backdrop-blur-sm">
-                            رياضة | الميناء
-                        </span>
-                    </div>
-
-                    <!-- عنوان الخبر -->
-                    <h2 id="previewTitle" class="text-center text-sm font-black leading-snug mb-3 text-white drop-shadow-lg">
-                        العيداني يصرف مليار ونصف للاعبي الميناء مع توفير طائرة خاصة وتجهيز أديداس
-                    </h2>
-
-                    <!-- صندوق التفاصيل -->
-                    <div id="previewBox" class="bg-black/65 backdrop-blur-md border border-amber-500/40 rounded-xl p-2.5 text-[10px] space-y-1.5 shadow-xl">
-                        <div class="flex items-center justify-between border-b border-white/10 pb-1">
-                            <span class="text-slate-200">طائرة خاصة للفريق</span>
-                            <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
-                        </div>
-                        <div class="flex items-center justify-between border-b border-white/10 pb-1">
-                            <span class="text-slate-200">تجهيز أديداس الرياضي</span>
-                            <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
-                        </div>
-                        <div class="flex items-center justify-between">
-                            <span class="text-slate-200">معسكر خارجي وتأهيل الملعب</span>
-                            <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- التذييل -->
-                <div class="relative z-20 mt-3 pt-2 border-t border-white/10 flex justify-between items-center text-[9px]">
-                    <div>
-                        <span class="font-bold text-amber-400 block">AL-MINA'A SC</span>
-                        <span class="text-slate-400">2025 / 2026</span>
-                    </div>
-                    <div class="text-center bg-white/10 p-1 rounded-full w-6 h-6 flex items-center justify-center">
-                        ⚽
-                    </div>
-                    <div class="text-left">
-                        <span class="font-bold block text-white">موسوعة البصرة</span>
-                        <span class="text-slate-400 text-[8px]">BASRA ENCYCLOPEDIA</span>
-                    </div>
-                </div>
-
+            <div class="controls">
+                <label>نص الخبر العاجل:</label>
+                <textarea rows="2" oninput="document.getElementById('out-t1-text').innerText = this.value">اندلاع حريق كبير في منطقة العشار وسط البصرة وفرق الدفاع المدني تهرع للمكان</textarea>
             </div>
         </div>
 
-        <!-- ✍️ لوحة التحكم والإدخال -->
-        <div class="w-full bg-neutral-900 border border-neutral-800 rounded-2xl p-4 shadow-xl space-y-3">
-            <h3 class="text-xs font-bold text-amber-400 border-b border-neutral-800 pb-2">لوحة التحكم وإدارة الصور والنصوص</h3>
-            
-            <!-- اختيار القالب -->
-            <div>
-                <label class="block text-[11px] text-slate-400 mb-1">اختر القالب الجاهز:</label>
-                <select id="templateSelect" onchange="changeTemplateType()" class="w-full bg-neutral-950 border border-neutral-800 text-white text-xs rounded-xl p-2.5 outline-none focus:border-amber-500 font-bold">
-                    <option value="sport">🟡 رياضة (أزرق داكن أنيق)</option>
-                    <option value="services">🟢 خدمات عامة (خلفية خضراء داكنة)</option>
-                    <option value="weather">🔵 طقس البصرة (سماوي داكن)</option>
-                    <option value="urgent">🔴 خبر عاجل (أحمر داكن ناري)</option>
-                </select>
+        <!-- 2. طقس -->
+        <div class="template-card">
+            <div class="template-header"><span>TEMPLATE 02 - طقس</span><span style="color:#0072ff">BLUE GRADIENT</span></div>
+            <div class="phone-frame t2">
+                <div class="top-bar">
+                    <span>موسوعة البصرة</span>
+                    <span>الطقس</span>
+                </div>
+                <div>
+                    <div class="weather-icon">☀️</div>
+                    <div class="temp-display" id="out-t2-temp">47°</div>
+                    <div class="temp-sub" id="out-t2-sub">مئوية • حار جداً ومغبر</div>
+                </div>
+                <div class="weather-card">
+                    <h4>تنبيه جوي</h4>
+                    <p id="out-t2-desc">أجواء مغبرة وحارة جداً تشهدها البصرة اليوم مع رياح شمالية غربية</p>
+                    <div class="weather-stats">
+                        <span>الرطوبة: 18%</span>
+                        <span>الرياح: 22 كم</span>
+                        <span>الرؤية: 3 كم</span>
+                    </div>
+                </div>
             </div>
-
-            <!-- 🖼️ رفع صورة من الهاتف مباشرة -->
-            <div class="bg-neutral-950 p-3 rounded-xl border border-amber-500/30 space-y-2">
-                <label class="block text-[11px] text-amber-300 font-bold">📁 أو ارفعي صورة من استوديو الهاتف مباشرة:</label>
-                <input type="file" id="imageInput" accept="image/*" onchange="handleImageUpload(event)" class="w-full text-[10px] text-slate-400 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-bold file:bg-amber-500 file:text-black hover:file:bg-amber-600 cursor-pointer">
+            <div class="controls">
+                <label>درجة الحرارة:</label>
+                <input type="text" value="47°" oninput="document.getElementById('out-t2-temp').innerText = this.value">
+                <label>وصف الحالة:</label>
+                <input type="text" value="مئوية • حار جداً ومغبر" oninput="document.getElementById('out-t2-sub').innerText = this.value">
+                <label>نص التنبيه الجوي:</label>
+                <textarea rows="2" oninput="document.getElementById('out-t2-desc').innerText = this.value">أجواء مغبرة وحارة جداً تشهدها البصرة اليوم مع رياح شمالية غربية</textarea>
             </div>
-
-            <!-- التصنيف -->
-            <div>
-                <label class="block text-[11px] text-slate-400 mb-1">التصنيف العلوي:</label>
-                <input type="text" id="inputCategory" oninput="updatePreview()" class="w-full bg-neutral-950 border border-neutral-800 text-white text-xs rounded-xl p-2.5 outline-none focus:border-amber-500" value="رياضة | الميناء">
-            </div>
-
-            <!-- عنوان الخبر -->
-            <div>
-                <label class="block text-[11px] text-slate-400 mb-1">عنوان الخبر الرئيسي:</label>
-                <textarea id="inputTitle" oninput="updatePreview()" rows="2" class="w-full bg-neutral-950 border border-neutral-800 text-white text-xs rounded-xl p-2.5 outline-none focus:border-amber-500">العيداني يصرف مليار ونصف للاعبي الميناء مع توفير طائرة خاصة وتجهيز أديداس</textarea>
-            </div>
-
-            <!-- تفاصيل الصندوق -->
-            <div>
-                <label class="block text-[11px] text-slate-400 mb-1">تفاصيل الصندوق (كل سطر نقطة):</label>
-                <textarea id="inputDetails" oninput="updatePreview()" rows="3" class="w-full bg-neutral-950 border border-neutral-800 text-white text-xs rounded-xl p-2.5 outline-none focus:border-amber-500">طائرة خاصة للفريق
-تجهيز أديداس الرياضي
-معسكر خارجي وتأهيل الملعب</textarea>
-            </div>
-
-            <!-- زر النسخ -->
-            <button onclick="copyFinalText()" class="w-full bg-amber-500 hover:bg-amber-600 text-black font-bold text-xs py-3 rounded-xl transition shadow-lg flex items-center justify-center gap-1.5 mt-2">
-                📋 نسخ النص الجاهز للنشر
-            </button>
         </div>
 
-    </main>
+        <!-- 3. خدمات -->
+        <div class="template-card">
+            <div class="template-header"><span>TEMPLATE 03 - خدمات</span><span style="color:#00b060">GREEN / WHITE</span></div>
+            <div class="phone-frame t3">
+                <div class="top-bar">
+                    <span>موسوعة البصرة</span>
+                    <span>خدمات</span>
+                </div>
+                <div class="content-area">
+                    <div class="badge-warning">تنويه هام للمواطنين</div>
+                    <h2 id="out-t3-title">انقطاع مبرمج للماء في مناطق الجبيلة والطويسة من الساعة 8 صباحاً حتى 3 عصراً بسبب أعمال الصيانة</h2>
+                    <div class="service-box">
+                        <div class="service-row"><span>المناطق</span><strong id="out-t3-area">الجبيليّة، الطويسة</strong></div>
+                        <div class="service-row"><span>الوقت</span><strong id="out-t3-time">8 ص - 3 عصراً</strong></div>
+                        <div class="service-row"><span>السبب</span><strong id="out-t3-reason">صيانة دورية</strong></div>
+                    </div>
+                </div>
+                <div class="footer-btn">البصرة - بلدية البصرة</div>
+            </div>
+            <div class="controls">
+                <label>عنوان التنويه:</label>
+                <textarea rows="2" oninput="document.getElementById('out-t3-title').innerText = this.value">انقطاع مبرمج للماء في مناطق الجبيلة والطويسة من الساعة 8 صباحاً حتى 3 عصراً بسبب أعمال الصيانة</textarea>
+                <label>المناطق:</label>
+                <input type="text" value="الجبيليّة، الطويسة" oninput="document.getElementById('out-t3-area').innerText = this.value">
+                <label>الوقت:</label>
+                <input type="text" value="8 ص - 3 عصراً" oninput="document.getElementById('out-t3-time').innerText = this.value">
+            </div>
+        </div>
 
-    <!-- البرمجة التفاعلية -->
+        <!-- 4. رياضة -->
+        <div class="template-card">
+            <div class="template-header"><span>TEMPLATE 04 - رياضة</span><span style="color:#c5a059">DARK GOLD</span></div>
+            <div class="phone-frame t4">
+                <div class="top-bar">
+                    <img src="Logo.png" class="logo-img" alt="شعار الوكالة">
+                    <span>REEL</span>
+                </div>
+                <div>
+                    <div class="category-tag">رياضة | الميناء</div>
+                    <h2 id="out-t4-title">العيداني يصرف مليار ونصف للاعبي الميناء</h2>
+                </div>
+                <div class="bullet-list" id="out-t4-list">
+                    <div>• طائرة خاصة</div>
+                    <div>• تجهيز أديداس</div>
+                    <div>• معسكر خارجي</div>
+                </div>
+                <div style="padding: 10px 15px; font-size: 11px; opacity: 0.7; display: flex; justify-content: space-between;">
+                    <span>AL-MINA'A SC 2025/2026</span>
+                    <span>موسوعة البصرة</span>
+                </div>
+            </div>
+            <div class="controls">
+                <label>عنوان الخبر الرياضي:</label>
+                <input type="text" value="العيداني يصرف مليار ونصف للاعبي الميناء" oninput="document.getElementById('out-t4-title').innerText = this.value">
+                <label>النقاط (كل نقطة بسطر):</label>
+                <textarea rows="3" oninput="updateList(this.value)">• طائرة خاصة
+• تجهيز أديداس
+• معسكر خارجي</textarea>
+            </div>
+        </div>
+
+    </div>
+
     <script>
-        const presets = {
-            sport: {
-                cat: "رياضة | الميناء",
-                title: "العيداني يصرف مليار ونصف للاعبي الميناء مع توفير طائرة خاصة وتجهيز أديداس",
-                details: "طائرة خاصة للفريق\nتجهيز أديداس الرياضي\nمعسكر خارجي وتأهيل الملعب",
-                bgClass: "bg-gradient-to-br from-blue-950 via-slate-900 to-black"
-            },
-            services: {
-                cat: "خدمات عامة",
-                title: "انقطاع مبرمج للماء في مناطق الجبيلة والطويسة من الساعة 8 صباحاً حتى 3 عصراً",
-                details: "المناطق: الجبيلة، الطويسة\nالوقت: 8 صباحاً - 3 عصراً\nالسبب: صيانة دورية لشبكة الماء",
-                bgClass: "bg-gradient-to-br from-emerald-950 via-slate-900 to-black"
-            },
-            weather: {
-                cat: "طقس البصرة",
-                title: "تنبيه جوي: أجواء مغبرة ودرجة حرارة مرتفعة تسجلها المحافظة اليوم تصل إلى 47 مئوية",
-                details: "الرطوبة: 18%\nالرياح: 22 كم\nالرؤية: 3 كم",
-                bgClass: "bg-gradient-to-br from-sky-950 via-slate-900 to-black"
-            },
-            urgent: {
-                cat: "عاجل الآن",
-                title: "اندلاع حريق كبير في منطقة العشار وسط البصرة وفرق الدفاع المدني تهرع للمكان",
-                details: "غرفة أخبار الموسوعة تتابع التفاصيل أولاً باول",
-                bgClass: "bg-gradient-to-br from-red-950 via-slate-900 to-black"
-            }
-        };
-
-        function changeTemplateType() {
-            const val = document.getElementById('templateSelect').value;
-            const p = presets[val];
-            document.getElementById('inputCategory').value = p.cat;
-            document.getElementById('inputTitle').value = p.title;
-            document.getElementById('inputDetails').value = p.details;
-            
-            const imgElement = document.getElementById('previewUploadedImg');
-            imgElement.src = "";
-            imgElement.classList.add('hidden');
-            
-            const bgDiv = document.getElementById('previewBg');
-            bgDiv.className = "absolute inset-0 z-0 " + p.bgClass + " transition-all duration-300";
-            
-            updatePreview();
-        }
-
-        function handleImageUpload(event) {
-            const file = event.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    const imgElement = document.getElementById('previewUploadedImg');
-                    imgElement.src = e.target.result;
-                    imgElement.classList.remove('hidden');
+        function updateList(text) {
+            const listContainer = document.getElementById('out-t4-list');
+            listContainer.innerHTML = '';
+            text.split('\n').forEach(line => {
+                if(line.trim() !== '') {
+                    const div = document.createElement('div');
+                    div.innerText = line.startsWith('•') ? line : '• ' + line;
+                    listContainer.appendChild(div);
                 }
-                reader.readAsDataURL(file);
-            }
-        }
-
-        function updatePreview() {
-            const cat = document.getElementById('inputCategory').value;
-            const title = document.getElementById('inputTitle').value;
-            const detailsRaw = document.getElementById('inputDetails').value;
-
-            document.getElementById('previewCategory').innerText = cat;
-            document.getElementById('previewTitle').innerText = title;
-
-            const lines = detailsRaw.split('\n').filter(l => l.trim() !== '');
-            let boxHtml = '';
-            lines.forEach((line, index) => {
-                const isLast = index === lines.length - 1;
-                boxHtml += `
-                    <div class="flex items-center justify-between ${!isLast ? 'border-b border-white/10 pb-1' : ''}">
-                        <span class="text-slate-200">${line}</span>
-                        <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
-                    </div>
-                `;
-            });
-            document.getElementById('previewBox').innerHTML = boxHtml;
-        }
-
-        function copyFinalText() {
-            const cat = document.getElementById('inputCategory').value;
-            const title = document.getElementById('inputTitle').value;
-            const details = document.getElementById('inputDetails').value;
-
-            const finalString = `موسوعة البصرة | ${cat}\n\n${title}\n\n${details}\n\n#موسوعة_البصرة #البصرة`;
-            
-            navigator.clipboard.writeText(finalString).then(() => {
-                alert('تم نسخ النص جاهزاً للنشر!');
             });
         }
-
-        updatePreview();
     </script>
 
 </body>
