@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>قوالب موسوعة البصرة - أبعاد سوشيال ميديا (4:5)</title>
+    <title>موسوعة البصرة - صانع القوالب المتوافق مع إنستغرام</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -14,7 +14,7 @@
         .templates-wrapper { display: flex; flex-wrap: wrap; gap: 35px; justify-content: center; width: 100%; max-width: 1300px; }
         .template-box { background: #fff; border-radius: 18px; box-shadow: 0 6px 25px rgba(0,0,0,0.12); width: 380px; overflow: hidden; display: flex; flex-direction: column; }
         
-        /* ضبط إطار الهاتف ليناسب أبعاد النشر المتوافقة (4:5) - عرض 1080 × ارتفاع 1350 */
+        /* ضبط إطار الهاتف على أبعاد إنستغرام القياسية 4:5 بدقة (عرض 1080 × ارتفاع 1350) */
         .phone-frame { width: 100%; aspect-ratio: 4/5; position: relative; overflow: hidden; display: flex; flex-direction: column; color: #fff; }
         
         /* الثيمات والألوان الخاصة بكل قالب */
@@ -60,12 +60,13 @@
         .controls textarea, .controls input[type="text"] { width: 100%; padding: 6px; border: 1px solid #ccc; border-radius: 6px; font-size: 12px; text-align: right; }
         .controls input[type="file"], .controls input[type="range"] { width: 100%; cursor: pointer; }
         .range-group { display: flex; align-items: center; gap: 10px; font-size: 11px; color: #666; }
-        .save-btn { color: #fff; border: none; padding: 10px; border-radius: 6px; font-weight: bold; font-size: 13px; cursor: pointer; text-align: center; margin-top: 6px; }
+        .btn-group { display: flex; gap: 6px; margin-top: 6px; }
+        .save-btn { flex: 1; color: #fff; border: none; padding: 9px; border-radius: 6px; font-weight: bold; font-size: 12px; cursor: pointer; text-align: center; }
     </style>
 </head>
 <body>
 
-    <h1>موسوعة البصرة - صانع القوالب (أبعاد سوشيال ميديا 4:5)</h1>
+    <h1>موسوعة البصرة - صانع القوالب المتوافق مع إنستغرام (4:5)</h1>
 
     <div class="templates-wrapper">
 
@@ -120,7 +121,10 @@
                 </div>
                 <label>العنوان الرئيسي:</label>
                 <textarea rows="2" oninput="document.getElementById('title-1').innerText = this.value">هجمات الحوثيين على السعودية تشعل حرائق في منشآت نفطية</textarea>
-                <button class="save-btn" style="background: #b91c1c;" onclick="saveImage('frame-urgent', 'BSR_Urgent.png')">📥 حفظ صورة عاجل</button>
+                <div class="btn-group">
+                    <button class="save-btn" style="background: #b91c1c;" onclick="saveImage('frame-urgent', 'BSR_Urgent.png')">📥 حفظ</button>
+                    <button class="save-btn" style="background: #334155;" onclick="copyImage('frame-urgent')">📋 نسخ</button>
+                </div>
             </div>
         </div>
 
@@ -175,7 +179,10 @@
                 </div>
                 <label>العنوان الرئيسي:</label>
                 <textarea rows="2" oninput="document.getElementById('title-2').innerText = this.value">انطلاق حملة كبرى لتنظيف وصيانة شبكات الصرف الصحي</textarea>
-                <button class="save-btn" style="background: #064e3b;" onclick="saveImage('frame-services', 'BSR_Services.png')">📥 حفظ صورة خدمات</button>
+                <div class="btn-group">
+                    <button class="save-btn" style="background: #064e3b;" onclick="saveImage('frame-services', 'BSR_Services.png')">📥 حفظ</button>
+                    <button class="save-btn" style="background: #334155;" onclick="copyImage('frame-services')">📋 نسخ</button>
+                </div>
             </div>
         </div>
 
@@ -230,7 +237,10 @@
                 </div>
                 <label>العنوان الرئيسي:</label>
                 <textarea rows="2" oninput="document.getElementById('title-3').innerText = this.value">ارتفاع تدريجي لدرجات الحرارة وتحذيرات من تصاعد الغبار</textarea>
-                <button class="save-btn" style="background: #0c4a6e;" onclick="saveImage('frame-weather', 'BSR_Weather.png')">📥 حفظ صورة الطقس</button>
+                <div class="btn-group">
+                    <button class="save-btn" style="background: #0c4a6e;" onclick="saveImage('frame-weather', 'BSR_Weather.png')">📥 حفظ</button>
+                    <button class="save-btn" style="background: #334155;" onclick="copyImage('frame-weather')">📋 نسخ</button>
+                </div>
             </div>
         </div>
 
@@ -285,7 +295,10 @@
                 </div>
                 <label>العنوان الرئيسي:</label>
                 <textarea rows="2" oninput="document.getElementById('title-4').innerText = this.value">نادي الميناء يكتسح ضيفه ويصعد للمربع الذهبي للدوري</textarea>
-                <button class="save-btn" style="background: #15803d;" onclick="saveImage('frame-sport', 'BSR_Sport.png')">📥 حفظ صورة الرياضة</button>
+                <div class="btn-group">
+                    <button class="save-btn" style="background: #15803d;" onclick="saveImage('frame-sport', 'BSR_Sport.png')">📥 حفظ</button>
+                    <button class="save-btn" style="background: #334155;" onclick="copyImage('frame-sport')">📋 نسخ</button>
+                </div>
             </div>
         </div>
 
@@ -340,7 +353,10 @@
                 </div>
                 <label>العنوان الرئيسي:</label>
                 <textarea rows="2" oninput="document.getElementById('title-5').innerText = this.value">حملة اعمار واسعة تشمل أقضية ونواحي محافظة البصرة</textarea>
-                <button class="save-btn" style="background: #7c2d12;" onclick="saveImage('frame-local', 'BSR_Local.png')">📥 حفظ صورة المحليات</button>
+                <div class="btn-group">
+                    <button class="save-btn" style="background: #7c2d12;" onclick="saveImage('frame-local', 'BSR_Local.png')">📥 حفظ</button>
+                    <button class="save-btn" style="background: #334155;" onclick="copyImage('frame-local')">📋 نسخ</button>
+                </div>
             </div>
         </div>
 
@@ -371,6 +387,20 @@
                 link.download = filename;
                 link.href = canvas.toDataURL('image/png');
                 link.click();
+            });
+        }
+
+        function copyImage(frameId) {
+            const frame = document.getElementById(frameId);
+            html2canvas(frame, { scale: 2, useCORS: true }).then(canvas => {
+                canvas.toBlob(blob => {
+                    try {
+                        navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })]);
+                        alert('تم نسخ التصميم بنجاح! يمكنك لصقه (Paste) مباشرة في التطبيق.');
+                    } catch (err) {
+                        alert('عذراً، متصفحك لا يدعم النسخ المباشر، يمكنك استخدام زر الحفظ.');
+                    }
+                });
             });
         }
     </script>
