@@ -18,6 +18,7 @@
         .phone-frame { width: 100%; aspect-ratio: 4/5; position: relative; overflow: hidden; display: flex; flex-direction: column; color: #fff; }
         
         /* الثيمات والألوان الخاصة بكل قالب */
+        .theme-navy-gold { background: linear-gradient(135deg, #0b1329 0%, #1e293b 100%); border: 2px solid #d4af37; }
         .theme-urgent { background: #b91c1c; }
         .theme-services { background: #064e3b; }
         .theme-weather { background: #0c4a6e; }
@@ -38,6 +39,7 @@
 
         .lower-content-box { flex-grow: 1; padding: 12px 16px; display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-end; gap: 6px; }
         .badge-pill { background: #fff; color: #111; padding: 3px 14px; font-size: 12px; border-radius: 20px; font-weight: 900; box-shadow: 0 2px 4px rgba(0,0,0,0.2); }
+        .badge-gold { background: #d4af37; color: #0b1329; }
         
         /* حجم العنوان الافتراضي */
         .phone-frame h2 { font-size: 20px; line-height: 1.35; font-weight: 800; color: #fff; width: 100%; text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
@@ -70,7 +72,65 @@
 
     <div class="templates-wrapper">
 
-        <!-- 1. قالب عاجل وسياسة -->
+        <!-- 0. القالب الجديد: عاجل كحلي وذهبي -->
+        <div class="template-box">
+            <div class="phone-frame theme-navy-gold" id="frame-navy-gold">
+                <div class="top-header-bar" style="border-bottom: 1px solid rgba(212,175,55,0.3);">
+                    <div class="top-header-left">
+                        <span class="cat-title-top" id="cat-top-0" style="color: #d4af37;">عاجل رسمي</span>
+                        <span class="date-text-top auto-date">جاري التحميل...</span>
+                    </div>
+                    <div class="top-header-logo-box"><img src="Logo.png" alt="شعار"><span>موسوعة البصرة</span></div>
+                </div>
+                <div class="media-container" id="media-container-0" style="border-bottom: 3px solid #d4af37;"><img src="https://images.unsplash.com/photo-1541872703-74c5e44368f9?w=500" class="hero-news-img" id="img-0" alt="صورة"></div>
+                <div class="lower-content-box">
+                    <div class="badge-pill badge-gold" id="badge-0">عاجل البصرة ⚡</div>
+                    <h2 id="title-0" style="color: #fff;">قرارات هامة وحاسمة تصدر عن الجهات الرسمية في المحافظة</h2>
+                    <ul class="bullet-list" contenteditable="true">
+                        <li>إعلان حزمة إجراءات جديدة لمتابعة المشاريع</li>
+                        <li>توجيهات مشددة لت,سريع وتيرة العمل الخدمي</li>
+                        <li>لجان خاصة لمتابعة التنفيذ الميداني بشكل فوري</li>
+                    </ul>
+                </div>
+                <div class="footer-box">
+                    <div class="footer-right-side">
+                        <span class="follow-label-rtl">تابعنا على:</span>
+                        <div class="footer-social-icons-rtl">
+                            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                            <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+                            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+                            <a href="#"><i class="fa-brands fa-telegram-plane"></i></a>
+                        </div>
+                    </div>
+                    <div class="footer-center-logo-single"><img src="Logo.png" alt="شعار"><span>mwsuat_albasra</span></div>
+                </div>
+            </div>
+            <div class="controls">
+                <label>تعديل التصنيف العلوي:</label>
+                <input type="text" value="عاجل رسمي" oninput="document.getElementById('cat-top-0').innerText = this.value">
+                <label>تعديل الشارة البارزة:</label>
+                <input type="text" value="عاجل البصرة ⚡" oninput="document.getElementById('badge-0').innerText = this.value">
+                <label>اختر الصورة:</label>
+                <input type="file" accept="image/*" onchange="loadFile(event, 'img-0')">
+                <div class="range-group">
+                    <label>ارتفاع الصورة:</label>
+                    <input type="range" min="150" max="500" value="320" oninput="document.getElementById('media-container-0').style.height = this.value + 'px'">
+                </div>
+                <div class="range-group">
+                    <label>حجم خط العنوان:</label>
+                    <input type="range" min="14" max="30" value="20" oninput="document.getElementById('title-0').style.fontSize = this.value + 'px'">
+                </div>
+                <label>العنوان الرئيسي:</label>
+                <textarea rows="2" oninput="document.getElementById('title-0').innerText = this.value">قرارات هامة وحاسمة تصدر عن الجهات الرسمية في المحافظة</textarea>
+                <div class="btn-group">
+                    <button class="save-btn" style="background: #0b1329; border: 1px solid #d4af37;" onclick="saveImage('frame-navy-gold', 'BSR_NavyGold.png')">📥 حفظ</button>
+                    <button class="save-btn" style="background: #334155;" onclick="copyImage('frame-navy-gold')">📋 نسخ</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 1. قالب عاجل وسياسة (الأحمر) -->
         <div class="template-box">
             <div class="phone-frame theme-urgent" id="frame-urgent">
                 <div class="top-header-bar">
@@ -373,7 +433,7 @@
                 el.innerText = dateString;
             });
         }
-        window.onload = updateCurrentDate;
+        window.onload = updateContentDate;
 
         function loadFile(event, imgId) {
             const image = document.getElementById(imgId);
