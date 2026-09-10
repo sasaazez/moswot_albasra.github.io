@@ -41,12 +41,12 @@
         .badge-pill { background: #fff; color: #111; padding: 3px 14px; font-size: 12px; border-radius: 20px; font-weight: 900; box-shadow: 0 2px 4px rgba(0,0,0,0.2); }
         .badge-gold { background: #d4af37; color: #0b1329; }
         
-        /* حجم العنوان الافتراضي */
+        /* حجم وتصميم العنوان الرئيسي */
         .phone-frame h2 { font-size: 20px; line-height: 1.35; font-weight: 800; color: #fff; width: 100%; text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
 
         .bullet-list { list-style: none; display: flex; flex-direction: column; gap: 3px; width: 100%; padding: 0; margin-top: 2px; }
         .bullet-list li { font-size: 11.5px; color: #fff; line-height: 1.25; font-weight: 700; position: relative; padding-right: 16px; text-shadow: 0 1px 2px rgba(0,0,0,0.3); }
-        .bullet-list li::before { content: "•"; position: absolute; right: 0; color: #fff; font-weight: bold; font-size: 16px; }
+        .bullet-list li::before { content: "•"; position: absolute; right: 0; color: inherit; font-weight: bold; font-size: 16px; }
 
         .footer-box { background: #0b1329; padding: 8px 15px; display: flex; justify-content: space-between; align-items: center; border-top: 2px solid #d4af37; color: #fff; }
         .footer-right-side { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; }
@@ -60,7 +60,9 @@
         .controls { padding: 14px; display: flex; flex-direction: column; gap: 8px; background: #fff; border-top: 1px solid #eee; }
         .controls label { font-size: 11px; font-weight: bold; color: #555; margin-top: 3px; }
         .controls textarea, .controls input[type="text"] { width: 100%; padding: 6px; border: 1px solid #ccc; border-radius: 6px; font-size: 12px; text-align: right; }
-        .controls input[type="file"], .controls input[type="range"] { width: 100%; cursor: pointer; }
+        .controls input[type="file"], .controls input[type="range"], .controls input[type="color"] { width: 100%; cursor: pointer; }
+        .color-row { display: flex; gap: 10px; align-items: center; }
+        .color-row div { flex: 1; display: flex; flex-direction: column; gap: 2px; }
         .range-group { display: flex; align-items: center; gap: 10px; font-size: 11px; color: #666; }
         .btn-group { display: flex; gap: 6px; margin-top: 6px; }
         .save-btn { flex: 1; color: #fff; border: none; padding: 9px; border-radius: 6px; font-weight: bold; font-size: 12px; cursor: pointer; text-align: center; }
@@ -72,7 +74,7 @@
 
     <div class="templates-wrapper">
 
-        <!-- 0. القالب الجديد: عاجل كحلي وذهبي -->
+        <!-- 0. قالب عاجل كحلي وذهبي -->
         <div class="template-box">
             <div class="phone-frame theme-navy-gold" id="frame-navy-gold">
                 <div class="top-header-bar" style="border-bottom: 1px solid rgba(212,175,55,0.3);">
@@ -85,10 +87,10 @@
                 <div class="media-container" id="media-container-0" style="border-bottom: 3px solid #d4af37;"><img src="https://images.unsplash.com/photo-1541872703-74c5e44368f9?w=500" class="hero-news-img" id="img-0" alt="صورة"></div>
                 <div class="lower-content-box">
                     <div class="badge-pill badge-gold" id="badge-0">عاجل البصرة ⚡</div>
-                    <h2 id="title-0" style="color: #fff;">قرارات هامة وحاسمة تصدر عن الجهات الرسمية في المحافظة</h2>
-                    <ul class="bullet-list" contenteditable="true">
+                    <h2 id="title-0" style="color: #ffffff;">قرارات هامة وحاسمة تصدر عن الجهات الرسمية في المحافظة</h2>
+                    <ul class="bullet-list" id="list-0" contenteditable="true" style="color: #ffffff;">
                         <li>إعلان حزمة إجراءات جديدة لمتابعة المشاريع</li>
-                        <li>توجيهات مشددة لت,سريع وتيرة العمل الخدمي</li>
+                        <li>توجيهات مشددة لتسريع وتيرة العمل الخدمي</li>
                         <li>لجان خاصة لمتابعة التنفيذ الميداني بشكل فوري</li>
                     </ul>
                 </div>
@@ -111,6 +113,16 @@
                 <input type="text" value="عاجل رسمي" oninput="document.getElementById('cat-top-0').innerText = this.value">
                 <label>تعديل الشارة البارزة:</label>
                 <input type="text" value="عاجل البصرة ⚡" oninput="document.getElementById('badge-0').innerText = this.value">
+                <div class="color-row">
+                    <div>
+                        <label>لون العنوان الرئيسي:</label>
+                        <input type="color" value="#ffffff" oninput="document.getElementById('title-0').style.color = this.value">
+                    </div>
+                    <div>
+                        <label>لون النصوص الفرعية:</label>
+                        <input type="color" value="#ffffff" oninput="document.getElementById('list-0').style.color = this.value">
+                    </div>
+                </div>
                 <label>اختر الصورة:</label>
                 <input type="file" accept="image/*" onchange="loadFile(event, 'img-0')">
                 <div class="range-group">
@@ -143,8 +155,8 @@
                 <div class="media-container" id="media-container-1"><img src="https://images.unsplash.com/photo-1541872703-74c5e44368f9?w=500" class="hero-news-img" id="img-1" alt="صورة"></div>
                 <div class="lower-content-box">
                     <div class="badge-pill" id="badge-1">عاجل جداً 🔴</div>
-                    <h2 id="title-1">هجمات الحوثيين على السعودية تشعل حرائق في منشآت نفطية</h2>
-                    <ul class="bullet-list" contenteditable="true">
+                    <h2 id="title-1" style="color: #ffffff;">هجمات الحوثيين على السعودية تشعل حرائق في منشآت نفطية</h2>
+                    <ul class="bullet-list" id="list-1" contenteditable="true" style="color: #ffffff;">
                         <li>اندلاع حرائق ضخمة في المنشآت المستهدفة</li>
                         <li>إصابة 73 شخصاً حسب مصادر أولية رسمية</li>
                         <li>الجهات المعنية لم تعلن عن حجم الأضرار بالكامل</li>
@@ -169,6 +181,16 @@
                 <input type="text" value="عاجل وسياسة" oninput="document.getElementById('cat-top-1').innerText = this.value">
                 <label>تعديل الشارة البارزة:</label>
                 <input type="text" value="عاجل جداً 🔴" oninput="document.getElementById('badge-1').innerText = this.value">
+                <div class="color-row">
+                    <div>
+                        <label>لون العنوان الرئيسي:</label>
+                        <input type="color" value="#ffffff" oninput="document.getElementById('title-1').style.color = this.value">
+                    </div>
+                    <div>
+                        <label>لون النصوص الفرعية:</label>
+                        <input type="color" value="#ffffff" oninput="document.getElementById('list-1').style.color = this.value">
+                    </div>
+                </div>
                 <label>اختر الصورة:</label>
                 <input type="file" accept="image/*" onchange="loadFile(event, 'img-1')">
                 <div class="range-group">
@@ -201,8 +223,8 @@
                 <div class="media-container" id="media-container-2"><img src="https://images.unsplash.com/photo-1584467735817-6950fb6dbf43?w=500" class="hero-news-img" id="img-2" alt="صورة"></div>
                 <div class="lower-content-box">
                     <div class="badge-pill" id="badge-2">خدمات عامة</div>
-                    <h2 id="title-2">انطلاق حملة كبرى لتنظيف وصيانة شبكات الصرف الصحي</h2>
-                    <ul class="bullet-list" contenteditable="true">
+                    <h2 id="title-2" style="color: #ffffff;">انطلاق حملة كبرى لتنظيف وصيانة شبكات الصرف الصحي</h2>
+                    <ul class="bullet-list" id="list-2" contenteditable="true" style="color: #ffffff;">
                         <li>استنفرت الكوادر البلدية آلياتها الخدمية والهندسية</li>
                         <li>دعوات للمواطنين للتعاون وإنجاح الحملة الخدمية</li>
                         <li>معالجة الطفحات المائية وفتح الخطوط المسدودة</li>
@@ -227,6 +249,16 @@
                 <input type="text" value="خدمات ونقاط" oninput="document.getElementById('cat-top-2').innerText = this.value">
                 <label>تعديل الشارة البارزة:</label>
                 <input type="text" value="خدمات عامة" oninput="document.getElementById('badge-2').innerText = this.value">
+                <div class="color-row">
+                    <div>
+                        <label>لون العنوان الرئيسي:</label>
+                        <input type="color" value="#ffffff" oninput="document.getElementById('title-2').style.color = this.value">
+                    </div>
+                    <div>
+                        <label>لون النصوص الفرعية:</label>
+                        <input type="color" value="#ffffff" oninput="document.getElementById('list-2').style.color = this.value">
+                    </div>
+                </div>
                 <label>اختر الصورة:</label>
                 <input type="file" accept="image/*" onchange="loadFile(event, 'img-2')">
                 <div class="range-group">
@@ -259,8 +291,8 @@
                 <div class="media-container" id="media-container-3"><img src="https://images.unsplash.com/photo-1592210454359-9043f067919b?w=500" class="hero-news-img" id="img-3" alt="صورة"></div>
                 <div class="lower-content-box">
                     <div class="badge-pill" id="badge-3">حالة الطقس ⛅</div>
-                    <h2 id="title-3">ارتفاع تدريجي لدرجات الحرارة وتحذيرات من تصاعد الغبار</h2>
-                    <ul class="bullet-list" contenteditable="true">
+                    <h2 id="title-3" style="color: #ffffff;">ارتفاع تدريجي لدرجات الحرارة وتحذيرات من تصاعد الغبار</h2>
+                    <ul class="bullet-list" id="list-3" contenteditable="true" style="color: #ffffff;">
                         <li>درجات الحرارة العظمى تسجل مستويات صيفية معتادة</li>
                         <li>رياح شمالية غربية تنشط فترات الظهر مسببة غبار خفيف</li>
                         <li>دعوات لارتداء الواطرات والابتعاد عن الشمس المباشرة</li>
@@ -285,6 +317,16 @@
                 <input type="text" value="الطقس والبيئة" oninput="document.getElementById('cat-top-3').innerText = this.value">
                 <label>تعديل الشارة البارزة:</label>
                 <input type="text" value="حالة الطقس ⛅" oninput="document.getElementById('badge-3').innerText = this.value">
+                <div class="color-row">
+                    <div>
+                        <label>لون العنوان الرئيسي:</label>
+                        <input type="color" value="#ffffff" oninput="document.getElementById('title-3').style.color = this.value">
+                    </div>
+                    <div>
+                        <label>لون النصوص الفرعية:</label>
+                        <input type="color" value="#ffffff" oninput="document.getElementById('list-3').style.color = this.value">
+                    </div>
+                </div>
                 <label>اختر الصورة:</label>
                 <input type="file" accept="image/*" onchange="loadFile(event, 'img-3')">
                 <div class="range-group">
@@ -317,8 +359,8 @@
                 <div class="media-container" id="media-container-4"><img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=500" class="hero-news-img" id="img-4" alt="صورة"></div>
                 <div class="lower-content-box">
                     <div class="badge-pill" id="badge-4">رياضة البصرة ⚽</div>
-                    <h2 id="title-4">نادي الميناء يكتسح ضيفه ويصعد للمربع الذهبي للدوري</h2>
-                    <ul class="bullet-list" contenteditable="true">
+                    <h2 id="title-4" style="color: #ffffff;">نادي الميناء يكتسح ضيفه ويصعد للمربع الذهبي للدوري</h2>
+                    <ul class="bullet-list" id="list-4" contenteditable="true" style="color: #ffffff;">
                         <li>حقق الفوز بثلاثة أهداف نظيفة على أرضه وجمهوره</li>
                         <li>أداء متميز للاعبي خط الوسط طوال مجريات اللقاء</li>
                         <li>احتفالات صاخبة للجماهير البصرية في كورنيش الفاو</li>
@@ -343,6 +385,16 @@
                 <input type="text" value="الرياضة المحلية" oninput="document.getElementById('cat-top-4').innerText = this.value">
                 <label>تعديل الشارة البارزة:</label>
                 <input type="text" value="رياضة البصرة ⚽" oninput="document.getElementById('badge-4').innerText = this.value">
+                <div class="color-row">
+                    <div>
+                        <label>لون العنوان الرئيسي:</label>
+                        <input type="color" value="#ffffff" oninput="document.getElementById('title-4').style.color = this.value">
+                    </div>
+                    <div>
+                        <label>لون النصوص الفرعية:</label>
+                        <input type="color" value="#ffffff" oninput="document.getElementById('list-4').style.color = this.value">
+                    </div>
+                </div>
                 <label>اختر الصورة:</label>
                 <input type="file" accept="image/*" onchange="loadFile(event, 'img-4')">
                 <div class="range-group">
@@ -375,8 +427,8 @@
                 <div class="media-container" id="media-container-5"><img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=500" class="hero-news-img" id="img-5" alt="صورة"></div>
                 <div class="lower-content-box">
                     <div class="badge-pill" id="badge-5">محليات البصرة 🏙️</div>
-                    <h2 id="title-5">حملة اعمار واسعة تشمل أقضية ونواحي محافظة البصرة</h2>
-                    <ul class="bullet-list" contenteditable="true">
+                    <h2 id="title-5" style="color: #ffffff;">حملة اعمار واسعة تشمل أقضية ونواحي محافظة البصرة</h2>
+                    <ul class="bullet-list" id="list-5" contenteditable="true" style="color: #ffffff;">
                         <li>إحالة عدة مشاريع خدمية وبنى تحتية جديدة</li>
                         <li>متابعة ميدانية من المحافظ لنسب انجاز الطرق</li>
                         <li>تلبية احتياجات المناطق الريفية والقرى النائية</li>
@@ -401,6 +453,16 @@
                 <input type="text" value="أخبار المحليات" oninput="document.getElementById('cat-top-5').innerText = this.value">
                 <label>تعديل الشارة البارزة:</label>
                 <input type="text" value="محليات البصرة 🏙️" oninput="document.getElementById('badge-5').innerText = this.value">
+                <div class="color-row">
+                    <div>
+                        <label>لون العنوان الرئيسي:</label>
+                        <input type="color" value="#ffffff" oninput="document.getElementById('title-5').style.color = this.value">
+                    </div>
+                    <div>
+                        <label>لون النصوص الفرعية:</label>
+                        <input type="color" value="#ffffff" oninput="document.getElementById('list-5').style.color = this.value">
+                    </div>
+                </div>
                 <label>اختر الصورة:</label>
                 <input type="file" accept="image/*" onchange="loadFile(event, 'img-5')">
                 <div class="range-group">
@@ -433,7 +495,7 @@
                 el.innerText = dateString;
             });
         }
-        window.onload = updateContentDate;
+        window.onload = updateCurrentDate;
 
         function loadFile(event, imgId) {
             const image = document.getElementById(imgId);
@@ -466,3 +528,4 @@
     </script>
 </body>
 </html>
+
