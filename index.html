@@ -17,37 +17,46 @@
         /* ضبط إطار الهاتف على أبعاد إنستغرام القياسية 4:5 بدقة (عرض 1080 × ارتفاع 1350) */
         .phone-frame { width: 100%; aspect-ratio: 4/5; position: relative; overflow: hidden; display: flex; flex-direction: column; color: #fff; }
         
-        /* توحيد الثيم ليكون بلون أبيض ثابت + ذهبي وكحلي فاخر */
+        /* الثيمات المخصصة لكل قسم حسب الطلب */
+        .theme-red { background: linear-gradient(135deg, #7f1d1d 0%, #1e1b4b 100%); border: 2px solid #ef4444; }
+        .theme-green { background: linear-gradient(135deg, #064e3b 0%, #0f172a 100%); border: 2px solid #10b981; }
+        .theme-blue { background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%); border: 2px solid #3b82f6; }
         .theme-gold-navy { background: linear-gradient(135deg, #0b1329 0%, #1e293b 100%); border: 2px solid #d4af37; }
 
-        .top-header-bar { background: rgba(0, 0, 0, 0.25); padding: 10px 15px 8px 15px; display: flex; justify-content: space-between; align-items: center; min-height: 50px; border-bottom: 1px solid rgba(212,175,55,0.3); }
+        .top-header-bar { background: rgba(0, 0, 0, 0.25); padding: 10px 15px 8px 15px; display: flex; justify-content: space-between; align-items: center; min-height: 50px; border-bottom: 1px solid rgba(255,255,255,0.15); }
         .top-header-left { display: flex; align-items: center; gap: 8px; }
-        .top-header-bar .cat-title-top { font-size: 13px; color: #d4af37; font-weight: 900; }
+        .top-header-bar .cat-title-top { font-size: 13px; font-weight: 900; }
         .top-header-bar .date-text-top { font-size: 9px; color: #e2e8f0; font-weight: bold; }
 
         .top-header-logo-box { display: flex; align-items: center; background: #fff; padding: 3px 8px; border-radius: 30px; gap: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.15); }
         .top-header-logo-box img { width: 20px; height: 20px; object-fit: contain; }
         .top-header-logo-box span { font-size: 11px; font-weight: bold; color: #111; }
 
-        .media-container { position: relative; width: 100%; height: 320px; overflow: hidden; border-bottom: 3px solid #d4af37; flex-shrink: 0; }
+        .media-container { position: relative; width: 100%; height: 320px; overflow: hidden; border-bottom: 3px solid rgba(255,255,255,0.2); flex-shrink: 0; }
         .hero-news-img { width: 100%; height: 100%; object-fit: cover; }
 
         .lower-content-box { flex-grow: 1; padding: 12px 16px; display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-end; gap: 6px; }
-        .badge-pill { background: #d4af37; color: #0b1329; padding: 3px 14px; font-size: 12px; border-radius: 20px; font-weight: 900; box-shadow: 0 2px 4px rgba(0,0,0,0.2); }
+        .badge-pill { padding: 3px 14px; font-size: 12px; border-radius: 20px; font-weight: 900; box-shadow: 0 2px 4px rgba(0,0,0,0.2); }
         
         /* حجم وتصميم العنوان الرئيسي */
         .phone-frame h2 { font-size: 20px; line-height: 1.35; font-weight: 800; color: #ffffff; width: 100%; text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
 
-        /* حل مشكلة اللون الأسود نهائياً وتوفير الوراثة البيضاء */
+        /* حل مشكلة اللون الأسود نهائياً وتوفير الوراثة البيضاء للنقاط الفرعية */
         .bullet-list { list-style: none; display: flex; flex-direction: column; gap: 3px; width: 100%; padding: 0; margin-top: 2px; }
         .bullet-list li { font-size: 11.5px; color: #ffffff; line-height: 1.25; font-weight: 700; position: relative; padding-right: 16px; text-shadow: 0 1px 2px rgba(0,0,0,0.3); }
-        .bullet-list li::before { content: "•"; position: absolute; right: 0; color: #d4af37; font-weight: bold; font-size: 16px; }
+        .bullet-list li::before { content: "•"; position: absolute; right: 0; font-weight: bold; font-size: 16px; }
 
-        .footer-box { background: #0b1329; padding: 8px 15px; display: flex; justify-content: space-between; align-items: center; border-top: 2px solid #d4af37; color: #fff; }
+        /* ألوان نقاط القائمة لكل ثيم */
+        .theme-red .bullet-list li::before { color: #fca5a5; }
+        .theme-green .bullet-list li::before { color: #6ee7b7; }
+        .theme-blue .bullet-list li::before { color: #93c5fd; }
+        .theme-gold-navy .bullet-list li::before { color: #d4af37; }
+
+        .footer-box { background: rgba(0, 0, 0, 0.3); padding: 8px 15px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(255,255,255,0.15); color: #fff; }
         .footer-right-side { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; }
-        .follow-label-rtl { font-size: 10.5px; color: #d4af37; font-weight: 800; }
+        .follow-label-rtl { font-size: 10.5px; font-weight: 800; }
         .footer-social-icons-rtl { display: flex; gap: 5px; align-items: center; direction: ltr; }
-        .footer-social-icons-rtl a { width: 22px; height: 22px; border: 1px solid #d4af37; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 10px; text-decoration: none; background: rgba(212, 175, 55, 0.1); }
+        .footer-social-icons-rtl a { width: 22px; height: 22px; border: 1px solid rgba(255,255,255,0.4); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 10px; text-decoration: none; background: rgba(255, 255, 255, 0.1); }
         .footer-center-logo-single { display: flex; align-items: center; background: #fff; padding: 3px 10px; border-radius: 20px; gap: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
         .footer-center-logo-single img { width: 18px; height: 18px; object-fit: contain; }
         .footer-center-logo-single span { font-size: 10.5px; color: #0b1329; font-weight: 900; direction: ltr; }
@@ -69,19 +78,19 @@
 
     <div class="templates-wrapper">
 
-        <!-- القالب الأول: عاجل البصرة -->
+        <!-- القالب الأول: عاجل (أحمر) -->
         <div class="template-box">
-            <div class="phone-frame theme-gold-navy" id="frame-0">
+            <div class="phone-frame theme-red" id="frame-0">
                 <div class="top-header-bar">
                     <div class="top-header-left">
-                        <span class="cat-title-top" id="cat-top-0">عاجل رسمي</span>
+                        <span class="cat-title-top" id="cat-top-0" style="color: #fca5a5;">عاجل رسمي</span>
                         <span class="date-text-top auto-date">جاري التحميل...</span>
                     </div>
                     <div class="top-header-logo-box"><img src="Logo.png" alt="شعار"><span>موسوعة البصرة</span></div>
                 </div>
                 <div class="media-container" id="media-container-0"><img src="https://images.unsplash.com/photo-1541872703-74c5e44368f9?w=500" class="hero-news-img" id="img-0" alt="صورة"></div>
                 <div class="lower-content-box">
-                    <div class="badge-pill" id="badge-0">عاجل البصرة ⚡</div>
+                    <div class="badge-pill" id="badge-0" style="background: #ef4444; color: #fff;">عاجل البصرة ⚡</div>
                     <h2 id="title-0">قرارات هامة وحاسمة تصدر عن الجهات الرسمية في المحافظة</h2>
                     <ul class="bullet-list" id="list-0" contenteditable="true">
                         <li>إعلان حزمة إجراءات جديدة لمتابعة المشاريع</li>
@@ -91,7 +100,7 @@
                 </div>
                 <div class="footer-box">
                     <div class="footer-right-side">
-                        <span class="follow-label-rtl">تابعنا على:</span>
+                        <span class="follow-label-rtl" style="color: #fca5a5;">تابعنا على:</span>
                         <div class="footer-social-icons-rtl">
                             <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
                             <a href="#"><i class="fa-brands fa-tiktok"></i></a>
@@ -135,25 +144,25 @@
                 <label>العنوان الرئيسي:</label>
                 <textarea rows="2" oninput="document.getElementById('title-0').innerText = this.value">قرارات هامة وحاسمة تصدر عن الجهات الرسمية في المحافظة</textarea>
                 <div class="btn-group">
-                    <button class="save-btn" style="background: #0b1329; border: 1px solid #d4af37;" onclick="saveImage('frame-0', 'BSR_NavyGold_1.png')">📥 حفظ</button>
+                    <button class="save-btn" style="background: #7f1d1d; border: 1px solid #ef4444;" onclick="saveImage('frame-0', 'BSR_Red_1.png')">📥 حفظ</button>
                     <button class="save-btn" style="background: #334155;" onclick="copyImage('frame-0')">📋 نسخ</button>
                 </div>
             </div>
         </div>
 
-        <!-- القالب الثاني: عاجل وسياسة -->
+        <!-- القالب الثاني: عاجل وسياسة (أحمر) -->
         <div class="template-box">
-            <div class="phone-frame theme-gold-navy" id="frame-1">
+            <div class="phone-frame theme-red" id="frame-1">
                 <div class="top-header-bar">
                     <div class="top-header-left">
-                        <span class="cat-title-top" id="cat-top-1">عاجل وسياسة</span>
+                        <span class="cat-title-top" id="cat-top-1" style="color: #fca5a5;">عاجل وسياسة</span>
                         <span class="date-text-top auto-date">جاري التحميل...</span>
                     </div>
                     <div class="top-header-logo-box"><img src="Logo.png" alt="شعار"><span>موسوعة البصرة</span></div>
                 </div>
                 <div class="media-container" id="media-container-1"><img src="https://images.unsplash.com/photo-1541872703-74c5e44368f9?w=500" class="hero-news-img" id="img-1" alt="صورة"></div>
                 <div class="lower-content-box">
-                    <div class="badge-pill" id="badge-1">عاجل جداً 🔴</div>
+                    <div class="badge-pill" id="badge-1" style="background: #ef4444; color: #fff;">عاجل جداً 🔴</div>
                     <h2 id="title-1">تطورات سياسية وميدانية بارزة على الساحة الإقليمية</h2>
                     <ul class="bullet-list" id="list-1" contenteditable="true">
                         <li>اندلاع حرائق ضخمة في المنشآت المستهدفة</li>
@@ -163,7 +172,7 @@
                 </div>
                 <div class="footer-box">
                     <div class="footer-right-side">
-                        <span class="follow-label-rtl">تابعنا على:</span>
+                        <span class="follow-label-rtl" style="color: #fca5a5;">تابعنا على:</span>
                         <div class="footer-social-icons-rtl">
                             <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
                             <a href="#"><i class="fa-brands fa-tiktok"></i></a>
@@ -207,25 +216,25 @@
                 <label>العنوان الرئيسي:</label>
                 <textarea rows="2" oninput="document.getElementById('title-1').innerText = this.value">تطورات سياسية وميدانية بارزة على الساحة الإقليمية</textarea>
                 <div class="btn-group">
-                    <button class="save-btn" style="background: #0b1329; border: 1px solid #d4af37;" onclick="saveImage('frame-1', 'BSR_NavyGold_2.png')">📥 حفظ</button>
+                    <button class="save-btn" style="background: #7f1d1d; border: 1px solid #ef4444;" onclick="saveImage('frame-1', 'BSR_Red_2.png')">📥 حفظ</button>
                     <button class="save-btn" style="background: #334155;" onclick="copyImage('frame-1')">📋 نسخ</button>
                 </div>
             </div>
         </div>
 
-        <!-- القالب الثالث: خدمات ونقاط -->
+        <!-- القالب الثالث: خدمات ونقاط (كحلي وذهبي رسمي) -->
         <div class="template-box">
             <div class="phone-frame theme-gold-navy" id="frame-2">
                 <div class="top-header-bar">
                     <div class="top-header-left">
-                        <span class="cat-title-top" id="cat-top-2">خدمات ونقاط</span>
+                        <span class="cat-title-top" id="cat-top-2" style="color: #d4af37;">خدمات ونقاط</span>
                         <span class="date-text-top auto-date">جاري التحميل...</span>
                     </div>
                     <div class="top-header-logo-box"><img src="Logo.png" alt="شعار"><span>موسوعة البصرة</span></div>
                 </div>
                 <div class="media-container" id="media-container-2"><img src="https://images.unsplash.com/photo-1584467735817-6950fb6dbf43?w=500" class="hero-news-img" id="img-2" alt="صورة"></div>
                 <div class="lower-content-box">
-                    <div class="badge-pill" id="badge-2">خدمات عامة</div>
+                    <div class="badge-pill" id="badge-2" style="background: #d4af37; color: #0b1329;">خدمات عامة</div>
                     <h2 id="title-2">انطلاق حملة كبرى لتنظيف وصيانة شبكات الصرف الصحي</h2>
                     <ul class="bullet-list" id="list-2" contenteditable="true">
                         <li>استنفرت الكوادر البلدية آلياتها الخدمية والهندسية</li>
@@ -235,7 +244,7 @@
                 </div>
                 <div class="footer-box">
                     <div class="footer-right-side">
-                        <span class="follow-label-rtl">تابعنا على:</span>
+                        <span class="follow-label-rtl" style="color: #d4af37;">تابعنا على:</span>
                         <div class="footer-social-icons-rtl">
                             <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
                             <a href="#"><i class="fa-brands fa-tiktok"></i></a>
@@ -285,19 +294,19 @@
             </div>
         </div>
 
-        <!-- القالب الرابع: الطقس والبيئة -->
+        <!-- القالب الرابع: الطقس والبيئة (أزرق) -->
         <div class="template-box">
-            <div class="phone-frame theme-gold-navy" id="frame-3">
+            <div class="phone-frame theme-blue" id="frame-3">
                 <div class="top-header-bar">
                     <div class="top-header-left">
-                        <span class="cat-title-top" id="cat-top-3">الطقس والبيئة</span>
+                        <span class="cat-title-top" id="cat-top-3" style="color: #93c5fd;">الطقس والبيئة</span>
                         <span class="date-text-top auto-date">جاري التحميل...</span>
                     </div>
                     <div class="top-header-logo-box"><img src="Logo.png" alt="شعار"><span>موسوعة البصرة</span></div>
                 </div>
                 <div class="media-container" id="media-container-3"><img src="https://images.unsplash.com/photo-1592210454359-9043f067919b?w=500" class="hero-news-img" id="img-3" alt="صورة"></div>
                 <div class="lower-content-box">
-                    <div class="badge-pill" id="badge-3">حالة الطقس ⛅</div>
+                    <div class="badge-pill" id="badge-3" style="background: #3b82f6; color: #fff;">حالة الطقس ⛅</div>
                     <h2 id="title-3">ارتفاع تدريجي لدرجات الحرارة وتحذيرات من تصاعد الغبار</h2>
                     <ul class="bullet-list" id="list-3" contenteditable="true">
                         <li>درجات الحرارة العظمى تسجل مستويات صيفية معتادة</li>
@@ -307,7 +316,7 @@
                 </div>
                 <div class="footer-box">
                     <div class="footer-right-side">
-                        <span class="follow-label-rtl">تابعنا على:</span>
+                        <span class="follow-label-rtl" style="color: #93c5fd;">تابعنا على:</span>
                         <div class="footer-social-icons-rtl">
                             <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
                             <a href="#"><i class="fa-brands fa-tiktok"></i></a>
@@ -351,25 +360,25 @@
                 <label>العنوان الرئيسي:</label>
                 <textarea rows="2" oninput="document.getElementById('title-3').innerText = this.value">ارتفاع تدريجي لدرجات الحرارة وتحذيرات من تصاعد الغبار</textarea>
                 <div class="btn-group">
-                    <button class="save-btn" style="background: #0b1329; border: 1px solid #d4af37;" onclick="saveImage('frame-3', 'BSR_NavyGold_4.png')">📥 حفظ</button>
+                    <button class="save-btn" style="background: #1e3a8a; border: 1px solid #3b82f6;" onclick="saveImage('frame-3', 'BSR_Blue_4.png')">📥 حفظ</button>
                     <button class="save-btn" style="background: #334155;" onclick="copyImage('frame-3')">📋 نسخ</button>
                 </div>
             </div>
         </div>
 
-        <!-- القالب الخامس: الرياضة المحلية -->
+        <!-- القالب الخامس: الرياضة المحلية (أخضر) -->
         <div class="template-box">
-            <div class="phone-frame theme-gold-navy" id="frame-4">
+            <div class="phone-frame theme-green" id="frame-4">
                 <div class="top-header-bar">
                     <div class="top-header-left">
-                        <span class="cat-title-top" id="cat-top-4">الرياضة المحلية</span>
+                        <span class="cat-title-top" id="cat-top-4" style="color: #6ee7b7;">الرياضة المحلية</span>
                         <span class="date-text-top auto-date">جاري التحميل...</span>
                     </div>
                     <div class="top-header-logo-box"><img src="Logo.png" alt="شعار"><span>موسوعة البصرة</span></div>
                 </div>
                 <div class="media-container" id="media-container-4"><img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=500" class="hero-news-img" id="img-4" alt="صورة"></div>
                 <div class="lower-content-box">
-                    <div class="badge-pill" id="badge-4">رياضة البصرة ⚽</div>
+                    <div class="badge-pill" id="badge-4" style="background: #10b981; color: #fff;">رياضة البصرة ⚽</div>
                     <h2 id="title-4">نادي الميناء يكتسح ضيفه ويصعد للمربع الذهبي للدوري</h2>
                     <ul class="bullet-list" id="list-4" contenteditable="true">
                         <li>حقق الفوز بثلاثة أهداف نظيفة على أرضه وجمهوره</li>
@@ -379,7 +388,7 @@
                 </div>
                 <div class="footer-box">
                     <div class="footer-right-side">
-                        <span class="follow-label-rtl">تابعنا على:</span>
+                        <span class="follow-label-rtl" style="color: #6ee7b7;">تابعنا على:</span>
                         <div class="footer-social-icons-rtl">
                             <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
                             <a href="#"><i class="fa-brands fa-tiktok"></i></a>
@@ -423,25 +432,25 @@
                 <label>العنوان الرئيسي:</label>
                 <textarea rows="2" oninput="document.getElementById('title-4').innerText = this.value">نادي الميناء يكتسح ضيفه ويصعد للمربع الذهبي للدوري</textarea>
                 <div class="btn-group">
-                    <button class="save-btn" style="background: #0b1329; border: 1px solid #d4af37;" onclick="saveImage('frame-4', 'BSR_NavyGold_5.png')">📥 حفظ</button>
+                    <button class="save-btn" style="background: #064e3b; border: 1px solid #10b981;" onclick="saveImage('frame-4', 'BSR_Green_5.png')">📥 حفظ</button>
                     <button class="save-btn" style="background: #334155;" onclick="copyImage('frame-4')">📋 نسخ</button>
                 </div>
             </div>
         </div>
 
-        <!-- القالب السادس: أخبار المحليات -->
+        <!-- القالب السادس: أخبار المحليات (كحلي وذهبي رسمي) -->
         <div class="template-box">
             <div class="phone-frame theme-gold-navy" id="frame-5">
                 <div class="top-header-bar">
                     <div class="top-header-left">
-                        <span class="cat-title-top" id="cat-top-5">أخبار المحليات</span>
+                        <span class="cat-title-top" id="cat-top-5" style="color: #d4af37;">أخبار المحليات</span>
                         <span class="date-text-top auto-date">جاري التحميل...</span>
                     </div>
                     <div class="top-header-logo-box"><img src="Logo.png" alt="شعار"><span>موسوعة البصرة</span></div>
                 </div>
                 <div class="media-container" id="media-container-5"><img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=500" class="hero-news-img" id="img-5" alt="صورة"></div>
                 <div class="lower-content-box">
-                    <div class="badge-pill" id="badge-5">محليات البصرة 🏙️</div>
+                    <div class="badge-pill" id="badge-5" style="background: #d4af37; color: #0b1329;">محليات البصرة 🏙️</div>
                     <h2 id="title-5">حملة إعمار واسعة تشمل أقضية ونواحي محافظة البصرة</h2>
                     <ul class="bullet-list" id="list-5" contenteditable="true">
                         <li>إحالة عدة مشاريع خدمية وبنى تحتية جديدة</li>
@@ -451,7 +460,7 @@
                 </div>
                 <div class="footer-box">
                     <div class="footer-right-side">
-                        <span class="follow-label-rtl">تابعنا على:</span>
+                        <span class="follow-label-rtl" style="color: #d4af37;">تابعنا على:</span>
                         <div class="footer-social-icons-rtl">
                             <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
                             <a href="#"><i class="fa-brands fa-tiktok"></i></a>
@@ -521,7 +530,7 @@
             image.src = URL.createObjectURL(event.target.files[0]);
         }
 
-        /* دوال تحكم دقيقة للعناوين الفرعية لتجنب أي مشاكل باللون أو الحجم */
+        /* دوال تحكم دقيقة للعناوين الفرعية لضمان بقائها بيضاء وعدم تأثرها بلون آخر */
         function setListColor(listId, color) {
             const list = document.getElementById(listId);
             const items = list.querySelectorAll('li');
@@ -564,4 +573,3 @@
     </script>
 </body>
 </html>
-
