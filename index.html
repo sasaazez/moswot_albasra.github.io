@@ -17,7 +17,7 @@
         /* ضبط إطار الهاتف على أبعاد إنستغرام القياسية 4:5 بدقة (عرض 1080 × ارتفاع 1350) */
         .phone-frame { width: 100%; aspect-ratio: 4/5; position: relative; overflow: hidden; display: flex; flex-direction: column; color: #fff; }
         
-        /* الثيمات المخصصة لكل قسم حسب الطلب */
+        /* الثيمات المخصصة لكل قسم */
         .theme-red { background: linear-gradient(135deg, #7f1d1d 0%, #1e1b4b 100%); border: 2px solid #ef4444; }
         .theme-green { background: linear-gradient(135deg, #064e3b 0%, #0f172a 100%); border: 2px solid #10b981; }
         .theme-blue { background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%); border: 2px solid #3b82f6; }
@@ -38,15 +38,12 @@
         .lower-content-box { flex-grow: 1; padding: 12px 16px; display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-end; gap: 6px; }
         .badge-pill { padding: 3px 14px; font-size: 12px; border-radius: 20px; font-weight: 900; box-shadow: 0 2px 4px rgba(0,0,0,0.2); }
         
-        /* حجم وتصميم العنوان الرئيسي */
         .phone-frame h2 { font-size: 20px; line-height: 1.35; font-weight: 800; color: #ffffff; width: 100%; text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
 
-        /* حل مشكلة اللون الأسود نهائياً وتوفير الوراثة البيضاء للنقاط الفرعية */
         .bullet-list { list-style: none; display: flex; flex-direction: column; gap: 3px; width: 100%; padding: 0; margin-top: 2px; }
         .bullet-list li { font-size: 11.5px; color: #ffffff; line-height: 1.25; font-weight: 700; position: relative; padding-right: 16px; text-shadow: 0 1px 2px rgba(0,0,0,0.3); }
         .bullet-list li::before { content: "•"; position: absolute; right: 0; font-weight: bold; font-size: 16px; }
 
-        /* ألوان نقاط القائمة لكل ثيم */
         .theme-red .bullet-list li::before { color: #fca5a5; }
         .theme-green .bullet-list li::before { color: #6ee7b7; }
         .theme-blue .bullet-list li::before { color: #93c5fd; }
@@ -150,7 +147,7 @@
             </div>
         </div>
 
-        <!-- القالب الثاني: عاجل وسياسة (أحمر) -->
+        <!-- القالب الثاني: عاجل (أحمر) -->
         <div class="template-box">
             <div class="phone-frame theme-red" id="frame-1">
                 <div class="top-header-bar">
@@ -366,7 +363,7 @@
             </div>
         </div>
 
-        <!-- القالب الخامس: الرياضة المحلية (أخضر) -->
+        <!-- القالب الخامس: الرياضة المحلية (أخضر 🟢) -->
         <div class="template-box">
             <div class="phone-frame theme-green" id="frame-4">
                 <div class="top-header-bar">
@@ -530,7 +527,6 @@
             image.src = URL.createObjectURL(event.target.files[0]);
         }
 
-        /* دوال تحكم دقيقة للعناوين الفرعية لضمان بقائها بيضاء وعدم تأثرها بلون آخر */
         function setListColor(listId, color) {
             const list = document.getElementById(listId);
             const items = list.querySelectorAll('li');
@@ -563,7 +559,7 @@
                 canvas.toBlob(blob => {
                     try {
                         navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })]);
-                        alert('تم نسخ التصميم بنجاح! يمكنك لصقه (Paste) مباشرة في إنستغرام أو التطبيق.');
+                        alert('تم نسخ التصميم بنجاح!');
                     } catch (err) {
                         alert('عذراً، متصفحك لا يدعم النسخ المباشر، يمكنك استخدام زر الحفظ.');
                     }
